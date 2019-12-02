@@ -230,7 +230,7 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
 
     //ACTIVIDADES AL PULSAR SOBRE LOS MARCADORES
     private void empezarActividad1() {
-        Intent intent = new Intent(this, Actividad1.class);
+        Intent intent = new Intent(this, Actividad7.class);
         startActivity(intent);
     }
 

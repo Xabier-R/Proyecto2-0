@@ -12,36 +12,30 @@
         android:layout_height="170sp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="27sp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="20sp"
         android:src="@drawable/lobo" />
 
     <ImageView
         android:id="@+id/bocadillo"
-        android:layout_width="260sp"
-        android:layout_height="200sp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="300sp"
-        android:layout_marginEnd="135dp"
-        android:layout_marginBottom="5sp"
-        android:background="@drawable/bocadillo" />
-
+        android:layout_width="280sp"
+        android:layout_height="180sp"
+        android:layout_alignBottom="@id/lobo"
+        android:layout_marginEnd="-30dp"
+        android:layout_marginBottom="-10sp"
+        android:layout_toStartOf="@+id/lobo"
+        android:background="@drawable/bocadillo"
+        android:padding="10dp" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="185sp"
-        android:layout_height="155sp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="300sp"
-        android:layout_marginEnd="160sp"
-        android:layout_marginBottom="30sp"
-        android:scrollbars="vertical">
+        android:layout_width="265sp"
+        android:layout_height="165sp"
+        android:layout_alignBottom="@id/lobo"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="0sp"
+        android:layout_toStartOf="@+id/lobo"
+        android:padding="10dp">
 
 
         <com.aar.app.proyectoLlodio.TypeWriter
@@ -60,13 +54,14 @@
         android:id="@+id/buttonEmpezar"
         android:layout_width="150dp"
         android:layout_height="65dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/bocadillo"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="210dp"
+        android:layout_marginEnd="65dp"
         android:layout_marginBottom="70dp"
         android:text="Argazkiak Bilatu"
-        android:visibility="invisible"
-        android:textColor="@color/blanco"/>
+        android:textColor="@color/blanco"
+        android:visibility="invisible" />
+
 
 
 </RelativeLayout>

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/lobo"
-        android:layout_width="140sp"
-        android:layout_height="160sp"
+        android:layout_width="150sp"
+        android:layout_height="165sp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="-8dp"
@@ -18,29 +18,33 @@
 
     <ImageView
         android:id="@+id/bocadillo"
-        android:layout_width="270sp"
-        android:layout_height="160sp"
+        android:layout_width="280sp"
+        android:layout_height="180sp"
         android:layout_alignBottom="@id/lobo"
-        android:padding="10dp"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="0sp"
+        android:layout_toStartOf="@+id/lobo"
         android:background="@drawable/bocadillo"
-        android:layout_marginBottom="5sp"/>
+        android:padding="10dp" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="270sp"
-        android:layout_height="145sp"
-        android:padding="10dp"
+        android:layout_width="265sp"
+        android:layout_height="165sp"
         android:layout_alignBottom="@id/lobo"
-        android:layout_marginBottom="20sp">
+        android:layout_marginEnd="-15dp"
+        android:layout_marginBottom="10sp"
+        android:layout_toStartOf="@+id/lobo"
+        android:padding="10dp">
 
         <com.aar.app.proyectoLlodio.TypeWriter
             android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="Arial"
+            android:stackFromBottom="true"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:stackFromBottom="true"/>
+            android:textStyle="bold" />
     </ScrollView>
     <Button
         android:id="@+id/btnskip"
