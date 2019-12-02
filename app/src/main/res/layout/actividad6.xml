@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+    <LinearLayout
+        android:id="@+id/buttons"
+        style="@style/estiloa4_1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btnreset"
+                    android:text="@string/btnresetear"
+                    android:onClick="reset"
+                    style="@style/estiloa4_3"/>
+                <Button
+                    android:id="@+id/btncomprobar"
+                    android:text="@string/btncomprobar"
+                    android:onClick="comprobar"
+                    style="@style/estiloa4_3"/>
+            </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        style="@style/estiloa6_1"
+        android:layout_above="@id/buttons">
+        <LinearLayout
+            style="@style/estiloa6_2">
+
+            <ImageView
+                style="@style/estiloa6_3"
+                android:src="@drawable/a6_img1"/>
+
+            <EditText
+                android:id="@+id/a6_et1"
+                style="@style/estiloa6_4"/>
+
+            <ImageView
+                style="@style/estiloa6_3"
+                android:src="@drawable/a6_img2"/>
+
+            <EditText
+                android:id="@+id/a6_et2"
+                style="@style/estiloa6_4"/>
+
+            <ImageView
+                style="@style/estiloa6_3"
+                android:src="@drawable/a6_img3"/>
+
+            <EditText
+                android:id="@+id/a6_et3"
+                style="@style/estiloa6_4"/>
+
+            <ImageView
+                style="@style/estiloa6_3"
+                android:src="@drawable/a6_img4"/>
+
+            <EditText
+                android:id="@+id/a6_et4"
+                style="@style/estiloa6_4"
+                android:layout_marginBottom="60dp"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
+
+

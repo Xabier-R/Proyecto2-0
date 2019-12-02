@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/buttons"
+        style="@style/estiloa4_1">
+        <com.google.android.flexbox.FlexboxLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:justifyContent="center"
+            app:flexWrap="wrap">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="5dp">
+                <TextView
+                    android:id="@+id/option_1"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto22_a4"/>
+                <TextView
+                    android:id="@+id/option_2"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto23_a4"/>
+                <TextView
+                    android:id="@+id/option_3"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto24_a4"/>
+                <TextView
+                    android:id="@+id/option_4"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto25_a4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <TextView
+                    android:id="@+id/option_5"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto26_a4"/>
+                <TextView
+                    android:id="@+id/option_6"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto27_a4"/>
+                <TextView
+                    android:id="@+id/option_7"
+                    style="@style/estiloa4_2"
+                    android:text="@string/texto28_a4"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btnreset"
+                    android:text="@string/btnresetear"
+                    android:onClick="reset"
+                    style="@style/estiloa4_3"/>
+
+            </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
+
+    <ScrollView
+        style="@style/estiloa4_6"
+        android:layout_above="@id/buttons">
+
+        <com.google.android.flexbox.FlexboxLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/wrap_content"
+            app:alignItems="center"
+            app:flexWrap="wrap">
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto2_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_1"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto3_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_2"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto6_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto7_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_3"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto8_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto10_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_4"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto11_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto12_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto13_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto14_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto15_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_5"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto16_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto17_a4">
+            </TextView>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto18_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_6"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto19_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto20_a4">
+            </TextView>
+
+            <EditText
+                android:id="@+id/choice_7"
+                style="@style/estiloa4_5"/>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto21_a4">
+            </TextView>
+
+        </com.google.android.flexbox.FlexboxLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
+
+

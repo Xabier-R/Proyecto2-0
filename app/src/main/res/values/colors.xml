@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#F7F7F7</color>
+    <color name="blanco">#ececec</color>
+    <color name="llodio">#078930</color>
+    <color name="cuento">#98BBCC</color>
+
+    <color name="trans">#80000000</color>
+    <color name="col1">#cf7272</color>
+    <color name="col2">#cfc372</color>
+    <color name="col3">#99cf72</color>
+    <color name="col4">#72cfa2</color>
+
+    <color name="selTextBgColor">#F06292</color>
+
+    <color name="gray">#aa808080</color>
+</resources>

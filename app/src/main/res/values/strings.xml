@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">Proyecto_llodio</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoicHJveWVjdG9wcm9tIiwiYSI6ImNrMzl2czN4ajA2M2czb2szMXc4MXVlZGIifQ.03QDBfq6G1lypkQKs-anTQ</string>
+
+    <string name="texto1_p6">Hasieran, Urquijoko markesaren parke pribatua zen. Bertan, XVIII. mendeko eraikin bat dago,1876an sortua Estanislao de Urquijo y Landaluceren eskutik, Urquijoko lehen markesa. Hau haren jauregia zen. Estilo barrokoko oinarriak jarraitzen ditu eta XIX. mendean hedatua izan zen. Hasiera batean, etxebizitza familiabakarrarena zen eta lursail batez inguratuta zegoen, aisialdi toki bat zen baina haren jabearen familiarentzat soilik. Markesa bertan zegoelarik, tenis zelai bi, kroket zelai bat eta igerileku bat zeuden, baita zuhaitz mota ugari, adibidez, magnolio eta izeiak. Gaur egun, 1975etik aurrera, parkea jabetza publikokoa da eta bertako eraikinak kultur etxeari dagozkie. Gainera, oraindik kirola egiteko zelaiak daude nahiz eta garai hartan zeudenak ez izan.</string>
+
+    <string name="texto1_p5">Ermuko Andra Mari itsas mailatik 500 metro ingurura dago, Kamaraka mendiaren maldan. Normalean, "Santa Lucia" izenarekin ezagutzen da, eliza ondoko ermitaren santua dena. Hau XVI. mendeko eraikina da, euskal gotiko estilo aurreratuarekin. Bere erretratua eta bere erretaularen tarteak eta pinturak azpimarratzen dira.</string>
+    <string name="texto2_p5">Andra Mari de Ermu inguruko iraganeko hainbat sekretu agerian uzten hasi dira arkeologiaren bitartez. Arkeologoak bi tokitan aritu dira lanean, batak 12 ditu eta besteak 20, Andra Mari de Ermuko elizaren koro azpian eta kanpandorrearen alboan. Indusketek nekropoli bat utzi dute agerian, XI. eta XII. mendeetako ehorzketekin, baita XVI. mendeko elizaren beste lursail bat. Honetatik ondoriozta genezake, aurretik egondako XII. mendeko eraikina bota egin zutela gaur egun dagoena eraikitzeko. Gainera, XII. mendeko txanponak aurkitu dituzte, ehorzketekin lotuta dauden aberastasunak. Honek, oligarkiari lotuta zegoela pentsatzera bideratzen gaitu. </string>
+    <string name="texto3_p5">Aspaldi, orain dela urteak eta urteak, bart bezalako gau batean artzainek ardiak Urkiolara eramatea erabaki zuten. Santa Apolonia, honen jakitun izanda, eurekin joateko erabakia hartu zuen gaua pasatzera; horrela, hauek lagundu eta babestuko zituen. Santa Apolonia, hortzen babeslea izan arren, ez zen bat ere abila, eta ermita honetatik igarotzean harri bat zapaldu eta bere aztarna utzi zuen. Harrezkero, tradizioak dio, Santa Luzian dagoen iturri magikotik ura hartu eta aztarna hau hiru aldiz zapalduz ahoko osasuna urtebetez ziurtatuko duzula.</string>
+    <string name="texto4_p5">Lezeagako Sorginaren istorioa duela asko entzuten da Laudioko toki guztietan. Aspaldi, herriko neskatxa bat, Sorginzulo ondotik igaro behar zen egunero ur bila. Beti buelta berdina egiteaz nekaturik esan zuen «Ez ahal dago sorginik zubi bat eraikiko dutenik ni eurei batzearen truke?». Hurrengo goizean herriko auzokideak esnatu eta zubi berri bat eta neskatila hau sorgin bihurturik topatu zuten. Egun honetatik aurrera Lezeagako kobazuloan bizi izan zen. Betiko geratu zen bertan sarturik herrikideez baztertuta. Batzuetan, bere ahots politarekin artzainak bertara erakartzen zituen zuen ile horia urrezko eskuilarekin orrazten zuen bitartean.</string>
+    <string name="texto5_p5">Etxebarri baserria XVI. mendeko baserria da eta bi solairu ditu: beheko solairuan animalientzako kortak zeuden, eta, goiko solairua, etxebizitzarako prestatuta zegoen. 2009ko irailean sute bat sufritu zuen, eta teilatua suntsituta gelditu zen. Hala ere, suari esker, XVI. mendeko margolanak azaleratu ziren. Juan de Armonaren irudi errenazentistak dira, eta hau oso bitxia da, izan ere, normalean eraikin erlijiosoetan agertzen direlako (elizak, ermitak, basilikak...). Baina, tamalez, apurturik eta babesik gabe zegoenez, aurkitutako margolanak zikintzen eta galtzen hasi ziren. Horregatik, ondare hau babesteko, Etxebarriko baserria konpondu zuten eta, gaur egun, Laudioko altxorretariko bat bihurtu da.</string>
+    <string name="texto6_p5">Hasieran, Urquijoko markesaren parke pribatua zen. Bertan, XVIII. mendeko eraikin bat dago,1876an sortua Estanislao de Urquijo y Landaluceren eskutik, Urquijoko lehen markesa. Hau haren jauregia zen. Estilo barrokoko oinarriak jarraitzen ditu eta XIX. mendean hedatua izan zen. Hasiera batean, etxebizitza familiabakarrarena zen eta lursail batez inguratuta zegoen, aisialdi toki bat zen baina haren jabearen familiarentzat soilik. Markesa bertan zegoelarik, tenis zelai bi, kroket zelai bat eta igerileku bat zeuden, baita zuhaitz mota ugari, adibidez, magnolio eta izeiak. Gaur egun, 1975etik aurrera, parkea jabetza publikokoa da eta bertako eraikinak kultur etxeari dagozkie. Gainera, oraindik kirola egiteko zelaiak daude nahiz eta garai hartan zeudenak ez izan.</string>
+    <string name="texto7_p5"></string>
+
+    <string name="btncomprobar"> Egiaztatu</string>
+    <string name="btnresetear">Berregin</string>
+    <string name="texto1_a4">Bazen behin, Laudioko neskatxa bat.</string>
+    <string name="texto2_a4">Neskatxa hau egunero joaten zen</string>
+    <string name="texto3_a4">ur bila. Errekarako bidea</string>
+    <string name="texto4_a4">ondotik pasatzen zen eta ez zegoen</string>
+    <string name="texto5_a4">beste biderik bertara heltzeko, beraz,</string>
+    <string name="texto6_a4">etxera bueltan ere bertatik</string>
+    <string name="texto7_a4">igaro behar zuen. Egunero</string>
+    <string name="texto8_a4">bera egiten zuen eta, hortaz, nekaturik</string>
+    <string name="texto9_a4">zegoela sorginzulo parean zera esan zuen:</string>
+    <string name="texto10_a4">• Ez ahal dago</string>
+    <string name="texto11_a4">  zubi bat</string>
+    <string name="texto12_a4">eraikiko dutenik ni </string>
+    <string name="texto13_a4">eurekin batzearen truke?</string>
+    <string name="texto14_a4">Hurrengo goizean, </string>
+    <string name="texto15_a4">herriko biztanleak esnatu eta</string>
+    <string name="texto16_a4">berri bat aurkitu zuten, baita</string>
+    <string name="texto17_a4">neskatila hau sorgin bihurturik</string>
+    <string name="texto18_a4">ere. Hau sorginen</string>
+    <string name="texto19_a4">eragin zuen. Hemendik aurrera,</string>
+    <string name="texto20_a4">sorgin bihurtutako neskatila</string>
+    <string name="texto21_a4">kobazuloan bizi izan da.</string>
+
+    <string name="texto22_a4">errekara</string>
+    <string name="texto23_a4">sorginzulo</string>
+    <string name="texto24_a4">ibilbide</string>
+    <string name="texto25_a4">sorginik</string>
+    <string name="texto26_a4">zubi</string>
+    <string name="texto27_a4">madarikazioak</string>
+    <string name="texto28_a4">Lezeagako</string>
+
+    <string name="texto1_a6">Idatzi lekuaren izena</string>
+    <string name="btnprev">aurreko</string>
+    <string name="btnnext">hurrengo</string>
+
+    <string name="enunciadoCuento">Baserriari argazki bat atera eta ipuin txikitxo bat idatzi behar duzue.</string>
+    <string name="camara">Camara</string>
+    <string name="texto1_a1"> Kaixo lagunak! Badakizue non zaudete? Bai! Laudion gaude! Eta jakingo duzuenez, gaur Laudioko zenbait ondare ikusiko eta landuko ditugu. Baina, irteerarekin hasi baino lehen ondarea zer den gogoratuko dugu.</string>
+    <string name="texto2_a1">Ondarea interes handiko gauza materialen eta ez materialen multzoa da, gure kulturaren bizi-iraupenerako ezinbestekoa dena. Ondareak iraganetik jaso duguna da eta hauek zaindu behar ditugu datozen belaunaldiei transmititzeko.</string>
+    <string name="texto3_a1">Uste dut argi ulertu dela, ez?</string>
+    <string name="texto4_a1">BAI, JUSTO ESPERO NUENA!!</string>
+    <string name="texto5_a1">Orduan… uste dut prest gaudela gure irteerarekin hasteko!</string>
+    <string name="texto6_a1">Ondo pasa!</string>
+    <string name="texto7_a1">Laudio Arabako ipar-mendebaldeko herri bat da, Aiaralde eskualdekoa. Arabako udalerri jendetsuenetakoa da, biztanle asko baititu. Ofizialki, udalerriaren izen osoa Laudio Ibar Noblea da. Herrian zenbait auzo nabarmentzen dira eta hauek dira ezagunenak: Lateorro, Ugarte, Landaluze, Gardea, Areta eta Erdigunea.
+Nerbioi ibarrean dago kokatuta, Nerbioi ibaiaren ibilbidearen erdian eta, dakizuenez, Nerbioi Ibaia Bilboraino heltzen da.</string>
+
+
+    <string name="texto1_a3"> San Antonio aztarna euskal mitologiaren barnean dago eta Ermuko Andra Mari elizaren ondoan dagoen iturriarekin duen ahalmen magikoarekin lotuta dago.
+Baina uste da aztarnaren gaur egungo kokapena ez dela originala, iturri miragarriarengandik aldendu zutela Ermuko Andra Mari eliza bertan eraiki ondoren, kristautasunetik kanpoko gurtza pagak desagerrarazteko.
+Tradizioaren arabera, ahoa urez bete eta hiru aldiz zapaldu behar duzu aztarna eta, horrela, urtebetean ahoko osasuna ziurtatuko duzu. Honetaz gain, zurrumurruren arabera, ugalkortasunerako ere balio du.</string>
+
+    <string name="texto2_a3"> Aspaldi, orain dela urteak eta urteak, bart bezalako gau batean artzainek ardiak Urkiolara eramatea erabaki zuten. Santa Apolonia, honen jakitun izanda, eurekin joateko erabakia hartu zuen gaua pasatzera; horrela, hauek lagundu eta babestuko zituen. Santa Apolonia, hortzen babeslea izan arren, ez zen bat ere abila,
+        eta ermita honetatik igarotzean harri bat zapaldu eta bere aztarna utzi zuen. Harrezkero, tradizioak dio, Santa Luzian dagoen iturri magikotik ura hartu eta aztarna hau hiru aldiz zapalduz ahoko osasuna urtebetez ziurtatuko duzula.</string>
+
+
+    <string name="texto1_a7"> Aste Santuko aurreko ostiralean Dolumin barikua ospatzen da. Ospakizun honetan, 1980tik egiten den eta Laudio inguruko jendea biltzen duen abere azoka egiten da. Antzina, azoka abereen salerosketan oinarritzen zen, baina gaur egun, abereen eta animali exotikoen erakusketan zentratzen da. Egun honetan zehar, ekintza ludikoak,
+        kiroletakoak, hau da, herri-kirolak eta erlijiosoak gauzatzen dira. Eskualdeko jai garrantzitsuenetako bat da eta Laudioko biztanleria landatarraren memoria gogoratzen duen jaieguna da. </string>
+
+
+    <string name="new_game_loading_text">Generating game data…</string>
+    <string name="summary_about">Word search game is a puzzle game, where the player try to find words in a grid of letters in horizontal, vertical and diagonal direction.</string>
+    <string name="finished">Amaituta!</string>
+
+    <!-- prefs -->
+    <string name="pref_showGridLine">showGridLine</string>
+    <string name="pref_snapToGrid">snapToGrid</string>
+    <string name="pref_enableSound">enableSound</string>
+    <string name="pref_deleteAfterFinish">deleteAfterFinish</string>
+    <string name="pref_enableFullscreen">enableFullscreen</string>
+    <string name="pref_autoScaleGrid">autoScaleGrid</string>
+    <string name="snap_to_grid_def_val">ALWAYS_SNAP</string>
+    <string name="show_grid_line">Show Grid Line</string>
+    <string name="snap_to_grid">Snap To Grid</string>
+    <string name="about">About</string>
+    <string name="saved_game">Saved game data</string>
+    <string name="enable_sound">Enable Sound</string>
+    <string name="about_credit">Developer: Xabier R.</string>
+    <string name="delete_finish">Delete Finish</string>
+    <string name="enable_fullscreen">Fullscreen</string>
+    <string name="auto_scale_grid">Auto Scale Grid</string>
+    <string name="finish_text">:duration minututan amaitu duzu  </string>
+    <string name="version">Version</string>
+    <string name="version_num">1.0</string>
+    <string name="settings">Settings</string>
+    <string name="congratulations">Zorionak!</string>
+    <string name="main_menu"> Menu</string>
+    <string name="new_game">HASI</string>
+    <string name="auto_scale_grid_summary">Automatically scale grid based on the screen width</string>
+    <string name="pref_reverseMatching">reverseMatching</string>
+    <string name="reverse_matching">Reverse matching</string>
+    <string name="pref_grayscale">grayscale</string>
+    <string name="grayscale">Grayscale</string>
+    <string name="game_data_desc">:gridSize Grid, :wordCount Words</string>
+
+</resources>

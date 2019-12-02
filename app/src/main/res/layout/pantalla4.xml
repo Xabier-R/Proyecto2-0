@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pantalla4">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/principal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#3c213c"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:text="Diseinua"
+                    style="@style/estilop4"/>
+            </LinearLayout>
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/linearLayout"
+                app:rowCount="2"
+                app:columnCount="2"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardBackgroundColor="#532c53"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="152dp"
+                            android:background="#532c53"
+                            android:padding="20dp"
+                            android:src="@drawable/p4_img2"/>
+
+                        <TextView
+                            style="@style/estilop4_2"
+                            android:text="Julene Sada Sologuren"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="212dp"
+                    android:layout_height="200dp"
+                    app:cardBackgroundColor="#673653"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="152dp"
+                            android:padding="20dp"
+                            android:background="#673653"
+                            android:src="@drawable/p4_img2"/>
+
+                        <TextView
+                            style="@style/estilop4_2"
+                            android:text="Naroa Roldan Becerra"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardBackgroundColor="#8e4350"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="152dp"
+                            android:padding="20dp"
+                            android:background="#8e4350"
+                            android:src="@drawable/p4_img2"/>
+
+                        <TextView
+                            style="@style/estilop4_2"
+                            android:text="Judith Pérez Sánchez"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="212dp"
+                    android:layout_height="200dp"
+                    app:cardBackgroundColor="#301530"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView62"
+                            android:layout_width="match_parent"
+                            android:padding="20dp"
+                            android:layout_height="152dp"
+                            android:background="#301530"
+                            android:src="@drawable/p4_img2"/>
+
+                        <TextView
+                            style="@style/estilop4_2"
+                            android:text="Ainhoa Elorza Rodriguez"></TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.gridlayout.widget.GridLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_marginTop="450dp"
+                android:background="#3c213c"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Garapena"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:textColor="@color/blanco"
+                    android:textSize="20dp"
+                    android:textAlignment="center"></TextView>
+            </LinearLayout>
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/linearLayout1"
+                app:rowCount="3"
+                app:columnCount="1"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView3"
+                            style="@style/estilop4_1"/>
+                        <TextView
+                            style="@style/estilop4_3"
+                            android:text="Gian Piero Contreras Ramos"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView1"
+                            style="@style/estilop4_1"/>
+
+                        <TextView
+                            style="@style/estilop4_3"
+                            android:text="Jhonatan Contreras Ramos"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imageView12"
+                            style="@style/estilop4_1"/>
+
+                        <TextView
+                            style="@style/estilop4_3"
+                            android:text="Xabier Revuelta García de Albeniz"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.gridlayout.widget.GridLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

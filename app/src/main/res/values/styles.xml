@@ -1,0 +1,136 @@
+<resources>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="wrap_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="estiloa4_1"> <!-- Estilo del primer linearLayout -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="estiloa4_2" parent="wrap_content"> <!-- Estilo para los elementos arrastrables -->
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">6pt</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/p2_border4</item>
+    </style>
+
+    <style name="estiloa4_3" parent="estiloa4_2"> <!-- Estilo para los botones -->
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">7pt</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:background">@drawable/p2_border3</item>
+    </style>
+
+    <style name="estiloa4_4" parent="wrap_content"> <!-- Estilo para los ScrollView/TextView -->
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="estiloa4_5" parent="estiloa4_4"> <!-- Estilo para los ScrollView/EditText -->
+        <item name="android:layout_width">120dp</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="estiloa4_6" > <!-- Estilo para el ScrollView de la Actividad 4 -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/a4_border1</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:padding">25dp</item>
+        <item name="android:scrollbarSize">20dp</item>
+    </style>
+
+    <style name="estiloa6_1" > <!-- Estilo para el ScrollView de la Actividad 6 -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/a6_border1</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:scrollbarSize">20dp</item>
+    </style>
+
+    <style name="estiloa6_2" > <!-- Estilo para el LinearLayout de la Actividad 6-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+    <style name="estiloa6_3" > <!-- Estilo para el LinearLayout/ImageView de la Actividad 6-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="estiloa6_4" > <!-- Estilo para el LinearLayout/TextView de la Actividad 6-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:hint">@string/texto1_a6</item>
+    </style>
+
+    <!-- PANTALLA 4 -->
+
+    <style name="estilop4" > <!-- Estilo para el circleImgView/Texview-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="estilop4_1" > <!-- Estilo para el circleImgView-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:src">@drawable/p4_img1</item>
+        <item name="android:background">@drawable/contactbackground</item>
+
+    </style>
+
+    <style name="estilop4_2" > <!-- Estilo para el circleImgView/Texview-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="estilop4_3" parent="estilop4_2" > <!-- Estilo para el circleImgView/TexviewMan-->
+        <item name="android:background">#8e4350</item>
+    </style>
+
+
+
+
+
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aar.app.proyectoLlodio">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".WordSearchApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Actividad6_empezar"></activity>
+        <activity android:name=".Pantalla0">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Pantalla1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla4"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla5"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla6"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad4"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad5"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Actividad6"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad7"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad5_cuento"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla5_patrimonio_detalle"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WordSearchApp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sopaLetras.features.gameplay.GamePlayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sopaLetras.features.mainmenu.MainMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sopaLetras.features.gameover.GameOverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sopaLetras.features.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashScreenTheme" />
+    </application>
+
+</manifest>

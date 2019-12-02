@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actividad5"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:id="@+id/linearImagen"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:onClick="sacarFoto"
+        android:background="@drawable/a5_img4"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_below="@id/linearImagen"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:layout_height="match_parent">
+
+        <TabHost android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:background="@drawable/fondo"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"/>
+
+                <ScrollView
+                    android:id="@+id/scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/tab1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/titulo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40sp"
+                                android:layout_marginTop="35sp"
+                                android:layout_marginRight="40sp"
+                                android:fontFamily="Arial"
+                                android:gravity="center"
+                                android:hint="Izenburua asmatu"
+                                android:maxLength="30"
+                                android:textSize="30dp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/cuento"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40sp"
+                                android:layout_marginRight="40sp"
+                                android:fontFamily="Arial"
+                                android:hint="Ipuina"
+                                android:lines="2"
+                                android:singleLine="false"
+                                android:overScrollMode="always"
+                                android:scrollbarStyle="insideInset"
+                                android:scrollbars="vertical"
+                                android:maxLength="200"
+                                android:textSize="24dp" />
+
+                            <LinearLayout
+                                android:id="@+id/BarraBotones"
+                                style="?android:attr/buttonBarStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="40dp"
+                                android:divider="?android:dividerVertical"
+                                android:dividerPadding="6dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/BtnAceptar"
+                                    style="?android:attr/buttonBarButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:onClick="guardarCuento"
+                                    android:text="Guardar" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                xmlns:tools="http://schemas.android.com/tools"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:context=".Actividad5">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_lista"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+                    </FrameLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+        </TabHost>
+
+    </LinearLayout>
+</RelativeLayout>

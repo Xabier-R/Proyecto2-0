@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+    <LinearLayout
+        android:id="@+id/buttons"
+        style="@style/estiloa4_1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnprev"
+                android:text="@string/btnprev"
+                android:onClick="anterior"
+                style="@style/estiloa4_2"/>
+            <Button
+                android:id="@+id/btnnext"
+                android:text="@string/btnnext"
+                android:onClick="siguiente"
+                style="@style/estiloa4_2"/>
+            <Button
+                android:id="@+id/btncomprobar"
+                android:text="@string/btncomprobar"
+                android:onClick="comprobar"
+                style="@style/estiloa4_3"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imglobo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@id/buttons"
+        android:layout_alignEnd="@id/buttons"
+        android:src="@drawable/lobo">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bocadillo"
+        android:layout_above="@id/imglobo">
+
+
+
+    </LinearLayout>
+</RelativeLayout>
