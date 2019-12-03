@@ -141,12 +141,19 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             char first = mTextToAdd.charAt(0);
             mTextToAdd = mTextToAdd.subSequence(1, mTextToAdd.length());
 
-            ScrollView scrollView1 = Actividad3.scrollView;
-            ScrollView scrollView2 = Pantalla1.scrollView;
-            ScrollView scrollView3 = Actividad7.scrollView;
+            ScrollView scrollViewP1 = Pantalla1.scrollView;
+            ScrollView scrollView1 = Actividad1_empezar.scrollView;
+            ScrollView scrollView2 = Actividad2_empezar.scrollView;
+            ScrollView scrollView3 = Actividad3.scrollView;
+            ScrollView scrollView4 = Actividad4_empezar.scrollView;
             ScrollView scrollView6 = Actividad6_empezar.scrollView;
+            ScrollView scrollView7 = Actividad7.scrollView;
 
-            if(scrollView1 != null ){
+
+            if(scrollViewP1 != null ){
+                scrollViewP1.fullScroll(View.FOCUS_DOWN);
+            }
+            if(scrollView1 != null) {
                 scrollView1.fullScroll(View.FOCUS_DOWN);
             }
             if(scrollView2 != null) {
@@ -155,12 +162,16 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             if(scrollView3 != null) {
                 scrollView3.fullScroll(View.FOCUS_DOWN);
             }
-            if(scrollView3 != null) {
-                scrollView3.fullScroll(View.FOCUS_DOWN);
+            if(scrollView4 != null) {
+                scrollView4.fullScroll(View.FOCUS_DOWN);
+            }
+            if(scrollView7 != null) {
+                scrollView7.fullScroll(View.FOCUS_DOWN);
             }
             if(scrollView6 != null) {
                 scrollView6.fullScroll(View.FOCUS_DOWN);
             }
+
             CharSequence text = getText();
             setText(text.toString() + first);
             setCursorAtEnd();

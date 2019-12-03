@@ -73,8 +73,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/text_duration"
             android:visibility="gone"
-            android:gravity="center"
-            android:background="@color/selTextBgColor">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/text_selection"

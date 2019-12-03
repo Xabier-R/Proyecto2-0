@@ -32,8 +32,7 @@ import butterknife.BindArray;
 public class Actividad7 extends AppCompatActivity {
     private ImageView lobo, bocadillo;
     private ImageSwitcher imageViewImg;
-    private TextView texto;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2,animatorImagenes;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
     private long animationImagesDuration = 3000;
@@ -49,6 +48,7 @@ public class Actividad7 extends AppCompatActivity {
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +130,6 @@ public class Actividad7 extends AppCompatActivity {
 
 
 
-
         sicronizarTexto1();
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,12 +171,11 @@ public class Actividad7 extends AppCompatActivity {
 
         String texto1 =getString(R.string.texto1_a7);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_dolumin_barikua);
+        mediaPlayer = MediaPlayer.create(this, R.raw.audioa_dolumin_barikua);
 
         mediaPlayer.start();
 
-//        tw.setmTypeSpeed(55);
-        tw.setmTypeSpeed(10);
+        tw.setmTypeSpeed(55);
         tw.setText("");
         tw.pause(1500);
         tw.type(texto1).pause(1300)
@@ -205,7 +203,6 @@ public class Actividad7 extends AppCompatActivity {
                     video.start();
 
 
-
                 }
             });
 
@@ -216,6 +213,7 @@ public class Actividad7 extends AppCompatActivity {
         intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 15);
         intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 15);
         startActivity(intent);
+        mediaPlayer.stop();
         finish();
     }
 

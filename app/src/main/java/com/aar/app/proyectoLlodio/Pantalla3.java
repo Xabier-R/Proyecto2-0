@@ -127,6 +127,7 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
         mapa.addMarker(new MarkerOptions().position(new LatLng(43.1563111,-2.9710055555555557)).setTitle("Lezeagako Sorgina").setSnippet("actividad 4").setIcon(icon));
         mapa.addMarker(new MarkerOptions().position(new LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setSnippet("actividad 5").setIcon(icon));
         mapa.addMarker(new MarkerOptions().position(new LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setSnippet("actividad 6").setIcon(icon));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setSnippet("actividad 7").setIcon(icon));
 
         mapa.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
             @Override
@@ -222,6 +223,9 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
                 case "Lamuza Parkea":
                     empezarActividad6();
                     return true;
+                case "Dolumin barikua":
+                    empezarActividad7();
+                    return true;
                 default:
             }
         }
@@ -230,12 +234,12 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
 
     //ACTIVIDADES AL PULSAR SOBRE LOS MARCADORES
     private void empezarActividad1() {
-        Intent intent = new Intent(this, Actividad7.class);
+        Intent intent = new Intent(this, Actividad1_empezar.class);
         startActivity(intent);
     }
 
     private void empezarActividad2(){
-        Intent intent = new Intent(this, Actividad2.class);
+        Intent intent = new Intent(this, Actividad2_empezar.class);
         startActivity(intent);
     }
 
@@ -245,7 +249,7 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
     }
 
     private void empezarActividad4(){
-        Intent intent = new Intent(this, Actividad4.class);
+        Intent intent = new Intent(this, Actividad4_empezar.class);
         startActivity(intent);
     }
 
@@ -254,8 +258,13 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
         startActivity(intent);
     }
 
-    private void empezarActividad6(){
+    private void empezarActividad6() {
         Intent intent = new Intent(this, Actividad6_empezar.class);
+        startActivity(intent);
+    }
+
+    private void empezarActividad7(){
+        Intent intent = new Intent(this, Actividad7.class);
         startActivity(intent);
     }
 }

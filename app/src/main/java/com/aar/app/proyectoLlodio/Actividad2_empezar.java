@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class Actividad6_empezar extends AppCompatActivity {
+public class Actividad2_empezar extends AppCompatActivity {
 
     private ImageView lobo,bocadillo;
     private TextView texto;
@@ -28,7 +28,7 @@ public class Actividad6_empezar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.actividad6_empezar);
+        setContentView(R.layout.actividad2_empezar);
 
 
         lobo = findViewById(R.id.lobo);
@@ -62,7 +62,6 @@ public class Actividad6_empezar extends AppCompatActivity {
         tw.setMovementMethod(new ScrollingMovementMethod());
 
         sicronizarTexto1();
-        MediaPlayer mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_kondaira);
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +84,7 @@ public class Actividad6_empezar extends AppCompatActivity {
 
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
-                Intent intent = new Intent(Actividad6_empezar.this, Actividad6.class);
+                Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
                 startActivity(intent);
                 finish();
             }
@@ -94,14 +93,14 @@ public class Actividad6_empezar extends AppCompatActivity {
 
     public void  sicronizarTexto1() {
 
-        String texto1 =getString(R.string.texto1_p6);
+        String texto1 =getString(R.string.texto1_a2);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_lamuza_parkea);
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_indusketak);
         mediaPlayer.start();
 
         tw.setmTypeSpeed(65);
         tw.setText("");
-        tw.pause(1500);
+        tw.pause(2500);
         tw.type(texto1).pause(1300)
                 .run(new Runnable() {
                     @Override
@@ -112,6 +111,5 @@ public class Actividad6_empezar extends AppCompatActivity {
                         buttonEmpezar.setVisibility(View.VISIBLE);
                     }
                 });
-
     }
 }

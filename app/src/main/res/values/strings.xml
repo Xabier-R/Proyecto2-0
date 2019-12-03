@@ -2,6 +2,13 @@
     <string name="app_name">Proyecto_llodio</string>
     <string name="mapbox_access_token">pk.eyJ1IjoicHJveWVjdG9wcm9tIiwiYSI6ImNrMzl2czN4ajA2M2czb2szMXc4MXVlZGIifQ.03QDBfq6G1lypkQKs-anTQ</string>
 
+    <string name="texto1_a1"> Ermuko Andra Mari itsas mailatik 500 metro ingurura dago, Kamaraka mendiaren maldan. Normalean, "Santa Lucia" izenarekin ezagutzen da, eliza ondoko ermitaren santua dena. Hau XVI. mendeko eraikina da, euskal gotiko estilo aurreratuarekin. Bere erretratua eta bere erretaularen tarteak eta pinturak azpimarratzen dira. </string>
+
+
+    <string name="texto1_a2">Andra Mari de Ermu inguruko iraganeko hainbat sekretu agerian uzten hasi dira arkeologiaren bitartez. Arkeologoak bi tokitan aritu dira lanean, batak 12 m^2ditu eta besteak 20m^2, Andra Mari de Ermuko elizaren koro azpian eta kanpandorrearen alboan. Indusketek nekropoli bat utzi dute agerian, XI. eta XII. mendeetako ehorzketekin, baita XVI. mendeko elizaren beste lursail bat. Honetatik ondoriozta genezake, aurretik egondako XII. mendeko eraikina bota egin zutela gaur egun dagoena eraikitzeko. Gainera, XII. mendeko txanponak aurkitu dituzte, ehorzketekin lotuta dauden aberastasunak. Honek, oligarkiari lotuta zegoela pentsatzera bideratzen gaitu. </string>
+
+    <string name="texto0_a4">Lezeagako Sorginaren istorioa duela asko entzuten da Laudioko toki guztietan. Aspaldi, herriko neskatxa bat, Sorginzulo ondotik igaro behar zen egunero ur bila. Beti buelta berdina egiteaz nekaturik esan zuen «Ez ahal dago sorginik zubi bat eraikiko dutenik ni eurei batzearen truke?». Hurrengo goizean herriko auzokideak esnatu eta zubi berri bat eta neskatila hau sorgin bihurturik topatu zuten. Egun honetatik aurrera Lezeagako kobazuloan bizi izan zen. Betiko geratu zen bertan sarturik herrikideez baztertuta. Batzuetan, bere ahots politarekin artzainak bertara erakartzen zituen zuen ile horia urrezko eskuilarekin orrazten zuen bitartean.</string>
+
     <string name="texto1_p6">Hasieran, Urquijoko markesaren parke pribatua zen. Bertan, XVIII. mendeko eraikin bat dago,1876an sortua Estanislao de Urquijo y Landaluceren eskutik, Urquijoko lehen markesa. Hau haren jauregia zen. Estilo barrokoko oinarriak jarraitzen ditu eta XIX. mendean hedatua izan zen. Hasiera batean, etxebizitza familiabakarrarena zen eta lursail batez inguratuta zegoen, aisialdi toki bat zen baina haren jabearen familiarentzat soilik. Markesa bertan zegoelarik, tenis zelai bi, kroket zelai bat eta igerileku bat zeuden, baita zuhaitz mota ugari, adibidez, magnolio eta izeiak. Gaur egun, 1975etik aurrera, parkea jabetza publikokoa da eta bertako eraikinak kultur etxeari dagozkie. Gainera, oraindik kirola egiteko zelaiak daude nahiz eta garai hartan zeudenak ez izan.</string>
 
     <string name="texto1_p5">Ermuko Andra Mari itsas mailatik 500 metro ingurura dago, Kamaraka mendiaren maldan. Normalean, "Santa Lucia" izenarekin ezagutzen da, eliza ondoko ermitaren santua dena. Hau XVI. mendeko eraikina da, euskal gotiko estilo aurreratuarekin. Bere erretratua eta bere erretaularen tarteak eta pinturak azpimarratzen dira.</string>
@@ -50,13 +57,13 @@
 
     <string name="enunciadoCuento">Baserriari argazki bat atera eta ipuin txikitxo bat idatzi behar duzue.</string>
     <string name="camara">Camara</string>
-    <string name="texto1_a1"> Kaixo lagunak! Badakizue non zaudete? Bai! Laudion gaude! Eta jakingo duzuenez, gaur Laudioko zenbait ondare ikusiko eta landuko ditugu. Baina, irteerarekin hasi baino lehen ondarea zer den gogoratuko dugu.</string>
-    <string name="texto2_a1">Ondarea interes handiko gauza materialen eta ez materialen multzoa da, gure kulturaren bizi-iraupenerako ezinbestekoa dena. Ondareak iraganetik jaso duguna da eta hauek zaindu behar ditugu datozen belaunaldiei transmititzeko.</string>
-    <string name="texto3_a1">Uste dut argi ulertu dela, ez?</string>
-    <string name="texto4_a1">BAI, JUSTO ESPERO NUENA!!</string>
-    <string name="texto5_a1">Orduan… uste dut prest gaudela gure irteerarekin hasteko!</string>
-    <string name="texto6_a1">Ondo pasa!</string>
-    <string name="texto7_a1">Laudio Arabako ipar-mendebaldeko herri bat da, Aiaralde eskualdekoa. Arabako udalerri jendetsuenetakoa da, biztanle asko baititu. Ofizialki, udalerriaren izen osoa Laudio Ibar Noblea da. Herrian zenbait auzo nabarmentzen dira eta hauek dira ezagunenak: Lateorro, Ugarte, Landaluze, Gardea, Areta eta Erdigunea.
+    <string name="texto1_p1"> Kaixo lagunak! Badakizue non zaudete? Bai! Laudion gaude! Eta jakingo duzuenez, gaur Laudioko zenbait ondare ikusiko eta landuko ditugu. Baina, irteerarekin hasi baino lehen ondarea zer den gogoratuko dugu.</string>
+    <string name="texto2_p1">Ondarea interes handiko gauza materialen eta ez materialen multzoa da, gure kulturaren bizi-iraupenerako ezinbestekoa dena. Ondareak iraganetik jaso duguna da eta hauek zaindu behar ditugu datozen belaunaldiei transmititzeko.</string>
+    <string name="texto3_p1">Uste dut argi ulertu dela, ez?</string>
+    <string name="texto4_p1">BAI, JUSTO ESPERO NUENA!!</string>
+    <string name="texto5_p1">Orduan… uste dut prest gaudela gure irteerarekin hasteko!</string>
+    <string name="texto6_p1">Ondo pasa!</string>
+    <string name="texto7_p1">Laudio Arabako ipar-mendebaldeko herri bat da, Aiaralde eskualdekoa. Arabako udalerri jendetsuenetakoa da, biztanle asko baititu. Ofizialki, udalerriaren izen osoa Laudio Ibar Noblea da. Herrian zenbait auzo nabarmentzen dira eta hauek dira ezagunenak: Lateorro, Ugarte, Landaluze, Gardea, Areta eta Erdigunea.
 Nerbioi ibarrean dago kokatuta, Nerbioi ibaiaren ibilbidearen erdian eta, dakizuenez, Nerbioi Ibaia Bilboraino heltzen da.</string>
 
 

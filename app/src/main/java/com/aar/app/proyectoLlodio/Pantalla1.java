@@ -25,6 +25,10 @@ public class Pantalla1 extends AppCompatActivity {
     private  TypeWriter tw;
     public static ScrollView scrollView;
 
+    //AUDIOS
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,18 +88,18 @@ public class Pantalla1 extends AppCompatActivity {
 
    public void  sicronizarTexto1()
     {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
-        final MediaPlayer mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
+        mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
         mediaPlayer.start();
 
 
-        String texto1 =getString(R.string.texto1_a1);
-        String texto2 =getString(R.string.texto2_a1);
-        String texto3 =getString(R.string.texto3_a1);
-        String texto4 =getString(R.string.texto4_a1);
-        String texto5 =getString(R.string.texto5_a1);
-        String texto6 =getString(R.string.texto6_a1);
-        String texto7 =getString(R.string.texto7_a1);
+        String texto1 =getString(R.string.texto1_p1);
+        String texto2 =getString(R.string.texto2_p1);
+        String texto3 =getString(R.string.texto3_p1);
+        String texto4 =getString(R.string.texto4_p1);
+        String texto5 =getString(R.string.texto5_p1);
+        String texto6 =getString(R.string.texto6_p1);
+        String texto7 =getString(R.string.texto7_p1);
 
         tw.setText("");
         tw.pause(1500);
@@ -177,6 +181,8 @@ public class Pantalla1 extends AppCompatActivity {
     public void menuAndy(View view) {
         Intent i = new Intent(Pantalla1.this, Pantalla2.class);
         startActivity(i);
+        mediaPlayer.stop();
+        mediaPlayer2.stop();
         finish();
     }
 }

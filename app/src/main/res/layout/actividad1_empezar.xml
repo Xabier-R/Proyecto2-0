@@ -1,0 +1,93 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+
+    <ImageSwitcher
+        android:id="@+id/ImageView"
+        android:layout_width="match_parent"
+        android:layout_height="275sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="275sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible"/>
+
+
+    <ImageView
+        android:id="@+id/lobo"
+        android:layout_width="150sp"
+        android:layout_height="170sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="40sp"
+        android:src="@drawable/lobo"/>
+
+    <ImageView
+        android:id="@+id/bocadillo"
+        android:layout_width="280sp"
+        android:layout_height="180sp"
+        android:layout_alignBottom="@id/lobo"
+        android:layout_marginEnd="-30dp"
+        android:layout_marginBottom="-10sp"
+        android:layout_toStartOf="@+id/lobo"
+        android:background="@drawable/bocadillo"
+        android:padding="10dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="265sp"
+        android:layout_height="160sp"
+        android:layout_alignBottom="@id/lobo"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="2sp"
+        android:layout_toStartOf="@+id/lobo"
+        android:padding="10dp">
+
+
+        <com.aar.app.proyectoLlodio.TypeWriter
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="Arial"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:stackFromBottom="true"/>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonEmpezar"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_alignEnd="@+id/bocadillo"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="70dp"
+        android:text="Puzzlea"
+        android:textColor="@color/blanco"
+        android:visibility="invisible" />
+
+    <Button
+        android:onClick="lanzarActividad"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/lobo"
+        android:background="@drawable/next"
+        android:text=""/>
+</RelativeLayout>
