@@ -254,7 +254,7 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
     }
 
     private void empezarActividad5(){
-        Intent intent = new Intent(this, Actividad5.class);
+        Intent intent = new Intent(this, Actividad5_empezar.class);
         startActivity(intent);
     }
 
