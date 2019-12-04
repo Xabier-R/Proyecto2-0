@@ -81,7 +81,8 @@
         android:layout_marginBottom="70dp"
         android:text="Hitza bete"
         android:textColor="@color/blanco"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="@drawable/p2_border3"/>
 
     <Button
         android:onClick="lanzarActividad"
@@ -90,5 +91,5 @@
         android:layout_alignRight="@id/lobo"
         android:background="@drawable/next"
         android:text=""
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 </RelativeLayout>

@@ -60,7 +60,8 @@
         android:layout_marginBottom="70dp"
         android:text="Argazkiak Bilatu"
         android:textColor="@color/blanco"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="@drawable/p2_border3"/>
 
 
 

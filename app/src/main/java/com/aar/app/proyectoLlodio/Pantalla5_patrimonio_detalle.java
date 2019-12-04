@@ -17,6 +17,8 @@ public class Pantalla5_patrimonio_detalle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla5_patrimonio_detalle);
         img = findViewById(R.id.cartaImagen);
         txtDescripcion = findViewById(R.id.txtPatrimonio);
@@ -25,10 +27,6 @@ public class Pantalla5_patrimonio_detalle extends AppCompatActivity {
         String nombre = intent.getExtras().getString("nombre");
 
         cambiar(nombre);
-
-        //set the statue bar background to transparent
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 
     private void cambiar(String nombre)

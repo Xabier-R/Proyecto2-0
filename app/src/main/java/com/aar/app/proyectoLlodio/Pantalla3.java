@@ -119,15 +119,21 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
 
     private void aniadirMarcadores()
     {
-        Icon icon = IconFactory.getInstance(this).fromResource(R.drawable.favorito2);
+        Icon icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1);
+        Icon icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2);
+        Icon icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3);
+        Icon icon4 = IconFactory.getInstance(this).fromResource(R.drawable.actividad4);
+        Icon icon5 = IconFactory.getInstance(this).fromResource(R.drawable.actividad5);
+        Icon icon6 = IconFactory.getInstance(this).fromResource(R.drawable.actividad6);
+        Icon icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7);
 
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setSnippet("actividad 1").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1719361,-2.9717944444444444)).setTitle("Indusketak").setSnippet("actividad 2").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1693611,-2.968888888888889)).setTitle("San Antonio Ermita").setSnippet("actividad 3").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1563111,-2.9710055555555557)).setTitle("Lezeagako Sorgina").setSnippet("actividad 4").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setSnippet("actividad 5").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setSnippet("actividad 6").setIcon(icon));
-        mapa.addMarker(new MarkerOptions().position(new LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setSnippet("actividad 7").setIcon(icon));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1719361,-2.9717944444444444)).setTitle("Indusketak").setIcon(icon2));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1693611,-2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1563111,-2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6));
+        mapa.addMarker(new MarkerOptions().position(new LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7));
 
         mapa.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
             @Override

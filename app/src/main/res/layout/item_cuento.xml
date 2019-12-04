@@ -61,7 +61,7 @@
             android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/a5_img3" />
+            app:srcCompat="@drawable/libro32" />
 
     </androidx.cardview.widget.CardView>
 

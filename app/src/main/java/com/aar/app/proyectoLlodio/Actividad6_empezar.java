@@ -34,7 +34,6 @@ public class Actividad6_empezar extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad6_empezar);
 
-
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
         tw = (TypeWriter) findViewById(R.id.tv);
@@ -116,6 +115,5 @@ public class Actividad6_empezar extends AppCompatActivity {
                         buttonEmpezar.setVisibility(View.VISIBLE);
                     }
                 });
-
     }
 }

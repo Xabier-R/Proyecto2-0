@@ -115,4 +115,11 @@ public class Actividad2_empezar extends AppCompatActivity {
                     }
                 });
     }
+
+
+    public void lanzarActividad(View view) {
+        Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
+        startActivity(intent);
+        finish();
+    }
 }

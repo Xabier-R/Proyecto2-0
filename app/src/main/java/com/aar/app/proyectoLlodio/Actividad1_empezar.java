@@ -142,7 +142,7 @@ public class Actividad1_empezar extends AppCompatActivity {
 
 
 
-                Intent intent = new Intent(Actividad1_empezar.this, Actividad1.class);
+                Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
                 startActivity(intent);
                 finish();
 
@@ -179,7 +179,7 @@ public class Actividad1_empezar extends AppCompatActivity {
     }
 
     public void lanzarActividad(View view) {
-        Intent intent = new Intent(Actividad1_empezar.this, Actividad1.class);
+        Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
         startActivity(intent);
         finish();
     }

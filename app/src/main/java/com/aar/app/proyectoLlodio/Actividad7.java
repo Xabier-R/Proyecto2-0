@@ -160,8 +160,8 @@ public class Actividad7 extends AppCompatActivity {
                 //int dim = mGameRoundDimVals[ spinner.getSelectedItemPosition() ];
 
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 15);
-                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 15);
+                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
+                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
                 startActivity(intent);
                 finish();
 
@@ -214,8 +214,8 @@ public class Actividad7 extends AppCompatActivity {
 
     public void sopaletrasXabi(View view) {
         Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-        intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 15);
-        intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 15);
+        intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
+        intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
         startActivity(intent);
         mediaPlayer.stop();
         finish();

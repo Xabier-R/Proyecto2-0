@@ -60,8 +60,16 @@
         android:layout_marginBottom="70dp"
         android:text="Test galderak"
         android:textColor="@color/blanco"
-        android:visibility="invisible" />
+        android:background="@drawable/p2_border3"
+        android:visibility="invisible"/>
 
-
+    <Button
+        android:onClick="lanzarActividad"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/lobo"
+        android:background="@drawable/next"
+        android:text=""
+        android:visibility="visible"/>
 
 </RelativeLayout>

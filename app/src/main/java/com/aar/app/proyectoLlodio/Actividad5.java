@@ -55,12 +55,9 @@ public class Actividad5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad5);
-
-
-        //set the statue bar background to transparent
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         bipmapdata = new byte[3];
 
@@ -98,7 +95,6 @@ public class Actividad5 extends AppCompatActivity {
         foto = findViewById(R.id.linearImagen);
 
         checkCameraPermission();
-
     }
 
     public void leerCuentos() {

@@ -146,6 +146,7 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             ScrollView scrollView2 = Actividad2_empezar.scrollView;
             ScrollView scrollView3 = Actividad3.scrollView;
             ScrollView scrollView4 = Actividad4_empezar.scrollView;
+            ScrollView scrollView5 = Actividad5_empezar.scrollView;
             ScrollView scrollView6 = Actividad6_empezar.scrollView;
             ScrollView scrollView7 = Actividad7.scrollView;
 
@@ -165,12 +166,16 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             if(scrollView4 != null) {
                 scrollView4.fullScroll(View.FOCUS_DOWN);
             }
-            if(scrollView7 != null) {
-                scrollView7.fullScroll(View.FOCUS_DOWN);
+            if(scrollView5 != null) {
+                scrollView5.fullScroll(View.FOCUS_DOWN);
             }
             if(scrollView6 != null) {
                 scrollView6.fullScroll(View.FOCUS_DOWN);
             }
+            if(scrollView7 != null) {
+                scrollView7.fullScroll(View.FOCUS_DOWN);
+            }
+
 
             CharSequence text = getText();
             setText(text.toString() + first);

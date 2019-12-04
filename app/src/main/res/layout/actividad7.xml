@@ -60,8 +60,6 @@
         android:layout_toStartOf="@+id/lobo"
         android:padding="10dp">
 
-
-
         <com.aar.app.proyectoLlodio.TypeWriter
             android:id="@+id/tv"
             android:layout_width="match_parent"

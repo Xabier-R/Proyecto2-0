@@ -56,15 +56,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.myViewHolder> {
     public class myViewHolder extends RecyclerView.ViewHolder{
         ImageView imagen;
         TextView txtNombre;
-        Button btn;
 
         public myViewHolder(View itemView, final OnItemClickListener listener){
             super(itemView);
             imagen = itemView.findViewById(R.id.cartaImagen);
             txtNombre = itemView.findViewById(R.id.nombre);
-            btn = itemView.findViewById(R.id.btnVer);
 
-            btn.setOnClickListener(new View.OnClickListener() {
+            imagen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {

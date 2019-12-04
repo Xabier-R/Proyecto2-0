@@ -18,6 +18,8 @@ public class Actividad5_cuento extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad5_cuento);
 
         txtTitulo  = findViewById(R.id.txtTitulo);
@@ -25,16 +27,11 @@ public class Actividad5_cuento extends AppCompatActivity {
         imgLibro  = findViewById(R.id.cartaImagen);
         imgLibro.setImageResource(R.drawable.libro526);
 
-        //set the statue bar background to transparent
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
         Intent intent = getIntent();
         String titulo = intent.getExtras().getString("titulo");
         String descripcion = intent.getExtras().getString("descripcion");
 
         txtTitulo.setText(titulo);
         txtDescripcion.setText(descripcion);
-
     }
 }

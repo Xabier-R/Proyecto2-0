@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,26 +58,22 @@ public class Actividad2 extends AppCompatActivity {
         System.out.println(numPregunta);
         verRespuestaElegida();
 
-        if (btnNext.getText().equals("BUKATU"))
+        if (btnNext.getText().equals("BUKATUTA"))
             finish();
         else {
             if (btnNext.getText().equals("egiaztatu") || numPregunta ==3) {
                 linearAciertos.setVisibility(View.VISIBLE);
                 txtAcierto.setText("Asmatu duzu  " + aciertos + "/4");
-
-                btnNext.setText("BUKATU");
+                btnNext.setText("BUKATUTA");
             }
             else {
                 numPregunta++;
                 if (numPregunta == preguntas.size()-1)
                     btnNext.setText("egiaztatu");
                 siguientePregunta();
+
             }
         }
-    }
-
-    public void comprobar(View view) {
-
     }
 
     private void cargarPreguntas()
@@ -119,9 +116,6 @@ public class Actividad2 extends AppCompatActivity {
         txtPregunta.setText(pregunta);
         btnResp1.setText(respuestaActual.get(0));
         btnResp2.setText(respuestaActual.get(1));
-
-        //btnResp1.setText(respuestas.get(0));
-        //btnResp2.setText(respuestas.get(1));
     }
 
     private void verRespuestaElegida()
