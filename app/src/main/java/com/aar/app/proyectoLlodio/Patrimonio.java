@@ -1,15 +1,16 @@
 package com.aar.app.proyectoLlodio;
 
+import android.widget.Button;
+
 public class Patrimonio {
 
     int fondo;
     String nombre;
-    String texto;
+    Button btn;
 
-    Patrimonio(int fondo, String nombre, String texto){
+    Patrimonio(int fondo, String nombre){
         this.fondo = fondo;
         this.nombre = nombre;
-        this.texto = texto;
     }
 
     public int getFondo(){
@@ -29,13 +30,12 @@ public class Patrimonio {
         this.nombre = nombre;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setBtn(Button btn){
+        this.btn = btn;
     }
 
-    public String getTexto(){
-        return texto;
+    public Button getBtn()
+    {
+        return btn;
     }
-
-
 }

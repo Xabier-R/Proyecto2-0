@@ -5,7 +5,24 @@
     <string name="texto1_a1"> Ermuko Andra Mari itsas mailatik 500 metro ingurura dago, Kamaraka mendiaren maldan. Normalean, "Santa Lucia" izenarekin ezagutzen da, eliza ondoko ermitaren santua dena. Hau XVI. mendeko eraikina da, euskal gotiko estilo aurreratuarekin. Bere erretratua eta bere erretaularen tarteak eta pinturak azpimarratzen dira. </string>
 
 
-    <string name="texto1_a2">Andra Mari de Ermu inguruko iraganeko hainbat sekretu agerian uzten hasi dira arkeologiaren bitartez. Arkeologoak bi tokitan aritu dira lanean, batak 12 m^2ditu eta besteak 20m^2, Andra Mari de Ermuko elizaren koro azpian eta kanpandorrearen alboan. Indusketek nekropoli bat utzi dute agerian, XI. eta XII. mendeetako ehorzketekin, baita XVI. mendeko elizaren beste lursail bat. Honetatik ondoriozta genezake, aurretik egondako XII. mendeko eraikina bota egin zutela gaur egun dagoena eraikitzeko. Gainera, XII. mendeko txanponak aurkitu dituzte, ehorzketekin lotuta dauden aberastasunak. Honek, oligarkiari lotuta zegoela pentsatzera bideratzen gaitu. </string>
+    <string name="texto0_a2">Andra Mari de Ermu inguruko iraganeko hainbat sekretu agerian uzten hasi dira arkeologiaren bitartez. Arkeologoak bi tokitan aritu dira lanean, batak 12 m^2ditu eta besteak 20m^2, Andra Mari de Ermuko elizaren koro azpian eta kanpandorrearen alboan. Indusketek nekropoli bat utzi dute agerian, XI. eta XII. mendeetako ehorzketekin, baita XVI. mendeko elizaren beste lursail bat. Honetatik ondoriozta genezake, aurretik egondako XII. mendeko eraikina bota egin zutela gaur egun dagoena eraikitzeko. Gainera, XII. mendeko txanponak aurkitu dituzte, ehorzketekin lotuta dauden aberastasunak. Honek, oligarkiari lotuta zegoela pentsatzera bideratzen gaitu. </string>
+
+    <!-- Actividad 2/-->
+    <string name="texto1_a2">Zer da arkeologia?</string>
+    <string name="texto1_1_a2">Lur azpian dauden objektuak bilatzea helburu duen zientzia.</string>
+    <string name="texto1_2_a2">Antzinako gizartea haien hondakinen bitartez aztertzen duen zientzia da.</string>
+
+    <string name="texto2_a2">Zer egiten da hondakin horiek aurkitzeko?</string>
+    <string name="texto2_1_a2">Esperimentuak.</string>
+    <string name="texto2_2_a2">Indusketak.</string>
+
+    <string name="texto3_a2">Zer ezkutatzen dute?</string>
+    <string name="texto3_1_a2">Gure historia.</string>
+    <string name="texto3_2_a2">Zaborra.</string>
+
+    <string name="texto4_a2">Arkeologia baliagarria da gure arbasoen bizimodua ezagutzeko?</string>
+    <string name="texto4_1_a2">Bai.</string>
+    <string name="texto4_2_a2">Ez.</string>
 
     <string name="texto0_a4">Lezeagako Sorginaren istorioa duela asko entzuten da Laudioko toki guztietan. Aspaldi, herriko neskatxa bat, Sorginzulo ondotik igaro behar zen egunero ur bila. Beti buelta berdina egiteaz nekaturik esan zuen «Ez ahal dago sorginik zubi bat eraikiko dutenik ni eurei batzearen truke?». Hurrengo goizean herriko auzokideak esnatu eta zubi berri bat eta neskatila hau sorgin bihurturik topatu zuten. Egun honetatik aurrera Lezeagako kobazuloan bizi izan zen. Betiko geratu zen bertan sarturik herrikideez baztertuta. Batzuetan, bere ahots politarekin artzainak bertara erakartzen zituen zuen ile horia urrezko eskuilarekin orrazten zuen bitartean.</string>
 

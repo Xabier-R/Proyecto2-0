@@ -66,7 +66,6 @@ public class Actividad2_empezar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String texto =getString(R.string.texto2_a3);
 
                 long saltoLobo = 50;
                 animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
@@ -93,7 +92,7 @@ public class Actividad2_empezar extends AppCompatActivity {
 
     public void  sicronizarTexto1() {
 
-        String texto1 =getString(R.string.texto1_a2);
+        String texto1 =getString(R.string.texto0_a2);
 
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_indusketak);
         mediaPlayer.start();

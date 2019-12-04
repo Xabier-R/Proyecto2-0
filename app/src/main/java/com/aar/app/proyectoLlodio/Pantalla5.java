@@ -23,21 +23,24 @@ public class Pantalla5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla5);
 
+
+        //set the statue bar background to transparent
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // setup reclycerview with adapter
         RecyclerView recyclerView = findViewById(R.id.rv_lista);
         final List<Patrimonio> lista = new ArrayList<>();
-        lista.add(new Patrimonio(R.drawable.p5_img1, "Historia- eta arte-ondarea 1", getString(R.string.texto1_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img2, "Historia- eta arte-ondarea 2", getString(R.string.texto2_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img3, "Historia- eta arte-ondarea 3", getString(R.string.texto3_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img4, "Historia- eta arte-ondarea 4", getString(R.string.texto4_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img5, "Historia- eta arte-ondarea 5", getString(R.string.texto5_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img6, "Historia- eta arte-ondarea 6", getString(R.string.texto6_p5)));
-        lista.add(new Patrimonio(R.drawable.p5_img7, "Historia- eta arte-ondarea 7", getString(R.string.texto7_p5)));
+        lista.add(new Patrimonio(R.drawable.p5_img1, "ERMUKO ANDRA MARI ELIZA"));
+        lista.add(new Patrimonio(R.drawable.p5_img2, "INDUSKETAK"));
+        lista.add(new Patrimonio(R.drawable.p5_img3, "SANTA APOLONIAKO AZTARNA"));
+        lista.add(new Patrimonio(R.drawable.p5_img4, "LEZEAGAKO SORGINA"));
+        lista.add(new Patrimonio(R.drawable.p5_img5, "ETXEBARRI BASERRIA"));
+        lista.add(new Patrimonio(R.drawable.p5_img6, "LAMUZA PARKEA"));
+        lista.add(new Patrimonio(R.drawable.p5_img7, "DOLUMIN BARIKUA"));
+
 
         final Adaptador adaptador = new Adaptador(this, lista);
 
@@ -46,20 +49,25 @@ public class Pantalla5 extends AppCompatActivity {
 
         adaptador.setOnItemClickListener(new Adaptador.OnItemClickListener() {
             @Override
-            public void onbtnPulsado(int position, ImageView img) {
+            public void onItemClick(int position) {
+
+            }
+
+            @Override
+            public void onDeleteClick(int position, ImageView img) {
                 imgen = img;
                 String nombre = lista.get(position).getNombre().toString();
                 empezar(nombre);
             }
         });
+
     }
 
     private void empezar(String nombre)
     {
         Intent intent = new Intent(this, Pantalla5_patrimonio_detalle.class);
         intent.putExtra("nombre", nombre);
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(Pantalla5.this, Pair.
-                <View, String>create(imgen, "imagenPatrimonio"));
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(Pantalla5.this, Pair.<View, String>create(imgen, "imagenPatrimonio"));
         startActivity(intent, options.toBundle());
     }
 }

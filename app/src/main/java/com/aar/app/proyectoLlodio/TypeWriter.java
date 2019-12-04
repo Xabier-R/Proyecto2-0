@@ -27,7 +27,7 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
         this.mTypeSpeed = mTypeSpeed;
     }
 
-    private Queue<Repeater> mRunnableQueue = new LinkedList<>();
+    public Queue<Repeater> mRunnableQueue = new LinkedList<>();
 
     private Runnable mRunNextRunnable = new Runnable() {
         @Override

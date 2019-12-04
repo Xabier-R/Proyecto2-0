@@ -15,10 +15,17 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actividad4_empezar"></activity>
-        <activity android:name=".Actividad2_empezar" />
-        <activity android:name=".Actividad1_empezar" />
-        <activity android:name=".Actividad6_empezar" />
+        <activity android:name=".Actividad4_empezar"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Actividad2_empezar"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Actividad1_empezar"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Actividad6_empezar"
+            android:screenOrientation="portrait" />
         <activity android:name=".Pantalla0">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

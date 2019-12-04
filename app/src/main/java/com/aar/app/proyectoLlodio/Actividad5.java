@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -42,8 +44,9 @@ public class Actividad5 extends AppCompatActivity {
     private EditText descripcion;
     private RecyclerView recyclerView;
     AdaptadorCuento adaptadorCuento;
+    private int fotoTomada;
     private LinearLayout foto;
-
+    private byte [] bipmapdata;
 
     Bitmap bmp;
     Intent i;
@@ -54,14 +57,18 @@ public class Actividad5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad5);
 
+
         //set the statue bar background to transparent
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        bipmapdata = new byte[3];
 
         res = getResources();
         tabs = findViewById(android.R.id.tabhost);
         tabs.setup();
 
+        fotoTomada = R.drawable.a5_img4;
 
         //Vinculo la tab1 con la pestaña
         TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
@@ -140,19 +147,41 @@ public class Actividad5 extends AppCompatActivity {
     }
 
     public void guardarCuento(View view) {
-        String tituloCuento = titulo.getText().toString();
-        String descripcionCuento = descripcion.getText().toString();
-        String resultado = tituloCuento + "," + descripcionCuento;
-        try{
-            OutputStreamWriter osw= new OutputStreamWriter(openFileOutput("cuentos.txt", Context.MODE_APPEND));
-            osw.write( resultado + "\n");
-            osw.close();
-            Toast.makeText(getApplicationContext(), "CUENTO GUARDADO", Toast.LENGTH_SHORT).show();
-            limpiar();
+
+        boolean puede = comprobar();
+
+        if (puede)
+        {
+            String tituloCuento = titulo.getText().toString();
+            String descripcionCuento = descripcion.getText().toString();
+            String resultado = tituloCuento + "," + descripcionCuento;
+
+
+
+            try{
+                OutputStreamWriter osw= new OutputStreamWriter(openFileOutput("cuentos.txt", Context.MODE_APPEND));
+                osw.write( resultado + "\n");
+                osw.close();
+                Toast.makeText(getApplicationContext(), "CUENTO GUARDADO", Toast.LENGTH_SHORT).show();
+                limpiar();
+            }
+            catch (Exception e) {
+                Log.e ("Fichero", "ERROR!! al escribir fichero en memoria interna");
+            }
         }
-        catch (Exception e) {
-            Log.e ("Fichero", "ERROR!! al escribir fichero en memoria interna");
+        else
+        {
+            Toast.makeText(getApplicationContext(), "RELLENA TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean comprobar()
+    {
+        if ( (titulo.getText().toString().equals("")== false) && (descripcion.getText().toString().equals("")==false))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void actualizarFichero(int pos)
@@ -198,6 +227,9 @@ public class Actividad5 extends AppCompatActivity {
     {
         titulo.setText("");
         descripcion.setText("");
+
+        Drawable drawable = getResources().getDrawable(R.drawable.a5_img4);
+        foto.setBackground(drawable);
     }
 
     //Accede a la camara si tiene permisos, si no tiene saca un jdialog
@@ -240,8 +272,13 @@ public class Actividad5 extends AppCompatActivity {
             Bundle ext = data.getExtras();
             bmp = (Bitmap)ext.get("data");
             BitmapDrawable ob = new BitmapDrawable(getResources(), bmp);
+
             foto.setBackground(ob);
 
+            Bitmap bitmap = ob.getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bitmapdata = stream.toByteArray();
         }
     }
 

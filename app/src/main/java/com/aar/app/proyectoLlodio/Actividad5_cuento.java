@@ -2,6 +2,8 @@ package com.aar.app.proyectoLlodio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +23,11 @@ public class Actividad5_cuento extends AppCompatActivity {
         txtTitulo  = findViewById(R.id.txtTitulo);
         txtDescripcion = findViewById(R.id.textDescripcion);
         imgLibro  = findViewById(R.id.cartaImagen);
-        imgLibro.setImageResource(R.drawable.a5_img3);
+        imgLibro.setImageResource(R.drawable.libro526);
+
+        //set the statue bar background to transparent
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         Intent intent = getIntent();
         String titulo = intent.getExtras().getString("titulo");

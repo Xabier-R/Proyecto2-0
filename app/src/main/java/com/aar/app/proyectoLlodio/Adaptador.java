@@ -21,7 +21,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.myViewHolder> {
 
 
     public interface OnItemClickListener {
-        void onbtnPulsado(int position, ImageView img);
+        void onItemClick(int position);
+        void onDeleteClick(int position, ImageView img);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -69,7 +70,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.myViewHolder> {
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onbtnPulsado(position, imagen);
+                            listener.onDeleteClick(position, imagen);
                         }
                     }
                 }
