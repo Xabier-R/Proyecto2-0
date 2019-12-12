@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -32,7 +33,10 @@ public class Actividad2_empezar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad2_empezar);
+        setContentView(R.layout.pantalla_lobo);
+
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a2_img1));
 
 
         lobo = findViewById(R.id.lobo);
@@ -114,12 +118,14 @@ public class Actividad2_empezar extends AppCompatActivity {
                         buttonEmpezar.setVisibility(View.VISIBLE);
                     }
                 });
+
     }
 
 
-    public void lanzarActividad(View view) {
+    public void saltar(View view) {
         Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
         startActivity(intent);
         finish();
+
     }
 }

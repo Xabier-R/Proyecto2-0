@@ -1,6 +1,8 @@
 package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -16,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
@@ -44,7 +45,10 @@ public class Actividad1_empezar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad1_empezar);
+        setContentView(R.layout.pantalla_lobo);
+
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
@@ -178,7 +182,7 @@ public class Actividad1_empezar extends AppCompatActivity {
 
     }
 
-    public void lanzarActividad(View view) {
+    public void saltar(View view) {
         Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
         startActivity(intent);
         finish();

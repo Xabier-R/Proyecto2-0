@@ -1,6 +1,5 @@
 package com.aar.app.proyectoLlodio;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -34,7 +33,7 @@ public class Pantalla1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.pantalla1);
+        setContentView(R.layout.pantalla_lobo);
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
@@ -49,9 +48,9 @@ public class Pantalla1 extends AppCompatActivity {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int width = metrics.widthPixels;
+            float width = metrics.xdpi;
 
-            animatorLobo = ObjectAnimator.ofFloat(lobo, "x", (width-400));
+            /*animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-300));
             animatorLobo.setDuration(animationLoboDuration);
             AnimatorSet animatorSetX = new AnimatorSet();
             animatorSetX.playTogether(animatorLobo);
@@ -61,10 +60,10 @@ public class Pantalla1 extends AppCompatActivity {
             animatorBocadillo.setDuration(animationBocadilloDuration);
             AnimatorSet animatorSetAlpha = new AnimatorSet();
             animatorSetAlpha.playTogether(animatorBocadillo);
-            animatorSetAlpha.start();
+            animatorSetAlpha.start();*/
         } else {
 
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+           /* getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
             animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-400));
             animatorLobo.setDuration(animationLoboDuration);
@@ -77,7 +76,7 @@ public class Pantalla1 extends AppCompatActivity {
             animatorBocadillo.setDuration(animationBocadilloDuration);
             AnimatorSet animatorSetAlpha = new AnimatorSet();
             animatorSetAlpha.playTogether(animatorBocadillo);
-            animatorSetAlpha.start();
+            animatorSetAlpha.start();*/
         }
 
         sicronizarTexto1();
@@ -86,7 +85,7 @@ public class Pantalla1 extends AppCompatActivity {
 
     }
 
-   public void  sicronizarTexto1()
+    public void  sicronizarTexto1()
     {
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
@@ -104,13 +103,13 @@ public class Pantalla1 extends AppCompatActivity {
         tw.setText("");
         tw.pause(1500);
         tw.type(texto1).pause(1300)
-            .run(new Runnable() {
-            @Override
-            public void run() {
-                // Finalize the text if user fiddled with it during animation.
-                tw.setText("");
-            }
-        });
+                .run(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
+                    }
+                });
 
         tw.type(texto2).pause(1300)
                 .run(new Runnable() {
@@ -157,28 +156,28 @@ public class Pantalla1 extends AppCompatActivity {
                 });
 
 
-            tw.pause(2500);
-            tw.type(texto7).pause(10000)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                            mediaPlayer2.stop(); /// SE CONFUNDE EN EL AUDIO Y SE ADELANTA EL TEXTO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        tw.pause(2500);
+        tw.type(texto7).pause(10000)
+                .run(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
+                        mediaPlayer2.stop(); /// SE CONFUNDE EN EL AUDIO Y SE ADELANTA EL TEXTO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-                            //Inicio del menu cuando termina el audio
-                            Intent i=new Intent(Pantalla1.this,Pantalla2.class);
-                            startActivity(i);
+                        //Inicio del menu cuando termina el audio
+                        Intent i=new Intent(Pantalla1.this,Pantalla2.class);
+                        startActivity(i);
 
 
 
-                        }
-                    });
+                    }
+                });
 
     }
 
-    public void menuAndy(View view) {
+    public void saltar(View view) {
         Intent i = new Intent(Pantalla1.this, Pantalla2.class);
         startActivity(i);
         mediaPlayer.stop();

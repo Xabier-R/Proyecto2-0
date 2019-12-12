@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class Actividad5_cuento extends AppCompatActivity {
 
@@ -20,7 +21,11 @@ public class Actividad5_cuento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad5_cuento);
+        setContentView(R.layout.pantalla_lobo);
+
+
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
 
         txtTitulo  = findViewById(R.id.txtTitulo);
         txtDescripcion = findViewById(R.id.textDescripcion);

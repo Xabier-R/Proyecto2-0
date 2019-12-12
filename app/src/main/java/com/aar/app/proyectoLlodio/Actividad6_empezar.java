@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -32,7 +33,11 @@ public class Actividad6_empezar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad6_empezar);
+        setContentView(R.layout.pantalla_lobo);
+
+
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a6_img1));
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
