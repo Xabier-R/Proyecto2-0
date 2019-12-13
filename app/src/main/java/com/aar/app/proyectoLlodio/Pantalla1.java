@@ -1,5 +1,6 @@
 package com.aar.app.proyectoLlodio;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -63,9 +64,9 @@ public class Pantalla1 extends AppCompatActivity {
             animatorSetAlpha.start();*/
         } else {
 
-           /* getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            /*getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
-            animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-400));
+            animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", lobo.getLeft());
             animatorLobo.setDuration(animationLoboDuration);
             AnimatorSet animatorSetX = new AnimatorSet();
             animatorSetX.playTogether(animatorLobo);
@@ -169,8 +170,6 @@ public class Pantalla1 extends AppCompatActivity {
                         //Inicio del menu cuando termina el audio
                         Intent i=new Intent(Pantalla1.this,Pantalla2.class);
                         startActivity(i);
-
-
 
                     }
                 });

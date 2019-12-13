@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -57,7 +58,10 @@ public class Actividad7 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad7);
+        setContentView(R.layout.pantalla_lobo);
+
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
@@ -212,7 +216,7 @@ public class Actividad7 extends AppCompatActivity {
 
     }
 
-    public void sopaletrasXabi(View view) {
+    public void saltar(View view) {
         Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
         intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
         intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);

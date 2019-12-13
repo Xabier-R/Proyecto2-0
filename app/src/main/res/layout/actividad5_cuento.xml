@@ -69,7 +69,7 @@
                 android:textAlignment="textStart"
                 android:textColor="#0a0a0a"
                 android:textSize="15dp"
-                android:textStyle="bold|italic"
+                android:textStyle="bold"
                 android:transitionName="txtDescripcion" />
 
         </LinearLayout>
