@@ -120,4 +120,11 @@ public class Actividad6_empezar extends AppCompatActivity {
                     }
                 });
     }
+
+
+    public void saltar(View view) {
+        Intent intent = new Intent(Actividad6_empezar.this, Actividad6.class);
+        startActivity(intent);
+        finish();
+    }
 }
