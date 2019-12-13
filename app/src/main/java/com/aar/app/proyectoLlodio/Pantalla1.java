@@ -51,7 +51,7 @@ public class Pantalla1 extends AppCompatActivity {
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             float width = metrics.xdpi;
 
-            /*animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-300));
+            /*animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
             animatorLobo.setDuration(animationLoboDuration);
             AnimatorSet animatorSetX = new AnimatorSet();
             animatorSetX.playTogether(animatorLobo);
@@ -64,9 +64,9 @@ public class Pantalla1 extends AppCompatActivity {
             animatorSetAlpha.start();*/
         } else {
 
-            /*getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
-            animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", lobo.getLeft());
+            animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
             animatorLobo.setDuration(animationLoboDuration);
             AnimatorSet animatorSetX = new AnimatorSet();
             animatorSetX.playTogether(animatorLobo);
@@ -77,7 +77,7 @@ public class Pantalla1 extends AppCompatActivity {
             animatorBocadillo.setDuration(animationBocadilloDuration);
             AnimatorSet animatorSetAlpha = new AnimatorSet();
             animatorSetAlpha.playTogether(animatorBocadillo);
-            animatorSetAlpha.start();*/
+            animatorSetAlpha.start();
         }
 
         sicronizarTexto1();

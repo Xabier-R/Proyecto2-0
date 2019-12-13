@@ -51,14 +51,13 @@ public class Actividad2_empezar extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int width = metrics.widthPixels;
 
-        animatorLoboRotation = ObjectAnimator.ofFloat(lobo, "rotation",0f, 360f);
-        animatorLoboRotation.setDuration(animationLoboDuration);
-
-        animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-400));
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
         animatorLobo.setDuration(animationLoboDuration);
         AnimatorSet animatorSetX = new AnimatorSet();
-        animatorSetX.playTogether(animatorLoboRotation, animatorLobo);
+        animatorSetX.playTogether(animatorLobo);
         animatorSetX.start();
+
 
         animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
         animatorBocadillo.setDuration(animationBocadilloDuration);

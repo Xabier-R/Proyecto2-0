@@ -89,8 +89,10 @@
         android:text="Puzzlea"
         android:textColor="@color/blanco"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bocadillo" />
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
+        app:layout_constraintEnd_toStartOf="@+id/lobo"
+        app:layout_constraintStart_toStartOf="@+id/bocadillo"
+        app:layout_constraintTop_toTopOf="@+id/bocadillo" />
 
     <Button
         android:id="@+id/btnskip"

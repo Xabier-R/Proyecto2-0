@@ -60,8 +60,7 @@
                 android:padding="15dp"
                 android:textAlignment="center"
                 android:textColor="#0a0a0a"
-                android:textSize="19dp"
-                android:textStyle="bold" />
+                android:textSize="19dp" />
 
         </LinearLayout>
 

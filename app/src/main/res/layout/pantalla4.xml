@@ -25,7 +25,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Diseinua"
-                    android:textStyle="bold"
                     android:padding="10dp"
                     android:textColor="@color/blanco"
                     android:textSize="20dp"
@@ -65,8 +64,7 @@
                             android:layout_height="match_parent"
                             android:text="Ainhoa Elorza Rodriguez"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -95,8 +93,7 @@
                             android:layout_height="match_parent"
                             android:text="Judith Pérez Sánchez"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -126,8 +123,7 @@
                             android:layout_height="match_parent"
                             android:text="Naroa Roldan Becerra"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -157,8 +153,7 @@
                             android:layout_height="match_parent"
                             android:text="Julene Sada Sologuren"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -189,8 +184,7 @@
                             android:layout_height="match_parent"
                             android:text="Arrate Ugarte Artieta"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -219,8 +213,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textAlignment="center"
-                            android:textColor="@color/blanco"
-                            android:textStyle="bold"></TextView>
+                            android:textColor="@color/blanco"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -238,7 +231,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Garapena"
-                    android:textStyle="bold"
                     android:padding="10dp"
                     android:textColor="@color/blanco"
                     android:textSize="20dp"

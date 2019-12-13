@@ -35,6 +35,5 @@
         android:layout_above="@id/game_stat_text"
         android:layout_centerHorizontal="true"
         android:textSize="11pt"
-        android:textStyle="bold"
         android:text="@string/congratulations"/>
 </RelativeLayout>

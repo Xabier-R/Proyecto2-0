@@ -70,10 +70,11 @@ public class Actividad1_empezar extends AppCompatActivity {
         animatorLoboRotation.setDuration(animationLoboDuration);
 
 
-        animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-400));
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
         animatorLobo.setDuration(animationLoboDuration);
         AnimatorSet animatorSetX = new AnimatorSet();
-        animatorSetX.playTogether(animatorLoboRotation, animatorLobo);
+        animatorSetX.playTogether(animatorLobo);
         animatorSetX.start();
 
 
