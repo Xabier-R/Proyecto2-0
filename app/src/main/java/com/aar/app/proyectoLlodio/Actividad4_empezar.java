@@ -141,6 +141,7 @@ public class Actividad4_empezar extends AppCompatActivity {
                 animatorSetY2.play(animatorLobo2);
                 animatorSetY2.start();
 
+                buttonEmpezar.setText("Hitz bete");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
 

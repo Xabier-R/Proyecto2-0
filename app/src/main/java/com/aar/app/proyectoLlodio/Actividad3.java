@@ -86,6 +86,7 @@ public class Actividad3 extends AppCompatActivity {
                 animatorSetY2.play(animatorLobo2);
                 animatorSetY2.start();
 
+                buttonEmpezar.setText("Kondaira");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
                 scrollView.fullScroll(View.FOCUS_DOWN);

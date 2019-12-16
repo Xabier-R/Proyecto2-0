@@ -173,6 +173,8 @@ public class Actividad5_empezar extends AppCompatActivity {
                         // Finalize the text if user fiddled with it during animation.
                         tw.setText("Jarduera erabilgarria");
                         mediaPlayer.stop();
+
+                        buttonEmpezar.setText("Ipuina");
                         buttonEmpezar.setVisibility(View.VISIBLE);
 
                     }

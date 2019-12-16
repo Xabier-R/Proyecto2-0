@@ -114,6 +114,7 @@ public class Actividad2_empezar extends AppCompatActivity {
                         // Finalize the text if user fiddled with it during animation.
                         tw.setText("Jarduera erabilgarria");
                         mediaPlayer.stop();
+                        buttonEmpezar.setText("Galderak");
                         buttonEmpezar.setVisibility(View.VISIBLE);
                     }
                 });

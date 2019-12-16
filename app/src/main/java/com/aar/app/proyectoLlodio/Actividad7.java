@@ -154,6 +154,8 @@ public class Actividad7 extends AppCompatActivity {
                 animatorSetY2.play(animatorLobo2);
                 animatorSetY2.start();
 
+
+                buttonEmpezar.setText("Hitz-salda");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
 

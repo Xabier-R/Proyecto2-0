@@ -84,9 +84,9 @@
     <Button
         android:id="@+id/buttonEmpezar"
         android:layout_width="150dp"
-        android:layout_height="65dp"
+        android:layout_height="75dp"
         android:background="@drawable/p2_border3"
-        android:text="Puzzlea"
+        android:textSize="15sp"
         android:textColor="@color/blanco"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView"
