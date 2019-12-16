@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import java.util.TimerTask;
 public class Actividad1_empezar extends AppCompatActivity {
     private ImageView lobo, bocadillo;
     private ImageSwitcher imageViewImg;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2,animatorLoboPausa;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
     private  TypeWriter tw;
@@ -125,24 +126,14 @@ public class Actividad1_empezar extends AppCompatActivity {
 
 
         sicronizarTexto1();
+
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                long saltoLobo = 50;
-                animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-                animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
 
-                animatorLobo1.setDuration(saltoLobo);
-                animatorLobo2.setDuration(saltoLobo);
-                AnimatorSet animatorSetY1 = new AnimatorSet();
-                AnimatorSet animatorSetY2 = new AnimatorSet();
-                animatorSetY1.play(animatorLobo1);
-                animatorSetY1.start();
-                animatorSetY2.setStartDelay(50);
-                animatorSetY2.play(animatorLobo2);
-                animatorSetY2.start();
 
+                buttonEmpezar.setText("Puzzlea");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
 
@@ -178,17 +169,75 @@ public class Actividad1_empezar extends AppCompatActivity {
                         mediaPlayer.stop();
                         buttonEmpezar.setText("Puzzlea");
                         buttonEmpezar.setVisibility(View.VISIBLE);
+                        animacion();
 
                     }
                 });
 
     }
 
+
+
+    public void animacion()
+    {
+
+        /*long saltoLobo = 50;
+        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
+        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
+
+        animatorLobo1.setDuration(saltoLobo);
+        animatorLobo2.setStartDelay(50);
+        animatorLobo2.setDuration(saltoLobo);
+        AnimatorSet animatorSetY1 = new AnimatorSet();
+        AnimatorSet animatorSetY2 = new AnimatorSet();
+
+        animatorSetY1.playSequentially(animatorLobo1,animatorLobo2);*/
+
+        long saltoLobo = 50;
+        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
+        animatorLobo1.setDuration(saltoLobo);
+        animatorLobo1.setRepeatCount(ValueAnimator.INFINITE);
+
+        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
+        animatorLobo2.setDuration(saltoLobo);
+        animatorLobo2.setStartDelay(50);
+        animatorLobo2.setRepeatCount(ValueAnimator.INFINITE);
+
+        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()+20f));
+        animatorLoboPausa.setDuration(3000);
+        animatorLoboPausa.setStartDelay(100);
+        animatorLoboPausa.setRepeatCount(ValueAnimator.INFINITE);
+
+
+       /* AnimatorSet animatorSetY1 = new AnimatorSet();
+        AnimatorSet animatorSetY2 = new AnimatorSet();
+        AnimatorSet animatorSetY3 = new AnimatorSet();
+        animatorSetY1.play(animatorLobo1);
+        animatorSetY1.start();
+
+        animatorSetY2.setStartDelay(50);
+        animatorSetY2.play(animatorLobo2);
+        animatorSetY2.start();
+
+        animatorSetY3.setStartDelay(100);
+        animatorSetY3.play(animatorLoboPausa);
+        animatorSetY3.start();*/
+
+        AnimatorSet animatorSet1 = new AnimatorSet();
+        animatorSet1.playSequentially(animatorLobo1,animatorLoboPausa);
+        animatorSet1.start();
+
+    }
+
+
+
+
     public void saltar(View view) {
         Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
         startActivity(intent);
         finish();
     }
+
 
 
 }
