@@ -68,7 +68,7 @@ Segunda fase - Seguimiento
 - [ ] Quitar los bordes
 - [ ] Cambiar el tipo de letra a Arial normal
 - [ ] Cambiar la letra de los cuentos
-- [ ] Guardas las imagenes
+- [ ] Guardar las imagenes de los cuentos
 - [ ] Fotos relacionadas con la actividad en carousel
 
 <h4>Tercera Semana - Día (24/12/2019 - 4hrs) </h4>
