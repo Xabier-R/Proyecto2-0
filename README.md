@@ -66,10 +66,12 @@ Segunda fase - Seguimiento
 - [ ] Quitar la cursiva
 - [ ] Quitar los marcos
 - [ ] Quitar los bordes
+- [ ] Cambiar el diseño de los botones
 - [ ] Cambiar el tipo de letra a Arial normal
 - [ ] Cambiar la letra de los cuentos
 - [ ] Guardar las imagenes de los cuentos
 - [ ] Fotos relacionadas con la actividad en carousel
+
 
 <h4>Tercera Semana - Día (24/12/2019 - 4hrs) </h4>
 
