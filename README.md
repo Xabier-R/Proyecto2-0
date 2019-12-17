@@ -53,7 +53,7 @@ Primera fase - Seguimiento
 
 Segunda fase - Seguimiento
 ------------------------------------------------------------------------
-<h4>Primera Semana - Día (10/12/2019 - 4hrs) </h4>
+<h4>Primera Semana - Día (10/12/2019 - 18hrs) </h4>
 
 - [x] Análisis
 - [x] Planificación
@@ -61,7 +61,7 @@ Segunda fase - Seguimiento
 - [x] Riesgos
 - [x] Limpieza de código
 
-<h4>Segunda Semana - Día (17/12/2019 - 4hrs) </h4>
+<h4>Segunda Semana - Día (17/12/2019 - 18hrs) </h4>
 
 - [ ] Quitar la cursiva
 - [ ] Quitar los marcos
@@ -73,37 +73,37 @@ Segunda fase - Seguimiento
 - [ ] Fotos relacionadas con la actividad en carousel
 
 
-<h4>Tercera Semana - Día (24/12/2019 - 4hrs) </h4>
+<h4>Tercera Semana - Día (24/12/2019) </h4>
 
 - [x] Feliz Navidad
 
-<h4>Cuarta Semana - Día (31/12/2019 - 4hrs) </h4>
+<h4>Cuarta Semana - Día (31/12/2019) </h4>
 
 - [x] Feliz Año Nuevo
 
-<h4>Quinta Semana - Día (07/01/2020 - 4hrs) </h4>
+<h4>Quinta Semana - Día (07/01/2020 - 18hrs) </h4>
 
 - [ ] Implementar un nuevo diseño del apartado participantes
 - [ ] Implementar la galería con carpetas para las imágenes
 - [ ] Implementar el mapa offline
 - [ ] Implementar menu carousel para el menu
 
-<h4>Sexta Semana - Día (14/01/2020 - 4hrs) </h4>
+<h4>Sexta Semana - Día (14/01/2020 - 18hrs) </h4>
 
 - [ ] Implementar una ruta para el mapa
 - [ ] Implementar la función de lanzar una actividad a un punto del mapa
 
-<h4>Séptima Semana - Día (21/01/2020 - 4hrs) </h4>
+<h4>Séptima Semana - Día (21/01/2020 - 18hrs) </h4>
 
 - [ ] Sincronizar el audio
 - [ ] Adaptar la aplicación para tableta
 
-<h4>Octava Semana - Día (28/01/2020 - 4hrs) </h4>
+<h4>Octava Semana - Día (28/01/2020 - 18hrs) </h4>
 
 - [ ] Retoque a los estilos de la aplicación
 - [ ] Preparar la presentación
 
-<h4>Novena Semana - Día (05/02/2020 - 4hrs) </h4>
+<h4>Novena Semana - Día (05/02/2020) </h4>
 
 - [ ] Presentación
 
