@@ -103,7 +103,7 @@ Segunda fase - Seguimiento
 - [ ] Retoque a los estilos de la aplicación
 - [ ] Preparar la presentación
 
-<h4>Producto finalizado - Día (05/02/2020) </h4>
+<h4>Aplicación terminada - Día (05/02/2020) </h4>
 
 - [ ] Presentación
 
