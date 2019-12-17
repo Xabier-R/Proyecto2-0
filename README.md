@@ -100,7 +100,7 @@ Segunda fase - Seguimiento
 
 <h4>Sexta Semana - Día (28/01/2020 - 18hrs) </h4>
 
-- [ ] Retoque a los estilos de la aplicación
+- [ ] Análisis del diseño y funcionalidad
 - [ ] Preparar la presentación
 
 <h4>Aplicación terminada - Día (05/02/2020) </h4>
