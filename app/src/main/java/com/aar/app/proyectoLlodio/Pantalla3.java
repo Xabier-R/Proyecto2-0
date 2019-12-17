@@ -184,7 +184,13 @@ public class Pantalla3 extends AppCompatActivity implements OnMapReadyCallback, 
         super.onLowMemory();
         mapView.onLowMemory();
     }
+    @Override
+    public void onBackPressed() {
 
+        Intent intent = new Intent(this, Pantalla2.class);
+        startActivity(intent);
+
+    }
     @Override
     public void onLocationChanged(Location location) {
         cambiarPosicionCamara(location);

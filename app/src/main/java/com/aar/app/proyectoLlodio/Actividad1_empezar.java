@@ -149,7 +149,7 @@ public class Actividad1_empezar extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
-
+                animacion();
             }
 
             @Override
@@ -243,6 +243,7 @@ public class Actividad1_empezar extends AppCompatActivity {
 
 
     public void saltar(View view) {
+
         Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
         startActivity(intent);
         finish();

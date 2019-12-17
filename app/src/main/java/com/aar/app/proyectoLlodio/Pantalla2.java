@@ -58,6 +58,7 @@ public class Pantalla2 extends AppCompatActivity implements SwipeInterface{
                     case "1":
                         i = new Intent(Pantalla2.this, Pantalla3.class);
                         startActivity(i);
+                        finish();
                         break;
                     case "2":
                         i = new Intent(Pantalla2.this, Pantalla5.class);
