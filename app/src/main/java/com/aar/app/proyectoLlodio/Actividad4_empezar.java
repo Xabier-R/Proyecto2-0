@@ -3,6 +3,7 @@ package com.aar.app.proyectoLlodio;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -29,7 +30,8 @@ import java.util.TimerTask;
 public class Actividad4_empezar extends AppCompatActivity {
     private ImageView lobo, bocadillo;
     private ImageSwitcher imageViewImg;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,animatorLoboPausa,animatorLoboV;
+    private AnimatorSet animatorSet1,animatorSet2;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
     private  TypeWriter tw;
@@ -50,7 +52,6 @@ public class Actividad4_empezar extends AppCompatActivity {
 
         ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
         ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
-
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
@@ -95,6 +96,7 @@ public class Actividad4_empezar extends AppCompatActivity {
         });
 
 
+
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         imageViewImg.setInAnimation(fadeIn);
@@ -127,25 +129,6 @@ public class Actividad4_empezar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                long saltoLobo = 50;
-                animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-                animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-
-                animatorLobo1.setDuration(saltoLobo);
-                animatorLobo2.setDuration(saltoLobo);
-                AnimatorSet animatorSetY1 = new AnimatorSet();
-                AnimatorSet animatorSetY2 = new AnimatorSet();
-                animatorSetY1.play(animatorLobo1);
-                animatorSetY1.start();
-                animatorSetY2.setStartDelay(50);
-                animatorSetY2.play(animatorLobo2);
-                animatorSetY2.start();
-
-                buttonEmpezar.setText("Hitz bete");
-                buttonEmpezar.setVisibility(View.INVISIBLE);
-
-
-
                 Intent intent = new Intent(Actividad4_empezar.this, Actividad4.class);
                 startActivity(intent);
                 finish();
@@ -153,7 +136,40 @@ public class Actividad4_empezar extends AppCompatActivity {
             }
         });
 
+        animatorSet1 = new AnimatorSet();
+        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animacion();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+
+        });
     }
 
     public void  sicronizarTexto1() {
@@ -176,9 +192,45 @@ public class Actividad4_empezar extends AppCompatActivity {
                         tw.setText("Jarduera erabilgarria");
                         mediaPlayer.stop();
                         buttonEmpezar.setVisibility(View.VISIBLE);
+                        buttonEmpezar.setText("Hitz bete");
+                        animacion();
 
                     }
                 });
+
+    }
+
+
+
+    public void animacion()
+    {
+
+        int saltoLobo =100;
+        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-450f));
+        animatorLobo1.setDuration(saltoLobo);
+
+
+        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
+        animatorLobo2.setDuration(saltoLobo);
+        animatorLobo2.setStartDelay(50);
+
+
+        animatorLoboV = ObjectAnimator.ofFloat(lobo, "rotation", 0f,360f);
+        animatorLoboV.setDuration(300);
+        animatorLoboV.setStartDelay(50);
+
+        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()));
+        animatorLoboPausa.setStartDelay(100);
+        animatorLoboPausa.setDuration(2500);
+
+        animatorSet2=new AnimatorSet();
+
+        animatorSet2.playTogether(animatorLobo1,animatorLoboV);
+
+
+        animatorSet1.setStartDelay(200);
+        animatorSet1.playSequentially(animatorSet2,animatorLobo2,animatorLoboPausa);
+        animatorSet1.start();
 
     }
 

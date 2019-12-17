@@ -81,7 +81,39 @@
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
+                android:text="@string/texto1_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto1_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto1_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto1_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
                 android:text="@string/texto2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto2_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto2_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto2_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto2_4_a4">
             </TextView>
 
             <EditText
@@ -90,7 +122,22 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto3_a4">
+                android:text="@string/texto3_1_a4">
+            </TextView>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto3_2_a4">
+            </TextView>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto3_3_a4">
+            </TextView>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto3_4_a4">
             </TextView>
 
             <EditText
@@ -99,19 +146,80 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto4_a4">
+                android:text="@string/texto4_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto5_a4">
+                android:text="@string/texto4_2_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto6_a4">
+                android:text="@string/texto4_3_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto7_a4">
+                android:text="@string/texto4_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto4_5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto4_6_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto5_5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto6_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto6_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto6_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto6_4_a4">
+            </TextView>
+
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto7_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto7_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto7_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto7_4_a4">
             </TextView>
 
             <EditText
@@ -120,40 +228,123 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto8_a4">
+                android:text="@string/texto8_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto9_a4">
+                android:text="@string/texto8_2_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto10_a4">
+                android:text="@string/texto8_3_a4">
             </TextView>
-
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto8_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto8_5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto8_6_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto9_6_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto10_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto10_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto10_3_a4">
+            </TextView>
             <EditText
                 android:id="@+id/choice_4"
                 style="@style/estiloa4_5"/>
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto11_a4">
+                android:text="@string/texto11_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto12_a4">
+                android:text="@string/texto11_2_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto13_a4">
+                android:text="@string/texto12_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto14_a4">
+                android:text="@string/texto12_2_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto15_a4">
+                android:text="@string/texto12_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto13_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto13_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto13_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto14_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto14_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto15_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto15_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto15_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto15_4_a4">
             </TextView>
 
             <EditText
@@ -162,16 +353,52 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto16_a4">
+                android:text="@string/texto16_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto17_a4">
+                android:text="@string/texto16_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto16_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto16_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto16_5_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto17_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto17_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto17_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto17_4_a4">
             </TextView>
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto18_a4">
+                android:text="@string/texto18_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto18_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto18_3_a4">
             </TextView>
 
             <EditText
@@ -180,11 +407,31 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto19_a4">
+                android:text="@string/texto19_1_a4">
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto20_a4">
+                android:text="@string/texto19_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto19_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto19_4_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto20_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto20_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto20_3_a4">
             </TextView>
 
             <EditText
@@ -193,7 +440,19 @@
 
             <TextView
                 style="@style/estiloa4_4"
-                android:text="@string/texto21_a4">
+                android:text="@string/texto21_1_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto21_2_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto21_3_a4">
+            </TextView>
+            <TextView
+                style="@style/estiloa4_4"
+                android:text="@string/texto21_4_a4">
             </TextView>
 
         </com.google.android.flexbox.FlexboxLayout>

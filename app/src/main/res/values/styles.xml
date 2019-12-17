@@ -48,7 +48,8 @@
     </style>
 
     <style name="estiloa4_4" parent="wrap_content"> <!-- Estilo para los ScrollView/TextView -->
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:padding">3dp</item>
     </style>
 
     <style name="estiloa4_5" parent="estiloa4_4"> <!-- Estilo para los ScrollView/EditText -->
@@ -59,18 +60,19 @@
     <style name="estiloa4_6" > <!-- Estilo para el ScrollView de la Actividad 4 -->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/a4_border1</item>
+<!--        <item name="android:background">@drawable/a4_border1</item>-->
         <item name="android:fadeScrollbars">false</item>
-        <item name="android:padding">25dp</item>
+<!--        <item name="android:padding">25dp</item>-->
+        <item name="android:padding">15dp</item>
         <item name="android:scrollbarSize">20dp</item>
     </style>
 
     <style name="estiloa6_1" > <!-- Estilo para el ScrollView de la Actividad 6 -->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/a6_border1</item>
+<!--        <item name="android:background">@drawable/a6_border1</item>-->
         <item name="android:fadeScrollbars">false</item>
-        <item name="android:padding">20dp</item>
+<!--        <item name="android:padding">20dp</item>-->
         <item name="android:scrollbarSize">20dp</item>
     </style>
 

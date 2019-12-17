@@ -2,6 +2,7 @@ package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.media.MediaPlayer;
@@ -20,7 +21,8 @@ public class Actividad3 extends AppCompatActivity {
 
     private ImageView lobo,bocadillo;
     private TextView texto;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,animatorLoboPausa,animatorLoboV;
+    private AnimatorSet animatorSet1,animatorSet2;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
     private  TypeWriter tw;
@@ -46,14 +48,13 @@ public class Actividad3 extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int width = metrics.widthPixels;
 
-        animatorLoboRotation = ObjectAnimator.ofFloat(lobo, "rotation",0f, 360f);
-        animatorLoboRotation.setDuration(animationLoboDuration);
-
-        animatorLobo = ObjectAnimator.ofFloat(lobo, "x", 0.0f,(width-400));
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
         animatorLobo.setDuration(animationLoboDuration);
         AnimatorSet animatorSetX = new AnimatorSet();
-        animatorSetX.playTogether(animatorLoboRotation, animatorLobo);
+        animatorSetX.playTogether(animatorLobo);
         animatorSetX.start();
+
 
         animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
         animatorBocadillo.setDuration(animationBocadilloDuration);
@@ -89,7 +90,7 @@ public class Actividad3 extends AppCompatActivity {
                 buttonEmpezar.setText("Kondaira");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
-                scrollView.fullScroll(View.FOCUS_DOWN);
+
                 mediaPlayer2.start();
                 tw.setmTypeSpeed(60);
                 tw.setText("");
@@ -104,6 +105,44 @@ public class Actividad3 extends AppCompatActivity {
                     });
             }
         });
+
+        animatorSet1 = new AnimatorSet();
+        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animacion();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+
+        });
+
+
+
     }
 
     public void  sicronizarTexto1() {
@@ -128,4 +167,40 @@ public class Actividad3 extends AppCompatActivity {
                 }
             });
     }
+
+
+
+
+    public void animacion()
+    {
+
+        int saltoLobo =100;
+        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-450f));
+        animatorLobo1.setDuration(saltoLobo);
+
+
+        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
+        animatorLobo2.setDuration(saltoLobo);
+        animatorLobo2.setStartDelay(50);
+
+
+        animatorLoboV = ObjectAnimator.ofFloat(lobo, "rotation", 0f,360f);
+        animatorLoboV.setDuration(300);
+        animatorLoboV.setStartDelay(50);
+
+        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()));
+        animatorLoboPausa.setStartDelay(100);
+        animatorLoboPausa.setDuration(2500);
+
+        animatorSet2=new AnimatorSet();
+
+        animatorSet2.playTogether(animatorLobo1,animatorLoboV);
+
+
+        animatorSet1.setStartDelay(200);
+        animatorSet1.playSequentially(animatorSet2,animatorLobo2,animatorLoboPausa);
+        animatorSet1.start();
+
+    }
+
 }

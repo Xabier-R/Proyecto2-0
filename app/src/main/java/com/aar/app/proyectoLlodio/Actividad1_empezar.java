@@ -3,6 +3,7 @@ package com.aar.app.proyectoLlodio;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -29,10 +30,12 @@ import java.util.TimerTask;
 public class Actividad1_empezar extends AppCompatActivity {
     private ImageView lobo, bocadillo;
     private ImageSwitcher imageViewImg;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLoboRotation,animatorLobo1,animatorLobo2,animatorLoboPausa;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,animatorLoboPausa,animatorLoboV;
+    private AnimatorSet animatorSet1,animatorSet2;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
     private  TypeWriter tw;
+
     public static ScrollView scrollView;
     private Button buttonEmpezar;
     private VideoView video;
@@ -65,10 +68,6 @@ public class Actividad1_empezar extends AppCompatActivity {
 
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int width = metrics.widthPixels;
-
-
-        animatorLoboRotation = ObjectAnimator.ofFloat(lobo, "rotation",0f, 360f);
-        animatorLoboRotation.setDuration(animationLoboDuration);
 
 
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -132,11 +131,8 @@ public class Actividad1_empezar extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
                 buttonEmpezar.setText("Puzzlea");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
-
-
 
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
                 startActivity(intent);
@@ -144,8 +140,40 @@ public class Actividad1_empezar extends AppCompatActivity {
 
             }
         });
+        animatorSet1 = new AnimatorSet();
+        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animacion();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
 
 
+        });
     }
 
     public void  sicronizarTexto1() {
@@ -157,7 +185,6 @@ public class Actividad1_empezar extends AppCompatActivity {
         mediaPlayer.start();
 
         tw.setmTypeSpeed(55);
-
         tw.setText("");
         tw.pause(1500);
         tw.type(texto1).pause(1300)
@@ -181,51 +208,34 @@ public class Actividad1_empezar extends AppCompatActivity {
     public void animacion()
     {
 
-        /*long saltoLobo = 50;
-        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-
+        int saltoLobo =100;
+        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-450f));
         animatorLobo1.setDuration(saltoLobo);
-        animatorLobo2.setStartDelay(50);
-        animatorLobo2.setDuration(saltoLobo);
-        AnimatorSet animatorSetY1 = new AnimatorSet();
-        AnimatorSet animatorSetY2 = new AnimatorSet();
 
-        animatorSetY1.playSequentially(animatorLobo1,animatorLobo2);*/
-
-        long saltoLobo = 50;
-        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-        animatorLobo1.setDuration(saltoLobo);
-        animatorLobo1.setRepeatCount(ValueAnimator.INFINITE);
 
         animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
         animatorLobo2.setDuration(saltoLobo);
         animatorLobo2.setStartDelay(50);
-        animatorLobo2.setRepeatCount(ValueAnimator.INFINITE);
 
-        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()+20f));
-        animatorLoboPausa.setDuration(3000);
+
+        animatorLoboV = ObjectAnimator.ofFloat(lobo, "rotation", 0f,360f);
+        animatorLoboV.setDuration(300);
+        animatorLoboV.setStartDelay(50);
+
+        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()));
         animatorLoboPausa.setStartDelay(100);
-        animatorLoboPausa.setRepeatCount(ValueAnimator.INFINITE);
+        animatorLoboPausa.setDuration(2500);
+
+        animatorSet2=new AnimatorSet();
+
+        animatorSet2.playTogether(animatorLobo1,animatorLoboV);
 
 
-       /* AnimatorSet animatorSetY1 = new AnimatorSet();
-        AnimatorSet animatorSetY2 = new AnimatorSet();
-        AnimatorSet animatorSetY3 = new AnimatorSet();
-        animatorSetY1.play(animatorLobo1);
-        animatorSetY1.start();
-
-        animatorSetY2.setStartDelay(50);
-        animatorSetY2.play(animatorLobo2);
-        animatorSetY2.start();
-
-        animatorSetY3.setStartDelay(100);
-        animatorSetY3.play(animatorLoboPausa);
-        animatorSetY3.start();*/
-
-        AnimatorSet animatorSet1 = new AnimatorSet();
-        animatorSet1.playSequentially(animatorLobo1,animatorLoboPausa);
+        animatorSet1.setStartDelay(200);
+        animatorSet1.playSequentially(animatorSet2,animatorLobo2,animatorLoboPausa);
         animatorSet1.start();
+
+
 
     }
 
