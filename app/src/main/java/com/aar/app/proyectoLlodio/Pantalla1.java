@@ -177,7 +177,6 @@ public class Pantalla1 extends AppCompatActivity {
                     }
                 });
         tw.type(texto4).pause(200)
-
                 .run(new Runnable() {
                     @Override
                     public void run() {

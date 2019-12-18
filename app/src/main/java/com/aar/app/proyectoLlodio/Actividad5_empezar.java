@@ -30,7 +30,9 @@ import java.util.TimerTask;
 public class Actividad5_empezar extends AppCompatActivity {
     private ImageView lobo, bocadillo;
     private ImageSwitcher imageViewImg;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,animatorLoboPausa,animatorLoboV;
+    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,patadaLobo,
+            patadaLobo2,animatorLoboPausa,animatorLoboV,Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll;
+    private AnimatorSet animatorSet5;
     private AnimatorSet animatorSet1,animatorSet2;
     private long animationLoboDuration = 1000;
     private long animationBocadilloDuration = 1500;
@@ -42,6 +44,7 @@ public class Actividad5_empezar extends AppCompatActivity {
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +127,52 @@ public class Actividad5_empezar extends AppCompatActivity {
 
 
         sicronizarTexto1();
+
+
+        animatorSet5 = new AnimatorSet();
+        animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                Intent intent = new Intent(Actividad5_empezar.this, Actividad5.class);
+                startActivity(intent);
+
+                mediaPlayer.stop();
+                finish();
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+                Intent intent = new Intent(Actividad5_empezar.this, Actividad5.class);
+                startActivity(intent);
+
+                mediaPlayer.stop();
+                finish();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+
+        });
+
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +209,7 @@ public class Actividad5_empezar extends AppCompatActivity {
 
         String texto1 =getString(R.string.texto1_a5);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_etxebarri_baserria);
+        mediaPlayer = MediaPlayer.create(this, R.raw.audioa_etxebarri_baserria);
 
         mediaPlayer.start();
 
@@ -258,9 +307,46 @@ public class Actividad5_empezar extends AppCompatActivity {
 
 
     public void saltar(View view) {
-        Intent intent = new Intent(Actividad5_empezar.this, Actividad5.class);
-        startActivity(intent);
-        finish();
+        patadaLobo = ObjectAnimator.ofFloat(lobo, "rotation", 0f,-30f);
+        patadaLobo.setDuration(300);
+        patadaLobo.setStartDelay(50);
+
+        patadaLobo2 = ObjectAnimator.ofFloat(lobo, "rotation", -30f,50f);
+        patadaLobo2.setDuration(200);
+        patadaLobo2.setStartDelay(50);
+
+        AnimatorSet animatorSet3= new AnimatorSet();
+        animatorSet3.playSequentially(patadaLobo,patadaLobo2);
+
+        Xscroll = ObjectAnimator.ofFloat(scrollView, "translationX", 0f,-800f);
+        Xscroll.setDuration(450);
+        Xscroll.setStartDelay(50);
+
+        Yscroll = ObjectAnimator.ofFloat(scrollView , "translationY", 0f,-800f);
+        Yscroll.setDuration(450);
+        Yscroll.setStartDelay(50);
+
+        Rscroll = ObjectAnimator.ofFloat(scrollView, "rotation", 0f,360f);
+        Rscroll.setDuration(350);
+        Rscroll.setRepeatCount(3);
+
+        Xbocadillo = ObjectAnimator.ofFloat(bocadillo, "translationX", 0f,-800f);
+        Xbocadillo.setDuration(450);
+        Xbocadillo.setStartDelay(50);
+
+        Ybocadillo = ObjectAnimator.ofFloat(bocadillo , "translationY", 0f,-800f);
+        Ybocadillo.setDuration(450);
+        Ybocadillo.setStartDelay(50);
+
+        Rbocadillo = ObjectAnimator.ofFloat(bocadillo, "rotation", 0f,360f);
+        Rbocadillo.setDuration(350);
+        Rbocadillo.setRepeatCount(3);
+
+        AnimatorSet animatorSet4 = new AnimatorSet();
+        animatorSet4.playTogether(Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll);
+
+        animatorSet5.playSequentially(animatorSet3,animatorSet4);
+        animatorSet5.start();
     }
 
 

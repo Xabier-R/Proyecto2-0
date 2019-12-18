@@ -28,6 +28,7 @@ public class Actividad3 extends AppCompatActivity {
     private  TypeWriter tw;
     public static ScrollView scrollView;
     private Button buttonEmpezar;
+    private  MediaPlayer mediaPlayer, mediaPlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +67,14 @@ public class Actividad3 extends AppCompatActivity {
         tw.setMovementMethod(new ScrollingMovementMethod());
 
         sicronizarTexto1();
-        MediaPlayer mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_kondaira);
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_kondaira);
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String texto =getString(R.string.texto2_a3);
 
+                animatorSet1.cancel();
                 long saltoLobo = 50;
                 animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
                 animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
@@ -115,7 +117,7 @@ public class Actividad3 extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
-
+                animacion();
             }
 
             @Override
@@ -141,7 +143,40 @@ public class Actividad3 extends AppCompatActivity {
 
         });
 
+        animatorSet1 = new AnimatorSet();
+        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                animacion();
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animacion();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+
+        });
 
     }
 
@@ -149,7 +184,7 @@ public class Actividad3 extends AppCompatActivity {
 
         String texto1 =getString(R.string.texto1_a3);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audioa_santa_apolonia);
+        mediaPlayer = MediaPlayer.create(this, R.raw.audioa_santa_apolonia);
 
         mediaPlayer.start();
 
@@ -164,9 +199,15 @@ public class Actividad3 extends AppCompatActivity {
                     tw.setText("Jarduera erabilgarria");
                     mediaPlayer.stop();
                     buttonEmpezar.setVisibility(View.VISIBLE);
+                    animacion();
                 }
             });
+
+
+
     }
+
+
 
 
 
