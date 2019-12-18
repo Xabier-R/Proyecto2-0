@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -152,6 +153,15 @@ public class Actividad4 extends AppCompatActivity{
 
     public void reset(View view)
     {
+
+        Toast toast2 =
+                Toast.makeText(getApplicationContext(),
+                        "Has vuelto a empezar", Toast.LENGTH_SHORT);
+
+        toast2.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
+
+        toast2.show();
+
         option1.setVisibility(TextView.VISIBLE);
         option2.setVisibility(TextView.VISIBLE);
         option3.setVisibility(TextView.VISIBLE);

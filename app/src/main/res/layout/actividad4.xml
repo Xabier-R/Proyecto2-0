@@ -276,7 +276,11 @@
             </TextView>
             <TextView
                 style="@style/estiloa4_4"
+                android:layout_marginStart="50dp"
+
+
                 android:text="@string/texto10_1_a4">
+
             </TextView>
             <TextView
                 style="@style/estiloa4_4"

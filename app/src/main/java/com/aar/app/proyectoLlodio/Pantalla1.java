@@ -26,6 +26,8 @@ public class Pantalla1 extends AppCompatActivity {
     private  TypeWriter tw;
     private AnimatorSet animatorSet5;
     public static ScrollView scrollView;
+    int lanzadas=1;
+
 
     //AUDIOS
     private MediaPlayer mediaPlayer;
@@ -42,7 +44,6 @@ public class Pantalla1 extends AppCompatActivity {
         bocadillo = findViewById(R.id.bocadillo);
         tw = (TypeWriter) findViewById(R.id.tv);
         scrollView = findViewById(R.id.scrollView);
-
 
         DisplayMetrics metrics = new DisplayMetrics();
 
@@ -95,7 +96,7 @@ public class Pantalla1 extends AppCompatActivity {
             public void onAnimationEnd(Animator animation, boolean isReverse) {
                 Intent i = new Intent(Pantalla1.this, Pantalla2.class);
                 startActivity(i);
-
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 mediaPlayer.stop();
                 mediaPlayer2.stop();
                 finish();
@@ -111,8 +112,7 @@ public class Pantalla1 extends AppCompatActivity {
 
                 //HAY QUE FINALIZAR EL TW!!!!!!!!
 
-                Intent i = new Intent(Pantalla1.this, Pantalla2.class);
-                startActivity(i);
+                lanzarActividad();
 
                 mediaPlayer.stop();
                 mediaPlayer2.stop();
@@ -134,97 +134,109 @@ public class Pantalla1 extends AppCompatActivity {
 
     }
 
+
+
+
     public void  sicronizarTexto1()
     {
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
-        mediaPlayer.start();
 
 
-        String texto1 =getString(R.string.texto1_p1);
-        String texto2 =getString(R.string.texto2_p1);
-        String texto3 =getString(R.string.texto3_p1);
-        String texto4 =getString(R.string.texto4_p1);
-        String texto5 =getString(R.string.texto5_p1);
-        String texto6 =getString(R.string.texto6_p1);
-        String texto7 =getString(R.string.texto7_p1);
-
-        tw.setText("");
-        tw.pause(1500);
-        tw.type(texto1).pause(1300)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    }
-                });
-
-        tw.type(texto2).pause(1300)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    }
-                });
-        tw.type(texto3).pause(400)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    }
-                });
-        tw.type(texto4).pause(200)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    }
-                });
-        tw.type(texto5).pause(800)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    }
-                });
-        tw.type(texto6).pause(200)
-                .run(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                        mediaPlayer.stop();
-                        mediaPlayer2.start();
-                    }
-                });
+            mediaPlayer.start();
 
 
-        tw.pause(2500);
-        tw.type(texto7).pause(10000)
-            .run(new Runnable() {
-                @Override
-                public void run() {
-                    // Finalize the text if user fiddled with it during animation.
-                    tw.setText("");
-                    mediaPlayer2.stop(); /// SE CONFUNDE EN EL AUDIO Y SE ADELANTA EL TEXTO!!!!!!!!
+            String texto1 =getString(R.string.texto1_p1);
+            String texto2 =getString(R.string.texto2_p1);
+            String texto3 =getString(R.string.texto3_p1);
+            String texto4 =getString(R.string.texto4_p1);
+            String texto5 =getString(R.string.texto5_p1);
+            String texto6 =getString(R.string.texto6_p1);
+            String texto7 =getString(R.string.texto7_p1);
+
+            tw.setText("");
+            tw.pause(1500);
+            tw.type(texto1).pause(1300)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                        }
+                    });
+
+            tw.type(texto2).pause(1300)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                        }
+                    });
+            tw.type(texto3).pause(400)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                        }
+                    });
+            tw.type(texto4).pause(200)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                        }
+                    });
+            tw.type(texto5).pause(800)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                        }
+                    });
+            tw.type(texto6).pause(200)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                            mediaPlayer.stop();
+                            mediaPlayer2.start();
+                        }
+                    });
 
 
-                    //Inicio del menu cuando termina el audio
-                    Intent i=new Intent(Pantalla1.this,Pantalla2.class);
-                    startActivity(i);
+            tw.pause(2500);
+            tw.type(texto7).pause(10000)
+                    .run(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Finalize the text if user fiddled with it during animation.
+                            tw.setText("");
+                            mediaPlayer2.stop();
 
-                }
-            });
 
+                            //Inicio del menu cuando termina el audio
+                            if(lanzadas<1) {
+                                lanzarActividad();
+                            }
+                        }
+                    });
 
     }
 
 
+
+
+    public void lanzarActividad()
+    {
+            Intent i=new Intent(Pantalla1.this,Pantalla2.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.left_in, R.anim.left_out);
+        }
 
 
 

@@ -88,6 +88,7 @@ public class Actividad2_empezar extends AppCompatActivity {
             public void onAnimationEnd(Animator animation, boolean isReverse) {
                 Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                 mediaPlayer.stop();
                 finish();
@@ -103,6 +104,7 @@ public class Actividad2_empezar extends AppCompatActivity {
 
                 Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                 mediaPlayer.stop();
                 finish();
@@ -244,6 +246,7 @@ public class Actividad2_empezar extends AppCompatActivity {
     }
 
     public void saltar(View view) {
+        buttonEmpezar.setVisibility(View.INVISIBLE);
         patadaLobo = ObjectAnimator.ofFloat(lobo, "rotation", 0f,-30f);
         patadaLobo.setDuration(300);
         patadaLobo.setStartDelay(50);
