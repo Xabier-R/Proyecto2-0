@@ -63,9 +63,9 @@ Segunda fase - Seguimiento
 
 <h4>Segunda Semana - Día (17/12/2019 - 18hrs) </h4>
 
-- [ ] Quitar la cursiva
-- [ ] Quitar los marcos
-- [ ] Quitar los bordes
+- [x] Quitar la cursiva
+- [x] Quitar los marcos
+- [x] Quitar los bordes
 - [ ] Cambiar el diseño de los botones
 - [ ] Cambiar el tipo de letra a Arial normal
 - [ ] Cambiar la letra de los cuentos
