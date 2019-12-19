@@ -36,7 +36,7 @@ Primera fase - Seguimiento
 - [x] Pantalla 4 - Participantes
 - [x] Pantalla 5 - Patrimonios
 - [ ] Pantalla 6 - Galería
-- [x] Pantalla 7 - El lobo indicará un patrimonio cerca
+- [x] Pantalla 7 - El lobo indicará una actividad para un patrimonio determinado
 - [ ] Actividad 1 - Puzzle
 - [x] Actividad 2 - Preguntas
 - [x] Actividad 3 - Escribe cuento
