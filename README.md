@@ -31,24 +31,24 @@ Primera fase - Seguimiento
 
 - [x] Pantalla inicio - Escudo de Laudio
 - [x] Pantalla 1 - El lobo narrará la historia de Laudio
-- [x] Pantalla 2 - Menú
+- [ ] Pantalla 2 - Menú
 - [x] Pantalla 3 - Mapa
 - [x] Pantalla 4 - Participantes
 - [x] Pantalla 5 - Patrimonios
 - [ ] Pantalla 6 - Galería
 - [x] Pantalla 7 - El lobo indicará un patrimonio cerca
 - [ ] Actividad 1 - Puzzle
-- [ ] Actividad 2 - Preguntas
-- [ ] Actividad 3 - Escribe cuento
+- [x] Actividad 2 - Preguntas
+- [x] Actividad 3 - Escribe cuento
 - [x] Actividad 4 - Rellenar palabras
 - [x] Actividad 5 - Cuenta cuento
-- [ ] Actividad 6 - Mostrar lugares y completar los nombres
+- [x] Actividad 6 - Mostrar lugares y completar los nombres
 - [ ] Actividad 7 - Sopa de letras
 
 <h4>Tercera Semana 15/11/2019 - 29/11/2019</h4>
 
-- [x] Programación de actividades faltantes
-- [ ] Programación de pantallas principales faltantes
+- [ ] Programación de actividades faltantes
+- [x] Programación de pantallas principales faltantes
 - [x] Preparar la presentación
 
 Segunda fase - Seguimiento
