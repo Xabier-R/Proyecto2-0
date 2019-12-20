@@ -66,11 +66,11 @@ Segunda fase - Seguimiento
 - [x] Quitar la cursiva
 - [x] Quitar los marcos
 - [x] Quitar los bordes
-- [ ] Cambiar el diseño de los botones
-- [ ] Cambiar el tipo de letra a Arial normal
-- [ ] Cambiar la letra de los cuentos
-- [ ] Guardar las imagenes de los cuentos
-- [ ] Fotos relacionadas con la actividad en carousel
+- [x] Cambiar el diseño de los botones
+- [x] Cambiar el tipo de letra a Arial normal
+- [x] Cambiar la letra de los cuentos
+- [x] Guardar las imagenes de los cuentos
+- [ ] Fotos relacionadas con la actividad en carousel (descartado)
 
 
 <h4>Festivo - Día (24/12/2019) </h4>
