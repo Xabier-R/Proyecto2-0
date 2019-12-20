@@ -2,14 +2,18 @@ package com.aar.app.proyectoLlodio;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -29,11 +33,7 @@ import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Actividad5 extends AppCompatActivity {
@@ -43,29 +43,43 @@ public class Actividad5 extends AppCompatActivity {
     private EditText titulo;
     private EditText descripcion;
     private RecyclerView recyclerView;
-    AdaptadorCuento adaptadorCuento;
-    private int fotoTomada;
-    private LinearLayout foto;
+    public AdaptadorCuento adaptadorCuento;
+
+    private ImageView img;
+    private LinearLayout linearFoto;
     private byte [] bipmapdata;
+    private String fotoCodificada;
 
     Bitmap bmp;
     Intent i;
     final static int cons =0;
 
+    private SQLiteDatabase db;
+    private CuentoSqlite cuentoSqlite;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad5);
 
+
+        //set the statue bar background to transparent
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         bipmapdata = new byte[3];
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        cuentoSqlite = new CuentoSqlite(this, "DBCuentos", null, 1);
+        db = cuentoSqlite.getWritableDatabase();
+
+
 
         res = getResources();
         tabs = findViewById(android.R.id.tabhost);
         tabs.setup();
 
-        fotoTomada = R.drawable.a5_img4;
 
         //Vinculo la tab1 con la pestaña
         TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
@@ -92,83 +106,104 @@ public class Actividad5 extends AppCompatActivity {
 
         titulo = findViewById(R.id.titulo);
         descripcion = findViewById(R.id.cuento);
-        foto = findViewById(R.id.linearImagen);
+        linearFoto = findViewById(R.id.linearImagen);
 
         checkCameraPermission();
+
     }
 
     public void leerCuentos() {
         final ArrayList<Cuento> cuentos = new ArrayList<Cuento>();
-        try{
-            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("cuentos.txt")));
-            String linea = br.readLine();
-            while (linea!=null)
-            {
-                String [] trozos = linea.split(",");
-                cuentos.add(new Cuento(trozos[0], trozos[1]));
-                linea = br.readLine();
+        Cursor c = db.rawQuery("SELECT titulo, descripcion, foto FROM Cuento", null);
+
+        if (c.moveToFirst()){
+            //Recorremos el cursor hasta que no haya más registros.
+            do {
+                String tituloCuento = c.getString(0);
+                String descripcionCuento = c.getString(1);
+                String foto = c.getString(2);
+                cuentos.add(new Cuento(tituloCuento, descripcionCuento, foto));
+            }while (c.moveToNext());
+        }
+
+        recyclerView = findViewById(R.id.rv_lista);
+        adaptadorCuento = new AdaptadorCuento(this, cuentos);
+
+        recyclerView.setAdapter(adaptadorCuento);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener = new SwipeableRecyclerViewTouchListener(recyclerView,
+                new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                    int posicion;
+                    @Override
+                    public boolean canSwipeLeft(int position) {
+                        this.posicion=position;
+                        return true;
+                    }
+
+                    @Override
+                    public boolean canSwipeRight(int position) {
+                        this.posicion=position;
+                        return false;
+                    }
+
+                    @Override
+                    public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                        System.out.println("La posicion es " + posicion);
+                        actualizarBase(posicion);
+                    }
+
+                    @Override
+                    public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                        System.out.println("La posicion es " + posicion);
+                        actualizarBase(posicion);
+                    }
+                });
+
+
+
+        adaptadorCuento.setOnItemClickListener(new AdaptadorCuento.OnItemClickListener() {
+            @Override
+            public void onbtnPulsado(int position) {
+                actualizarBase(position);
             }
-            recyclerView = findViewById(R.id.rv_lista);
-            adaptadorCuento = new AdaptadorCuento(this, cuentos);
 
-            recyclerView.setAdapter(adaptadorCuento);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            @Override
+            public void onCartaPulsada(int position, ImageView imagen) {
+                verCuentoSeleccionado(position, imagen);
+            }
+        });
 
-            adaptadorCuento.setOnItemClickListener(new AdaptadorCuento.OnItemClickListener() {
-                @Override
-                public void onbtnPulsado(int position) {
-                    Toast.makeText(getApplicationContext(), "Borrado", Toast.LENGTH_SHORT).show();
+        recyclerView.addOnItemTouchListener(swipeTouchListener);
 
-                    //Remuevo la posicion seleccionada
-                    adaptadorCuento.mdata.remove(position);
-                    adaptadorCuento.notifyItemRemoved(position);
-                    adaptadorCuento.notifyItemRangeChanged(position, adaptadorCuento.mdata.size());
-
-                    //Actualizo el fichero
-                    actualizarFichero(position);
-                }
-
-                @Override
-                public void onCartaPulsada(int position, ImageView imageView) {
-                    Toast.makeText(getApplicationContext(), "Carta seleccionada", Toast.LENGTH_SHORT).show();
-                    verCuentoSeleccionado(position, imageView);
-                }
-            });
-            br.close();
-        }
-        catch (Exception e)
-        {
-            Log.d("Fichero", "Error al leer el fichero interno");
-        }
     }
 
     public void guardarCuento(View view) {
-
         boolean puede = comprobar();
 
         if (puede)
         {
             String tituloCuento = titulo.getText().toString();
             String descripcionCuento = descripcion.getText().toString();
-            String resultado = tituloCuento + "," + descripcionCuento;
+
+            //encode image to base64 string
+            BitmapDrawable drawable = (BitmapDrawable) linearFoto.getBackground();
+            Bitmap bitmap = drawable.getBitmap();
+            String encodedImage = encodeToBase64(bitmap, Bitmap.CompressFormat.JPEG, 100);
 
 
+            ContentValues nuevoCuento = new ContentValues();
+            nuevoCuento.put("titulo", tituloCuento);
+            nuevoCuento.put("descripcion",  descripcionCuento);
+            nuevoCuento.put("foto",  encodedImage);
 
-            try{
-                OutputStreamWriter osw= new OutputStreamWriter(openFileOutput("cuentos.txt", Context.MODE_APPEND));
-                osw.write( resultado + "\n");
-                osw.close();
-                Toast.makeText(getApplicationContext(), "CUENTO GUARDADO", Toast.LENGTH_SHORT).show();
-                limpiar();
-            }
-            catch (Exception e) {
-                Log.e ("Fichero", "ERROR!! al escribir fichero en memoria interna");
-            }
+            db.insert("Cuento", null, nuevoCuento);
+            limpiar();
+            Toast.makeText(getApplicationContext(), "Cuento Guardado", Toast.LENGTH_SHORT).show();
         }
         else
-        {
             Toast.makeText(getApplicationContext(), "RELLENA TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     private boolean comprobar()
@@ -180,43 +215,15 @@ public class Actividad5 extends AppCompatActivity {
         return false;
     }
 
-    private void actualizarFichero(int pos)
+    private void actualizarBase(int pos)
     {
-        //Borrar fichero falta acabar
-        final ArrayList<Cuento> cuentos = new ArrayList<Cuento>();
-        try{
-            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("cuentos.txt")));
-            String linea = br.readLine();
-            while (linea!=null)
-            {
-                String [] trozos = linea.split(",");
-                cuentos.add(new Cuento(trozos[0], trozos[1]));
-                linea = br.readLine();
-            }
-            cuentos.remove(pos);
-            br.close();
-
-            String dir = getFilesDir().getAbsolutePath();
-            File f0 = new File(dir, "cuentos.txt");
-            boolean deleted = f0.delete();
-            if (deleted)
-                Log.d("borrado", "si");
-            else
-                Log.d("borrado", "no");
-
-
-            OutputStreamWriter osw= new OutputStreamWriter(openFileOutput("cuentos.txt", Context.MODE_APPEND));
-            for (int i=0; i<cuentos.size(); i++)
-            {
-                String lineaEscribir = cuentos.get(i).getTitulo() + "," + cuentos.get(i).getDescripcion();
-                osw.write( lineaEscribir + "\n");
-            }
-            osw.close();
-        }
-        catch (Exception e)
-        {
-            Log.d("Fichero", "Error al leer el fichero interno");
-        }
+        System.out.println("El tamaño de la lista es " + adaptadorCuento.mdata.size());
+        Cuento cuento = adaptadorCuento.mdata.get(pos);
+        String[] args = new String[]{cuento.getTitulo()};
+        db.execSQL("DELETE FROM Cuento WHERE titulo=?", args);
+        adaptadorCuento.mdata.remove(pos);
+        adaptadorCuento.notifyItemRemoved(pos);
+        adaptadorCuento.notifyItemRangeChanged(pos,adaptadorCuento.mdata.size());
     }
 
     private void limpiar()
@@ -225,7 +232,7 @@ public class Actividad5 extends AppCompatActivity {
         descripcion.setText("");
 
         Drawable drawable = getResources().getDrawable(R.drawable.a5_img4);
-        foto.setBackground(drawable);
+        linearFoto.setBackground(drawable);
     }
 
     //Accede a la camara si tiene permisos, si no tiene saca un jdialog
@@ -268,34 +275,41 @@ public class Actividad5 extends AppCompatActivity {
             Bundle ext = data.getExtras();
             bmp = (Bitmap)ext.get("data");
             BitmapDrawable ob = new BitmapDrawable(getResources(), bmp);
-
-            foto.setBackground(ob);
-
-            Bitmap bitmap = ob.getBitmap();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] bitmapdata = stream.toByteArray();
+            linearFoto.setBackground(ob);
         }
     }
 
     private void verCuentoSeleccionado(int position, ImageView imageView)
     {
-
         String tituloCuento = adaptadorCuento.mdata.get(position).getTitulo();
         String descripcionCuento = adaptadorCuento.mdata.get(position).getDescripcion();
+        String fotoCuento = adaptadorCuento.mdata.get(position).getFotoSacada();
 
         Intent intent = new Intent(this, Actividad5_cuento.class);
 
         intent.putExtra("titulo", tituloCuento);
         intent.putExtra("descripcion", descripcionCuento);
-
-
+        intent.putExtra("fotocodificada", fotoCuento);
 
         Pair<View, String> p1 = Pair.create((View)titulo, "txtTitulo");
         Pair<View, String> p2 = Pair.create((View)descripcion, "txtDescripcion");
-        Pair<View, String> p3 = Pair.create((View)imageView, "imagenPatrimonio");
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2, p3);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2);
         startActivity(intent, options.toBundle());
     }
+
+
+    public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality)
+    {
+        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
+        image.compress(compressFormat, quality, byteArrayOS);
+        return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
+    }
+
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedBytes = Base64.decode(input,0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
 }

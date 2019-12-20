@@ -1,6 +1,10 @@
 package com.aar.app.proyectoLlodio;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     Context context;
     List<Cuento> mdata;
     OnItemClickListener mListener;
+
 
     public interface OnItemClickListener {
         void onbtnPulsado(int position);
@@ -37,7 +42,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.item_cuento, parent, false);
+        View v = inflater.inflate(R.layout.item_cuento5, parent, false);
         return new myViewHolder(v, mListener);
     }
 
@@ -45,6 +50,12 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     public void onBindViewHolder(@NonNull final myViewHolder holder, int position) {
         holder.txtTitulo.setText(mdata.get(position).getTitulo());
         holder.txtDescripcion.setText(mdata.get(position).getDescripcion());
+
+
+        //decode base64 string to image
+        Bitmap bitmap = decodeBase64(mdata.get(position).getFotoSacada());
+        BitmapDrawable ob = new BitmapDrawable(context.getResources(), bitmap);
+        holder.imgSacada.setBackground(ob);
     }
 
     @Override
@@ -53,7 +64,8 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder{
-        ImageView imagen;
+        ImageView imagenBorrar;
+        ImageView imgSacada;
         TextView txtTitulo;
         TextView txtDescripcion;
         ImageView imagenLibro;
@@ -61,13 +73,13 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
 
         public myViewHolder(View itemView, final OnItemClickListener listener){
             super(itemView);
-            imagen = itemView.findViewById(R.id.imgBorrar);
+            imgSacada = itemView.findViewById(R.id.imgLibro);
+            imagenBorrar = itemView.findViewById(R.id.imgBorrar);
             txtTitulo = itemView.findViewById(R.id.txtTitulo);
             txtDescripcion = itemView.findViewById(R.id.txtDescripcion);
-            imagenLibro = itemView.findViewById(R.id.imgLibro);
 
 
-            imagen.setOnClickListener(new View.OnClickListener() {
+            imagenBorrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
@@ -91,5 +103,11 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
                 }
             });
         }
+    }
+
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedBytes = Base64.decode(input,0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 }

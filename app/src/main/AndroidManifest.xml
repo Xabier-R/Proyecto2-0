@@ -32,6 +32,7 @@
         <activity
             android:name=".Actividad1_empezar"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".Actividad6_empezar"
             android:screenOrientation="portrait" />
@@ -74,13 +75,14 @@
             android:name=".Actividad5"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Actividad5_cuento"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".Actividad6"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Actividad7"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Actividad5_cuento"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Pantalla5_patrimonio_detalle"

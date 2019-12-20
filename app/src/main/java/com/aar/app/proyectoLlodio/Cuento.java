@@ -6,12 +6,13 @@ public class Cuento {
 
     String titulo;
     String descripcion;
-    Drawable fotoSacada;
+    String fotoSacada;
 
-    public Cuento(String titulo, String descripcion)
+    public Cuento(String titulo, String descripcion, String fotoSacada)
     {
         this.descripcion = descripcion;
         this.titulo = titulo;
+        this.fotoSacada = fotoSacada;
     }
 
     public String getDescripcion() {
@@ -30,11 +31,11 @@ public class Cuento {
         this.titulo = titulo;
     }
 
-    public void setFotoSacada(Drawable fotoSacada) {
+    public void setFotoSacada(String fotoSacada) {
         this.fotoSacada = fotoSacada;
     }
 
-    public Drawable getFotoSacada() {
+    public String getFotoSacada() {
         return fotoSacada;
     }
 }
