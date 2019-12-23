@@ -54,17 +54,7 @@ public class Pantalla1 extends AppCompatActivity {
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             float width = metrics.xdpi;
 
-            /*animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
-            animatorLobo.setDuration(animationLoboDuration);
-            AnimatorSet animatorSetX = new AnimatorSet();
-            animatorSetX.playTogether(animatorLobo);
-            animatorSetX.start();
 
-            animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
-            animatorBocadillo.setDuration(animationBocadilloDuration);
-            AnimatorSet animatorSetAlpha = new AnimatorSet();
-            animatorSetAlpha.playTogether(animatorBocadillo);
-            animatorSetAlpha.start();*/
         } else {
 
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
