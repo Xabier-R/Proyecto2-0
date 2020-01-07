@@ -83,10 +83,10 @@ Segunda fase - Seguimiento
 
 <h4>Tercera Semana - Día (07/01/2020 - 18hrs) </h4>
 
-- [ ] Implementar un nuevo diseño del apartado participantes
+- [x] Implementar un nuevo diseño del apartado participantes
 - [ ] Implementar la galería con carpetas para las imágenes
 - [ ] Implementar el mapa offline
-- [ ] Implementar menu carousel para el menu
+- [x] Implementar menu carousel para el menu
 
 <h4>Cuarta Semana - Día (14/01/2020 - 18hrs) </h4>
 
