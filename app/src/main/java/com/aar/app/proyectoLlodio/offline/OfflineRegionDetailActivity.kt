@@ -1,11 +1,14 @@
 package com.aar.app.proyectoLlodio.offline
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.aar.app.proyectoLlodio.R
+import com.aar.app.proyectoLlodio.*
 import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.annotations.IconFactory
+import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.offline.OfflineManager
@@ -135,6 +138,21 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             mapboxMap.setOfflineRegionDefinition(definition) { _ ->
                 // restrict camera movement
                 mapboxMap.setLatLngBoundsForCameraTarget(definition.bounds)
+                val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
+                val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
+                val icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3)
+                val icon4 = IconFactory.getInstance(this).fromResource(R.drawable.actividad4)
+                val icon5 = IconFactory.getInstance(this).fromResource(R.drawable.actividad5)
+                val icon6 = IconFactory.getInstance(this).fromResource(R.drawable.actividad6)
+                val icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7)
+
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
 
                 // update textview data
                 offlineRegion?.metadata?.let {
@@ -238,4 +256,88 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
         val KEY_REGION_ID_BUNDLE = "com.mapbox.mapboxsdk.plugins.offline.bundle.id"
     }
+
+
+    override fun onBackPressed() {
+
+        val intent = Intent(this, Pantalla2::class.java)
+        startActivity(intent)
+
+    }
+
+    private fun verMarcadorPulsado(marker: Marker): Boolean {
+        val marcadores = mapboxMap.getMarkers()
+        val tituloSitio = marker.title
+
+        for (i in marcadores.indices) {
+            when (tituloSitio) {
+                "Ermuko Andra Mari" -> {
+                    empezarActividad1()
+                    return true
+                }
+                "Indusketak" -> {
+                    empezarActividad2()
+                    return true
+                }
+                "San Antonio Ermita" -> {
+                    empezarActividad3()
+                    return true
+                }
+                "Lezeagako Sorgina" -> {
+                    empezarActividad4()
+                    return true
+                }
+                "Etxebarri Baserria" -> {
+                    empezarActividad5()
+                    return true
+                }
+                "Lamuza Parkea" -> {
+                    empezarActividad6()
+                    return true
+                }
+                "Dolumin barikua" -> {
+                    empezarActividad7()
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    //ACTIVIDADES AL PULSAR SOBRE LOS MARCADORES
+    private fun empezarActividad1() {
+        val intent = Intent(this, Actividad1_empezar::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad2() {
+        val intent = Intent(this, Actividad2_empezar::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad3() {
+        val intent = Intent(this, Actividad3::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad4() {
+        val intent = Intent(this, Actividad4_empezar::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad5() {
+        val intent = Intent(this, Actividad5_empezar::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad6() {
+        val intent = Intent(this, Actividad6_empezar::class.java)
+        startActivity(intent)
+    }
+
+    private fun empezarActividad7() {
+        val intent = Intent(this, Actividad7::class.java)
+        startActivity(intent)
+    }
+
 }
