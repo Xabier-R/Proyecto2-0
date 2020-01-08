@@ -2,25 +2,26 @@ package com.aar.app.proyectoLlodio.offline
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
-import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap.OnMarkerClickListener
+import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
 import com.mapbox.mapboxsdk.offline.OfflineRegionStatus
+import com.mapbox.mapboxsdk.plugins.annotation.Line
+import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.offline.model.OfflineDownloadOptions
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineConstants.KEY_BUNDLE
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineDownloadChangeListener
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflinePlugin
-import com.mapbox.mapboxsdk.plugins.offline.utils.OfflineUtils
-
 import kotlinx.android.synthetic.main.activity_offline_region_detail.*
 import timber.log.Timber
 
@@ -40,7 +41,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var offlinePlugin: OfflinePlugin? = null
     private var offlineRegion: OfflineRegion? = null
     private var isDownloading: Boolean = false
-
+    private var lineManager: LineManager? = null
     /**
      * Callback invoked when the states of an offline region changes.
      */
@@ -153,7 +154,8 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
-
+                val marcadores = mapboxMap.getMarkers()
+                mapboxMap.setOnMarkerClickListener(OnMarkerClickListener { marker -> verMarcadorPulsado(marker,marcadores) })
                 // update textview data
                 offlineRegion?.metadata?.let {
 
@@ -265,8 +267,8 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     }
 
-    private fun verMarcadorPulsado(marker: Marker): Boolean {
-        val marcadores = mapboxMap.getMarkers()
+    private fun verMarcadorPulsado(marker: Marker, marcadores: MutableList<Marker>): Boolean {
+
         val tituloSitio = marker.title
 
         for (i in marcadores.indices) {
