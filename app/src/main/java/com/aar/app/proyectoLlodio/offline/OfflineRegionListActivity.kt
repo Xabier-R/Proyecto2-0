@@ -26,40 +26,30 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offline_region_list)
 
-        val intent = Intent(this, OfflineRegionDetailActivity::class.java)
-        Toast.makeText(this, position.toString(), Toast.LENGTH_SHORT).show()
-        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, "2")
-        startActivity(intent)
 
 
-
-        /*
         val listView = findViewById<ListView>(R.id.listView)
         adapter = OfflineRegionAdapter()
         listView.adapter = adapter
         listView.emptyView = findViewById(android.R.id.empty)
         listView.onItemClickListener = this
-        val region = adapter.getItem(position)
+
         val intent = Intent(this, OfflineRegionDetailActivity::class.java)
-        Toast.makeText(this, position.toString(), Toast.LENGTH_SHORT).show()
-        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, region.id)
+        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 2L)
         startActivity(intent)
-        */
 
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        /*
-        val region = adapter.getItem(position)
-        val intent = Intent(this, OfflineRegionDetailActivity::class.java)
-        Toast.makeText(this, region.id.toString(), Toast.LENGTH_SHORT).show()
-        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, region.id)
-        startActivity(intent)*/
+
+
     }
 
     override fun onStart() {
         super.onStart()
         loadOfflineRegions()
+
+
     }
 
     private fun loadOfflineRegions() {

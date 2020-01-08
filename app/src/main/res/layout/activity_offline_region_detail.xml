@@ -62,6 +62,7 @@
             android:layout_margin="16dp"
             app:srcCompat="@drawable/bocadillo"
             app:layout_anchor="@+id/barView"
-            app:layout_anchorGravity="bottom|end"/>
+            app:layout_anchorGravity="bottom|end"
+            android:visibility="invisible"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.aar.app.proyectoLlodio.R
+import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.annotations.MarkerOptions
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
@@ -82,6 +85,8 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
 
         fabDelete.setOnClickListener { onFabClick(it) }
+
+
     }
 
     private fun loadOfflineDownload(bundle: Bundle) {
