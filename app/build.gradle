@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -21,6 +23,20 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+// Disable Leak Canary for UI and unit test.
+configurations.all { config ->
+    if (config.name.contains('UnitTest') || config.name.contains('AndroidTest')) {
+        config.resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.squareup.leakcanary'
+                    && details.requested.name == 'leakcanary-android') {
+                details.useTarget(group: details.requested.group, name: 'leakcanary-android-no-op',
+                        version: details.requested.version)
+            }
+        }
+    }
+}
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -50,6 +66,8 @@ dependencies {
     implementation 'com.github.moondroid.coverflow:library:1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+
+
     //FlexboxLayout
     implementation 'com.google.android:flexbox:2.0.0'
 
@@ -73,4 +91,5 @@ dependencies {
 
     //offline
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-offline-v8:0.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

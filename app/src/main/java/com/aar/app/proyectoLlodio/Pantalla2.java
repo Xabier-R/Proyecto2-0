@@ -19,6 +19,9 @@ import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import java.util.ArrayList;
 
 public class Pantalla2 extends AppCompatActivity{
@@ -60,7 +63,7 @@ public class Pantalla2 extends AppCompatActivity{
 //                    startActivity(i);
 
                 }else if (arg2 == 2) {
-                    Intent i = new Intent(Pantalla2.this, Pantalla3.class);
+                    Intent i = new Intent(Pantalla2.this, OfflineRegionListActivity.class);
                     startActivity(i);
 
                 }else if (arg2 == 3) {
