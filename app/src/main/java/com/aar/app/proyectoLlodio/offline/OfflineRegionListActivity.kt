@@ -34,15 +34,18 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         listView.emptyView = findViewById(android.R.id.empty)
         listView.onItemClickListener = this
 
-        val intent = Intent(this, OfflineRegionDetailActivity::class.java)
-        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 2L)
-        startActivity(intent)
+
+
 
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
+        val intent = Intent(this, OfflineRegionDetailActivity::class.java)
+        Toast.makeText(this, position.toString(), Toast.LENGTH_LONG).show()
 
+        intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L)
+        startActivity(intent)
     }
 
     override fun onStart() {
@@ -73,7 +76,6 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         init {
             offlineRegions
         }
-
         internal fun setOfflineRegions(offlineRegions: List<OfflineRegion>) {
             this.offlineRegions = offlineRegions
             notifyDataSetChanged()
