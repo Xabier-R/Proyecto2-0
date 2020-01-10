@@ -43,6 +43,12 @@
             android:name=".Pantalla1"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".javaservices.DirectionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".javaservices.DirectionsGradientLineActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Pantalla2"
             android:screenOrientation="portrait" />
         <activity

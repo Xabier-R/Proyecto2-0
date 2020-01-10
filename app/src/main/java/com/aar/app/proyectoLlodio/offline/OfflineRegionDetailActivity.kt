@@ -6,11 +6,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
+import com.aar.app.proyectoLlodio.javaservices.DirectionsActivity
+import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMap.OnMarkerClickListener
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
@@ -38,10 +42,18 @@ import timber.log.Timber
  */
 class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener {
 
+    private val ORIGIN_ICON_ID = "origin-icon-id"
+    private val DESTINATION_ICON_ID = "destination-icon-id"
+    private val ROUTE_LAYER_ID = "route-layer-id"
+    private val ROUTE_LINE_SOURCE_ID = "route-source-id"
+    private val ICON_LAYER_ID = "icon-layer-id"
+    private val ICON_SOURCE_ID = "icon-source-id"
     private var offlinePlugin: OfflinePlugin? = null
     private var offlineRegion: OfflineRegion? = null
     private var isDownloading: Boolean = false
     private var lineManager: LineManager? = null
+    private var origin: Point? = null
+    private var destination: Point? = null
     /**
      * Callback invoked when the states of an offline region changes.
      */
@@ -89,6 +101,28 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
 
         fabDelete.setOnClickListener { onFabClick(it) }
+
+
+
+
+
+
+        mapView.getMapAsync { mapboxMap ->
+            mapboxMap.setStyle(Style.MAPBOX_STREETS) { style ->
+                // Set the origin location to the Alhambra landmark in Granada, Spain.
+                origin = Point.fromLngLat(-2.971638888888889, 43.1716111)
+
+                // Set the destination location to the Plaza del Triunfo in Granada, Spain.
+                destination = Point.fromLngLat(-2.9717944444444444, 43.1719361)
+
+                initSource(style)
+
+                initLayers(style)
+
+                // Get the directions route from the Mapbox Directions API
+                getRoute(mapboxMap, origin, destination)
+            }
+        }
 
 
     }
@@ -162,6 +196,15 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 }
 
                 offlineRegion?.getStatus(offlineRegionStatusCallback)
+
+
+//
+//                Intent(this@OfflineRegionDetailActivity, DirectionsActivity::class.java),null,
+//                R.string.activity_java_services_directions_url, false, BuildConfig.MIN_SDK_VERSION));
+
+                val intent = Intent(this, DirectionsActivity::class.java)
+                startActivity(intent)
+
             }
         }
     }
