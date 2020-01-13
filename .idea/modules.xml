@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Proyecto2-0.iml" filepath="$PROJECT_DIR$/Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/Proyecto2-0-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin-offline/Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/Proyecto2-0-plugin-offline.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/plugin-offline.iml" />
     </modules>
   </component>

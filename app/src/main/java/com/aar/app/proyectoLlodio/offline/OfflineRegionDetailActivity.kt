@@ -6,21 +6,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
-import com.aar.app.proyectoLlodio.javaservices.DirectionsActivity
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMap.OnMarkerClickListener
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
-import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
 import com.mapbox.mapboxsdk.offline.OfflineRegionStatus
-import com.mapbox.mapboxsdk.plugins.annotation.Line
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager
 import com.mapbox.mapboxsdk.plugins.offline.model.OfflineDownloadOptions
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineConstants.KEY_BUNDLE
@@ -103,28 +98,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         fabDelete.setOnClickListener { onFabClick(it) }
 
 
-
-
-
-
-        mapView.getMapAsync { mapboxMap ->
-            mapboxMap.setStyle(Style.MAPBOX_STREETS) { style ->
-                // Set the origin location to the Alhambra landmark in Granada, Spain.
-                origin = Point.fromLngLat(-2.971638888888889, 43.1716111)
-
-                // Set the destination location to the Plaza del Triunfo in Granada, Spain.
-                destination = Point.fromLngLat(-2.9717944444444444, 43.1719361)
-
-                initSource(style)
-
-                initLayers(style)
-
-                // Get the directions route from the Mapbox Directions API
-                getRoute(mapboxMap, origin, destination)
-            }
-        }
-
-
     }
 
     private fun loadOfflineDownload(bundle: Bundle) {
@@ -197,13 +170,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
                 offlineRegion?.getStatus(offlineRegionStatusCallback)
 
-
-//
-//                Intent(this@OfflineRegionDetailActivity, DirectionsActivity::class.java),null,
-//                R.string.activity_java_services_directions_url, false, BuildConfig.MIN_SDK_VERSION));
-
-                val intent = Intent(this, DirectionsActivity::class.java)
-                startActivity(intent)
 
             }
         }
