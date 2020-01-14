@@ -131,7 +131,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             bundle.getLong(KEY_REGION_ID_BUNDLE, -1)
         }
 
-        actividad = bundle.getString("Actividad", "1")
+        actividad = bundle.getString("actividad", "1")
 
         if (regionId != -1L) {
             loadOfflineRegion(regionId,actividad)

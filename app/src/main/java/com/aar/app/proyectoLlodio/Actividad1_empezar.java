@@ -26,6 +26,7 @@ import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
 import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import com.mapbox.mapboxsdk.Mapbox;
 
 import java.util.Timer;
@@ -358,11 +359,10 @@ public class Actividad1_empezar extends AppCompatActivity {
         if (requestCode == 1_5) {
             if(resultCode == Activity.RESULT_OK){
 
-                Intent intent = new Intent(Actividad1_empezar.this, OfflineRegionDetailActivity.class);
-                intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L);
-                intent.putExtra("Actividad", "2");
+                Intent i = new Intent(Actividad1_empezar.this, OfflineRegionListActivity.class);
+                i.putExtra("actividad", "2");
 
-                startActivity(intent);
+                startActivity(i);
 
 
             }

@@ -20,13 +20,15 @@ import java.util.*
 class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     private lateinit var adapter: OfflineRegionAdapter
-    private var position: Int = 2
+    private var position: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offline_region_list)
 
 
+        val extras = intent.extras
+        position = extras.get("num1")
 
         val listView = findViewById<ListView>(R.id.listView)
         adapter = OfflineRegionAdapter()
@@ -37,6 +39,7 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
 
         val intent = Intent(this, OfflineRegionDetailActivity::class.java)
         intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L)
+        intent.putExtra("actividad", position)
         startActivity(intent)
         finish()
 
