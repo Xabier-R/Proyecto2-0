@@ -59,8 +59,8 @@ public class Pantalla2 extends AppCompatActivity{
                     startActivity(i);
 
                 } else if (arg2 == 1) {
-//                    Intent i = new Intent(Pantalla2.this, Pantalla6.class);
-//                    startActivity(i);
+                    Intent i = new Intent(Pantalla2.this, Pantalla6.class);
+                    startActivity(i);
 
                 }else if (arg2 == 2) {
                     Intent i = new Intent(Pantalla2.this, OfflineRegionListActivity.class);

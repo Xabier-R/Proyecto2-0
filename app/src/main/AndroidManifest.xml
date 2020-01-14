@@ -58,6 +58,12 @@
             android:name=".Pantalla6"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Pantalla6_carrousel"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pantalla6_fotos"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Actividad2"
             android:screenOrientation="portrait" />
         <activity
@@ -112,6 +118,9 @@
             android:screenOrientation="portrait" />
 
 
+        <activity
+            android:name=".rutas.DrawGeojsonLineActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

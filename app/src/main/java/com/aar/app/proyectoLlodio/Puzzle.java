@@ -1,6 +1,8 @@
 package com.aar.app.proyectoLlodio;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -134,7 +136,15 @@ public class Puzzle extends AppCompatActivity {
         tileList[currentPosition] = newPosition;
         display(context);
 
-        if (isSolved()) Toast.makeText(context, "Irabazi duzu", Toast.LENGTH_SHORT).show();
+        if (isSolved())
+        {
+
+            Toast.makeText(context, "Irabazi duzu", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            ((Activity) context).setResult(Activity.RESULT_OK, intent);
+            ((Activity) context).finish();
+
+        }
     }
 
     public static void moveTiles(Context context, String direction, int position) {

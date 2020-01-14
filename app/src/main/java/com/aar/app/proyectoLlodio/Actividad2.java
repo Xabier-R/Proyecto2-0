@@ -60,11 +60,16 @@ public class Actividad2 extends AppCompatActivity {
 
         if (btnNext.getText().equals("BUKATUTA"))
             finish();
+
+
+
+
         else {
             if (btnNext.getText().equals("egiaztatu") || numPregunta ==3) {
                 linearAciertos.setVisibility(View.VISIBLE);
                 txtAcierto.setText("Asmatu duzu  " + aciertos + "/4");
                 btnNext.setText("BUKATUTA");
+
             }
             else {
                 numPregunta++;

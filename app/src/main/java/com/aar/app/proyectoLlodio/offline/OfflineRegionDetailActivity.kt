@@ -1,17 +1,24 @@
 package com.aar.app.proyectoLlodio.offline
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
+import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMap.OnMarkerClickListener
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
@@ -21,8 +28,15 @@ import com.mapbox.mapboxsdk.plugins.offline.model.OfflineDownloadOptions
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineConstants.KEY_BUNDLE
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineDownloadChangeListener
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflinePlugin
+import com.mapbox.mapboxsdk.style.layers.LineLayer
+import com.mapbox.mapboxsdk.style.layers.Property
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import kotlinx.android.synthetic.main.activity_offline_region_detail.*
 import timber.log.Timber
+import java.io.InputStream
+import java.lang.ref.WeakReference
+import java.util.*
 
 /**
  * Activity showing the detail of an offline region.
@@ -35,7 +49,10 @@ import timber.log.Timber
  * This Activity listens to broadcast events related to successful, canceled and errored download.
  *
  */
-class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener {
+class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback {
+    override fun onMapReady(mapboxMap: MapboxMap) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val ORIGIN_ICON_ID = "origin-icon-id"
     private val DESTINATION_ICON_ID = "destination-icon-id"
@@ -49,6 +66,8 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var lineManager: LineManager? = null
     private var origin: Point? = null
     private var destination: Point? = null
+
+
     /**
      * Callback invoked when the states of an offline region changes.
      */
@@ -102,6 +121,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     private fun loadOfflineDownload(bundle: Bundle) {
         val regionId: Long
+        val actividad: String
         val offlineDownload = bundle.getParcelable<OfflineDownloadOptions>(KEY_BUNDLE)
         regionId = if (offlineDownload != null) {
             // coming from notification
@@ -111,12 +131,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             bundle.getLong(KEY_REGION_ID_BUNDLE, -1)
         }
 
+        actividad = bundle.getString("Actividad", "1")
+
         if (regionId != -1L) {
-            loadOfflineRegion(regionId)
+            loadOfflineRegion(regionId,actividad)
         }
     }
 
-    private fun loadOfflineRegion(id: Long) {
+    private fun loadOfflineRegion(id: Long, actividad: String) {
         OfflineManager.getInstance(this)
                 .listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback {
 
@@ -125,7 +147,12 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                             if (region.id == id) {
                                 offlineRegion = region
                                 val definition = region.definition as OfflineRegionDefinition
-                                setupUI(definition)
+
+
+
+
+
+                                setupUI(definition,actividad)
                                 return
                             }
                         }
@@ -139,12 +166,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
 
-    private fun setupUI(definition: OfflineRegionDefinition) {
+    private fun setupUI(definition: OfflineRegionDefinition,actividad: String) {
         // update map
-        mapView?.getMapAsync { mapboxMap ->
+
+        mapView?.getMapAsync({ mapboxMap ->
             // correct style
             mapboxMap.setOfflineRegionDefinition(definition) { _ ->
                 // restrict camera movement
+                Toast.makeText(this@OfflineRegionDetailActivity, actividad, Toast.LENGTH_SHORT).show()
                 mapboxMap.setLatLngBoundsForCameraTarget(definition.bounds)
                 val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
                 val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
@@ -154,26 +183,131 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 val icon6 = IconFactory.getInstance(this).fromResource(R.drawable.actividad6)
                 val icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7)
 
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+
+
+
+                if(actividad=="1")
+                {
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+
+                }
+                else
+                {
+                    if (actividad=="2")
+                    {
+                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                        LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "1_2.geojson").execute()
+
+                    }
+
+                }
+
+
+                /*mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
                 mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
-                val marcadores = mapboxMap.getMarkers()
-                mapboxMap.setOnMarkerClickListener(OnMarkerClickListener { marker -> verMarcadorPulsado(marker,marcadores) })
-                // update textview data
-                offlineRegion?.metadata?.let {
+                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))*/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                val marcadores = mapboxMap.getMarkers()
+                mapboxMap.setOnMarkerClickListener(OnMarkerClickListener { marker -> verMarcadorPulsado(marker, marcadores, mapboxMap) })
+                // update textview data
+
+                offlineRegion?.metadata?.let {
                 }
 
                 offlineRegion?.getStatus(offlineRegionStatusCallback)
 
+            }
 
+
+        })
+
+    }
+
+
+
+
+    private fun drawLines(featureCollection: FeatureCollection, mapboxMap: MapboxMap?) {
+        if (mapboxMap != null) {
+            mapboxMap.getStyle({ style ->
+                if (featureCollection.features() != null) {
+                    if (featureCollection.features()!!.size > 0) {
+                        style.addSource(GeoJsonSource("line-source", featureCollection))
+
+                        // The layer properties for our line. This is where we make the line dotted, set the
+                        // color, etc.
+                        style.addLayer(LineLayer("linelayer", "line-source")
+                                .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_SQUARE),
+                                        PropertyFactory.lineJoin(Property.LINE_JOIN_MITER),
+                                        PropertyFactory.lineOpacity(.7f),
+                                        PropertyFactory.lineWidth(6f),
+                                        PropertyFactory.lineColor(Color.parseColor("#9400ab"))))
+                    }
+                }
+            })
+        }
+    }
+
+    private class LoadGeoJson internal constructor(activity: OfflineRegionDetailActivity, mapboxMap: MapboxMap?, s: String) : AsyncTask<Void, Void, FeatureCollection>() {
+
+        private val weakReference: WeakReference<OfflineRegionDetailActivity>
+        init {
+            this.weakReference = WeakReference(activity)
+        }
+        private var mapboxMap: MapboxMap? = mapboxMap
+        private var nombreruta: String = s
+
+        override fun doInBackground(vararg voids: Void): FeatureCollection? {
+            try {
+                val activity = weakReference.get()
+                if (activity != null) {
+                    val inputStream = activity.assets.open(nombreruta)
+                    return FeatureCollection.fromJson(convertStreamToString(inputStream))
+                }
+            } catch (exception: Exception) {
+                Timber.e("Exception Loading GeoJSON: %s", exception.toString())
+            }
+
+            return null
+        }
+
+        override fun onPostExecute(featureCollection: FeatureCollection?) {
+            super.onPostExecute(featureCollection)
+            val activity = weakReference.get()
+            if (activity != null && featureCollection != null) {
+                activity.drawLines(featureCollection, mapboxMap)
+            }
+        }
+
+        companion object {
+
+            internal fun convertStreamToString(`is`: InputStream): String {
+                val scanner = Scanner(`is`).useDelimiter("\\A")
+                return if (scanner.hasNext()) scanner.next() else ""
             }
         }
     }
+
+
+
+
 
     fun onFabClick(view: View) {
         if (offlineRegion != null) {
@@ -226,6 +360,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
     }
 
+
+
+
     override fun onStart() {
         super.onStart()
         mapView?.onStart()
@@ -254,6 +391,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
     override fun onDestroy() {
+
         super.onDestroy()
         mapView.onDestroy()
     }
@@ -276,38 +414,38 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     }
 
-    private fun verMarcadorPulsado(marker: Marker, marcadores: MutableList<Marker>): Boolean {
+    private fun verMarcadorPulsado(marker: Marker, marcadores: MutableList<Marker>, mapboxMap: MapboxMap): Boolean {
 
         val tituloSitio = marker.title
 
         for (i in marcadores.indices) {
             when (tituloSitio) {
                 "Ermuko Andra Mari" -> {
-                    empezarActividad1()
+                    empezarActividad1(mapboxMap)
                     return true
                 }
                 "Indusketak" -> {
-                    empezarActividad2()
+                    empezarActividad2(mapboxMap)
                     return true
                 }
                 "San Antonio Ermita" -> {
-                    empezarActividad3()
+                    empezarActividad3(mapboxMap)
                     return true
                 }
                 "Lezeagako Sorgina" -> {
-                    empezarActividad4()
+                    empezarActividad4(mapboxMap)
                     return true
                 }
                 "Etxebarri Baserria" -> {
-                    empezarActividad5()
+                    empezarActividad5(mapboxMap)
                     return true
                 }
                 "Lamuza Parkea" -> {
-                    empezarActividad6()
+                    empezarActividad6(mapboxMap)
                     return true
                 }
                 "Dolumin barikua" -> {
-                    empezarActividad7()
+                    empezarActividad7(mapboxMap)
                     return true
                 }
             }
@@ -316,39 +454,71 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
     //ACTIVIDADES AL PULSAR SOBRE LOS MARCADORES
-    private fun empezarActividad1() {
+    private fun empezarActividad1(mapboxMap: MapboxMap) {
+
         val intent = Intent(this, Actividad1_empezar::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 1)
+        finish()
+
     }
 
-    private fun empezarActividad2() {
+    private fun empezarActividad2(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad2_empezar::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 2)
     }
 
-    private fun empezarActividad3() {
+    private fun empezarActividad3(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad3::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 3)
     }
 
-    private fun empezarActividad4() {
+    private fun empezarActividad4(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad4_empezar::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 4)
     }
 
-    private fun empezarActividad5() {
+    private fun empezarActividad5(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad5_empezar::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 5)
     }
 
-    private fun empezarActividad6() {
+    private fun empezarActividad6(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad6_empezar::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 6)
     }
 
-    private fun empezarActividad7() {
+    private fun empezarActividad7(mapboxMap: MapboxMap) {
         val intent = Intent(this, Actividad7::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, 7)
     }
+
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?, mapboxMap: MapboxMap) {
+        super.onActivityResult(requestCode, resultCode, data)
+        var respC = 0
+        var respI = 0
+
+            if (resultCode == Activity.RESULT_OK) {
+
+                Toast.makeText(this@OfflineRegionDetailActivity, resultCode, Toast.LENGTH_SHORT).show()
+
+                /*val intent = Intent(this, OfflineRegionDetailActivity::class.java)
+                intent.putExtra(KEY_REGION_ID_BUNDLE, 1L)
+                val cod: String=resultCode.toString()
+                intent.putExtra("Actividad", cod)
+
+                startActivity(intent)*/
+
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+
+
+
+    }
+
 
 }
+

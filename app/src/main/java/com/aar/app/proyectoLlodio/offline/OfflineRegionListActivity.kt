@@ -38,6 +38,7 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         val intent = Intent(this, OfflineRegionDetailActivity::class.java)
         intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L)
         startActivity(intent)
+        finish()
 
     }
 

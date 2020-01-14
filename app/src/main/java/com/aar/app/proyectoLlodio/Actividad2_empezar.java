@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -87,7 +88,7 @@ public class Actividad2_empezar extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
                 Intent intent = new Intent(Actividad2_empezar.this, Actividad2.class);
-                startActivity(intent);
+                startActivityForResult(intent, 2_5);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                 mediaPlayer.stop();
@@ -289,4 +290,28 @@ public class Actividad2_empezar extends AppCompatActivity {
         animatorSet5.start();
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == 2_5) {
+            if(resultCode == Activity.RESULT_OK){
+
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+
+    }
+
+
+
 }

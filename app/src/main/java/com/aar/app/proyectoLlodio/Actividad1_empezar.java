@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -20,8 +21,12 @@ import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
+
+import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
+import com.mapbox.mapboxsdk.Mapbox;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,6 +51,7 @@ public class Actividad1_empezar extends AppCompatActivity {
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;
+    Mapbox mapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,8 @@ public class Actividad1_empezar extends AppCompatActivity {
 
         ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
         ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
+
+
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
@@ -138,13 +146,14 @@ public class Actividad1_empezar extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
+
+
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1_5);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                finish();
 
                 mediaPlayer.stop();
-                finish();
+
             }
 
             @Override
@@ -156,12 +165,12 @@ public class Actividad1_empezar extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
 
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1_5);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                finish();
+
 
                 mediaPlayer.stop();
-                finish();
+
             }
 
             @Override
@@ -186,8 +195,8 @@ public class Actividad1_empezar extends AppCompatActivity {
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent, 1_5);
+
 
             }
         });
@@ -337,8 +346,36 @@ public class Actividad1_empezar extends AppCompatActivity {
         animatorSet5.start();
 
 
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == 1_5) {
+            if(resultCode == Activity.RESULT_OK){
+
+                Intent intent = new Intent(Actividad1_empezar.this, OfflineRegionDetailActivity.class);
+                intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L);
+                intent.putExtra("Actividad", "2");
+
+                startActivity(intent);
+
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+
     }
 
 
 
 }
+
+
+
