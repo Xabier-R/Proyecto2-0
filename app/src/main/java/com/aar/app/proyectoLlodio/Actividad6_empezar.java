@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 public class Actividad6_empezar extends AppCompatActivity {
 
     private ImageView lobo,bocadillo;
@@ -292,4 +294,15 @@ public class Actividad6_empezar extends AppCompatActivity {
         animatorSet5.playSequentially(animatorSet3,animatorSet4);
         animatorSet5.start();
     }
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad6_empezar.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "6");
+        startActivity(i);
+        finish();
+    }
+
+
+
 }

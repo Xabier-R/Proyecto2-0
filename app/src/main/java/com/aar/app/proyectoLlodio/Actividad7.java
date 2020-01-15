@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import com.aar.app.proyectoLlodio.sopaLetras.features.gameplay.GamePlayActivity;
 
 import java.util.Timer;
@@ -378,5 +379,12 @@ public class Actividad7 extends AppCompatActivity {
 
     }
 
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad7.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "7");
+        startActivity(i);
+        finish();
+    }
 
 }

@@ -276,7 +276,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
                                         val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.141299, -2.964889999))
-                                                .zoom(15.0) // Sets the zoom
+                                                .zoom(15.5) // Sets the zoom
                                                 .bearing(180.0) // Rotate the camera
                                                 .tilt(30.0) // Set the camera tilt
                                                 .build(); // Creates a CameraPosition from the builder
@@ -296,7 +296,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
                                             val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.143851, -2.963018))
-                                                    .zoom(16.0) // Sets the zoom
+                                                    .zoom(16.5) // Sets the zoom
                                                     .bearing(180.0) // Rotate the camera
                                                     .tilt(30.0) // Set the camera tilt
                                                     .build(); // Creates a CameraPosition from the builder

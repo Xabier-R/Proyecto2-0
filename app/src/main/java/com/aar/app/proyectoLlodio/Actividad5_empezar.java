@@ -23,6 +23,8 @@ import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -348,6 +350,15 @@ public class Actividad5_empezar extends AppCompatActivity {
 
         animatorSet5.playSequentially(animatorSet3,animatorSet4);
         animatorSet5.start();
+    }
+
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad5_empezar.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "5");
+        startActivity(i);
+        finish();
     }
 
 
