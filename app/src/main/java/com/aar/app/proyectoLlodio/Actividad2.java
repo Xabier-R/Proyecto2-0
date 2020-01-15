@@ -1,5 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,7 +63,14 @@ public class Actividad2 extends AppCompatActivity {
         verRespuestaElegida();
 
         if (btnNext.getText().equals("BUKATUTA"))
+        {
+
+            Intent i = new Intent( Actividad2.this, OfflineRegionListActivity.class);
+            i.putExtra("actividad", "3");
+            startActivity(i);
             finish();
+        }
+
 
 
 
@@ -134,5 +145,14 @@ public class Actividad2 extends AppCompatActivity {
         if (btnResp2.isChecked())
             if (mapaRespuestas.get(numPregunta)==2)
                 aciertos++;
+    }
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad2.this, OfflineRegionListActivity.class);
+
+        i.putExtra("actividad", "2");
+
+        startActivity(i);
     }
 }

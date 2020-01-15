@@ -21,13 +21,11 @@ import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
-import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
-import com.mapbox.mapboxsdk.Mapbox;
+
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,7 +50,6 @@ public class Actividad1_empezar extends AppCompatActivity {
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;
-    Mapbox mapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +147,7 @@ public class Actividad1_empezar extends AppCompatActivity {
 
 
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivityForResult(intent, 1_5);
+                startActivity(intent);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                 mediaPlayer.stop();
@@ -166,7 +163,7 @@ public class Actividad1_empezar extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
 
                 Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivityForResult(intent, 1_5);
+                startActivity(intent);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
 
@@ -187,19 +184,16 @@ public class Actividad1_empezar extends AppCompatActivity {
 
         });
 
-        buttonEmpezar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonEmpezar.setOnClickListener(v -> {
 
 
-                buttonEmpezar.setText("Puzzlea");
-                buttonEmpezar.setVisibility(View.INVISIBLE);
+            buttonEmpezar.setText("Puzzlea");
+            buttonEmpezar.setVisibility(View.INVISIBLE);
 
-                Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
-                startActivityForResult(intent, 1_5);
+            Intent intent = new Intent(Actividad1_empezar.this, Puzzle.class);
+            startActivity(intent);
 
 
-            }
         });
         animatorSet1 = new AnimatorSet();
         animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
@@ -349,31 +343,14 @@ public class Actividad1_empezar extends AppCompatActivity {
 
 
     }
+    public void onBackPressed() {
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-
-        if (requestCode == 1_5) {
-            if(resultCode == Activity.RESULT_OK){
-
-                Intent i = new Intent(Actividad1_empezar.this, OfflineRegionListActivity.class);
-                i.putExtra("actividad", "2");
-
-                startActivity(i);
-
-
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
-        }
-
+        Intent i = new Intent(Actividad1_empezar.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "1");
+        startActivity(i);
+        mediaPlayer.stop();
+        finish();
     }
-
-
 
 }
 

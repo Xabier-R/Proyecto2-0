@@ -33,6 +33,8 @@ import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -200,6 +202,16 @@ public class Actividad5 extends AppCompatActivity {
             db.insert("Cuento", null, nuevoCuento);
             limpiar();
             Toast.makeText(getApplicationContext(), "Cuento Guardado", Toast.LENGTH_SHORT).show();
+
+
+            Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
+            i.putExtra("actividad", "6");
+            startActivity(i);
+            finish();
+
+
+
+
         }
         else
             Toast.makeText(getApplicationContext(), "RELLENA TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
@@ -311,5 +323,15 @@ public class Actividad5 extends AppCompatActivity {
         byte[] decodedBytes = Base64.decode(input,0);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
+
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "5");
+        startActivity(i);
+        finish();
+    }
+
 
 }

@@ -26,7 +26,7 @@ public class Pantalla1 extends AppCompatActivity {
     private  TypeWriter tw;
     private AnimatorSet animatorSet5;
     public static ScrollView scrollView;
-    int lanzadas=1;
+    private int lanzadas=1;
 
 
     //AUDIOS
@@ -90,6 +90,7 @@ public class Pantalla1 extends AppCompatActivity {
                 mediaPlayer.stop();
                 mediaPlayer2.stop();
                 finish();
+                tw.cancelPendingInputEvents();
             }
 
             @Override
@@ -156,46 +157,31 @@ public class Pantalla1 extends AppCompatActivity {
                     });
 
             tw.type(texto2).pause(1300)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                        }
+                    .run(() -> {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
                     });
             tw.type(texto3).pause(400)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                        }
+                    .run(() -> {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
                     });
             tw.type(texto4).pause(200)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                        }
+                    .run(() -> {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
                     });
             tw.type(texto5).pause(800)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                        }
+                    .run(() -> {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
                     });
             tw.type(texto6).pause(200)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                            mediaPlayer.stop();
-                            mediaPlayer2.start();
-                        }
+                    .run(() -> {
+                        // Finalize the text if user fiddled with it during animation.
+                        tw.setText("");
+                        mediaPlayer.stop();
+                        mediaPlayer2.start();
                     });
 
 
@@ -210,7 +196,8 @@ public class Pantalla1 extends AppCompatActivity {
 
 
                             //Inicio del menu cuando termina el audio
-                            if(lanzadas<1) {
+                            if(lanzadas<=1) {
+
                                 lanzarActividad();
                             }
                         }
@@ -223,9 +210,13 @@ public class Pantalla1 extends AppCompatActivity {
 
     public void lanzarActividad()
     {
+            lanzadas++;
             Intent i=new Intent(Pantalla1.this,Pantalla2.class);
             startActivity(i);
+            mediaPlayer.stop();
+            mediaPlayer2.stop();
             overridePendingTransition(R.anim.left_in, R.anim.left_out);
+            finish();
         }
 
 

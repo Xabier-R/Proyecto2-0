@@ -1,5 +1,6 @@
 package com.aar.app.proyectoLlodio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -8,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 public class Actividad6 extends AppCompatActivity {
 
@@ -45,5 +48,27 @@ public class Actividad6 extends AppCompatActivity {
 
         String msj = "Erantzun zuzenak: "+cor+", Erantzun okerrak :"+incor;
         Toast.makeText(getApplicationContext(), msj,Toast.LENGTH_SHORT).show();
+
+
+        if(cor==4)
+        {
+
+
+            Intent i = new Intent(Actividad6.this, OfflineRegionListActivity.class);
+            i.putExtra("actividad", "7");
+            startActivity(i);
+
+        }
+
+
+
+    }
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad6.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "6");
+        startActivity(i);
+        finish();
     }
 }

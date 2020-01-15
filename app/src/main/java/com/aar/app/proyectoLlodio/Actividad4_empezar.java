@@ -23,6 +23,8 @@ import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -111,15 +113,11 @@ public class Actividad4_empezar extends AppCompatActivity {
         {
             public void run()
             {
-                runOnUiThread(new Runnable()
-                {
-                    public void run()
-                    {
-                        imageViewImg.setImageResource(imagenes[posicion]);
-                        posicion++;
-                        if (posicion == imagenes.length)
-                            posicion = 0;
-                    }
+                runOnUiThread(() -> {
+                    imageViewImg.setImageResource(imagenes[posicion]);
+                    posicion++;
+                    if (posicion == imagenes.length)
+                        posicion = 0;
                 });
             }
         }, 0, DURACION);
@@ -180,6 +178,7 @@ public class Actividad4_empezar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                mediaPlayer.stop();
                 Intent intent = new Intent(Actividad4_empezar.this, Actividad4.class);
                 startActivity(intent);
                 finish();
@@ -330,4 +329,12 @@ public class Actividad4_empezar extends AppCompatActivity {
 
     }
 
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad4_empezar.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "4");
+        startActivity(i);
+        finish();
+    }
 }

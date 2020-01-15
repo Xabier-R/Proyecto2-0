@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -140,9 +144,13 @@ public class Puzzle extends AppCompatActivity {
         {
 
             Toast.makeText(context, "Irabazi duzu", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent();
-            ((Activity) context).setResult(Activity.RESULT_OK, intent);
-            ((Activity) context).finish();
+
+            Intent i = new Intent( ((Activity) context), OfflineRegionListActivity.class);
+            i.putExtra("actividad", "2");
+            ((Activity) context).startActivity(i);
+
+
+
 
         }
     }
@@ -226,4 +234,17 @@ public class Puzzle extends AppCompatActivity {
 
         return solved;
     }
+
+
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Puzzle.this, OfflineRegionListActivity.class);
+
+        i.putExtra("actividad", "1");
+
+        startActivity(i);
+    }
+
+
 }

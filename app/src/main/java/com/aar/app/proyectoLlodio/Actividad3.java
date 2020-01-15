@@ -1,10 +1,12 @@
 package com.aar.app.proyectoLlodio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -16,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 public class Actividad3 extends AppCompatActivity {
 
@@ -35,8 +39,9 @@ public class Actividad3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.actividad3);
-
+        setContentView(R.layout.pantalla_lobo);
+        ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a3_img1));
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);
         tw = (TypeWriter) findViewById(R.id.tv);
@@ -103,6 +108,14 @@ public class Actividad3 extends AppCompatActivity {
                         public void run() {
                             // Finalize the text if user fiddled with it during animation.
                             mediaPlayer2.stop();
+
+
+                            Intent i = new Intent( Actividad3.this, OfflineRegionListActivity.class);
+                            i.putExtra("actividad", "4");
+                            startActivity(i);
+
+
+
                         }
                     });
             }
@@ -208,7 +221,18 @@ public class Actividad3 extends AppCompatActivity {
     }
 
 
+    public void saltar(View view) {
 
+        Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "4");
+        startActivity(i);
+        mediaPlayer.stop();
+        finish();
+
+
+
+
+    }
 
 
 
@@ -244,4 +268,11 @@ public class Actividad3 extends AppCompatActivity {
 
     }
 
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "3");
+        startActivity(i);
+        finish();
+    }
 }

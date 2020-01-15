@@ -131,6 +131,12 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             mTextToAdd = textToAdd;
         }
 
+
+
+//        public void stop() {
+//            this.finalize();
+//        }
+
         @Override
         public void run() {
             if (mTextToAdd.length() == 0) {
@@ -182,6 +188,8 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             setCursorAtEnd();
             delayAndRepeat();
         }
+
+
     }
 
     private class TextRemover extends Repeater {

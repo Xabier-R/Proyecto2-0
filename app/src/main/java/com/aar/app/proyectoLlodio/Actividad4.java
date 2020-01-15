@@ -2,6 +2,7 @@ package com.aar.app.proyectoLlodio;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -20,7 +21,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Actividad4 extends AppCompatActivity{
@@ -29,6 +34,7 @@ public class Actividad4 extends AppCompatActivity{
     private EditText choice1, choice2, choice3, choice4, choice5, choice6, choice7;
     private Map<String, String> maprpta;
     public CharSequence dragData;
+    public ArrayList<EditText> listaEts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,9 @@ public class Actividad4 extends AppCompatActivity{
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad4);
+
+
+        listaEts = new ArrayList<EditText>();
 
         //Cargar el mapa
         maprpta = new HashMap<>();
@@ -137,10 +146,14 @@ public class Actividad4 extends AppCompatActivity{
                         spacetofill.setTag(cadenarpta.getId());
                         spacetofill.setOnDragListener(null);
                         spacetofill.setCompoundDrawables(null, null, null, null);
+
+                        listaEts.add(spacetofill);
+
                     }else{
                         spacetofill.setCompoundDrawables(null, null, getResources().getDrawable(R.drawable.warning), null);
                     }
 
+                    onComplete();
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     break;
@@ -153,15 +166,6 @@ public class Actividad4 extends AppCompatActivity{
 
     public void reset(View view)
     {
-
-        Toast toast2 =
-                Toast.makeText(getApplicationContext(),
-                        "Has vuelto a empezar", Toast.LENGTH_SHORT);
-
-        toast2.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
-
-        toast2.show();
-
         option1.setVisibility(TextView.VISIBLE);
         option2.setVisibility(TextView.VISIBLE);
         option3.setVisibility(TextView.VISIBLE);
@@ -203,8 +207,29 @@ public class Actividad4 extends AppCompatActivity{
         choice7.setOnDragListener(new ChoiceDragListener());
     }
 
+    public void onComplete(){
+        if(listaEts.size()==7){
+            Toast.makeText(this,"completado", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);
+            i.putExtra("actividad", "5");
+            startActivity(i);
+
+
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
+
+
+    public void onBackPressed() {
+
+        Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "4");
+        startActivity(i);
+        finish();
+    }
+
 }
