@@ -42,7 +42,7 @@ public class Actividad4_empezar extends AppCompatActivity {
     public static ScrollView scrollView;
     private Button buttonEmpezar;
     private VideoView video;
-    private int[] imagenes =new int[]{R.drawable.a4_img1,R.drawable.a4_img2,R.drawable.a4_img3};
+    private int[] imagenes =new int[]{R.drawable.a4_img2,R.drawable.a4_img1,R.drawable.a4_img3};
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;

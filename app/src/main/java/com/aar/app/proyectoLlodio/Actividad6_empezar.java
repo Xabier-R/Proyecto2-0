@@ -45,7 +45,7 @@ public class Actividad6_empezar extends AppCompatActivity {
 
 
         ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
-        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a6_img1));
+        ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a6_img0));
 
         lobo = findViewById(R.id.lobo);
         bocadillo = findViewById(R.id.bocadillo);

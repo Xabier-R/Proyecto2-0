@@ -41,10 +41,11 @@ public class Actividad6 extends AppCompatActivity {
         int cor=0;
         int incor=0;
 
-        if(a6_et1.equals("Kultur etxea")){cor++;}else{incor++;}
-        if(a6_et2.equals("Skate parkea")){cor++;}else{incor++;}
-        if(a6_et3.equals("Jauregia")){cor++;}else{incor++;}
-        if(a6_et4.equals("Lorategia")){cor++;}else{incor++;}
+
+        if(a6_et1.getText().toString().equalsIgnoreCase("Kultur etxea")){cor++;}else{incor++;}
+        if(a6_et2.getText().toString().equalsIgnoreCase("Skate parkea")){cor++;}else{incor++;}
+        if(a6_et3.getText().toString().equalsIgnoreCase("Jauregia")){cor++;}else{incor++;}
+        if(a6_et4.getText().toString().equalsIgnoreCase("Lorategia")){cor++;}else{incor++;}
 
         String msj = "Erantzun zuzenak: "+cor+", Erantzun okerrak :"+incor;
         Toast.makeText(getApplicationContext(), msj,Toast.LENGTH_SHORT).show();

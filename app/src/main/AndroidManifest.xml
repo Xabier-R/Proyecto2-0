@@ -46,9 +46,6 @@
             android:name=".Pantalla2"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Pantalla3"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Pantalla4"
             android:screenOrientation="portrait" />
         <activity
