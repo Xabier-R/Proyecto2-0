@@ -151,7 +151,6 @@ public class Puzzle extends AppCompatActivity {
 
 
 
-
         }
     }
 
