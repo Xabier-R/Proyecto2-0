@@ -3,6 +3,7 @@ package com.aar.app.proyectoLlodio;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -201,21 +202,45 @@ public class Actividad5 extends AppCompatActivity {
 
             db.insert("Cuento", null, nuevoCuento);
             limpiar();
-            Toast.makeText(getApplicationContext(), "Cuento Guardado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Ipuina gordeta", Toast.LENGTH_SHORT).show();
 
 
-            Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
-            i.putExtra("actividad", "6");
-            startActivity(i);
-            finish();
 
+            AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+            dialogo1.setTitle("");
+            dialogo1.setMessage("¿ Beste ipuin bat gorde nahi duzu ?");
+            dialogo1.setCancelable(false);
+            dialogo1.setPositiveButton("BAI", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogo1, int id) {
+                    aceptar();
+                }
+            });
+            dialogo1.setNegativeButton("EZ", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogo1, int id) {
+                    cancelar();
+                }
+            });
+            dialogo1.show();
 
 
 
         }
         else
-            Toast.makeText(getApplicationContext(), "RELLENA TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Bete eremu guztiak", Toast.LENGTH_SHORT).show();
 
+    }
+
+
+    public void aceptar() {
+
+
+    }
+
+    public void cancelar() {
+        Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
+        i.putExtra("actividad", "6");
+        startActivity(i);
+        finish();
     }
 
     private boolean comprobar()

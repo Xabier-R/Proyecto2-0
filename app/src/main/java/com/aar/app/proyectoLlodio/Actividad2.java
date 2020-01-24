@@ -1,7 +1,7 @@
 package com.aar.app.proyectoLlodio;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 import java.util.ArrayList;
@@ -39,12 +40,24 @@ public class Actividad2 extends AppCompatActivity {
     private RadioButton btnResp2;
     private int aciertos;
 
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad2);
+
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
+
+
+
 
         txtPregunta = findViewById(R.id.txtPregunta);
         btnResp1 = findViewById(R.id.btnRespuesta1);
@@ -64,7 +77,9 @@ public class Actividad2 extends AppCompatActivity {
 
         if (btnNext.getText().equals("BUKATUTA"))
         {
-
+            //Marco como realizada la actividad 2
+            db.execSQL("UPDATE actividades SET realizada='si'");
+            db.close();
             Intent i = new Intent( Actividad2.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "3");
             startActivity(i);
@@ -78,7 +93,7 @@ public class Actividad2 extends AppCompatActivity {
         else {
             if (btnNext.getText().equals("egiaztatu") || numPregunta ==3) {
                 linearAciertos.setVisibility(View.VISIBLE);
-                txtAcierto.setText("Asmatu duzu  " + aciertos + "/4");
+                txtAcierto.setText("Asmatu duzu   " + aciertos + "/4");
                 btnNext.setText("BUKATUTA");
 
             }

@@ -1,15 +1,32 @@
 package com.aar.app.proyectoLlodio.offline
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.LinearLayout.TRANSLATION_X
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
+import com.aar.app.proyectoLlodio.bbdd.Actividad
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
+import com.mapbox.android.core.location.*
+import com.mapbox.android.core.permissions.PermissionsListener
+import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.annotations.IconFactory
@@ -18,9 +35,13 @@ import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
+import com.mapbox.mapboxsdk.location.modes.CameraMode
+import com.mapbox.mapboxsdk.location.modes.RenderMode
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMap.OnMarkerClickListener
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
+import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
@@ -30,7 +51,6 @@ import com.mapbox.mapboxsdk.plugins.offline.model.OfflineDownloadOptions
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineConstants.KEY_BUNDLE
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflineDownloadChangeListener
 import com.mapbox.mapboxsdk.plugins.offline.offline.OfflinePlugin
-import com.mapbox.mapboxsdk.style.expressions.Expression.zoom
 import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
@@ -52,9 +72,11 @@ import java.util.*
  * This Activity listens to broadcast events related to successful, canceled and errored download.
  *
  */
-class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback {
-    override fun onMapReady(mapboxMap: MapboxMap) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback, PermissionsListener, FragmentoLobo.OnFragmentInteractionListener {
+
+    override fun onFragmentPulsado(imagen: ImageView?) {
+        intent = Intent(applicationContext, Actividad2::class.java)
+        startActivity(intent)
     }
 
     private val ORIGIN_ICON_ID = "origin-icon-id"
@@ -70,6 +92,25 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var origin: Point? = null
     private var destination: Point? = null
 
+
+    //Localizacion
+    private var callback = LocationChangeListeningActivityLocationCallback(this)
+    public var mapaBox: MapboxMap? = null
+    private var resultado = ""
+    private var permissionsManager: PermissionsManager? = null
+    private var locationEngine: LocationEngine? = null
+    private var listaMarcadores: List<Marker>? = null
+
+    private val DEFAULT_INTERVAL_IN_MILLISECONDS = 1800L
+    private val DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5
+    private var texto: TextView? = null
+
+    //BBDD
+    private var activiades: ActividadesSQLiteHelper? = null
+    private var db: SQLiteDatabase? = null
+
+    //Fragmento
+    private var linearLayout:LinearLayout? = null
 
     /**
      * Callback invoked when the states of an offline region changes.
@@ -108,7 +149,21 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Pantalla full
+        window.requestFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+
         setContentView(R.layout.activity_offline_region_detail)
+
+        //Vinculo el linearLayout del fragmento
+        linearLayout = findViewById(R.id.linearFragmento)
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        activiades = ActividadesSQLiteHelper(this, "DBactividades", null, 1)
+        db = activiades!!.getWritableDatabase()
+
         mapView?.onCreate(savedInstanceState)
         offlinePlugin = OfflinePlugin.getInstance(this)
 
@@ -116,10 +171,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         if (bundle != null) {
             loadOfflineDownload(bundle)
         }
-
         fabDelete.setOnClickListener { onFabClick(it) }
-
-
     }
 
     private fun loadOfflineDownload(bundle: Bundle) {
@@ -143,31 +195,25 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     private fun loadOfflineRegion(id: Long, actividad: String) {
         OfflineManager.getInstance(this)
-                .listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback {
+            .listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback {
 
-                    override fun onList(offlineRegions: Array<OfflineRegion>) {
-                        for (region in offlineRegions) {
-                            if (region.id == id) {
-                                offlineRegion = region
-                                val definition = region.definition as OfflineRegionDefinition
+                override fun onList(offlineRegions: Array<OfflineRegion>) {
+                    for (region in offlineRegions) {
+                        if (region.id == id) {
+                            offlineRegion = region
+                            val definition = region.definition as OfflineRegionDefinition
 
-
-
-
-
-                                setupUI(definition,actividad)
-                                return
-                            }
+                            setupUI(definition,actividad)
+                            return
                         }
                     }
+                }
 
-                    override fun onError(error: String) {
-                        Timber.e(error)
-                    }
-                })
+                override fun onError(error: String) {
+                    Timber.e(error)
+                }
+            })
     }
-
-
 
     private fun setupUI(definition: OfflineRegionDefinition, actividad: String) {
         // update map
@@ -176,8 +222,16 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             // correct style
             mapboxMap.setOfflineRegionDefinition(definition) { _ ->
                 // restrict camera movement
-                Toast.makeText(this@OfflineRegionDetailActivity, actividad, Toast.LENGTH_SHORT).show()
                 mapboxMap.setLatLngBoundsForCameraTarget(definition.bounds)
+
+
+                //Ver posicion
+                this.mapaBox = mapboxMap
+
+                enableLocationComponent(this.mapaBox!!.getStyle()!!)
+
+                //Ver posicion
+
                 val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
                 val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
                 val icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3)
@@ -187,33 +241,36 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 val icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7)
 
 
-
-
-
                 if(actividad=="1")
                 {
                     mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
 
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                   mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
+
+
+                    listaMarcadores = mapboxMap.markers
+
+
                 }
                 else
                 {
                     if (actividad=="2")
                     {
                         LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "1_2.geojson").execute()
+
                         mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
                         mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
 
                         val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.17177361, -2.9717166666666))
-                            .zoom(18.0) // Sets the zoom
-                            .bearing(180.0) // Rotate the camera
-                            .tilt(30.0) // Set the camera tilt
-                            .build(); // Creates a CameraPosition from the builder
+                                .zoom(18.0) // Sets the zoom
+                                .bearing(180.0) // Rotate the camera
+                                .tilt(30.0) // Set the camera tilt
+                                .build(); // Creates a CameraPosition from the builder
                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position!!),6000)
                     }
                     else
@@ -250,7 +307,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
                             }
 
-                           else
+                            else
                             {
                                 if (actividad == "5") {
                                     LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "4_5.geojson").execute()
@@ -281,9 +338,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                                                 .tilt(30.0) // Set the camera tilt
                                                 .build(); // Creates a CameraPosition from the builder
                                         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position!!),6000)
-
-
-
 
                                     }
                                     else
@@ -317,15 +371,13 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 }
 
 
-                /*mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))*/
-
-
+                /*mapaBox.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+                mapaBox.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))*/
 
 
 
@@ -339,13 +391,218 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 offlineRegion?.getStatus(offlineRegionStatusCallback)
 
             }
-
-
         }
-
     }
 
 
+    //Ver posicion
+    override fun onMapReady(mapboxMap: MapboxMap) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    }
+
+    override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
+        Toast.makeText(this, "No", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onPermissionResult(granted: Boolean) {
+        if (granted) {
+            if (mapaBox?.getStyle() != null) {
+                enableLocationComponent(mapaBox?.getStyle()!!)
+            }
+        } else {
+            Toast.makeText(this,"No tienes permisos", Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+    //Ver posicion
+
+
+    //Localizacion
+    /**
+     * Initialize the Maps SDK's LocationComponent
+     */
+    private fun enableLocationComponent(loadedMapStyle: Style) {
+        // Check if permissions are enabled and if not request
+        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+
+            // Get an instance of the component
+            val locationComponent = mapaBox?.getLocationComponent()
+
+            // Set the LocationComponent activation options
+            val locationComponentActivationOptions = LocationComponentActivationOptions.builder(this, loadedMapStyle)
+                    .useDefaultLocationEngine(false)
+                    .build()
+
+            // Activate with the LocationComponentActivationOptions object
+            locationComponent?.activateLocationComponent(locationComponentActivationOptions)
+
+            // Enable to make component visible
+            locationComponent?.isLocationComponentEnabled = true
+
+            // Set the component's camera mode
+            locationComponent?.cameraMode = CameraMode.TRACKING
+
+            // Set the component's render mode
+            locationComponent?.renderMode = RenderMode.NORMAL
+
+            initLocationEngine()
+        } else {
+            permissionsManager = PermissionsManager(this)
+            permissionsManager?.requestLocationPermissions(this)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        permissionsManager?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+
+
+    @SuppressLint("MissingPermission")
+    private fun initLocationEngine() {
+        locationEngine = LocationEngineProvider.getBestLocationEngine(this)
+
+        val request = LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
+                .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
+                .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME).build()
+
+        locationEngine?.requestLocationUpdates(request, callback, mainLooper)
+        locationEngine?.getLastLocation(callback)
+    }
+
+    //Ver posicion
+    public class LocationChangeListeningActivityLocationCallback internal constructor(activity: OfflineRegionDetailActivity) : LocationEngineCallback<LocationEngineResult> {
+
+        private val activityWeakReference: WeakReference<OfflineRegionDetailActivity>
+
+        init {
+            this.activityWeakReference = WeakReference<OfflineRegionDetailActivity>(activity)
+        }
+
+        /**
+         * The LocationEngineCallback interface's method which fires when the device's location has changed.
+         *
+         * @param result the LocationEngineResult object which has the last known location within it.
+         */
+        override fun onSuccess(result: LocationEngineResult) {
+            val activity = activityWeakReference.get()
+
+            if (activity != null) {
+                val location = result.lastLocation
+                if (location == null) {
+                    return;
+                }
+
+                val ubicacionActual = LatLng(result.lastLocation?.latitude!!, result.lastLocation?.longitude!!)
+                //val ubicacionActual1 = LatLng(result.lastLocation?.latitude!!, result.lastLocation?.longitude!!)
+
+                val distancia = distanciaCoord(ubicacionActual.latitude, ubicacionActual.longitude, 43.1719361, -2.9717944444444444)
+                System.out.println("La distancia actual con la formula es de " + distancia)
+
+                val ubicacionActividad2 = LatLng(43.1719361, -2.9717944444444444)
+
+                val num = ubicacionActual.distanceTo(ubicacionActividad2)
+                System.out.println("La distancia actual es de " + num)
+
+                //SI esta en un radio de 20 metros lance la actividad 2
+                if (distancia<20) {
+                    val actividadesBBDD = ArrayList<Actividad>()
+
+                    val args = arrayOf("actividad2")
+
+                    val c = activity.db?.rawQuery("SELECT actividad, realizada FROM actividades WHERE actividad=?", args);
+
+                    if (c?.moveToFirst()!!) {
+                        //Recorremos el cursor hasta que no haya más registros.
+                        do {
+                            val nombre = c.getString(0)
+                            val realizada = c.getString(1)
+                            actividadesBBDD.add(Actividad(nombre, realizada))
+                        } while (c.moveToNext())
+                    }
+
+                    if (actividadesBBDD.get(0).realizada.equals("no"))
+                        activity.empezarActividad1(activity)
+                }
+                else
+                    activity.linearLayout?.visibility = View.INVISIBLE
+
+
+                /*
+                //Estilo
+                activity.mapaBox?.setStyle(Style.Builder().fromUri("asset://stilos.json")) {
+                    // Custom map style has been loaded and map is now ready
+                }
+                */
+
+
+                //Create a Toast which displays the new location's coordinates
+                //Toast.makeText(getApplicationContext(),resultado, Toast.LENGTH_SHORT).show()
+
+                // Pass the new location to the Maps SDK's LocationComponent
+                if (activity.mapaBox != null && result.lastLocation != null) {
+                    activity.mapaBox?.getLocationComponent()?.forceLocationUpdate(result.lastLocation)
+                }
+            }
+        }
+
+        /**
+         * The LocationEngineCallback interface's method which fires when the device's location can't be captured
+         *
+         * @param exception the exception message
+         */
+        override fun onFailure(exception: Exception) {
+            Log.d("LocationChangeActivity", exception.localizedMessage!!)
+            val activity = activityWeakReference.get()
+            if (activity != null) {
+                Toast.makeText(activity, exception.localizedMessage,
+                        Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    //Ver posicion
+
+
+
+
+    private fun empezarActividad1(activity: OfflineRegionDetailActivity)
+    {
+
+        val animatorLobo: ObjectAnimator
+        val linearLayout: LinearLayout = findViewById<LinearLayout>(R.id.linearFragmento)
+
+        val fragment = FragmentoLobo()
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        //transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        transaction.add(R.id.framentoLobo, fragment)
+        transaction.commit()
+
+
+        val metrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(metrics)
+        val width = metrics.widthPixels
+
+
+        windowManager.defaultDisplay.getMetrics(metrics)
+        animatorLobo = ObjectAnimator.ofFloat(linearLayout,
+                "translationX", linearLayout.getX(), linearLayout.getPivotX() - linearLayout.getPivotX());
+        animatorLobo.duration = 400
+        val animatorSetX = AnimatorSet()
+        animatorSetX.playTogether(animatorLobo)
+        animatorSetX.start()
+
+
+        linearLayout.setVisibility(View.VISIBLE)
+
+
+
+
+
+
+    }
 
 
     private fun drawLines(featureCollection: FeatureCollection, mapboxMap: MapboxMap?) {
@@ -411,8 +668,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
 
-
-
     fun onFabClick(view: View) {
         if (offlineRegion != null) {
             if (!isDownloading) {
@@ -464,9 +719,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
     }
 
-
-
-
     override fun onStart() {
         super.onStart()
         mapView?.onStart()
@@ -481,6 +733,10 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     override fun onPause() {
         super.onPause()
         mapView?.onPause()
+        // Prevent leaks
+        if (locationEngine != null) {
+            locationEngine?.removeLocationUpdates(callback)
+        }
     }
 
     override fun onStop() {
@@ -495,8 +751,12 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
     override fun onDestroy() {
-
         super.onDestroy()
+
+        // Prevent leaks
+        if (locationEngine != null) {
+            locationEngine?.removeLocationUpdates(callback)
+        }
         mapView.onDestroy()
     }
 
@@ -602,27 +862,42 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         var respC = 0
         var respI = 0
 
-            if (resultCode == Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
 
-                Toast.makeText(this@OfflineRegionDetailActivity, resultCode, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@OfflineRegionDetailActivity, resultCode, Toast.LENGTH_SHORT).show()
 
-                /*val intent = Intent(this, OfflineRegionDetailActivity::class.java)
-                intent.putExtra(KEY_REGION_ID_BUNDLE, 1L)
-                val cod: String=resultCode.toString()
-                intent.putExtra("Actividad", cod)
+            /*val intent = Intent(this, OfflineRegionDetailActivity::class.java)
+            intent.putExtra(KEY_REGION_ID_BUNDLE, 1L)
+            val cod: String=resultCode.toString()
+            intent.putExtra("Actividad", cod)
 
-                startActivity(intent)*/
-
-
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
+            startActivity(intent)*/
 
 
+        }
+        if (resultCode == Activity.RESULT_CANCELED) {
+            //Write your code if there's no result
+        }
+    }
 
+    //Prueba
+    fun verPosicion(view: View) {
+        this.texto?.setText(resultado)
     }
 
 
 }
 
+fun distanciaCoord(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
+    //double radioTierra = 3958.75;//en millas
+    val radioTierra = 6371.0//en kilómetros
+    val dLat = Math.toRadians(lat2 - lat1)
+    val dLng = Math.toRadians(lng2 - lng1)
+    val sindLat = Math.sin(dLat / 2)
+    val sindLng = Math.sin(dLng / 2)
+    val va1 = Math.pow(sindLat, 2.0) + (Math.pow(sindLng, 2.0)
+            * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)))
+    val va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1))
+
+    return (radioTierra * va2)*1000
+}

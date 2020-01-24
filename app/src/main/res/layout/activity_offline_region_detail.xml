@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context="com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity">
 
@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:orientation="vertical">
 
         <com.mapbox.mapboxsdk.maps.MapView
@@ -19,7 +20,32 @@
             android:layout_height="match_parent"
             app:mapbox_uiAttribution="false"
             app:mapbox_uiCompass="false"
-            app:mapbox_uiLogo="false"/>
+            app:mapbox_uiLogo="false" >
+
+            <LinearLayout
+                android:id="@+id/linearFragmento"
+                android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_gravity="bottom"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <fragment
+                    android:id="@+id/framentoLobo"
+                    android:name="com.aar.app.proyectoLlodio.FragmentoLobo"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_above="@id/mapView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom">
+
+                </fragment>
+
+            </LinearLayout>
+
+        </com.mapbox.mapboxsdk.maps.MapView>
+
+
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/bottomSheet"
@@ -40,11 +66,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:max="100"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginEnd="339dp"
+                    android:layout_marginBottom="659dp"
+                    android:visibility="invisible"
+                    app:layout_anchor="@+id/barView"
+                    app:layout_anchorGravity="bottom|end"
+                    app:srcCompat="@drawable/bocadillo" />
 
 
             </LinearLayout>
@@ -55,14 +92,4 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:srcCompat="@drawable/bocadillo"
-            app:layout_anchor="@+id/barView"
-            app:layout_anchorGravity="bottom|end"
-            android:visibility="invisible"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
