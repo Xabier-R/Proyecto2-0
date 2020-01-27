@@ -91,6 +91,7 @@ public class Actividad4 extends AppCompatActivity{
         choice5.setOnDragListener(new ChoiceDragListener());
         choice6.setOnDragListener(new ChoiceDragListener());
         choice7.setOnDragListener(new ChoiceDragListener());
+
     }
 
     private final class ChoiceTouchListener implements OnTouchListener {
@@ -205,11 +206,12 @@ public class Actividad4 extends AppCompatActivity{
         choice5.setOnDragListener(new ChoiceDragListener());
         choice6.setOnDragListener(new ChoiceDragListener());
         choice7.setOnDragListener(new ChoiceDragListener());
+        listaEts.clear();
     }
 
     public void onComplete(){
         if(listaEts.size()==7){
-            Toast.makeText(this,"completado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"amaituta", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "5");
             startActivity(i);

@@ -29,7 +29,7 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -45,7 +45,6 @@
             android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
