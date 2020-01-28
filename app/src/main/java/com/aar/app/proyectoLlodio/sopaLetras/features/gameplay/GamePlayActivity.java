@@ -284,7 +284,6 @@ public class GamePlayActivity extends FullscreenActivity {
 
     private void showFinishGame(int gameId) {
         Intent intent = new Intent(this, GameOverActivity.class);
-        intent.putExtra(GameOverActivity.EXTRA_GAME_ROUND_ID, gameId);
         startActivity(intent);
         finish();
     }

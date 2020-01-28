@@ -1,101 +1,36 @@
 package com.aar.app.proyectoLlodio.sopaLetras.features.gameover;
 
-import androidx.lifecycle.ViewModelProviders;
-import android.content.Intent;
-import androidx.core.app.NavUtils;
-
-import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
 
 import com.aar.app.proyectoLlodio.R;
-import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
-import com.aar.app.proyectoLlodio.sopaLetras.features.ViewModelFactory;
-import com.aar.app.proyectoLlodio.WordSearchApp;
-import com.aar.app.proyectoLlodio.sopaLetras.commons.DurationFormatter;
-import com.aar.app.proyectoLlodio.sopaLetras.model.GameDataInfo;
-import com.aar.app.proyectoLlodio.sopaLetras.features.FullscreenActivity;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class GameOverActivity extends FullscreenActivity {
-    public static final String EXTRA_GAME_ROUND_ID =
-            "com.paperplanes.wordsearch.presentation.ui.activity.GameOverActivity";
-
-    //BBDD
-    private ActividadesSQLiteHelper activiades;
-    private SQLiteDatabase db;
-
-    @Inject
-    ViewModelFactory mViewModelFactory;
-
-    @BindView(R.id.game_stat_text)
-    TextView mGameStatText;
-
-    private int mGameId;
-    private GameOverViewModel mViewModel;
+public class GameOverActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
-
-        //Abrimos la base de datos "DBUsuarios" en modo de escritura
-        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
-        db = activiades.getWritableDatabase();
-
-        ButterKnife.bind(this);
-        ((WordSearchApp) getApplication()).getAppComponent().inject(this);
-
-        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(GameOverViewModel.class);
-        mViewModel.getOnGameDataInfoLoaded().observe(this, this::showGameStat);
-
-        if (getIntent().getExtras() != null) {
-            mGameId = getIntent().getExtras().getInt(EXTRA_GAME_ROUND_ID);
-            mViewModel.loadData(mGameId);
-        }
-    }
-
-    @OnClick(R.id.main_menu_btn)
-    public void onMainMenuClick() {
-        onBackPressed();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        goToMainMenu();
-    }
-
-    private void goToMainMenu() {
-        if (getPreferences().deleteAfterFinish()) {
-            mViewModel.deleteGameRound(mGameId);
-        }
-        NavUtils.navigateUpTo(this, new Intent());
-        finish();
-    }
-
-    public void showGameStat(GameDataInfo info) {
-
-
-        //Marco como realizada la actividad 2
-        db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad7'");
-        db.close();
-
-
-
-        String strGridSize = info.getGridRowCount() + " x " + info.getGridColCount();
-
-        String str = getString(R.string.finish_text);
-        str = str.replaceAll(":gridSize", strGridSize);
-        str = str.replaceAll(":uwCount", String.valueOf(info.getUsedWordsCount()));
-        str = str.replaceAll(":duration", DurationFormatter.fromInteger(info.getDuration()));
-
-        mGameStatText.setText(str);
+        final KonfettiView konfettiView = findViewById(R.id.konfettiView);
+        konfettiView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                konfettiView.build()
+                        .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA,Color.BLUE,Color.RED)
+                        .setDirection(0.0, 359.0)
+                        .setSpeed(1f, 5f)
+                        .setFadeOutEnabled(true)
+                        .setTimeToLive(2000L)
+                        .addShapes(Shape.RECT, Shape.CIRCLE)
+                        .addSizes(new Size(12, 5f))
+                        .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                        .streamFor(300, 5000L);
+            }
+        });
     }
 }

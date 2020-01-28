@@ -1,1 +1,1 @@
-include ':app', ':plugin-offline'
+include ':app', ':plugin-offline', ':demo-google-play', ':demo-simple-java', ':konfetti'
