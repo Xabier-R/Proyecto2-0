@@ -78,9 +78,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     override fun onFragmentPulsado(imagen: ImageView?) {
 
-        imagen?.setImageResource(R.drawable.animation_list)
-        val loboParpadeo = imagen?.getDrawable() as AnimationDrawable
-        loboParpadeo.start()
+//        imagen?.setImageResource(R.drawable.animation_list)
+//        val loboParpadeo = imagen?.getDrawable() as AnimationDrawable
+//        loboParpadeo.start()
 
         System.out.println("La actividad a lanzar es " + actividadLanzar + " ---------------------------------------")
 
@@ -629,6 +629,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         val width = metrics.widthPixels
 
 
+
         windowManager.defaultDisplay.getMetrics(metrics)
         animatorLobo = ObjectAnimator.ofFloat(linearLayout,
                 "translationX", linearLayout.getX(), linearLayout.getPivotX() - linearLayout.getPivotX());
@@ -636,6 +637,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         val animatorSetX = AnimatorSet()
         animatorSetX.playTogether(animatorLobo)
         animatorSetX.start()
+
 
 
         linearLayout.setVisibility(View.VISIBLE)

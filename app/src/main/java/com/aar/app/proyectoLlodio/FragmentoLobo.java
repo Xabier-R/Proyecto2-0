@@ -1,6 +1,9 @@
 package com.aar.app.proyectoLlodio;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +38,9 @@ public class FragmentoLobo extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             nombreActividad = getArguments().getString(ARG_PARAM1);
+
+
+
         }
     }
 
@@ -48,7 +54,7 @@ public class FragmentoLobo extends Fragment {
         Button btn = view.findViewById(R.id.btnLobo);
         imagenLobo = view.findViewById(R.id.imagenLobo);
 
-
+        pestanear();
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -80,4 +86,16 @@ public class FragmentoLobo extends Fragment {
     public ImageView getImagenLobo() {
         return imagenLobo;
     }
+
+
+
+    public void pestanear() {
+
+        imagenLobo.setImageResource(R.drawable.animation_list);
+
+        AnimationDrawable loboParpadeo = (AnimationDrawable) imagenLobo.getDrawable();
+        loboParpadeo.start();
+    }
+
+
 }

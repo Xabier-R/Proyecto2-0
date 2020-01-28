@@ -221,6 +221,7 @@ public class Actividad3 extends AppCompatActivity {
                 public void run() {
                     // Finalize the text if user fiddled with it during animation.
                     tw.setText("Jarduera erabilgarria");
+                    buttonEmpezar.setText("Kondaira");
                     mediaPlayer.stop();
                     buttonEmpezar.setVisibility(View.VISIBLE);
                     animacion();
