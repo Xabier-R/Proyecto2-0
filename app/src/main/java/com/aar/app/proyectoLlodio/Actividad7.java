@@ -232,9 +232,9 @@ public class Actividad7 extends AppCompatActivity {
 
         mediaPlayer.start();
 
-        tw.setmTypeSpeed(55);
+        tw.setmTypeSpeed(61);
         tw.setText("");
-        tw.pause(1500);
+        tw.pause(1900);
         tw.type(texto1).pause(1300)
             .run(new Runnable() {
                 @Override
@@ -381,6 +381,7 @@ public class Actividad7 extends AppCompatActivity {
 
     public void onBackPressed() {
 
+        mediaPlayer.stop();
         Intent i = new Intent(Actividad7.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "7");
         startActivity(i);

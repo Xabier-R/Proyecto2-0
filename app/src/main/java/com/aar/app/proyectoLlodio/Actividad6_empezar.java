@@ -160,7 +160,7 @@ public class Actividad6_empezar extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.audioa_lamuza_parkea);
         mediaPlayer.start();
 
-        tw.setmTypeSpeed(65);
+        tw.setmTypeSpeed(68);
         tw.setText("");
         tw.pause(1500);
         tw.type(texto1).pause(1300)
@@ -297,6 +297,7 @@ public class Actividad6_empezar extends AppCompatActivity {
 
     public void onBackPressed() {
 
+        mediaPlayer.stop();
         Intent i = new Intent(Actividad6_empezar.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "6");
         startActivity(i);

@@ -161,10 +161,10 @@ public class Actividad2_empezar extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.audioa_indusketak);
         mediaPlayer.start();
 
-        tw.setmTypeSpeed(65);
+        tw.setmTypeSpeed(66);
         tw.setText("");
         tw.pause(2500);
-        tw.type(texto1).pause(1300)
+        tw.type(texto1).pause(1500)
             .run(new Runnable() {
                 @Override
                 public void run() {

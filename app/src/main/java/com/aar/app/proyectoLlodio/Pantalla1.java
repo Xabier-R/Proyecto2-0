@@ -186,7 +186,7 @@ public class Pantalla1 extends AppCompatActivity {
 
 
             tw.pause(2500);
-            tw.type(texto7).pause(10000)
+            tw.type(texto7).pause(8000)
                     .run(new Runnable() {
                         @Override
                         public void run() {

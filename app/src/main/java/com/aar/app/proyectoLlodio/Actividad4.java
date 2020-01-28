@@ -224,7 +224,7 @@ public class Actividad4 extends AppCompatActivity{
             db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad4'");
             db.close();
 
-            Toast.makeText(this,"amaituta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Oso ondo", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "5");
             startActivity(i);

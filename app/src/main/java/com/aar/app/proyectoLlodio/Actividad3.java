@@ -107,10 +107,10 @@ public class Actividad3 extends AppCompatActivity {
 
 
                 mediaPlayer2.start();
-                tw.setmTypeSpeed(60);
+                tw.setmTypeSpeed(66);
                 tw.setText("");
-                tw.pause(1000);
-                tw.type(texto).pause(1300)
+                tw.pause(1600);
+                tw.type(texto).pause(1800)
                     .run(new Runnable() {
                         @Override
                         public void run() {
@@ -212,10 +212,10 @@ public class Actividad3 extends AppCompatActivity {
 
         mediaPlayer.start();
 
-        tw.setmTypeSpeed(55);
+        tw.setmTypeSpeed(60);
         tw.setText("");
         tw.pause(1500);
-        tw.type(texto1).pause(1300)
+        tw.type(texto1).pause(1600)
             .run(new Runnable() {
                 @Override
                 public void run() {
@@ -292,6 +292,8 @@ public class Actividad3 extends AppCompatActivity {
         Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "3");
         startActivity(i);
+        mediaPlayer.stop();
+        mediaPlayer2.stop();
         finish();
     }
 }

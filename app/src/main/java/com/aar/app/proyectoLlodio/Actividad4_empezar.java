@@ -230,7 +230,7 @@ public class Actividad4_empezar extends AppCompatActivity {
 
         mediaPlayer.start();
 
-        tw.setmTypeSpeed(60);
+        tw.setmTypeSpeed(58);
 
         tw.setText("");
         tw.pause(1500);
@@ -332,6 +332,7 @@ public class Actividad4_empezar extends AppCompatActivity {
 
     public void onBackPressed() {
 
+        mediaPlayer.stop();
         Intent i = new Intent(Actividad4_empezar.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "4");
         startActivity(i);
