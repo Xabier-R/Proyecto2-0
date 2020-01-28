@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 public class Actividad3 extends AppCompatActivity {
@@ -33,7 +35,9 @@ public class Actividad3 extends AppCompatActivity {
     public static ScrollView scrollView;
     private Button buttonEmpezar;
     private  MediaPlayer mediaPlayer, mediaPlayer2;
-
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,10 @@ public class Actividad3 extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
 
         buttonEmpezar = findViewById(R.id.buttonEmpezar);
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
 
         DisplayMetrics metrics = new DisplayMetrics();
 
@@ -109,6 +117,9 @@ public class Actividad3 extends AppCompatActivity {
                             // Finalize the text if user fiddled with it during animation.
                             mediaPlayer2.stop();
 
+                            //Marco como realizada la actividad 2
+                            db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad3'");
+                            db.close();
 
                             Intent i = new Intent( Actividad3.this, OfflineRegionListActivity.class);
                             i.putExtra("actividad", "4");
@@ -222,6 +233,13 @@ public class Actividad3 extends AppCompatActivity {
 
 
     public void saltar(View view) {
+
+
+
+        //Marco como realizada la actividad 2
+        db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad3'");
+        db.close();
+
 
         Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "4");

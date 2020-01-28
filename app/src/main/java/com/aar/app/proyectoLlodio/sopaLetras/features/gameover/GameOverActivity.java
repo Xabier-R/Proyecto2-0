@@ -3,10 +3,13 @@ package com.aar.app.proyectoLlodio.sopaLetras.features.gameover;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import androidx.core.app.NavUtils;
+
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.aar.app.proyectoLlodio.R;
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.sopaLetras.features.ViewModelFactory;
 import com.aar.app.proyectoLlodio.WordSearchApp;
 import com.aar.app.proyectoLlodio.sopaLetras.commons.DurationFormatter;
@@ -23,6 +26,10 @@ public class GameOverActivity extends FullscreenActivity {
     public static final String EXTRA_GAME_ROUND_ID =
             "com.paperplanes.wordsearch.presentation.ui.activity.GameOverActivity";
 
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
+
     @Inject
     ViewModelFactory mViewModelFactory;
 
@@ -36,6 +43,11 @@ public class GameOverActivity extends FullscreenActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
 
         ButterKnife.bind(this);
         ((WordSearchApp) getApplication()).getAppComponent().inject(this);
@@ -69,6 +81,14 @@ public class GameOverActivity extends FullscreenActivity {
     }
 
     public void showGameStat(GameDataInfo info) {
+
+
+        //Marco como realizada la actividad 2
+        db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad7'");
+        db.close();
+
+
+
         String strGridSize = info.getGridRowCount() + " x " + info.getGridColCount();
 
         String str = getString(R.string.finish_text);

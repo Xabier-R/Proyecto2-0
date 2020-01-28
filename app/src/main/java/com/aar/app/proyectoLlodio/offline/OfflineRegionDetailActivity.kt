@@ -17,7 +17,6 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.LinearLayout.TRANSLATION_X
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -60,6 +59,9 @@ import timber.log.Timber
 import java.io.InputStream
 import java.lang.ref.WeakReference
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+
 
 /**
  * Activity showing the detail of an offline region.
@@ -75,8 +77,45 @@ import java.util.*
 class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback, PermissionsListener, FragmentoLobo.OnFragmentInteractionListener {
 
     override fun onFragmentPulsado(imagen: ImageView?) {
-        intent = Intent(applicationContext, Actividad2::class.java)
-        startActivity(intent)
+
+        imagen?.setImageResource(R.drawable.animation_list)
+        val loboParpadeo = imagen?.getDrawable() as AnimationDrawable
+        loboParpadeo.start()
+
+        System.out.println("La actividad a lanzar es " + actividadLanzar + " ---------------------------------------")
+
+        when (actividadLanzar) {
+            "actividad1" -> {
+                intent = Intent(applicationContext, Actividad1_empezar::class.java)
+                startActivity(intent)
+            }
+            "actividad2" -> {
+                intent = Intent(applicationContext, Actividad2_empezar::class.java)
+                startActivity(intent)
+            }
+            "actividad3" -> {
+                intent = Intent(applicationContext, Actividad3::class.java)
+                startActivity(intent)
+            }
+            "actividad4" -> {
+                intent = Intent(applicationContext, Actividad4_empezar::class.java)
+                startActivity(intent)
+            }
+            "actividad5" -> {
+                intent = Intent(applicationContext, Actividad5_empezar::class.java)
+                startActivity(intent)
+            }
+            "actividad6" -> {
+                intent = Intent(applicationContext, Actividad6_empezar::class.java)
+                startActivity(intent)
+            }
+            "actividad7" -> {
+                intent = Intent(applicationContext, Actividad7::class.java)
+                startActivity(intent)
+            }
+
+        }
+
     }
 
     private val ORIGIN_ICON_ID = "origin-icon-id"
@@ -101,13 +140,17 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var locationEngine: LocationEngine? = null
     private var listaMarcadores: List<Marker>? = null
 
-    private val DEFAULT_INTERVAL_IN_MILLISECONDS = 1800L
+    private val DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L
     private val DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5
     private var texto: TextView? = null
 
+    private var ubicacionesActiviades: HashMap<String, LatLng>? = null
+    private var actividadLanzar: String? = null
+
+
     //BBDD
-    private var activiades: ActividadesSQLiteHelper? = null
-    private var db: SQLiteDatabase? = null
+    var activiades: ActividadesSQLiteHelper? = null
+    var db: SQLiteDatabase? = null
 
     //Fragmento
     private var linearLayout:LinearLayout? = null
@@ -154,8 +197,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         window.requestFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-
         setContentView(R.layout.activity_offline_region_detail)
+
+        instanciarActividades()
 
         //Vinculo el linearLayout del fragmento
         linearLayout = findViewById(R.id.linearFragmento)
@@ -172,6 +216,20 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             loadOfflineDownload(bundle)
         }
         fabDelete.setOnClickListener { onFabClick(it) }
+    }
+
+    private fun instanciarActividades() {
+        this.ubicacionesActiviades = HashMap<String, LatLng>()
+
+        ubicacionesActiviades!!.put("actividad1", LatLng(43.1716111, -2.971638888888889))
+        ubicacionesActiviades!!.put("actividad2", LatLng(43.1719361, -2.9717944444444444))
+        ubicacionesActiviades!!.put("actividad3", LatLng(43.1693611, -2.968888888888889))
+        ubicacionesActiviades!!.put("actividad4", LatLng(43.1563111, -2.9710055555555557))
+        ubicacionesActiviades!!.put("actividad5", LatLng(43.1385083, -2.965691666666667))
+
+        ubicacionesActiviades!!.put("actividad6", LatLng(43.144090, -2.964080))
+        ubicacionesActiviades!!.put("actividad7", LatLng(43.143613, -2.961956))
+
     }
 
     private fun loadOfflineDownload(bundle: Bundle) {
@@ -195,24 +253,24 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     private fun loadOfflineRegion(id: Long, actividad: String) {
         OfflineManager.getInstance(this)
-            .listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback {
+                .listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback {
 
-                override fun onList(offlineRegions: Array<OfflineRegion>) {
-                    for (region in offlineRegions) {
-                        if (region.id == id) {
-                            offlineRegion = region
-                            val definition = region.definition as OfflineRegionDefinition
+                    override fun onList(offlineRegions: Array<OfflineRegion>) {
+                        for (region in offlineRegions) {
+                            if (region.id == id) {
+                                offlineRegion = region
+                                val definition = region.definition as OfflineRegionDefinition
 
-                            setupUI(definition,actividad)
-                            return
+                                setupUI(definition,actividad)
+                                return
+                            }
                         }
                     }
-                }
 
-                override fun onError(error: String) {
-                    Timber.e(error)
-                }
-            })
+                    override fun onError(error: String) {
+                        Timber.e(error)
+                    }
+                })
     }
 
     private fun setupUI(definition: OfflineRegionDefinition, actividad: String) {
@@ -222,6 +280,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             // correct style
             mapboxMap.setOfflineRegionDefinition(definition) { _ ->
                 // restrict camera movement
+//                Toast.makeText(this@OfflineRegionDetailActivity, actividad, Toast.LENGTH_SHORT).show()
                 mapboxMap.setLatLngBoundsForCameraTarget(definition.bounds)
 
 
@@ -496,22 +555,16 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 }
 
                 val ubicacionActual = LatLng(result.lastLocation?.latitude!!, result.lastLocation?.longitude!!)
-                //val ubicacionActual1 = LatLng(result.lastLocation?.latitude!!, result.lastLocation?.longitude!!)
 
-                val distancia = distanciaCoord(ubicacionActual.latitude, ubicacionActual.longitude, 43.1719361, -2.9717944444444444)
-                System.out.println("La distancia actual con la formula es de " + distancia)
+                var actividadCercana = activity.verActividad(ubicacionActual, activity.ubicacionesActiviades!!)
 
-                val ubicacionActividad2 = LatLng(43.1719361, -2.9717944444444444)
+                //Si la actividadCercana es diferente de ""
+                if (actividadCercana.equals("")==false) {
+                    print("La actividad mas cercana es la " + actividadCercana)
 
-                val num = ubicacionActual.distanceTo(ubicacionActividad2)
-                System.out.println("La distancia actual es de " + num)
-
-                //SI esta en un radio de 20 metros lance la actividad 2
-                if (distancia<20) {
                     val actividadesBBDD = ArrayList<Actividad>()
-
-                    val args = arrayOf("actividad2")
-
+                    val args = arrayOf(actividadCercana)
+                    //
                     val c = activity.db?.rawQuery("SELECT actividad, realizada FROM actividades WHERE actividad=?", args);
 
                     if (c?.moveToFirst()!!) {
@@ -523,23 +576,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                         } while (c.moveToNext())
                     }
 
-                    if (actividadesBBDD.get(0).realizada.equals("no"))
+                    if (actividadesBBDD.get(0).realizada.equals("no")) {
                         activity.empezarActividad1(activity)
+                        activity.actividadLanzar = actividadCercana
+                    }
                 }
                 else
                     activity.linearLayout?.visibility = View.INVISIBLE
 
-
-                /*
-                //Estilo
-                activity.mapaBox?.setStyle(Style.Builder().fromUri("asset://stilos.json")) {
-                    // Custom map style has been loaded and map is now ready
-                }
-                */
-
-
-                //Create a Toast which displays the new location's coordinates
-                //Toast.makeText(getApplicationContext(),resultado, Toast.LENGTH_SHORT).show()
 
                 // Pass the new location to the Maps SDK's LocationComponent
                 if (activity.mapaBox != null && result.lastLocation != null) {
@@ -569,7 +613,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     private fun empezarActividad1(activity: OfflineRegionDetailActivity)
     {
-
         val animatorLobo: ObjectAnimator
         val linearLayout: LinearLayout = findViewById<LinearLayout>(R.id.linearFragmento)
 
@@ -598,11 +641,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         linearLayout.setVisibility(View.VISIBLE)
 
 
-
-
-
-
     }
+
+
 
 
     private fun drawLines(featureCollection: FeatureCollection, mapboxMap: MapboxMap?) {
@@ -880,24 +921,71 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
     }
 
-    //Prueba
-    fun verPosicion(view: View) {
-        this.texto?.setText(resultado)
+
+    fun verActividad(ubiacionActual: LatLng, ubicacionesActiviades: HashMap<String, LatLng>):String{
+
+        //Comprobar a que actividad esta cerca
+        for ((key, value) in ubicacionesActiviades) {
+            if (ubiacionActual.distanceTo(value)<20)  {
+                if(actividadAnteriorRealizada(key))
+                {
+                    return key
+
+                }
+
+            }
+
+
+        }
+        return ""
+
     }
 
 
+
+    fun actividadAnteriorRealizada(key: String):Boolean
+    {
+
+        if(key.equals("actividad1"))
+        {
+
+            return true
+
+        }
+        else {
+            var lastChar = key.substring(key.length - 1)
+
+            var num = Integer.parseInt(lastChar) - 1
+
+            val args = arrayOf("actividad" + num)
+
+            var resp = db?.rawQuery("SELECT realizada FROM actividades WHERE actividad=?", args)
+
+
+            var realizado: String = ""
+
+
+            if (resp?.moveToFirst()!!) {
+                //Recorremos el cursor hasta que no haya más registros.
+                do {
+                    realizado = resp.getString(0)
+
+                } while (resp.moveToNext())
+            }
+
+
+
+            if (realizado?.equals("si")!!)
+            {
+                return true
+            }
+            else
+                return false
+
+        }
+    }
+
 }
 
-fun distanciaCoord(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
-    //double radioTierra = 3958.75;//en millas
-    val radioTierra = 6371.0//en kilómetros
-    val dLat = Math.toRadians(lat2 - lat1)
-    val dLng = Math.toRadians(lng2 - lng1)
-    val sindLat = Math.sin(dLat / 2)
-    val sindLng = Math.sin(dLng / 2)
-    val va1 = Math.pow(sindLat, 2.0) + (Math.pow(sindLng, 2.0)
-            * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)))
-    val va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1))
 
-    return (radioTierra * va2)*1000
-}
+

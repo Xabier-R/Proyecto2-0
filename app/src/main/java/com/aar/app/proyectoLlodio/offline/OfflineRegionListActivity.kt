@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio.offline
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.aar.app.proyectoLlodio.R
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
 import com.mapbox.mapboxsdk.offline.OfflineManager
 import com.mapbox.mapboxsdk.offline.OfflineRegion
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition
@@ -21,6 +23,11 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
 
     private lateinit var adapter: OfflineRegionAdapter
     private var actividad: String = "1"
+
+    //BBDD
+    var activiades: ActividadesSQLiteHelper? = null
+    var db: SQLiteDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +44,38 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
         listView.adapter = adapter
         listView.emptyView = findViewById(android.R.id.empty)
         listView.onItemClickListener = this
+
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        activiades = ActividadesSQLiteHelper(this, "DBactividades", null, 1)
+        db = activiades!!.getWritableDatabase()
+
+
+
+
+
+
+        val args = arrayOf("no")
+
+
+        var resp = db?.rawQuery("SELECT actividad FROM actividades WHERE realizada=?",args)
+
+
+        var rutaActividad: String = ""
+
+
+        if (resp?.moveToFirst()!!) {
+
+            rutaActividad = resp.getString(0)
+
+
+        }
+
+        var lastChar = rutaActividad.substring(rutaActividad.length - 1)
+
+        var actividad=lastChar
+
+        Toast.makeText(this@OfflineRegionListActivity, actividad.toString(), Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, OfflineRegionDetailActivity::class.java)
         intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L)

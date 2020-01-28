@@ -3,6 +3,7 @@ package com.aar.app.proyectoLlodio;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 import java.util.ArrayList;
@@ -30,7 +32,9 @@ public class Puzzle extends AppCompatActivity {
     public static final String down = "down";
     public static final String left = "left";
     public static final String right = "right";
-
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private static SQLiteDatabase db;
     private static String[] tileList;
 
     @Override
@@ -39,6 +43,10 @@ public class Puzzle extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.puzzle);
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
 
         init();
 
@@ -142,6 +150,10 @@ public class Puzzle extends AppCompatActivity {
 
         if (isSolved())
         {
+
+            //Marco como realizada la actividad 2
+            db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad1'");
+            db.close();
 
             Toast.makeText(context, "Irabazi duzu", Toast.LENGTH_SHORT).show();
 

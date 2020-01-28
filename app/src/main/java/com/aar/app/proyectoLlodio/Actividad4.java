@@ -3,6 +3,7 @@ package com.aar.app.proyectoLlodio;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 import java.util.ArrayList;
@@ -35,6 +37,9 @@ public class Actividad4 extends AppCompatActivity{
     private Map<String, String> maprpta;
     public CharSequence dragData;
     public ArrayList<EditText> listaEts;
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class Actividad4 extends AppCompatActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad4);
 
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
 
         listaEts = new ArrayList<EditText>();
 
@@ -211,6 +219,11 @@ public class Actividad4 extends AppCompatActivity{
 
     public void onComplete(){
         if(listaEts.size()==7){
+
+            //Marco como realizada la actividad 2
+            db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad4'");
+            db.close();
+
             Toast.makeText(this,"amaituta", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "5");

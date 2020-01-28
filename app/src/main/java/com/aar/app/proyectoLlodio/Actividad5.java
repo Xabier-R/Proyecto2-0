@@ -34,6 +34,7 @@ import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -60,12 +61,17 @@ public class Actividad5 extends AppCompatActivity {
     private SQLiteDatabase db;
     private CuentoSqlite cuentoSqlite;
 
-
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad5);
 
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db1 = activiades.getWritableDatabase();
 
         //set the statue bar background to transparent
         Window w = getWindow();
@@ -237,6 +243,12 @@ public class Actividad5 extends AppCompatActivity {
     }
 
     public void cancelar() {
+
+
+        //Marco como realizada la actividad 2
+        db1.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad5'");
+        db1.close();
+
         Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "6");
         startActivity(i);

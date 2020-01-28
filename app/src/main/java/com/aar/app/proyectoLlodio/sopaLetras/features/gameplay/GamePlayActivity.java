@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.aar.app.proyectoLlodio.R;
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.sopaLetras.features.SoundPlayer;
 import com.aar.app.proyectoLlodio.sopaLetras.features.ViewModelFactory;
 import com.aar.app.proyectoLlodio.WordSearchApp;
@@ -44,6 +46,7 @@ public class GamePlayActivity extends FullscreenActivity {
             "com.aar.app.wordsearch.features.gameplay.GamePlayActivity.ROW";
     public static final String EXTRA_COL_COUNT =
             "com.aar.app.wordsearch.features.gameplay.GamePlayActivity.COL";
+
 
     private static final StreakLineMapper STREAK_LINE_MAPPER = new StreakLineMapper();
 
@@ -79,6 +82,9 @@ public class GamePlayActivity extends FullscreenActivity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game_play);
+
+
+
 
         ButterKnife.bind(this);
         ((WordSearchApp) getApplication()).getAppComponent().inject(this);

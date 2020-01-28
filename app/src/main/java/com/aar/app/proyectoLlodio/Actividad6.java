@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,11 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 public class Actividad6 extends AppCompatActivity {
 
     private EditText a6_et1, a6_et2, a6_et3, a6_et4;
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,12 @@ public class Actividad6 extends AppCompatActivity {
         a6_et2 = findViewById(R.id.a6_et2);
         a6_et3 = findViewById(R.id.a6_et3);
         a6_et4 = findViewById(R.id.a6_et4);
+
+
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
+
     }
 
     public void reset(View view) {
@@ -54,6 +65,10 @@ public class Actividad6 extends AppCompatActivity {
         if(cor==4)
         {
 
+
+            //Marco como realizada la actividad 2
+            db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad6'");
+            db.close();
 
             Intent i = new Intent(Actividad6.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "7");

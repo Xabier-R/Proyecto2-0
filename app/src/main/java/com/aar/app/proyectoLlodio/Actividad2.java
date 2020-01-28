@@ -40,6 +40,7 @@ public class Actividad2 extends AppCompatActivity {
     private RadioButton btnResp2;
     private int aciertos;
 
+
     //BBDD
     private ActividadesSQLiteHelper activiades;
     private SQLiteDatabase db;
@@ -77,9 +78,12 @@ public class Actividad2 extends AppCompatActivity {
 
         if (btnNext.getText().equals("BUKATUTA"))
         {
+
+
             //Marco como realizada la actividad 2
-            db.execSQL("UPDATE actividades SET realizada='si'");
+            db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad2'");
             db.close();
+
             Intent i = new Intent( Actividad2.this, OfflineRegionListActivity.class);
             i.putExtra("actividad", "3");
             startActivity(i);
