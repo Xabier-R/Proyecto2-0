@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,60 +9,65 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:layout_marginStart="5dp"
         app:cardBackgroundColor="@color/cardview_light_background"
         app:cardCornerRadius="5dp"
-        app:contentPadding="15dp"
         app:cardElevation="20dp"
+        app:contentPadding="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
-            android:textAlignment="center"
             android:layout_height="20dp"
+            android:layout_marginStart="100dp"
             android:layout_marginBottom="208dp"
-            android:text="Nombre Patrimonio"
+            android:text="Titulo cuento"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16dp"
+            android:fontFamily="@font/andika"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txtDescripcion"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="59dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:maxLength="100"
             android:padding="10dp"
-            android:text="Nombre Patrimonio"
+            android:text="Descripcion cuento"
+            android:fontFamily="@font/andika"
+            android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:maxLength="100"
-            android:textStyle="bold"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
+
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/imgBorrar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="330dp"
-            android:layout_marginTop="80dp"
-            app:srcCompat="@drawable/a5_img2" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="30dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="delete.json"
+            app:lottie_loop="true" />
 
         <ImageView
             android:id="@+id/imgLibro"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="128dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/libro32" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.cardview.widget.CardView>
 

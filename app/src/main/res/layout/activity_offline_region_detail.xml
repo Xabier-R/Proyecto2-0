@@ -34,7 +34,7 @@
                     android:id="@+id/framentoLobo"
                     android:name="com.aar.app.proyectoLlodio.FragmentoLobo"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="170dp"
                     android:layout_above="@id/mapView"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom">

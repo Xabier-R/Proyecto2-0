@@ -42,7 +42,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.item_cuento5, parent, false);
+        View v = inflater.inflate(R.layout.item_cuento, parent, false);
         return new myViewHolder(v, mListener);
     }
 

@@ -355,7 +355,6 @@ public class Actividad5_empezar extends AppCompatActivity {
 
     public void onBackPressed() {
 
-        mediaPlayer.stop();
         Intent i = new Intent(Actividad5_empezar.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "5");
         startActivity(i);

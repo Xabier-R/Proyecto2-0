@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
 import com.aar.app.proyectoLlodio.bbdd.Actividad
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
+import com.aar.app.proyectoLlodio.sopaLetras.features.gameover.GameOverActivity
 import com.mapbox.android.core.location.*
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
@@ -895,8 +896,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
     private fun empezarActividad7(mapboxMap: MapboxMap) {
-        val intent = Intent(this, Actividad7::class.java)
+
+
+
+        val intent = Intent(this, GameOverActivity::class.java)
         startActivityForResult(intent, 7)
+
+//        val intent = Intent(this, Actividad7::class.java)
+//        startActivityForResult(intent, 7)
     }
 
 

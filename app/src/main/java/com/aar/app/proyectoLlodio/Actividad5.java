@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -25,20 +26,27 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class Actividad5 extends AppCompatActivity {
 
@@ -58,24 +66,25 @@ public class Actividad5 extends AppCompatActivity {
     Intent i;
     final static int cons =0;
 
-    private SQLiteDatabase db;
-    private CuentoSqlite cuentoSqlite;
-
     //BBDD
     private ActividadesSQLiteHelper activiades;
     private SQLiteDatabase db1;
+
+    private SQLiteDatabase db;
+    private CuentoSqlite cuentoSqlite;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad5);
+
 
         //Abrimos la base de datos "DBUsuarios" en modo de escritura
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db1 = activiades.getWritableDatabase();
-
-        //set the statue bar background to transparent
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         bipmapdata = new byte[3];
 
@@ -138,38 +147,14 @@ public class Actividad5 extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_lista);
         adaptadorCuento = new AdaptadorCuento(this, cuentos);
 
-        recyclerView.setAdapter(adaptadorCuento);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(adaptadorCuento);
 
-        SwipeableRecyclerViewTouchListener swipeTouchListener = new SwipeableRecyclerViewTouchListener(recyclerView,
-                new SwipeableRecyclerViewTouchListener.SwipeListener() {
-                    int posicion;
-                    @Override
-                    public boolean canSwipeLeft(int position) {
-                        this.posicion=position;
-                        return true;
-                    }
-
-                    @Override
-                    public boolean canSwipeRight(int position) {
-                        this.posicion=position;
-                        return false;
-                    }
-
-                    @Override
-                    public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                        System.out.println("La posicion es " + posicion);
-                        actualizarBase(posicion);
-                    }
-
-                    @Override
-                    public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                        System.out.println("La posicion es " + posicion);
-                        actualizarBase(posicion);
-                    }
-                });
-
-
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         adaptadorCuento.setOnItemClickListener(new AdaptadorCuento.OnItemClickListener() {
             @Override
@@ -183,9 +168,64 @@ public class Actividad5 extends AppCompatActivity {
             }
         });
 
-        recyclerView.addOnItemTouchListener(swipeTouchListener);
+        //recyclerView.addOnItemTouchListener(swipeTouchListener);
 
     }
+
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            System.out.println("La posicion es " + position);
+            Cuento cuento = adaptadorCuento.mdata.get(position);
+            if (ItemTouchHelper.LEFT == direction) {
+                actualizarBase(position);
+                Snackbar.make(recyclerView, cuento.getTitulo() + " elimiando", Snackbar.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            //.addSwipeLeftActionIcon(R.drawable.borrarmedio)
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(Actividad5.this, R.color.borrar))
+                    .addSwipeLeftActionIcon(R.drawable.borrar)
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
+
+    private void actualizarBase(int pos)
+    {
+        System.out.println("El tamaño de la lista es " + adaptadorCuento.mdata.size());
+        Cuento cuento = adaptadorCuento.mdata.get(pos);
+        String[] args = new String[]{cuento.getTitulo()};
+        db.execSQL("DELETE FROM Cuento WHERE titulo=?", args);
+        adaptadorCuento.mdata.remove(pos);
+        adaptadorCuento.notifyItemRemoved(pos);
+        //adaptadorCuento.notifyItemRangeChanged(pos,adaptadorCuento.mdata.size());
+    }
+
+    private void recuperarCuento(Cuento cuento, int position) {
+        ContentValues nuevoCuento = new ContentValues();
+        nuevoCuento.put("titulo", cuento.getTitulo());
+        nuevoCuento.put("descripcion",  cuento.getDescripcion());
+        nuevoCuento.put("foto",  cuento.getFotoSacada());
+        db.insert("Cuento", null, nuevoCuento);
+        adaptadorCuento.mdata.add(cuento);
+        adaptadorCuento.notifyItemInserted(position);
+
+    }
+
 
     public void guardarCuento(View view) {
         boolean puede = comprobar();
@@ -194,6 +234,7 @@ public class Actividad5 extends AppCompatActivity {
         {
             String tituloCuento = titulo.getText().toString();
             String descripcionCuento = descripcion.getText().toString();
+
 
             //encode image to base64 string
             BitmapDrawable drawable = (BitmapDrawable) linearFoto.getBackground();
@@ -209,7 +250,6 @@ public class Actividad5 extends AppCompatActivity {
             db.insert("Cuento", null, nuevoCuento);
             limpiar();
             Toast.makeText(getApplicationContext(), "Ipuina gordeta", Toast.LENGTH_SHORT).show();
-
 
 
             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
@@ -255,6 +295,9 @@ public class Actividad5 extends AppCompatActivity {
         finish();
     }
 
+
+
+
     private boolean comprobar()
     {
         if ( (titulo.getText().toString().equals("")== false) && (descripcion.getText().toString().equals("")==false))
@@ -264,16 +307,7 @@ public class Actividad5 extends AppCompatActivity {
         return false;
     }
 
-    private void actualizarBase(int pos)
-    {
-        System.out.println("El tamaño de la lista es " + adaptadorCuento.mdata.size());
-        Cuento cuento = adaptadorCuento.mdata.get(pos);
-        String[] args = new String[]{cuento.getTitulo()};
-        db.execSQL("DELETE FROM Cuento WHERE titulo=?", args);
-        adaptadorCuento.mdata.remove(pos);
-        adaptadorCuento.notifyItemRemoved(pos);
-        adaptadorCuento.notifyItemRangeChanged(pos,adaptadorCuento.mdata.size());
-    }
+
 
     private void limpiar()
     {

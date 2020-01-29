@@ -74,7 +74,7 @@
             android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="Arial"
+            android:fontFamily="@font/andika"
             android:stackFromBottom="true"
             android:textSize="17sp"
             android:textStyle="bold" />
