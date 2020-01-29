@@ -27,7 +27,7 @@ Primera fase - Seguimiento
 - [x] Toma de contacto con UPV por correo eléctronico
 
 
-<h4>Segunda Semana 15/11/2019 - 29/11/2019</h4>
+<h4>Segunda Semana 25/11/2019 - 29/11/2019</h4>
 
 - [x] Pantalla inicio - Escudo de Laudio
 - [x] Pantalla 1 - El lobo narrará la historia de Laudio
@@ -45,7 +45,7 @@ Primera fase - Seguimiento
 - [x] Actividad 6 - Mostrar lugares y completar los nombres
 - [ ] Actividad 7 - Sopa de letras
 
-<h4>Tercera Semana 15/11/2019 - 29/11/2019</h4>
+<h4>Tercera Semana 02/12/2019 - 05/12/2019</h4>
 
 - [ ] Programación de actividades faltantes
 - [x] Programación de pantallas principales faltantes
