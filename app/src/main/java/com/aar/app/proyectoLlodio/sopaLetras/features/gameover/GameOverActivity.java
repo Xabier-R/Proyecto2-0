@@ -51,17 +51,17 @@ public class GameOverActivity extends AppCompatActivity {
     public void confeti(KonfettiView konfettiView, Float taman)
     {
 
-        Toast.makeText(this, taman.toString(), Toast.LENGTH_SHORT).show();
         konfettiView.build()
-            .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA,Color.BLUE,Color.RED)
+            .addColors(Color.YELLOW,Color.WHITE)
             .setDirection(0.0, 359.0)
-            .setSpeed(1f, 4f)
+            .setSpeed(1f, 3f)
             .setFadeOutEnabled(true)
-            .setTimeToLive(20000L)
+            .setTimeToLive(16000L)
             .addShapes(Shape.RECT, Shape.CIRCLE)
             .addSizes(new Size(12, 5f))
             .setPosition(0f, taman*3, -50f, -50f)
-            .streamFor(300, 15000L);
+            .streamFor(300, 13000L);
+
     }
 
 

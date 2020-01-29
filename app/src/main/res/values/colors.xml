@@ -14,6 +14,7 @@
     <color name="col3">#99cf72</color>
     <color name="col4">#72cfa2</color>
     <color name="borrar">#fa315b</color>
+    <color name="blanco2">#f9f4f4</color>
 
     <color name="gray">#aa808080</color>
 </resources>
