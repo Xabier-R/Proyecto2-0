@@ -45,5 +45,12 @@ public class Pantalla0 extends AppCompatActivity {
                 finish();
             }
         },4000);
+
+
+
+
     }
+
+
+
 }
