@@ -93,7 +93,7 @@ public class Pantalla2 extends AppCompatActivity{
         games = new ArrayList<>();
         games.add(new Game(R.drawable.p2_img4, "Egileak"));
         games.add(new Game(R.drawable.p2_img3, "Galeria"));
-        games.add(new Game(R.drawable.p2_img1, "Mapa"));
+        games.add(new Game(R.drawable.p2_img1_2, "Mapa"));
         games.add(new Game(R.drawable.p2_img2, "Ondareak"));
     }
 
