@@ -163,12 +163,12 @@ public class Actividad5 extends AppCompatActivity {
             }
 
             @Override
-            public void onCartaPulsada(int position, ImageView imagen) {
-                verCuentoSeleccionado(position, imagen);
+            public void onCartaPulsada(int position) {
+                verCuentoSeleccionado(position);
             }
         });
 
-        //recyclerView.addOnItemTouchListener(swipeTouchListener);
+
 
     }
 
@@ -362,7 +362,7 @@ public class Actividad5 extends AppCompatActivity {
         }
     }
 
-    private void verCuentoSeleccionado(int position, ImageView imageView)
+    private void verCuentoSeleccionado(int position)
     {
         String tituloCuento = adaptadorCuento.mdata.get(position).getTitulo();
         String descripcionCuento = adaptadorCuento.mdata.get(position).getDescripcion();
@@ -374,11 +374,9 @@ public class Actividad5 extends AppCompatActivity {
         intent.putExtra("descripcion", descripcionCuento);
         intent.putExtra("fotocodificada", fotoCuento);
 
-        Pair<View, String> p1 = Pair.create((View)titulo, "txtTitulo");
-        Pair<View, String> p2 = Pair.create((View)descripcion, "txtDescripcion");
+        System.out.println("La imagen codificada es " + fotoCuento);
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2);
-        startActivity(intent, options.toBundle());
+        startActivity(intent);
     }
 
 

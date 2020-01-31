@@ -25,7 +25,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
 
     public interface OnItemClickListener {
         void onbtnPulsado(int position);
-        void onCartaPulsada(int position, ImageView imagen);
+        void onCartaPulsada(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -97,7 +97,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onCartaPulsada(position, imagenLibro);
+                            listener.onCartaPulsada(position);
                         }
                     }
                 }

@@ -288,6 +288,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 //Ver posicion
                 this.mapaBox = mapboxMap
 
+
                 enableLocationComponent(this.mapaBox!!.getStyle()!!)
 
                 //Ver posicion
