@@ -75,7 +75,6 @@ class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickLi
 
         var actividad=lastChar
 
-        Toast.makeText(this@OfflineRegionListActivity, actividad.toString(), Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, OfflineRegionDetailActivity::class.java)
         intent.putExtra(OfflineRegionDetailActivity.KEY_REGION_ID_BUNDLE, 1L)

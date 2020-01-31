@@ -75,6 +75,10 @@ public class GamePlayActivity extends FullscreenActivity {
     @BindColor(R.color.gray) int mGrayColor;
 
     private ArrayLetterGridDataAdapter mLetterAdapter;
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +87,9 @@ public class GamePlayActivity extends FullscreenActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game_play);
 
-
+        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = activiades.getWritableDatabase();
 
 
         ButterKnife.bind(this);
@@ -283,6 +289,15 @@ public class GamePlayActivity extends FullscreenActivity {
     }
 
     private void showFinishGame(int gameId) {
+
+
+        //Marco como realizada la actividad 2
+        db.execSQL("UPDATE actividades SET realizada='no'");
+        db.close();
+
+
+
+
         Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
         finish();

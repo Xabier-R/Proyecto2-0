@@ -899,11 +899,11 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
 
-        val intent = Intent(this, GameOverActivity::class.java)
-        startActivityForResult(intent, 7)
+//       val intent = Intent(this, GameOverActivity::class.java)
+//       startActivityForResult(intent, 7)
 
-//        val intent = Intent(this, Actividad7::class.java)
-//        startActivityForResult(intent, 7)
+        val intent = Intent(this, Actividad7::class.java)
+        startActivityForResult(intent, 7)
     }
 
 

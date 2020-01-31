@@ -1,5 +1,6 @@
 package com.aar.app.proyectoLlodio.sopaLetras.features.gameover;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +12,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.aar.app.proyectoLlodio.Actividad4_empezar;
+import com.aar.app.proyectoLlodio.Pantalla2;
+import com.aar.app.proyectoLlodio.Pantalla6;
 import com.aar.app.proyectoLlodio.R;
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
@@ -42,9 +48,18 @@ public class GameOverActivity extends AppCompatActivity {
         }
 
 
+
+
     }
 
+    public void finalizar(View view)
+    {
+        Intent i = new Intent(GameOverActivity.this, Pantalla2.class);
+        startActivity(i);
+        finish();
 
+
+    }
 
 
 
@@ -66,6 +81,14 @@ public class GameOverActivity extends AppCompatActivity {
 
 
 
+    public void onBackPressed() {
+
+
+        Intent i = new Intent(GameOverActivity.this, Pantalla2.class);
+        i.putExtra("actividad", "4");
+        startActivity(i);
+        finish();
+    }
 
 
 }
