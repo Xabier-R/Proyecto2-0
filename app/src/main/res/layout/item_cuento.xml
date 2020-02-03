@@ -14,36 +14,36 @@
         android:layout_gravity="center"
         app:cardBackgroundColor="@color/cardview_light_background"
         app:cardCornerRadius="5dp"
-        app:cardElevation="20dp"
-        app:contentPadding="5dp"
+        app:cardElevation="10dp"
+        app:contentPadding="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginStart="100dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="110dp"
             android:layout_marginBottom="208dp"
+            android:fontFamily="@font/andika"
             android:text="Titulo cuento"
-            android:textAlignment="center"
+
             android:textColor="#000000"
             android:textSize="16dp"
-            android:fontFamily="@font/andika"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txtDescripcion"
-            android:layout_width="270dp"
-            android:layout_height="59dp"
+            android:layout_width="216dp"
+            android:layout_height="118dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/andika"
             android:maxLength="100"
             android:padding="10dp"
             android:text="Descripcion cuento"
-            android:fontFamily="@font/andika"
             android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="16dp"
@@ -65,7 +65,7 @@
         <ImageView
             android:id="@+id/imgLibro"
             android:layout_width="100dp"
-            android:layout_height="128dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

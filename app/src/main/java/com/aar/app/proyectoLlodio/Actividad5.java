@@ -61,6 +61,7 @@ public class Actividad5 extends AppCompatActivity {
     private LinearLayout linearFoto;
     private byte [] bipmapdata;
     private String fotoCodificada;
+    private boolean fotoSacada=false;
 
     Bitmap bmp;
     Intent i;
@@ -125,6 +126,7 @@ public class Actividad5 extends AppCompatActivity {
         titulo = findViewById(R.id.titulo);
         descripcion = findViewById(R.id.cuento);
         linearFoto = findViewById(R.id.linearImagen);
+
 
         checkCameraPermission();
 
@@ -215,16 +217,7 @@ public class Actividad5 extends AppCompatActivity {
         //adaptadorCuento.notifyItemRangeChanged(pos,adaptadorCuento.mdata.size());
     }
 
-    private void recuperarCuento(Cuento cuento, int position) {
-        ContentValues nuevoCuento = new ContentValues();
-        nuevoCuento.put("titulo", cuento.getTitulo());
-        nuevoCuento.put("descripcion",  cuento.getDescripcion());
-        nuevoCuento.put("foto",  cuento.getFotoSacada());
-        db.insert("Cuento", null, nuevoCuento);
-        adaptadorCuento.mdata.add(cuento);
-        adaptadorCuento.notifyItemInserted(position);
 
-    }
 
 
     public void guardarCuento(View view) {
@@ -300,8 +293,7 @@ public class Actividad5 extends AppCompatActivity {
 
     private boolean comprobar()
     {
-        if ( (titulo.getText().toString().equals("")== false) && (descripcion.getText().toString().equals("")==false))
-        {
+        if ( (titulo.getText().toString().equals("")== false) && (descripcion.getText().toString().equals("")==false) && (fotoSacada==true)) {
             return true;
         }
         return false;
@@ -316,6 +308,7 @@ public class Actividad5 extends AppCompatActivity {
 
         Drawable drawable = getResources().getDrawable(R.drawable.a5_img4);
         linearFoto.setBackground(drawable);
+        fotoSacada=false;
     }
 
     //Accede a la camara si tiene permisos, si no tiene saca un jdialog
@@ -359,6 +352,7 @@ public class Actividad5 extends AppCompatActivity {
             bmp = (Bitmap)ext.get("data");
             BitmapDrawable ob = new BitmapDrawable(getResources(), bmp);
             linearFoto.setBackground(ob);
+            fotoSacada=true;
         }
     }
 

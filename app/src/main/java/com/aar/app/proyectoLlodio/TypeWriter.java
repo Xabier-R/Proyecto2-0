@@ -257,6 +257,8 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
         public void run() {
             mRunnable.run();
             done();
+
         }
     }
+
 }

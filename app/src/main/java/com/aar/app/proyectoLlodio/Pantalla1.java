@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +27,7 @@ public class Pantalla1 extends AppCompatActivity {
     private  TypeWriter tw;
     private AnimatorSet animatorSet5;
     public static ScrollView scrollView;
-    private int lanzadas=1;
+    private static int lanzadas=1;
 
 
     //AUDIOS
@@ -101,9 +102,15 @@ public class Pantalla1 extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
 
-                //HAY QUE FINALIZAR EL TW!!!!!!!!
 
-                lanzarActividad();
+                if(lanzadas<=1) {
+
+                    lanzarActividad();
+                }
+                else
+                {
+                    Toast.makeText(Pantalla1.this, "1111", Toast.LENGTH_SHORT).show();
+                }
 
                 mediaPlayer.stop();
                 mediaPlayer2.stop();
@@ -199,6 +206,10 @@ public class Pantalla1 extends AppCompatActivity {
                             if(lanzadas<=1) {
 
                                 lanzarActividad();
+                            }
+                            else
+                            {
+                                Toast.makeText(Pantalla1.this, "asdfasdfasdfasf", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

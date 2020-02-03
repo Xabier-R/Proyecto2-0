@@ -148,15 +148,12 @@ public class Actividad7 extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
-//                Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-//                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
-//                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
-//                startActivity(intent);
-
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 6);
-                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 6);
+                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
+                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
                 startActivity(intent);
+
+
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 mediaPlayer.stop();
                 finish();
@@ -170,14 +167,11 @@ public class Actividad7 extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
 
-//                Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-//                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
-//                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
-//                startActivity(intent);
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
-                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 6);
-                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 6);
+                intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
+                intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
                 startActivity(intent);
+
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 mediaPlayer.stop();
                 finish();
