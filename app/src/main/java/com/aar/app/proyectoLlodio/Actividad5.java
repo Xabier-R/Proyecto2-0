@@ -103,13 +103,13 @@ public class Actividad5 extends AppCompatActivity {
         //Vinculo la tab1 con la pestaña
         TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
         spec.setContent(R.id.tab1);
-        spec.setIndicator("Escribir cuento", res.getDrawable((android.R.drawable.ic_menu_camera)));
+        spec.setIndicator("Ipuina idatzi", res.getDrawable((android.R.drawable.ic_menu_camera)));
         tabs.addTab(spec);
 
         //Vinculo la tab2 con la pestaña
         spec = tabs.newTabSpec("mitab2");
         spec.setContent(R.id.tab2);
-        spec.setIndicator("Leer cuento", res.getDrawable(android.R.drawable.ic_dialog_map));
+        spec.setIndicator("Ipuina irakurri", res.getDrawable(android.R.drawable.ic_dialog_map));
         tabs.addTab(spec);
 
         tabs.setCurrentTab(0);
@@ -185,11 +185,10 @@ public class Actividad5 extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
-            System.out.println("La posicion es " + position);
             Cuento cuento = adaptadorCuento.mdata.get(position);
             if (ItemTouchHelper.LEFT == direction) {
                 actualizarBase(position);
-                Snackbar.make(recyclerView, cuento.getTitulo() + " elimiando", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(recyclerView, cuento.getTitulo() + " ezabatu da", Snackbar.LENGTH_LONG).show();
             }
         }
 
@@ -208,7 +207,6 @@ public class Actividad5 extends AppCompatActivity {
 
     private void actualizarBase(int pos)
     {
-        System.out.println("El tamaño de la lista es " + adaptadorCuento.mdata.size());
         Cuento cuento = adaptadorCuento.mdata.get(pos);
         String[] args = new String[]{cuento.getTitulo()};
         db.execSQL("DELETE FROM Cuento WHERE titulo=?", args);
@@ -265,7 +263,7 @@ public class Actividad5 extends AppCompatActivity {
 
         }
         else
-            Toast.makeText(getApplicationContext(), "Bete eremu guztiak", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Eremu guztiak bete", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -318,8 +316,8 @@ public class Actividad5 extends AppCompatActivity {
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 225);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Se necesitan permisos de camara")
-                    .setTitle("Permisos Necesarios");
+            builder.setMessage("Argazkiak ateratzeko baimena behar duzu")
+                    .setTitle("Oharra");
             AlertDialog dialog = builder.create();
             dialog.show();
         }
@@ -337,10 +335,9 @@ public class Actividad5 extends AppCompatActivity {
         int permissionCheck = ContextCompat.checkSelfPermission(
                 this, Manifest.permission.CAMERA);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            Log.i("Mensaje", "No se tiene permiso para la camara!.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 225);
         } else {
-            Log.i("Mensaje", "Tienes permiso para usar la camara.");
+
         }
     }
 
@@ -368,8 +365,6 @@ public class Actividad5 extends AppCompatActivity {
         intent.putExtra("descripcion", descripcionCuento);
         intent.putExtra("fotocodificada", fotoCuento);
 
-        System.out.println("La imagen codificada es " + fotoCuento);
-
         startActivity(intent);
     }
 
@@ -389,6 +384,7 @@ public class Actividad5 extends AppCompatActivity {
 
 
     public void onBackPressed() {
+
 
         Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "5");

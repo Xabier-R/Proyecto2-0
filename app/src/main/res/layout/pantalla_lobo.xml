@@ -86,11 +86,11 @@
         android:layout_width="150dp"
         android:layout_height="75dp"
         android:background="@drawable/p2_border3"
-        android:textSize="15sp"
         android:textColor="@color/blanco"
+        android:textSize="15sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-        app:layout_constraintEnd_toStartOf="@+id/lobo"
+        app:layout_constraintEnd_toEndOf="@+id/bocadillo"
         app:layout_constraintStart_toStartOf="@+id/bocadillo"
         app:layout_constraintTop_toTopOf="@+id/bocadillo" />
 

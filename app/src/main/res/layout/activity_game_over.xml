@@ -44,7 +44,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/andika"
-            android:text="Bukatu"
+            android:text="Amaitu"
             android:background="@drawable/boton_personalizado"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

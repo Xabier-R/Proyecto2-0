@@ -260,7 +260,7 @@ public class Actividad7 extends AppCompatActivity {
                     video.setMediaController(mediaController);
                     video.start();
                     tw.setText("Jarduera erabilgarria");
-                    buttonEmpezar.setText("Hitz Saldia");
+                    buttonEmpezar.setText("Letra-zopa");
                     buttonEmpezar.setVisibility(View.VISIBLE);
                     animacion();
                 }
