@@ -29,7 +29,6 @@ public class Pantalla6_carrousel extends AppCompatActivity {
         arimg = datos.getIntArray("imagenesCarrousel");
         posicionFoto = datos.getInt("posicionFoto");
 
-        System.out.println(posicionFoto + " -------- ");
 
         carouselView = findViewById(R.id.carousel);
         carouselView.setPageCount(arimg.length);

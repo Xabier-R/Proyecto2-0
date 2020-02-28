@@ -50,6 +50,9 @@ public class Pantalla1 extends AppCompatActivity {
 
         int orientation = getResources().getConfiguration().orientation;
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
+
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -85,11 +88,15 @@ public class Pantalla1 extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
-                Intent i = new Intent(Pantalla1.this, Pantalla2.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.left_in, R.anim.left_out);
+
                 mediaPlayer.stop();
-                mediaPlayer2.stop();
+                if(lanzadas<=1) {
+                    mediaPlayer2.stop();
+                    lanzarActividad();
+                }
+
+
+
                 finish();
                 tw.cancelPendingInputEvents();
             }
@@ -102,19 +109,17 @@ public class Pantalla1 extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
 
-
+                mediaPlayer.stop();
                 if(lanzadas<=1) {
-
+                    mediaPlayer2.stop();
                     lanzarActividad();
                 }
-                else
-                {
-                    Toast.makeText(Pantalla1.this, "1111", Toast.LENGTH_SHORT).show();
-                }
 
-                mediaPlayer.stop();
-                mediaPlayer2.stop();
+
+
                 finish();
+                tw.cancelPendingInputEvents();
+
             }
 
             @Override
@@ -137,12 +142,8 @@ public class Pantalla1 extends AppCompatActivity {
 
     public void  sicronizarTexto1()
     {
-        mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
-        mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
-
 
             mediaPlayer.start();
-
 
             String texto1 =getString(R.string.texto1_p1);
             String texto2 =getString(R.string.texto2_p1);
@@ -188,7 +189,11 @@ public class Pantalla1 extends AppCompatActivity {
                         // Finalize the text if user fiddled with it during animation.
                         tw.setText("");
                         mediaPlayer.stop();
-                        mediaPlayer2.start();
+                        if(lanzadas<=1) {
+
+                            mediaPlayer2.start();
+                        }
+
                     });
 
 
@@ -199,13 +204,14 @@ public class Pantalla1 extends AppCompatActivity {
                         public void run() {
                             // Finalize the text if user fiddled with it during animation.
                             tw.setText("");
-                            mediaPlayer2.stop();
+
 
 
                             //Inicio del menu cuando termina el audio
                             if(lanzadas<=1) {
 
-                                lanzarActividad();
+                               // lanzarActividad();
+                                animatorSet5.start();
                             }
                             else
                             {

@@ -73,7 +73,7 @@ public class Actividad2 extends AppCompatActivity {
     }
 
     public void siguiente(View view) {
-        System.out.println(numPregunta);
+
         verRespuestaElegida();
 
         if (btnNext.getText().equals("BUKATUTA"))

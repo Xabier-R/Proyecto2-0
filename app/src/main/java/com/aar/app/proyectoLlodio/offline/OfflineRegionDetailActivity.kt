@@ -83,7 +83,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 //        val loboParpadeo = imagen?.getDrawable() as AnimationDrawable
 //        loboParpadeo.start()
 
-        System.out.println("La actividad a lanzar es " + actividadLanzar + " ---------------------------------------")
 
         when (actividadLanzar) {
             "actividad1" -> {
