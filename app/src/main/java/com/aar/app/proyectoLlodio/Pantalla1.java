@@ -6,26 +6,27 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Pantalla1 extends AppCompatActivity {
-    private ImageView lobo,bocadillo;
-    private ObjectAnimator animatorLobo,animatorBocadillo, patadaLobo,patadaLobo2,Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll;
-    private long animationLoboDuration = 1000;
-    private long animationBocadilloDuration = 1500;
+    private ImageView lobo,destello;
+    private ObjectAnimator girar,encogerX,encogerY,destello1,destello2,destello3;
+    private LinearLayout dialogoLobo;
     private  TypeWriter tw;
-    private AnimatorSet animatorSet5;
+    private AnimatorSet animatorSet,animatorSet2,animatorSet5;
     public static ScrollView scrollView;
     private static int lanzadas=1;
 
@@ -42,43 +43,20 @@ public class Pantalla1 extends AppCompatActivity {
         setContentView(R.layout.pantalla_lobo);
 
         lobo = findViewById(R.id.lobo);
-        bocadillo = findViewById(R.id.bocadillo);
+        destello = findViewById(R.id.destello);
         tw = (TypeWriter) findViewById(R.id.tv);
         scrollView = findViewById(R.id.scrollView);
-
+        dialogoLobo = findViewById(R.id.dialogoLobo);
         DisplayMetrics metrics = new DisplayMetrics();
 
-        int orientation = getResources().getConfiguration().orientation;
 
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
 
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            float width = metrics.xdpi;
-
-
-        } else {
-
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int width = metrics.widthPixels;
-            animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
-            animatorLobo.setDuration(animationLoboDuration);
-            AnimatorSet animatorSetX = new AnimatorSet();
-            animatorSetX.playTogether(animatorLobo);
-            animatorSetX.start();
-
-
-            animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
-            animatorBocadillo.setDuration(animationBocadilloDuration);
-            AnimatorSet animatorSetAlpha = new AnimatorSet();
-            animatorSetAlpha.playTogether(animatorBocadillo);
-            animatorSetAlpha.start();
-        }
 
         sicronizarTexto1();
-
+        hablar();
         animatorSet5 = new AnimatorSet();
         animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
             @Override
@@ -143,82 +121,70 @@ public class Pantalla1 extends AppCompatActivity {
     public void  sicronizarTexto1()
     {
 
-            mediaPlayer.start();
+        mediaPlayer.start();
 
-            String texto1 =getString(R.string.texto1_p1);
-            String texto2 =getString(R.string.texto2_p1);
-            String texto3 =getString(R.string.texto3_p1);
-            String texto4 =getString(R.string.texto4_p1);
-            String texto5 =getString(R.string.texto5_p1);
-            String texto6 =getString(R.string.texto6_p1);
-            String texto7 =getString(R.string.texto7_p1);
+        String texto1 =getString(R.string.texto1_p1);
+        String texto2 =getString(R.string.texto2_p1);
+        String texto3 =getString(R.string.texto3_p1);
+        String texto4 =getString(R.string.texto4_p1);
+        String texto5 =getString(R.string.texto5_p1);
+        String texto6 =getString(R.string.texto6_p1);
+        String texto7 =getString(R.string.texto7_p1);
 
-            tw.setText("");
-            tw.pause(1500);
-            tw.type(texto1).pause(1300)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-                        }
-                    });
+        tw.setText("");
+        tw.pause(1500);
+        tw.type(texto1).pause(1300)
+                .run(new Runnable() {
+                    @Override
+                    public void run() {
+                        tw.setText("");
+                    }
+                });
 
-            tw.type(texto2).pause(1300)
-                    .run(() -> {
-                        // Finalize the text if user fiddled with it during animation.
+        tw.type(texto2).pause(1300)
+                .run(() -> {
+                    tw.setText("");
+                });
+        tw.type(texto3).pause(400)
+                .run(() -> {
+                    tw.setText("");
+                });
+        tw.type(texto4).pause(200)
+                .run(() -> {
+                    tw.setText("");
+                });
+        tw.type(texto5).pause(800)
+                .run(() -> {
+                    tw.setText("");
+                });
+        tw.type(texto6).pause(200)
+                .run(() -> {
+                    tw.setText("");
+                    mediaPlayer.stop();
+                    if(lanzadas<=1) {
+
+                        mediaPlayer2.start();
+                    }
+
+                });
+
+
+        tw.pause(2500);
+        tw.type(texto7).pause(8000)
+                .run(new Runnable() {
+                    @Override
+                    public void run() {
                         tw.setText("");
-                    });
-            tw.type(texto3).pause(400)
-                    .run(() -> {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    });
-            tw.type(texto4).pause(200)
-                    .run(() -> {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    });
-            tw.type(texto5).pause(800)
-                    .run(() -> {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                    });
-            tw.type(texto6).pause(200)
-                    .run(() -> {
-                        // Finalize the text if user fiddled with it during animation.
-                        tw.setText("");
-                        mediaPlayer.stop();
+
+                        //Inicio del menu cuando termina el audio
                         if(lanzadas<=1) {
 
-                            mediaPlayer2.start();
+                            // lanzarActividad();
+                            animatorSet5.start();
                         }
 
-                    });
-
-
-            tw.pause(2500);
-            tw.type(texto7).pause(8000)
-                    .run(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Finalize the text if user fiddled with it during animation.
-                            tw.setText("");
-
-
-
-                            //Inicio del menu cuando termina el audio
-                            if(lanzadas<=1) {
-
-                               // lanzarActividad();
-                                animatorSet5.start();
-                            }
-                            else
-                            {
-                                Toast.makeText(Pantalla1.this, "asdfasdfasdfasf", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    }
+                });
 
     }
 
@@ -227,58 +193,50 @@ public class Pantalla1 extends AppCompatActivity {
 
     public void lanzarActividad()
     {
-            lanzadas++;
-            Intent i=new Intent(Pantalla1.this,Pantalla2.class);
-            startActivity(i);
-            mediaPlayer.stop();
-            mediaPlayer2.stop();
-            overridePendingTransition(R.anim.left_in, R.anim.left_out);
-            finish();
-        }
+        lanzadas++;
+        Intent i=new Intent(Pantalla1.this,Pantalla2.class);
+        startActivity(i);
+        mediaPlayer.stop();
+        mediaPlayer2.stop();
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
+        finish();
+    }
 
 
 
     public void saltar(View view) {
-        patadaLobo = ObjectAnimator.ofFloat(lobo, "rotation", 0f,-30f);
-        patadaLobo.setDuration(300);
-        patadaLobo.setStartDelay(50);
-
-        patadaLobo2 = ObjectAnimator.ofFloat(lobo, "rotation", -30f,50f);
-        patadaLobo2.setDuration(200);
-        patadaLobo2.setStartDelay(50);
-
-        AnimatorSet animatorSet3= new AnimatorSet();
-        animatorSet3.playSequentially(patadaLobo,patadaLobo2);
-
-        Xscroll = ObjectAnimator.ofFloat(scrollView, "translationX", 0f,-800f);
-        Xscroll.setDuration(450);
-        Xscroll.setStartDelay(50);
-
-        Yscroll = ObjectAnimator.ofFloat(scrollView , "translationY", 0f,-800f);
-        Yscroll.setDuration(450);
-        Yscroll.setStartDelay(50);
-
-        Rscroll = ObjectAnimator.ofFloat(scrollView, "rotation", 0f,360f);
-        Rscroll.setDuration(350);
-        Rscroll.setRepeatCount(3);
-
-        Xbocadillo = ObjectAnimator.ofFloat(bocadillo, "translationX", 0f,-800f);
-        Xbocadillo.setDuration(450);
-        Xbocadillo.setStartDelay(50);
-
-        Ybocadillo = ObjectAnimator.ofFloat(bocadillo , "translationY", 0f,-800f);
-        Ybocadillo.setDuration(450);
-        Ybocadillo.setStartDelay(50);
-
-        Rbocadillo = ObjectAnimator.ofFloat(bocadillo, "rotation", 0f,360f);
-        Rbocadillo.setDuration(350);
-        Rbocadillo.setRepeatCount(3);
-
-        AnimatorSet animatorSet4 = new AnimatorSet();
-        animatorSet4.playTogether(Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll);
+        girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
+        girar.setDuration(500);
+        girar.setRepeatCount(3);
+        encogerX= ObjectAnimator.ofFloat(dialogoLobo,"scaleX",0f);
+        encogerX.setDuration(700);
+        encogerY= ObjectAnimator.ofFloat(dialogoLobo,"scaleY",0f);
+        encogerY.setDuration(700);
+        animatorSet=new AnimatorSet();
+        animatorSet.playTogether(girar,encogerX,encogerY);
 
 
-        animatorSet5.playSequentially(animatorSet3,animatorSet4);
+        destello1= ObjectAnimator.ofFloat(destello,"scaleX",6f);
+        destello1.setDuration(300);
+        destello1.setStartDelay(700);
+        destello2= ObjectAnimator.ofFloat(destello,"scaleY",6f);
+        destello2.setDuration(300);
+        destello2.setStartDelay(700);
+        destello3=ObjectAnimator.ofFloat(destello,"alpha",0f);
+        destello3.setStartDelay(1000);
+        animatorSet2=new AnimatorSet();
+        animatorSet2.playTogether(destello1,destello2,destello3);
+
+
+
+        animatorSet5.playTogether(girar,encogerX,encogerY,animatorSet2);
         animatorSet5.start();
+    }
+    public void hablar() {
+
+        lobo.setImageResource(R.drawable.animation_list);
+
+        AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
+        loboParpadeo.start();
     }
 }

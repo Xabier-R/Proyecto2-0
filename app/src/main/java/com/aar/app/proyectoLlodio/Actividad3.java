@@ -8,6 +8,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -25,16 +28,15 @@ import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
 public class Actividad3 extends AppCompatActivity {
 
-    private ImageView lobo,bocadillo;
-    private TextView texto;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,animatorLoboPausa,animatorLoboV;
-    private AnimatorSet animatorSet1,animatorSet2;
-    private long animationLoboDuration = 1000;
-    private long animationBocadilloDuration = 1500;
+    private ImageView lobo, destello;
+    private ObjectAnimator girar,encogerX,encogerY,destello1,destello2,destello3;
+    private LinearLayout dialogoLobo;
     private  TypeWriter tw;
+    private AnimatorSet animatorSet,animatorSet2,animatorSet5;
     public static ScrollView scrollView;
     private Button buttonEmpezar;
     private  MediaPlayer mediaPlayer, mediaPlayer2;
+
     //BBDD
     private ActividadesSQLiteHelper activiades;
     private SQLiteDatabase db;
@@ -46,8 +48,10 @@ public class Actividad3 extends AppCompatActivity {
         setContentView(R.layout.pantalla_lobo);
         ConstraintLayout ConstraintLayout1 = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
         ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.a3_img1));
+
         lobo = findViewById(R.id.lobo);
-        bocadillo = findViewById(R.id.bocadillo);
+        destello = findViewById(R.id.destello);
+        dialogoLobo = findViewById(R.id.dialogoLobo);
         tw = (TypeWriter) findViewById(R.id.tv);
         scrollView = findViewById(R.id.scrollView);
 
@@ -57,29 +61,13 @@ public class Actividad3 extends AppCompatActivity {
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db = activiades.getWritableDatabase();
 
-        DisplayMetrics metrics = new DisplayMetrics();
 
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
-
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
-        animatorLobo.setDuration(animationLoboDuration);
-        AnimatorSet animatorSetX = new AnimatorSet();
-        animatorSetX.playTogether(animatorLobo);
-        animatorSetX.start();
-
-
-        animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
-        animatorBocadillo.setDuration(animationBocadilloDuration);
-        AnimatorSet animatorSetAlpha = new AnimatorSet();
-        animatorSetAlpha.playTogether(animatorBocadillo);
-        animatorSetAlpha.start();
 
         scrollView.fullScroll(View.FOCUS_DOWN);
         tw.setMovementMethod(new ScrollingMovementMethod());
 
         sicronizarTexto1();
+        hablar();
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_kondaira);
         buttonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,20 +75,7 @@ public class Actividad3 extends AppCompatActivity {
 
                 String texto =getString(R.string.texto2_a3);
 
-                animatorSet1.cancel();
-                long saltoLobo = 50;
-                animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-                animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-
-                animatorLobo1.setDuration(saltoLobo);
-                animatorLobo2.setDuration(saltoLobo);
-                AnimatorSet animatorSetY1 = new AnimatorSet();
-                AnimatorSet animatorSetY2 = new AnimatorSet();
-                animatorSetY1.play(animatorLobo1);
-                animatorSetY1.start();
-                animatorSetY2.setStartDelay(50);
-                animatorSetY2.play(animatorLobo2);
-                animatorSetY2.start();
+                hablar();
 
                 buttonEmpezar.setText("Kondaira");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
@@ -132,75 +107,6 @@ public class Actividad3 extends AppCompatActivity {
             }
         });
 
-        animatorSet1 = new AnimatorSet();
-        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
-            @Override
-            public void onAnimationStart(Animator animation, boolean isReverse) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation, boolean isReverse) {
-                animacion();
-            }
-
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                animacion();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-
-
-        });
-
-        animatorSet1 = new AnimatorSet();
-        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
-            @Override
-            public void onAnimationStart(Animator animation, boolean isReverse) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation, boolean isReverse) {
-                animacion();
-            }
-
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                animacion();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-
-
-        });
 
     }
 
@@ -224,17 +130,93 @@ public class Actividad3 extends AppCompatActivity {
                     buttonEmpezar.setText("Kondaira");
                     mediaPlayer.stop();
                     buttonEmpezar.setVisibility(View.VISIBLE);
-                    animacion();
+                    pestanear();
                 }
             });
 
+        animatorSet5 = new AnimatorSet();
+        animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
+            @Override
+            public void onAnimationStart(Animator animation, boolean isReverse) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
+                i.putExtra("actividad", "4");
+                startActivity(i);
+                mediaPlayer.stop();
+                finish();
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+                Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
+                i.putExtra("actividad", "4");
+                startActivity(i);
+                mediaPlayer.stop();
+                finish();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+
+        });
 
     }
+
+    public void pestanear() {
+
+        lobo.setImageResource(R.drawable.animation_list2);
+
+        AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
+        loboParpadeo.start();
+    }
+
 
 
     public void saltar(View view) {
 
+        girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
+        girar.setDuration(500);
+        girar.setRepeatCount(3);
+        encogerX= ObjectAnimator.ofFloat(dialogoLobo,"scaleX",0f);
+        encogerX.setDuration(700);
+        encogerY= ObjectAnimator.ofFloat(dialogoLobo,"scaleY",0f);
+        encogerY.setDuration(700);
+        animatorSet=new AnimatorSet();
+        animatorSet.playTogether(girar,encogerX,encogerY);
+
+
+        destello1= ObjectAnimator.ofFloat(destello,"scaleX",6f);
+        destello1.setDuration(300);
+        destello1.setStartDelay(700);
+        destello2= ObjectAnimator.ofFloat(destello,"scaleY",6f);
+        destello2.setDuration(300);
+        destello2.setStartDelay(700);
+        destello3=ObjectAnimator.ofFloat(destello,"alpha",0f);
+        destello3.setStartDelay(1000);
+        animatorSet2=new AnimatorSet();
+        animatorSet2.playTogether(destello1,destello2,destello3);
+
+
+        animatorSet5.playTogether(girar,encogerX,encogerY,animatorSet2);
+        animatorSet5.start();
 
 
         //Marco como realizada la actividad 2
@@ -242,49 +224,15 @@ public class Actividad3 extends AppCompatActivity {
         db.close();
 
 
-        Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);
-        i.putExtra("actividad", "4");
-        startActivity(i);
-        mediaPlayer.stop();
-        finish();
-
-
-
 
     }
 
+    public void hablar() {
 
+        lobo.setImageResource(R.drawable.animation_list);
 
-    public void animacion()
-    {
-
-        int saltoLobo =100;
-        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-450f));
-        animatorLobo1.setDuration(saltoLobo);
-
-
-        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-        animatorLobo2.setDuration(saltoLobo);
-        animatorLobo2.setStartDelay(50);
-
-
-        animatorLoboV = ObjectAnimator.ofFloat(lobo, "rotation", 0f,360f);
-        animatorLoboV.setDuration(300);
-        animatorLoboV.setStartDelay(50);
-
-        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()));
-        animatorLoboPausa.setStartDelay(100);
-        animatorLoboPausa.setDuration(2500);
-
-        animatorSet2=new AnimatorSet();
-
-        animatorSet2.playTogether(animatorLobo1,animatorLoboV);
-
-
-        animatorSet1.setStartDelay(200);
-        animatorSet1.playSequentially(animatorSet2,animatorLobo2,animatorLoboPausa);
-        animatorSet1.start();
-
+        AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
+        loboParpadeo.start();
     }
 
     public void onBackPressed() {

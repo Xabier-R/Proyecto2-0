@@ -28,77 +28,89 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="invisible"/>
 
-
     <ImageView
-        android:id="@+id/lobo"
-        android:layout_width="150dp"
-        android:layout_height="165dp"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/lobo"
+        android:id="@+id/destello"
+        android:layout_width="145dp"
+        android:layout_height="150dp"
+        android:padding="70dp"
+        android:src="@drawable/destello"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/bocadillo"
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="3dp"
-        android:background="@drawable/bocadillo"
-        app:layout_constraintBottom_toBottomOf="@id/lobo"
-        app:layout_constraintEnd_toStartOf="@+id/esp1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Space
-        android:id="@+id/esp1"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/lobo"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <LinearLayout
+        android:id="@+id/dialogoLobo"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/lobo"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-10dp"
+            android:padding="5dp"
+            android:src="@drawable/lobo2" />
 
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/lobo"
-        app:layout_constraintEnd_toStartOf="@+id/esp1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bocadillo">
 
-        <com.aar.app.proyectoLlodio.TypeWriter
-            android:id="@+id/tv"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/andika"
-            android:stackFromBottom="true"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-    </ScrollView>
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/andika"
+                android:gravity="center"
+                android:text="Jarduera berria aurkituta, egin nahi?"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/buttonEmpezar"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:background="@drawable/p2_border3"
-        android:textColor="@color/blanco"
-        android:textSize="15sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="@+id/bocadillo"
-        app:layout_constraintStart_toStartOf="@+id/bocadillo"
-        app:layout_constraintTop_toTopOf="@+id/bocadillo" />
+                <com.aar.app.proyectoLlodio.TypeWriter
+                    android:id="@+id/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/andika"
+                    android:stackFromBottom="true"
+                    android:textColor="#FCFCFC "
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </ScrollView>
+
+
+            <Button
+                android:id="@+id/buttonEmpezar"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@drawable/boton_personalizado"
+                android:fontFamily="@font/andika"
+                android:text="JOAN"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/scrollView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/btnskip"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/lobo"
         android:background="@drawable/next"
         android:onClick="saltar"
         android:text=""

@@ -31,23 +31,23 @@ Primera fase - Seguimiento
 
 - [x] Pantalla inicio - Escudo de Laudio
 - [x] Pantalla 1 - El lobo narrará la historia de Laudio
-- [ ] Pantalla 2 - Menú
+- [x] Pantalla 2 - Menú
 - [x] Pantalla 3 - Mapa
 - [x] Pantalla 4 - Participantes
 - [x] Pantalla 5 - Patrimonios
-- [ ] Pantalla 6 - Galería
+- [x] Pantalla 6 - Galería
 - [x] Pantalla 7 - El lobo indicará una actividad para un patrimonio determinado
-- [ ] Actividad 1 - Puzzle
+- [x] Actividad 1 - Rompecabezas
 - [x] Actividad 2 - Preguntas
 - [x] Actividad 3 - Escribe cuento
 - [x] Actividad 4 - Rellenar palabras
 - [x] Actividad 5 - Cuenta cuento
 - [x] Actividad 6 - Mostrar lugares y completar los nombres
-- [ ] Actividad 7 - Sopa de letras
+- [x] Actividad 7 - Sopa de letras
 
 <h4>Tercera Semana 02/12/2019 - 05/12/2019</h4>
 
-- [ ] Programación de actividades faltantes
+- [x] Programación de actividades faltantes
 - [x] Programación de pantallas principales faltantes
 - [x] Preparar la presentación
 
@@ -95,18 +95,18 @@ Segunda fase - Seguimiento
 
 <h4>Quinta Semana - Día (21/01/2020 - 18hrs) </h4>
 
-- [ ] Sincronizar el audio
+- [x] Sincronizar el audio
 - [ ] Adaptar la aplicación para tableta
 
 <h4>Sexta Semana - Día (28/01/2020 - 18hrs) </h4>
 
-- [ ] Análisis del diseño y funcionalidad
-- [ ] Preparar la presentación
+- [x] Análisis del diseño y funcionalidad
+- [x] Preparar la presentación
 
 
 <h4>Aplicación terminada - Día (05/02/2020) </h4>
 
-- [ ] Presentación
+- [x] Presentación
 
 Funcionamiento de la app
 ------------------------------------------------------------------------

@@ -36,7 +36,7 @@
             <EditText
                 android:id="@+id/a6_et1"
                 style="@style/estiloa6_4"
-                android:text="Kultur etxea"/>
+                android:text=""/>
 
             <ImageView
                 style="@style/estiloa6_3"
@@ -45,7 +45,7 @@
             <EditText
                 android:id="@+id/a6_et2"
                 style="@style/estiloa6_4"
-                android:text="Skate parkea"/>
+                android:text=""/>
 
             <ImageView
                 style="@style/estiloa6_3"
@@ -54,7 +54,7 @@
             <EditText
                 android:id="@+id/a6_et3"
                 style="@style/estiloa6_4"
-                android:text="Jauregia"/>
+                android:text=""/>
 
             <ImageView
                 style="@style/estiloa6_3"
@@ -64,7 +64,7 @@
                 android:id="@+id/a6_et4"
                 style="@style/estiloa6_4"
                 android:layout_marginBottom="60dp"
-                android:text="Lorategia"/>
+                android:text=""/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -35,23 +37,17 @@ import java.util.TimerTask;
 import butterknife.BindArray;
 
 public class Actividad7 extends AppCompatActivity {
-    private ImageView lobo, bocadillo;
+    private ImageView lobo, destello;
     private ImageSwitcher imageViewImg;
-    private ObjectAnimator animatorLobo,animatorBocadillo,animatorLobo1,animatorLobo2,patadaLobo,
-            patadaLobo2,animatorLoboPausa,animatorLoboV,Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll;
-    private AnimatorSet animatorSet5;
-    private AnimatorSet animatorSet1,animatorSet2;
-    private long animationLoboDuration = 1000;
-    private long animationBocadilloDuration = 1500;
-    private long animationImagesDuration = 3000;
+    private ObjectAnimator girar,encogerX,encogerY,destello1,destello2,destello3;
+    private LinearLayout dialogoLobo;
     private  TypeWriter tw;
+    private AnimatorSet animatorSet,animatorSet2,animatorSet5;
     public static ScrollView scrollView;
     private Button buttonEmpezar;
     private VideoView video;
-    //private Spinner spinner;
     @BindArray(R.array.game_round_dimension_values)
     int[] mGameRoundDimVals;
-    //private TextView textView;
     private int[] imagenes =new int[]{R.drawable.a7_img1,R.drawable.a7_img2, R.drawable.a7_img3};
     private int posicion;
     private static final int DURACION = 9000;
@@ -69,7 +65,8 @@ public class Actividad7 extends AppCompatActivity {
         ConstraintLayout1.setBackground(getResources().getDrawable(R.drawable.fondo));
 
         lobo = findViewById(R.id.lobo);
-        bocadillo = findViewById(R.id.bocadillo);
+        destello = findViewById(R.id.destello);
+        dialogoLobo = findViewById(R.id.dialogoLobo);
         tw = (TypeWriter) findViewById(R.id.tv);
         scrollView = findViewById(R.id.scrollView);
 
@@ -78,25 +75,6 @@ public class Actividad7 extends AppCompatActivity {
         video=(VideoView) findViewById(R.id.videoView);
         imageViewImg = findViewById(R.id.ImageView);
 
-        DisplayMetrics metrics = new DisplayMetrics();
-
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
-
-
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        animatorLobo = ObjectAnimator.ofFloat(lobo, "translationX", width,0);
-        animatorLobo.setDuration(animationLoboDuration);
-        AnimatorSet animatorSetX = new AnimatorSet();
-        animatorSetX.playTogether(animatorLobo);
-        animatorSetX.start();
-
-
-        animatorBocadillo = ObjectAnimator.ofFloat(bocadillo, View.ALPHA,0.0f, 1.0f);
-        animatorBocadillo.setDuration(animationBocadilloDuration);
-        AnimatorSet animatorSetAlpha = new AnimatorSet();
-        animatorSetAlpha.playTogether(animatorBocadillo);
-        animatorSetAlpha.start();
 
 
         imageViewImg.setFactory(new ViewSwitcher.ViewFactory()
@@ -136,7 +114,7 @@ public class Actividad7 extends AppCompatActivity {
         }, 0, DURACION);
 
 
-
+        hablar();
         sicronizarTexto1();
 
         animatorSet5 = new AnimatorSet();
@@ -194,21 +172,6 @@ public class Actividad7 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                long saltoLobo = 50;
-                animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-30f));
-                animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-
-                animatorLobo1.setDuration(saltoLobo);
-                animatorLobo2.setDuration(saltoLobo);
-                AnimatorSet animatorSetY1 = new AnimatorSet();
-                AnimatorSet animatorSetY2 = new AnimatorSet();
-                animatorSetY1.play(animatorLobo1);
-                animatorSetY1.start();
-                animatorSetY2.setStartDelay(50);
-                animatorSetY2.play(animatorLobo2);
-                animatorSetY2.start();
-
-
                 buttonEmpezar.setText("Hitz-salda");
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
@@ -262,124 +225,59 @@ public class Actividad7 extends AppCompatActivity {
                     tw.setText("Jarduera erabilgarria");
                     buttonEmpezar.setText("Letra-zopa");
                     buttonEmpezar.setVisibility(View.VISIBLE);
-                    animacion();
+                    pestanear();
                 }
             });
 
 
-        animatorSet1 = new AnimatorSet();
-        animatorSet1.addListener(new AnimatorSet.AnimatorListener(){
-            @Override
-            public void onAnimationStart(Animator animation, boolean isReverse) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation, boolean isReverse) {
-
-            }
-
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                animacion();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-
-
-        });
 
     }
 
-    public void animacion()
-    {
+    public void pestanear() {
 
-        int saltoLobo =100;
-        animatorLobo1 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()-450f));
-        animatorLobo1.setDuration(saltoLobo);
+        lobo.setImageResource(R.drawable.animation_list2);
 
-
-        animatorLobo2 = ObjectAnimator.ofFloat(lobo, "y", (lobo.getY()));
-        animatorLobo2.setDuration(saltoLobo);
-        animatorLobo2.setStartDelay(50);
-
-
-        animatorLoboV = ObjectAnimator.ofFloat(lobo, "rotation", 0f,360f);
-        animatorLoboV.setDuration(300);
-        animatorLoboV.setStartDelay(50);
-
-        animatorLoboPausa = ObjectAnimator.ofFloat(lobo, "x", (lobo.getX()));
-        animatorLoboPausa.setStartDelay(100);
-        animatorLoboPausa.setDuration(2500);
-
-        animatorSet2=new AnimatorSet();
-        animatorSet2.playTogether(animatorLobo1,animatorLoboV);
-
-
-        animatorSet1.setStartDelay(200);
-        animatorSet1.playSequentially(animatorSet2,animatorLobo2,animatorLoboPausa);
-        animatorSet1.start();
-
+        AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
+        loboParpadeo.start();
     }
+
+
 
     public void saltar(View view) {
 
+        girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
+        girar.setDuration(500);
+        girar.setRepeatCount(3);
+        encogerX= ObjectAnimator.ofFloat(dialogoLobo,"scaleX",0f);
+        encogerX.setDuration(700);
+        encogerY= ObjectAnimator.ofFloat(dialogoLobo,"scaleY",0f);
+        encogerY.setDuration(700);
+        animatorSet=new AnimatorSet();
+        animatorSet.playTogether(girar,encogerX,encogerY);
 
-        patadaLobo = ObjectAnimator.ofFloat(lobo, "rotation", 0f,-30f);
-        patadaLobo.setDuration(300);
-        patadaLobo.setStartDelay(50);
 
-        patadaLobo2 = ObjectAnimator.ofFloat(lobo, "rotation", -30f,50f);
-        patadaLobo2.setDuration(200);
-        patadaLobo2.setStartDelay(50);
+        destello1= ObjectAnimator.ofFloat(destello,"scaleX",6f);
+        destello1.setDuration(300);
+        destello1.setStartDelay(700);
+        destello2= ObjectAnimator.ofFloat(destello,"scaleY",6f);
+        destello2.setDuration(300);
+        destello2.setStartDelay(700);
+        destello3=ObjectAnimator.ofFloat(destello,"alpha",0f);
+        destello3.setStartDelay(1000);
+        animatorSet2=new AnimatorSet();
+        animatorSet2.playTogether(destello1,destello2,destello3);
 
-        AnimatorSet animatorSet3= new AnimatorSet();
-        animatorSet3.playSequentially(patadaLobo,patadaLobo2);
 
-        Xscroll = ObjectAnimator.ofFloat(scrollView, "translationX", 0f,-800f);
-        Xscroll.setDuration(450);
-        Xscroll.setStartDelay(50);
-
-        Yscroll = ObjectAnimator.ofFloat(scrollView , "translationY", 0f,-800f);
-        Yscroll.setDuration(450);
-        Yscroll.setStartDelay(50);
-
-        Rscroll = ObjectAnimator.ofFloat(scrollView, "rotation", 0f,360f);
-        Rscroll.setDuration(350);
-        Rscroll.setRepeatCount(3);
-
-        Xbocadillo = ObjectAnimator.ofFloat(bocadillo, "translationX", 0f,-800f);
-        Xbocadillo.setDuration(450);
-        Xbocadillo.setStartDelay(50);
-
-        Ybocadillo = ObjectAnimator.ofFloat(bocadillo , "translationY", 0f,-800f);
-        Ybocadillo.setDuration(450);
-        Ybocadillo.setStartDelay(50);
-
-        Rbocadillo = ObjectAnimator.ofFloat(bocadillo, "rotation", 0f,360f);
-        Rbocadillo.setDuration(350);
-        Rbocadillo.setRepeatCount(3);
-
-        AnimatorSet animatorSet4 = new AnimatorSet();
-        animatorSet4.playTogether(Xbocadillo,Ybocadillo,Rbocadillo,Xscroll,Yscroll,Rscroll);
-
-        animatorSet5.playSequentially(animatorSet3,animatorSet4);
+        animatorSet5.playTogether(girar,encogerX,encogerY,animatorSet2);
         animatorSet5.start();
+    }
 
+    public void hablar() {
 
+        lobo.setImageResource(R.drawable.animation_list);
+
+        AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
+        loboParpadeo.start();
     }
 
     public void onBackPressed() {
