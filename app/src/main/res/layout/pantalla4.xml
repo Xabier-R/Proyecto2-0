@@ -16,17 +16,12 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/Des"
             android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
-            <TextView
-                android:id="@+id/textGrid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@android:color/white"
-                android:textSize="34sp" />
+
 
         </RelativeLayout>
 
@@ -247,6 +242,7 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/P1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -285,6 +281,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/P2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -323,6 +320,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/P3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -341,12 +339,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <com.github.abdularis.civ.CircleImageView
-                        android:layout_width="wrap_content"
+                    <ImageView
                         android:src="@drawable/programmer"
                         android:layout_gravity="center_horizontal"
-                        android:layout_height="wrap_content">
-                    </com.github.abdularis.civ.CircleImageView>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"

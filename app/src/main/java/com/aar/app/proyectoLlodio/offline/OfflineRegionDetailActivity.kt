@@ -7,7 +7,6 @@ import android.app.Activity
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
-import android.graphics.drawable.AnimationDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -23,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aar.app.proyectoLlodio.*
 import com.aar.app.proyectoLlodio.bbdd.Actividad
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
-import com.aar.app.proyectoLlodio.sopaLetras.features.gameover.GameOverActivity
 import com.mapbox.android.core.location.*
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
@@ -130,8 +128,8 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var lineManager: LineManager? = null
     private var origin: Point? = null
     private var destination: Point? = null
-
-
+    private var p4 : Pantalla4 = Pantalla4()
+    private var desarrollador= p4?.isDesarrollador()
     //Localizacion
     private var callback = LocationChangeListeningActivityLocationCallback(this)
     public var mapaBox: MapboxMap? = null
@@ -273,14 +271,16 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 })
     }
 
+
     private fun setupUI(definition: OfflineRegionDefinition, actividad: String) {
         // update map
+
 
         mapView?.getMapAsync { mapboxMap ->
             // correct style
             mapboxMap.setOfflineRegionDefinition(definition) { _ ->
                 // restrict camera movement
-//                Toast.makeText(this@OfflineRegionDetailActivity, actividad, Toast.LENGTH_SHORT).show()
+
                 mapboxMap.setLatLngBoundsForCameraTarget(definition.bounds)
 
 
@@ -291,7 +291,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 enableLocationComponent(this.mapaBox!!.getStyle()!!)
 
                 //Ver posicion
-
                 val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
                 val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
                 val icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3)
@@ -301,16 +300,17 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 val icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7)
 
 
+
                 if(actividad=="1")
                 {
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
-
-                   /* mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))*/
+                    if(desarrollador==true)
+                    {
+                        dibujarTodo(mapboxMap)
+                    }
+                    else
+                    {
+                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+                    }
 
 
                     listaMarcadores = mapboxMap.markers
@@ -322,10 +322,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                     if (actividad=="2")
                     {
                         LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "1_2.geojson").execute()
-
-                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
-                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-
+                        if(desarrollador==true)
+                        {
+                            dibujarTodo(mapboxMap)
+                        }
+                        else {
+                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                        }
                         val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.17177361, -2.9717166666666))
                                 .zoom(18.0) // Sets the zoom
                                 .bearing(180.0) // Rotate the camera
@@ -338,9 +342,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                         if (actividad=="3")
                         {
                             LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "2_3.geojson").execute()
-                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-
+                            if(desarrollador==true)
+                            {
+                                dibujarTodo(mapboxMap)
+                            }
+                            else {
+                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+                            }
 
                             val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.1706486, -2.97033566))
                                     .zoom(16.0) // Sets the zoom
@@ -353,9 +362,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                         {
                             if (actividad == "4") {
                                 LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "3_4.geojson").execute()
-                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-
+                                if(desarrollador==true)
+                                {
+                                    dibujarTodo(mapboxMap)
+                                }
+                                else {
+                                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+                                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+                                }
 
                                 val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.1628361, -2.9699666666))
                                         .zoom(14.0) // Sets the zoom
@@ -371,9 +385,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                             {
                                 if (actividad == "5") {
                                     LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "4_5.geojson").execute()
-                                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-                                    mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-
+                                    if(desarrollador==true)
+                                    {
+                                        dibujarTodo(mapboxMap)
+                                    }
+                                    else {
+                                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+                                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+                                    }
 
                                     val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.1474097, -2.9683481111))
                                             .zoom(14.0) // Sets the zoom
@@ -388,9 +407,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                                 {
                                     if (actividad == "6") {
                                         LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "5_6.geojson").execute()
-                                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-                                        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-
+                                        if(desarrollador==true)
+                                        {
+                                            dibujarTodo(mapboxMap)
+                                        }
+                                        else {
+                                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+                                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+                                        }
 
                                         val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.141299, -2.964889999))
                                                 .zoom(15.5) // Sets the zoom
@@ -404,9 +428,14 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                                     {
                                         if (actividad == "7") {
                                             LoadGeoJson(this@OfflineRegionDetailActivity, mapboxMap, "6_7.geojson").execute()
-                                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                                            mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
-
+                                            if(desarrollador==true)
+                                            {
+                                                dibujarTodo(mapboxMap)
+                                            }
+                                            else {
+                                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+                                                mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
+                                            }
 
 
                                             val position: CameraPosition? = CameraPosition.Builder().target(LatLng(43.143851, -2.963018))
@@ -431,14 +460,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
                 }
 
 
-                /*mapaBox.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
-                mapaBox.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))*/
-
 
 
                 val marcadores = mapboxMap.getMarkers()
@@ -452,6 +473,25 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
             }
         }
+    }
+
+
+     fun dibujarTodo(mapboxMap: MapboxMap) {
+         val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
+         val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
+         val icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3)
+         val icon4 = IconFactory.getInstance(this).fromResource(R.drawable.actividad4)
+         val icon5 = IconFactory.getInstance(this).fromResource(R.drawable.actividad5)
+         val icon6 = IconFactory.getInstance(this).fromResource(R.drawable.actividad6)
+         val icon7 = IconFactory.getInstance(this).fromResource(R.drawable.actividad7)
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1716111, -2.971638888888889)).setTitle("Ermuko Andra Mari").setIcon(icon1))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1719361, -2.9717944444444444)).setTitle("Indusketak").setIcon(icon2))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1693611, -2.968888888888889)).setTitle("San Antonio Ermita").setIcon(icon3))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1563111, -2.9710055555555557)).setTitle("Lezeagako Sorgina").setIcon(icon4))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.1385083, -2.965691666666667)).setTitle("Etxebarri Baserria").setIcon(icon5))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.144090, -2.964080)).setTitle("Lamuza Parkea").setIcon(icon6))
+        mapboxMap.addMarker(MarkerOptions().position(LatLng(43.143613, -2.961956)).setTitle("Dolumin barikua").setIcon(icon7))
+
     }
 
 
