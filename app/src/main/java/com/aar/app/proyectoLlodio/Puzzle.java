@@ -1,17 +1,29 @@
 package com.aar.app.proyectoLlodio;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.SurfaceControl;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.room.Transaction;
 
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
@@ -19,13 +31,13 @@ import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Puzzle extends AppCompatActivity {
+public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener {
 
     private static GestureDetectGridView mGridView;
 
     private static final int COLUMNS = 3;
     private static final int DIMENSIONS = COLUMNS * COLUMNS;
-
+    private boolean isUp=true;
     private static int mColumnWidth, mColumnHeight;
 
     public static final String up = "up";
@@ -36,6 +48,8 @@ public class Puzzle extends AppCompatActivity {
     private ActividadesSQLiteHelper activiades;
     private static SQLiteDatabase db;
     private static String[] tileList;
+    private LinearLayout ayuda;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +65,13 @@ public class Puzzle extends AppCompatActivity {
         init();
 
         scramble();
-
         setDimensions();
+        Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda1));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+
+        ayuda = findViewById(R.id.linearFragmento);
+
     }
 
     private void init() {
@@ -247,6 +266,38 @@ public class Puzzle extends AppCompatActivity {
     }
 
 
+    public void slideUp(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-80f,v.getHeight()-view.getHeight());
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-view.getHeight(),v.getHeight()-80f);
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    public void actiAyuda(View view)
+    {
+        if(isUp==true)
+        {
+            slideDown(ayuda);
+            isUp=false;
+        }
+        else
+        {
+            slideUp(ayuda);
+            isUp=true;
+        }
+
+
+    }
 
     public void onBackPressed() {
 
@@ -255,6 +306,12 @@ public class Puzzle extends AppCompatActivity {
         i.putExtra("actividad", "1");
 
         startActivity(i);
+    }
+
+
+    @Override
+    public void onFragmentPulsado(ImageView imagen) {
+
     }
 
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Actividad5"
+    android:id="@+id/pant"
     android:background="@color/colorWhite">
 
     <LinearLayout
@@ -139,6 +140,17 @@
 
             </LinearLayout>
         </TabHost>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearFragmento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="top"
+
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
 
     </LinearLayout>
 </RelativeLayout>

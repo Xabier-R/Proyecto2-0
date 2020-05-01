@@ -58,6 +58,7 @@ public class Actividad2_empezar extends AppCompatActivity {
 
         buttonEmpezar = findViewById(R.id.buttonEmpezar);
 
+
         scrollView.fullScroll(View.FOCUS_DOWN);
         tw.setMovementMethod(new ScrollingMovementMethod());
 

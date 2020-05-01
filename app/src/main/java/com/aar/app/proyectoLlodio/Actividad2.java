@@ -1,18 +1,24 @@
 package com.aar.app.proyectoLlodio;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
@@ -22,7 +28,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class Actividad2 extends AppCompatActivity {
+public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener {
 
     private HashMap<String, ArrayList> preguntas;
     private ArrayList<Integer> respuestas;
@@ -39,6 +45,8 @@ public class Actividad2 extends AppCompatActivity {
     private RadioButton btnResp1;
     private RadioButton btnResp2;
     private int aciertos;
+    private LinearLayout ayuda;
+    private boolean isUp=true;
 
 
     //BBDD
@@ -59,7 +67,11 @@ public class Actividad2 extends AppCompatActivity {
 
 
 
+        Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda2));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
 
+        ayuda = findViewById(R.id.linearFragmento);
         txtPregunta = findViewById(R.id.txtPregunta);
         btnResp1 = findViewById(R.id.btnRespuesta1);
         btnResp2 = findViewById(R.id.btnRespuesta2);
@@ -69,6 +81,7 @@ public class Actividad2 extends AppCompatActivity {
 
         cargarPreguntas();
         siguientePregunta();
+
 
     }
 
@@ -166,6 +179,39 @@ public class Actividad2 extends AppCompatActivity {
                 aciertos++;
     }
 
+
+
+    public void slideUp(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-80f,v.getHeight()-view.getHeight());
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-view.getHeight(),v.getHeight()-80f);
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    public void actiAyuda(View view)
+    {
+        if(isUp==true)
+        {
+            slideDown(ayuda);
+            isUp=false;
+        }
+        else
+        {
+            slideUp(ayuda);
+            isUp=true;
+        }
+
+    }
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad2.this, OfflineRegionListActivity.class);
@@ -173,5 +219,11 @@ public class Actividad2 extends AppCompatActivity {
         i.putExtra("actividad", "2");
 
         startActivity(i);
+    }
+
+
+    @Override
+    public void onFragmentPulsado(ImageView imagen) {
+
     }
 }

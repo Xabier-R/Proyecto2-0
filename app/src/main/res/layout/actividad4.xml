@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/pant">
+
     <LinearLayout
         android:id="@+id/buttons"
-        style="@style/estiloa4_1">
+        style="@style/estiloa4_1_1"
+        android:layout_marginBottom="40dp">
         <com.google.android.flexbox.FlexboxLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:justifyContent="center"
+
             app:flexWrap="wrap">
 
             <LinearLayout
@@ -461,9 +465,17 @@
 
         </com.google.android.flexbox.FlexboxLayout>
     </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/linearFragmento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="top"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
 </RelativeLayout>
-
-
-
-
-

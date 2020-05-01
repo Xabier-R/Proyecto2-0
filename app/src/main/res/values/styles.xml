@@ -23,12 +23,21 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="estiloa4_1"> <!-- Estilo del primer linearLayout -->
+    <style name="estiloa4_1_1"> <!-- Estilo del primer linearLayout -->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="estiloa4_1"> <!-- Estilo del primer linearLayout -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_below">@+id/preguntas</item>
         <item name="android:padding">10dp</item>
     </style>
 

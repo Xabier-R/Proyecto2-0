@@ -1,6 +1,7 @@
 package com.aar.app.proyectoLlodio;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -33,6 +34,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -48,7 +50,7 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class Actividad5 extends AppCompatActivity {
+public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener {
 
     private Resources res;
     private TabHost tabs;
@@ -62,6 +64,8 @@ public class Actividad5 extends AppCompatActivity {
     private byte [] bipmapdata;
     private String fotoCodificada;
     private boolean fotoSacada=false;
+    private LinearLayout ayuda;
+    private boolean isUp=true;
 
     Bitmap bmp;
     Intent i;
@@ -82,7 +86,11 @@ public class Actividad5 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.actividad5);
 
+        Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda5));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
 
+        ayuda = findViewById(R.id.linearFragmento);
         //Abrimos la base de datos "DBUsuarios" en modo de escritura
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db1 = activiades.getWritableDatabase();
@@ -383,6 +391,38 @@ public class Actividad5 extends AppCompatActivity {
     }
 
 
+    public void slideUp(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-80f,v.getHeight()-view.getHeight());
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-view.getHeight(),v.getHeight()-80f);
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    public void actiAyuda(View view)
+    {
+        if(isUp==true)
+        {
+            slideDown(ayuda);
+            isUp=false;
+        }
+        else
+        {
+            slideUp(ayuda);
+            isUp=true;
+        }
+
+    }
+
     public void onBackPressed() {
 
 
@@ -393,4 +433,8 @@ public class Actividad5 extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onFragmentPulsado(ImageView imagen) {
+
+    }
 }

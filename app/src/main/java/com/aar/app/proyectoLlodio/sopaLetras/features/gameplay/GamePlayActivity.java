@@ -2,7 +2,11 @@ package com.aar.app.proyectoLlodio.sopaLetras.features.gameplay;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -13,8 +17,11 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.aar.app.proyectoLlodio.Fragmento_ayuda;
 import com.aar.app.proyectoLlodio.R;
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.sopaLetras.features.SoundPlayer;
@@ -38,7 +45,7 @@ import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GamePlayActivity extends FullscreenActivity {
+public class GamePlayActivity extends FullscreenActivity implements Fragmento_ayuda.OnFragmentInteractionListener{
 
     public static final String EXTRA_GAME_ROUND_ID =
             "com.aar.app.wordsearch.features.gameplay.GamePlayActivity.ID";
@@ -47,6 +54,8 @@ public class GamePlayActivity extends FullscreenActivity {
     public static final String EXTRA_COL_COUNT =
             "com.aar.app.wordsearch.features.gameplay.GamePlayActivity.COL";
 
+    private LinearLayout ayuda;
+    private boolean isUp=true;
 
     private static final StreakLineMapper STREAK_LINE_MAPPER = new StreakLineMapper();
 
@@ -90,7 +99,11 @@ public class GamePlayActivity extends FullscreenActivity {
         //Abrimos la base de datos "DBUsuarios" en modo de escritura
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db = activiades.getWritableDatabase();
+        Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda7));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
 
+        ayuda = findViewById(R.id.linearFragmento);
 
         ButterKnife.bind(this);
         ((WordSearchApp) getApplication()).getAppComponent().inject(this);
@@ -357,5 +370,42 @@ public class GamePlayActivity extends FullscreenActivity {
         }
 
         return null;
+    }
+
+    public void slideUp(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-80f,v.getHeight()-view.getHeight());
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-view.getHeight(),v.getHeight()-80f);
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    public void actiAyuda(View view)
+    {
+        if(isUp==true)
+        {
+            slideDown(ayuda);
+            isUp=false;
+        }
+        else
+        {
+            slideUp(ayuda);
+            isUp=true;
+        }
+
+    }
+
+    @Override
+    public void onFragmentPulsado(ImageView imagen) {
+
     }
 }

@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/pant"
     tools:context=".sopaLetras.features.gameplay.GamePlayActivity">
+
+
+<LinearLayout  android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -150,37 +157,23 @@
                     android:layout_height="wrap_content"
                     app:horizontalSpacing="5dp">
 
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/colorAccent"-->
-                        <!--android:text="test... comp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/colorAccent"-->
-                        <!--android:text="test... comp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/colorAccent"-->
-                        <!--android:text="test... comp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/colorAccent"-->
-                        <!--android:text="test... comp"/>-->
-
 
                 </com.aar.app.proyectoLlodio.sopaLetras.custom.layout.FlowLayout>
 
             </ScrollView>
 
         </LinearLayout>
-
     </FrameLayout>
 
-</LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearFragmento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="top"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+    </RelativeLayout>

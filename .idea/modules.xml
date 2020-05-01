@@ -12,15 +12,17 @@
       <module fileurl="file://$PROJECT_DIR$/StudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/StudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/StudioProjects-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/StudioProjects-Proyecto2-0-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/StudioProjects-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/StudioProjects-Proyecto2-0-plugin-offline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Users-Xabier-StudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/Users-Xabier-StudioProjects-Proyecto2-0.iml" group="Proyecto2-0" />
       <module fileurl="file://$PROJECT_DIR$/Xabier-StudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/Xabier-StudioProjects-Proyecto2-0.iml" group="Proyecto2-0" />
       <module fileurl="file://$PROJECT_DIR$/app/Xabier-StudioProjects-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/Xabier-StudioProjects-Proyecto2-0-app.iml" group="Proyecto2-0/app" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline.iml" group="Proyecto2-0/plugin-offline" />
+      <module fileurl="file://$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline~1.iml" filepath="$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline~1.iml" group="Proyecto2-0/plugin-offline" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo-google-play/demo-google-play.iml" filepath="$PROJECT_DIR$/demo-google-play/demo-google-play.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo-simple-java/demo-simple-java.iml" filepath="$PROJECT_DIR$/demo-simple-java/demo-simple-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-google-play/demo-google-play.iml" filepath="$PROJECT_DIR$/demo-google-play/demo-google-play.iml" group="Proyecto2-0/demo-google-play" />
+      <module fileurl="file://$PROJECT_DIR$/demo-simple-java/demo-simple-java.iml" filepath="$PROJECT_DIR$/demo-simple-java/demo-simple-java.iml" group="Proyecto2-0/demo-simple-java" />
       <module fileurl="file://$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" />
-      <module fileurl="file://$PROJECT_DIR$/konfetti/konfetti.iml" filepath="$PROJECT_DIR$/konfetti/konfetti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/konfetti/konfetti.iml" filepath="$PROJECT_DIR$/konfetti/konfetti.iml" group="Proyecto2-0/konfetti" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/plugin-offline.iml" />
     </modules>
   </component>

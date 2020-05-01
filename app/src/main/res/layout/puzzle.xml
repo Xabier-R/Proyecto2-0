@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aar.app.proyectoLlodio.GestureDetectGridView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/grid"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/pant"
     android:background="@drawable/fondo">
 
 
-</com.aar.app.proyectoLlodio.GestureDetectGridView>
+    <com.aar.app.proyectoLlodio.GestureDetectGridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/fondo">
+
+
+
+    </com.aar.app.proyectoLlodio.GestureDetectGridView>
+
+
+    <LinearLayout
+        android:id="@+id/linearFragmento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="top"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</RelativeLayout>

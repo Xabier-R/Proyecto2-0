@@ -100,7 +100,6 @@
             android:name=".sopaLetras.features.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreenTheme" />
-
         <activity
             android:name=".offline.OfflineDownloadActivity"
             android:screenOrientation="portrait" />
@@ -113,8 +112,6 @@
         <activity
             android:name=".offline.OfflineRegionDetailActivity"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".rutas.DrawGeojsonLineActivity"
             android:screenOrientation="portrait" />

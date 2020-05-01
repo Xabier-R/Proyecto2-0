@@ -1,5 +1,6 @@
 package com.aar.app.proyectoLlodio;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Intent;
@@ -16,11 +17,15 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
@@ -30,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Actividad4 extends AppCompatActivity{
+public class Actividad4 extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener{
 
     private TextView option1, option2, option3, option4, option5, option6, option7;
     private EditText choice1, choice2, choice3, choice4, choice5, choice6, choice7;
@@ -40,6 +45,8 @@ public class Actividad4 extends AppCompatActivity{
     //BBDD
     private ActividadesSQLiteHelper activiades;
     private SQLiteDatabase db;
+    private LinearLayout ayuda;
+    private boolean isUp=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,12 @@ public class Actividad4 extends AppCompatActivity{
         //Abrimos la base de datos "DBUsuarios" en modo de escritura
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db = activiades.getWritableDatabase();
+
+        Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda4));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+
+        ayuda = findViewById(R.id.linearFragmento);
 
         listaEts = new ArrayList<EditText>();
 
@@ -99,6 +112,11 @@ public class Actividad4 extends AppCompatActivity{
         choice5.setOnDragListener(new ChoiceDragListener());
         choice6.setOnDragListener(new ChoiceDragListener());
         choice7.setOnDragListener(new ChoiceDragListener());
+        ayuda.performClick();
+    }
+
+    @Override
+    public void onFragmentPulsado(ImageView imagen) {
 
     }
 
@@ -238,7 +256,37 @@ public class Actividad4 extends AppCompatActivity{
         return true;
     }
 
+    public void slideUp(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-80f,v.getHeight()-view.getHeight());
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
 
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        View v  = findViewById(R.id.pant);
+        view.setVisibility(View.VISIBLE);
+        ObjectAnimator  encogerY = ObjectAnimator.ofFloat(view,"Y",v.getHeight()-view.getHeight(),v.getHeight()-80f);
+        encogerY.setDuration(700);
+        encogerY.start();
+    }
+
+    public void actiAyuda(View view)
+    {
+        if(isUp==true)
+        {
+            slideDown(ayuda);
+            isUp=false;
+        }
+        else
+        {
+            slideUp(ayuda);
+            isUp=true;
+        }
+
+    }
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad4.this, OfflineRegionListActivity.class);

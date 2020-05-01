@@ -40,6 +40,7 @@ configurations.all { config ->
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -69,7 +70,6 @@ dependencies {
     //For carousel menu
     implementation 'com.github.moondroid.coverflow:library:1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-
 
 
     //FlexboxLayout
