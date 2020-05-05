@@ -3,6 +3,8 @@ package com.aar.app.proyectoLlodio;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +21,10 @@ import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,12 @@ public class Pantalla2 extends AppCompatActivity{
     ImageView imgmenu;
     private FeatureCoverFlow coverFlow;
     private CoverFlowAdapter adapter;
+
+
+    //BBDD
+    private ActividadesSQLiteHelper actividadesSQLiteHelper;
+    private SQLiteDatabase db;
+
     private ArrayList<Game> games;
 
     @Override
@@ -39,6 +49,14 @@ public class Pantalla2 extends AppCompatActivity{
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla2);
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        actividadesSQLiteHelper = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = actividadesSQLiteHelper.getWritableDatabase();
+
+        recuperarIdioma();
+
+
 
         coverFlow = (FeatureCoverFlow) findViewById(R.id.coverflow);
         coverFlow.setBackground(getResources().getDrawable(R.drawable.fondomenu));
@@ -95,6 +113,15 @@ public class Pantalla2 extends AppCompatActivity{
         games.add(new Game(R.drawable.p2_img3, "Galeria"));
         games.add(new Game(R.drawable.p2_img1_2, "Mapa"));
         games.add(new Game(R.drawable.p2_img2, "Ondareak"));
+    }
+
+
+    private void recuperarIdioma() {
+        Cursor c = db.rawQuery("SELECT idioma FROM idiomas", null);
+        c.moveToFirst();
+        String idioma = c.getString(0);
+        System.out.println("El idioma actual es : " + idioma);
+        LocaleHelper.setLocale(this,idioma);
     }
 
 

@@ -40,7 +40,6 @@
 
     <string name="btncomprobar">Egiaztatu </string>
     <string name="btnresetear">Berregin </string>
-    <string name="btnAcabar">Bukatuta </string>
     <string name="texto1_a4"> Bazen </string>
     <string name="texto1_1_a4"> behin, </string>
     <string name="texto1_2_a4">Laudioko </string>
@@ -149,19 +148,24 @@
     <string name="texto4_p1">BAI, JUSTO ESPERO NUENA!!</string>
     <string name="texto5_p1">Orduan… uste dut prest gaudela gure irteerarekin hasteko!</string>
     <string name="texto6_p1">Ondo pasa!</string>
-    <string name="texto7_p1">Laudio Arabako ipar-mendebaldeko herri bat da, Aiaralde eskualdekoa. Arabako udalerri jendetsuenetakoa da, biztanle asko baititu. Ofizialki, udalerriaren izen osoa Laudio Ibar Noblea da. Herrian zenbait auzo nabarmentzen dira eta hauek dira ezagunenak: Lateorro, Ugarte, Landaluze, Gardea, Areta eta Erdigunea. Nerbioi ibarrean dago kokatuta, Nerbioi ibaiaren ibilbidearen erdian eta, dakizuenez, Nerbioi Ibaia Bilboraino heltzen da.</string>
+    <string name="texto7_p1">Laudio Arabako ipar-mendebaldeko herri bat da, Aiaralde eskualdekoa. Arabako udalerri jendetsuenetakoa da, biztanle asko baititu. Ofizialki, udalerriaren izen osoa Laudio Ibar Noblea da. Herrian zenbait auzo nabarmentzen dira eta hauek dira ezagunenak: Lateorro, Ugarte, Landaluze, Gardea, Areta eta Erdigunea.
+Nerbioi ibarrean dago kokatuta, Nerbioi ibaiaren ibilbidearen erdian eta, dakizuenez, Nerbioi Ibaia Bilboraino heltzen da.</string>
 
 
-    <string name="texto1_a3">" San Antonio aztarna euskal mitologiaren barnean dago eta Ermuko Andra Mari elizaren ondoan dagoen iturriarekin duen ahalmen magikoarekin lotuta dago. Baina uste da aztarnaren gaur egungo kokapena ez dela originala, iturri miragarriarengandik aldendu zutela Ermuko Andra Mari eliza bertan eraiki ondoren, kristautasunetik kanpoko gurtza pagak desagerrarazteko. Tradizioaren arabera, ahoa urez bete eta hiru aldiz zapaldu behar duzu aztarna eta, horrela, urtebetean ahoko osasuna ziurtatuko duzu. Honetaz gain, zurrumurruren arabera, ugalkortasunerako ere balio du."</string>
+    <string name="texto1_a3"> San Antonio aztarna euskal mitologiaren barnean dago eta Ermuko Andra Mari elizaren ondoan dagoen iturriarekin duen ahalmen magikoarekin lotuta dago.
+Baina uste da aztarnaren gaur egungo kokapena ez dela originala, iturri miragarriarengandik aldendu zutela Ermuko Andra Mari eliza bertan eraiki ondoren, kristautasunetik kanpoko gurtza pagak desagerrarazteko.
+Tradizioaren arabera, ahoa urez bete eta hiru aldiz zapaldu behar duzu aztarna eta, horrela, urtebetean ahoko osasuna ziurtatuko duzu. Honetaz gain, zurrumurruren arabera, ugalkortasunerako ere balio du.</string>
 
-    <string name="texto2_a3">" Aspaldi, orain dela urteak eta urteak, bart bezalako gau batean artzainek ardiak Urkiolara eramatea erabaki zuten. Santa Apolonia, honen jakitun izanda, eurekin joateko erabakia hartu zuen gaua pasatzera; horrela, hauek lagundu eta babestuko zituen. Santa Apolonia, hortzen babeslea izan arren, ez zen bat ere abila,         eta ermita honetatik igarotzean harri bat zapaldu eta bere aztarna utzi zuen. Harrezkero, tradizioak dio, Santa Luzian dagoen iturri magikotik ura hartu eta aztarna hau hiru aldiz zapalduz ahoko osasuna urtebetez ziurtatuko duzula."</string>
+    <string name="texto2_a3"> Aspaldi, orain dela urteak eta urteak, bart bezalako gau batean artzainek ardiak Urkiolara eramatea erabaki zuten. Santa Apolonia, honen jakitun izanda, eurekin joateko erabakia hartu zuen gaua pasatzera; horrela, hauek lagundu eta babestuko zituen. Santa Apolonia, hortzen babeslea izan arren, ez zen bat ere abila,
+        eta ermita honetatik igarotzean harri bat zapaldu eta bere aztarna utzi zuen. Harrezkero, tradizioak dio, Santa Luzian dagoen iturri magikotik ura hartu eta aztarna hau hiru aldiz zapalduz ahoko osasuna urtebetez ziurtatuko duzula.</string>
 
 
-    <string name="texto1_a7">" Aste Santuko aurreko ostiralean Dolumin barikua ospatzen da. Ospakizun honetan, 1980tik egiten den eta Laudio inguruko jendea biltzen duen abere azoka egiten da. Antzina, azoka abereen salerosketan oinarritzen zen, baina gaur egun, abereen eta animali exotikoen erakusketan zentratzen da. Egun honetan zehar, ekintza ludikoak,         kiroletakoak, hau da, herri-kirolak eta erlijiosoak gauzatzen dira. Eskualdeko jai garrantzitsuenetako bat da eta Laudioko biztanleria landatarraren memoria gogoratzen duen jaieguna da. "</string>
+    <string name="texto1_a7"> Aste Santuko aurreko ostiralean Dolumin barikua ospatzen da. Ospakizun honetan, 1980tik egiten den eta Laudio inguruko jendea biltzen duen abere azoka egiten da. Antzina, azoka abereen salerosketan oinarritzen zen, baina gaur egun, abereen eta animali exotikoen erakusketan zentratzen da. Egun honetan zehar, ekintza ludikoak,
+        kiroletakoak, hau da, herri-kirolak eta erlijiosoak gauzatzen dira. Eskualdeko jai garrantzitsuenetako bat da eta Laudioko biztanleria landatarraren memoria gogoratzen duen jaieguna da. </string>
 
 
     <string name="new_game_loading_text" translatable="false">Generating game data…</string>
-    <string name="summary_about" translatable="false">Word search game is a puzzle game, where the player try to find words in a grid of letters in horizontal, vertical and diagonal direction.</string>
+    <string name="summary_about">Word search game is a puzzle game, where the player try to find words in a grid of letters in horizontal, vertical and diagonal direction.</string>
     <string name="finished">Amaituta!</string>
 
     <!-- prefs -->
@@ -194,6 +198,7 @@
     <string name="pref_grayscale" translatable="false">grayscale</string>
     <string name="grayscale" translatable="false">Grayscale</string>
     <string name="game_data_desc" translatable="false">:gridSize Grid, :wordCount Words</string>
+    <string name="btnAcabar">Bukatuta</string>
 
 
 </resources>
