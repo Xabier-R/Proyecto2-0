@@ -35,6 +35,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Actividad 4 arrastrar palabras
+ */
 public class Actividad4 extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener{
 
     private TextView option1, option2, option3, option4, option5, option6, option7;
@@ -255,7 +258,7 @@ public class Actividad4 extends AppCompatActivity implements Fragmento_ayuda.OnF
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
-
+    //metodo para mostrar el fragmento de ayuda
     public void slideUp(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -264,7 +267,7 @@ public class Actividad4 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
-    // slide the view from its current position to below itself
+    // Metodo para ocultar el fragmento de ayuda
     public void slideDown(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -273,6 +276,7 @@ public class Actividad4 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
+    //Metodo que comprueba si el fragmento de ayuda se muestra
     public void actiAyuda(View view)
     {
         if(isUp==true)

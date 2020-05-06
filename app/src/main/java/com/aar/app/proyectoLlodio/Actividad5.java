@@ -391,7 +391,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
-
+    //metodo para mostrar el fragmento de ayuda
     public void slideUp(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -400,7 +400,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
-    // slide the view from its current position to below itself
+    // Metodo para ocultar el fragmento de ayuda
     public void slideDown(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -409,6 +409,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
+    //Metodo que comprueba si el fragmento de ayuda se muestra
     public void actiAyuda(View view)
     {
         if(isUp==true)

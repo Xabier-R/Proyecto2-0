@@ -26,6 +26,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 
+/**
+ * Pantalla inicial
+ */
 public class Pantalla1 extends AppCompatActivity {
     private ImageView lobo,destello;
     private ObjectAnimator girar,encogerX,encogerY,destello1,destello2,destello3;
@@ -133,6 +136,7 @@ public class Pantalla1 extends AppCompatActivity {
 
     }
 
+    //metodo que recupera de la base de datos el idioma guardado
     private void recuperarIdioma() {
         Cursor c = db.rawQuery("SELECT idioma FROM idiomas", null);
         c.moveToFirst();
@@ -140,6 +144,7 @@ public class Pantalla1 extends AppCompatActivity {
         LocaleHelper.setLocale(this,idioma);
     }
 
+    //metodo que inicia y sincroniza el texto y audio
     public void  sicronizarTexto1()
     {
 
@@ -209,7 +214,7 @@ public class Pantalla1 extends AppCompatActivity {
 
     }
 
-
+    //Metodo para lanzar la actividad una vez termine el audio
     public void lanzarActividad()
     {
         lanzadas++;

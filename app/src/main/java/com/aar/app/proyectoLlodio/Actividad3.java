@@ -26,6 +26,9 @@ import android.widget.TextView;
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
+/**
+ * Actividad 3
+ */
 public class Actividad3 extends AppCompatActivity {
 
     private ImageView lobo, destello;

@@ -371,7 +371,7 @@ public class GamePlayActivity extends FullscreenActivity implements Fragmento_ay
 
         return null;
     }
-
+    //metodo para mostrar el fragmento de ayuda
     public void slideUp(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -380,7 +380,7 @@ public class GamePlayActivity extends FullscreenActivity implements Fragmento_ay
         encogerY.start();
     }
 
-    // slide the view from its current position to below itself
+    // Metodo para ocultar el fragmento de ayuda
     public void slideDown(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -389,6 +389,7 @@ public class GamePlayActivity extends FullscreenActivity implements Fragmento_ay
         encogerY.start();
     }
 
+    //Metodo que comprueba si el fragmento de ayuda se muestra
     public void actiAyuda(View view)
     {
         if(isUp==true)

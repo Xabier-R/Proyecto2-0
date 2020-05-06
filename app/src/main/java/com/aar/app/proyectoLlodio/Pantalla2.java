@@ -28,6 +28,9 @@ import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 
 import java.util.ArrayList;
 
+/**
+ * Menu de la aplicacion
+ */
 public class Pantalla2 extends AppCompatActivity{
 
     ConstraintLayout padrelistener;
@@ -94,6 +97,7 @@ public class Pantalla2 extends AppCompatActivity{
         };
     }
 
+    //metodo para crear los iconos del menu
     private void settingDummyData() {
         games = new ArrayList<>();
 

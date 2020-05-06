@@ -20,6 +20,9 @@ import androidx.fragment.app.Fragment;
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 
+/**
+ * Actividad 6 escribir nombre lugares
+ */
 public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener{
 
     private EditText a6_et1, a6_et2, a6_et3, a6_et4;
@@ -116,7 +119,7 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
             isUp=true;
         }
     }
-
+    //metodo para mostrar el fragmento de ayuda
     public void slideUp(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -125,7 +128,7 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
-    // slide the view from its current position to below itself
+    // Metodo para ocultar el fragmento de ayuda
     public void slideDown(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -134,6 +137,7 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
         encogerY.start();
     }
 
+    //Metodo que comprueba si el fragmento de ayuda se muestra
     public void actiAyuda(View view)
     {
         if(isUp==true)

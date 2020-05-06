@@ -31,6 +31,10 @@ import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Actividad del rompecabezas
+ */
+
 public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragmentInteractionListener {
 
     private static GestureDetectGridView mGridView;
@@ -250,6 +254,7 @@ public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragm
         }
     }
 
+    //metodo que comprueba si el puzle esta resuelto
     private static boolean isSolved() {
         boolean solved = false;
 
@@ -265,7 +270,7 @@ public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragm
         return solved;
     }
 
-
+    //metodo para mostrar el fragmento de ayuda
     public void slideUp(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -274,7 +279,7 @@ public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragm
         encogerY.start();
     }
 
-    // slide the view from its current position to below itself
+    // Metodo para ocultar el fragmento de ayuda
     public void slideDown(View view){
         View v  = findViewById(R.id.pant);
         view.setVisibility(View.VISIBLE);
@@ -283,6 +288,7 @@ public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragm
         encogerY.start();
     }
 
+    //Metodo que comprueba si el fragmento de ayuda se muestra
     public void actiAyuda(View view)
     {
         if(isUp==true)
