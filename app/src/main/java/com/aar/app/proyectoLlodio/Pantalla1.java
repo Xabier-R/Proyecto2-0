@@ -69,10 +69,12 @@ public class Pantalla1 extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
 
-
-
+        //inicia el audio, texto y animacion de hablar
         sicronizarTexto1();
         hablar();
+
+        //listener de la animacion de saltar la explicacion
+        //salta la introduccion y carga la actividad
         animatorSet5 = new AnimatorSet();
         animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
             @Override
@@ -220,7 +222,7 @@ public class Pantalla1 extends AppCompatActivity {
     }
 
 
-
+    //metodo para iniciar la animacion de saltar la introduccion
     public void saltar(View view) {
         girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
         girar.setDuration(500);
@@ -248,6 +250,8 @@ public class Pantalla1 extends AppCompatActivity {
         animatorSet5.playTogether(girar,encogerX,encogerY,animatorSet2);
         animatorSet5.start();
     }
+
+    //metodo que inicia la animacion de hablar en el lobo
     public void hablar() {
         lobo.setImageResource(R.drawable.animation_list);
         AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();

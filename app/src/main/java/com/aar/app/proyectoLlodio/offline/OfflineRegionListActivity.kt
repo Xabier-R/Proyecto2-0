@@ -17,7 +17,7 @@ import com.mapbox.mapboxsdk.plugins.offline.utils.OfflineUtils
 import java.util.*
 
 /**
- * Activity showing a list of offline regions.
+ * Actividad que muestra una lista con todos los mapas descargados
  */
 class OfflineRegionListActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 

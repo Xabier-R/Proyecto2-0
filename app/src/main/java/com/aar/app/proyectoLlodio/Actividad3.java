@@ -66,6 +66,7 @@ public class Actividad3 extends AppCompatActivity {
         scrollView.fullScroll(View.FOCUS_DOWN);
         tw.setMovementMethod(new ScrollingMovementMethod());
 
+        //inicia el audio, texto y animacion de hablar
         sicronizarTexto1();
         hablar();
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_kondaira);
@@ -110,6 +111,8 @@ public class Actividad3 extends AppCompatActivity {
 
     }
 
+    //metodo que inicia el audio y los textos
+    //sincroniza textos con el audio
     public void  sicronizarTexto1() {
 
         String texto1 =getString(R.string.texto1_a3);
@@ -134,6 +137,8 @@ public class Actividad3 extends AppCompatActivity {
                 }
             });
 
+        //listener de la animacion de saltar la explicacion
+        //salta la introduccion y carga la actividad
         animatorSet5 = new AnimatorSet();
         animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
             @Override
@@ -179,7 +184,7 @@ public class Actividad3 extends AppCompatActivity {
         });
 
     }
-
+    //metodo  para iniciar animacion de pestañeo en el lobo
     public void pestanear() {
 
         lobo.setImageResource(R.drawable.animation_list2);
@@ -189,7 +194,7 @@ public class Actividad3 extends AppCompatActivity {
     }
 
 
-
+    //metodo para iniciar la animacion de saltar la introduccion
     public void saltar(View view) {
 
         girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
@@ -224,9 +229,9 @@ public class Actividad3 extends AppCompatActivity {
         db.close();
 
 
-
     }
 
+    //metodo que inicia la animacion de hablar en el lobo
     public void hablar() {
 
         lobo.setImageResource(R.drawable.animation_list);
@@ -235,6 +240,7 @@ public class Actividad3 extends AppCompatActivity {
         loboParpadeo.start();
     }
 
+    //metodo que lanza el menu al pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);

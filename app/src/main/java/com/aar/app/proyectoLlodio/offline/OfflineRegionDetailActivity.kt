@@ -74,20 +74,13 @@ import kotlin.collections.HashMap
 
 
 /**
- * Activity showing the detail of an offline region.
- *
- *
- * This Activity can bind to the OfflineDownloadService and show progress.
- *
- *
- *
- * This Activity listens to broadcast events related to successful, canceled and errored download.
+ * Actividad que muestra el mapa ofline
  *
  */
 class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback, PermissionsListener, FragmentoLobo.OnFragmentInteractionListener {
 
 
-
+    //metodo que al pulsar el boton del frangemto lanza la actividad que se encuentra mas cerca
     override fun onFragmentPulsado(imagen: ImageView?) {
 
         when (actividadLanzar) {
@@ -249,7 +242,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         fabDelete.setOnClickListener { onFabClick(it) }
     }
 
-
+    // metodo para cambiar el idioma de la aplicacion
     private fun cambiarIdioma(idioma: String){
         if (idioma.equals("es")) {
             db?.execSQL("UPDATE idiomas SET idioma='es'")
@@ -262,6 +255,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     }
 
+    //metodo que instancia todas las actividades
     private fun instanciarActividades() {
         this.ubicacionesActiviades = HashMap<String, LatLng>()
 
@@ -318,9 +312,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
 
+    //metodo que carga las activades y las rutas en el mapa
     private fun setupUI(definition: OfflineRegionDefinition, actividad: String) {
         // update map
-
 
         mapView?.getMapAsync { mapboxMap ->
             // correct style
@@ -336,7 +330,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
                 enableLocationComponent(this.mapaBox!!.getStyle()!!)
 
-                //Ver posicion
+                //creamos los iconos de las actividades
                 val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
                 val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
                 val icon3 = IconFactory.getInstance(this).fromResource(R.drawable.actividad3)
@@ -521,7 +515,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
     }
 
-
+    // metodo que dibuja todas las actividades a la vez
      fun dibujarTodo(mapboxMap: MapboxMap) {
          val icon1 = IconFactory.getInstance(this).fromResource(R.drawable.actividad1)
          val icon2 = IconFactory.getInstance(this).fromResource(R.drawable.actividad2)
@@ -697,7 +691,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
 
-
+    //metodo que lanza la actividad en la que nos encontremos
     private fun empezarActividad1(activity: OfflineRegionDetailActivity)
     {
         val animatorLobo: ObjectAnimator
@@ -734,7 +728,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
 
 
-
+    // metodo que dibuja las rutas en el mapa
     private fun drawLines(featureCollection: FeatureCollection, mapboxMap: MapboxMap?) {
         if (mapboxMap != null) {
             mapboxMap.getStyle { style ->
@@ -756,6 +750,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         }
     }
 
+    //clase con la que se cargan los ficheros con las distintas rutas
     private class LoadGeoJson internal constructor(activity: OfflineRegionDetailActivity, mapboxMap: MapboxMap?, s: String) : AsyncTask<Void, Void, FeatureCollection>() {
 
         private val weakReference: WeakReference<OfflineRegionDetailActivity>
@@ -908,6 +903,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     }
 
+    // devuelve que actividad hasido pulsada
     private fun verMarcadorPulsado(marker: Marker, marcadores: MutableList<Marker>, mapboxMap: MapboxMap): Boolean {
 
         val tituloSitio = marker.title
@@ -1037,7 +1033,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     }
 
 
-
+    //metodo que muestra cual fue la ultima actividad completada
     fun actividadAnteriorRealizada(key: String):Boolean
     {
 

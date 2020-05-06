@@ -88,7 +88,7 @@ public class FragmentoLobo extends Fragment {
     }
 
 
-
+    //metodo  para iniciar animacion de pestañeo en el lobo
     public void pestanear() {
 
         imagenLobo.setImageResource(R.drawable.animation_list);

@@ -89,7 +89,7 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
         verRespuestaElegida();
 
-        if (btnNext.getText().equals("BUKATUTA"))
+        if ((btnNext.getText().equals("Bukatu"))||(btnNext.getText().equals("Terminar")))
         {
             //Marco como realizada la actividad 2
             db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad2'");
@@ -210,6 +210,8 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
         }
 
     }
+
+    //metodo que lanza el menu al pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad2.this, OfflineRegionListActivity.class);

@@ -196,7 +196,7 @@ Tradizioaren arabera, ahoa urez bete eta hiru aldiz zapaldu behar duzu aztarna e
     <string name="pref_grayscale" translatable="false">grayscale</string>
     <string name="grayscale" translatable="false">Grayscale</string>
     <string name="game_data_desc" translatable="false">:gridSize Grid, :wordCount Words</string>
-    <string name="btnAcabar">Bukatuta</string>
+    <string name="btnAcabar">Bukatu</string>
     <string name="texto1_p2">Egileak</string>
     <string name="texto2_p2">Galeria</string>
     <string name="texto3_p2">Mapa</string>

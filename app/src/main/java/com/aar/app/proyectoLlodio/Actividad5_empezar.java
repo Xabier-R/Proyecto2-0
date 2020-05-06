@@ -105,11 +105,12 @@ public class Actividad5_empezar extends AppCompatActivity {
             }
         }, 0, DURACION);
 
-
+        //inicia el audio, texto y animacion de hablar
         sicronizarTexto1();
         hablar();
 
-
+        //listener de la animacion de saltar la explicacion
+        //salta la introduccion y carga la actividad
         animatorSet5 = new AnimatorSet();
         animatorSet5.addListener(new AnimatorSet.AnimatorListener(){
             @Override
@@ -170,6 +171,8 @@ public class Actividad5_empezar extends AppCompatActivity {
 
     }
 
+    //metodo que inicia el audio y los textos
+    //sincroniza textos con el audio
     public void  sicronizarTexto1() {
 
         String texto1 =getString(R.string.texto1_a5);
@@ -199,7 +202,7 @@ public class Actividad5_empezar extends AppCompatActivity {
 
     }
 
-
+    //metodo  para iniciar animacion de pestañeo en el lobo
     public void pestanear() {
 
         lobo.setImageResource(R.drawable.animation_list2);
@@ -209,7 +212,7 @@ public class Actividad5_empezar extends AppCompatActivity {
     }
 
 
-
+    //metodo para iniciar la animacion de saltar la introduccion
     public void saltar(View view) {
 
         girar = ObjectAnimator.ofFloat(dialogoLobo, "rotation", 0f,360f);
@@ -239,6 +242,7 @@ public class Actividad5_empezar extends AppCompatActivity {
         animatorSet5.start();
     }
 
+    //metodo que inicia la animacion de hablar en el lobo
     public void hablar() {
 
         lobo.setImageResource(R.drawable.animation_list);
@@ -247,7 +251,7 @@ public class Actividad5_empezar extends AppCompatActivity {
         loboParpadeo.start();
     }
 
-
+    //metodo que lanza el menu al pulsar el boton atras
     public void onBackPressed() {
 
         mediaPlayer.stop();

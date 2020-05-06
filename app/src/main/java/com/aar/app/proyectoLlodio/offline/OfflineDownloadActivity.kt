@@ -23,7 +23,7 @@ import java.util.ArrayList
 import kotlinx.android.synthetic.main.activity_offline_download.*
 
 /**
- * Activity showing a form to configure the download of an offline region.
+ * Actividad para descargar el mapa offline
  */
 class OfflineDownloadActivity : AppCompatActivity() {
 
