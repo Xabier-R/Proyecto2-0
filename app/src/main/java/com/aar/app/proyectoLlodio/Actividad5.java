@@ -90,14 +90,17 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
 
+
         ayuda = findViewById(R.id.linearFragmento);
-        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db1 = activiades.getWritableDatabase();
 
         bipmapdata = new byte[3];
 
-        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        //Abrimos la base de datos "DBCuentos" en modo de escritura
         cuentoSqlite = new CuentoSqlite(this, "DBCuentos", null, 1);
         db = cuentoSqlite.getWritableDatabase();
 
@@ -282,8 +285,6 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
     }
 
     public void cancelar() {
-
-
         //Marco como realizada la actividad 2
         db1.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad5'");
         db1.close();
@@ -424,8 +425,6 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
     }
 
     public void onBackPressed() {
-
-
         Intent i = new Intent(Actividad5.this, OfflineRegionListActivity.class);
         i.putExtra("actividad", "5");
         startActivity(i);

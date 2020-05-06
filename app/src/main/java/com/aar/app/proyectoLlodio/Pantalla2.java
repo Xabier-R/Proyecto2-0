@@ -3,6 +3,8 @@ package com.aar.app.proyectoLlodio;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +21,10 @@ import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
+import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,7 @@ public class Pantalla2 extends AppCompatActivity{
     ImageView imgmenu;
     private FeatureCoverFlow coverFlow;
     private CoverFlowAdapter adapter;
+
     private ArrayList<Game> games;
 
     @Override
@@ -91,11 +96,20 @@ public class Pantalla2 extends AppCompatActivity{
 
     private void settingDummyData() {
         games = new ArrayList<>();
-        games.add(new Game(R.drawable.p2_img4, "Egileak"));
-        games.add(new Game(R.drawable.p2_img3, "Galeria"));
-        games.add(new Game(R.drawable.p2_img1_2, "Mapa"));
-        games.add(new Game(R.drawable.p2_img2, "Ondareak"));
+
+        String item1 = getResources().getString(R.string.texto1_p2);
+        String item2 = getResources().getString(R.string.texto2_p2);
+        String item3 = getResources().getString(R.string.texto3_p2);
+        String item4 = getResources().getString(R.string.texto4_p2);
+
+        games.add(new Game(R.drawable.p2_img4, item1));
+        games.add(new Game(R.drawable.p2_img3, item2));
+        games.add(new Game(R.drawable.p2_img1_2, item3));
+        games.add(new Game(R.drawable.p2_img2, item4));
     }
+
+
+
 
 
 

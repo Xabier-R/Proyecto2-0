@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical">
 
         <com.mapbox.mapboxsdk.maps.MapView
@@ -41,6 +40,15 @@
                 </fragment>
 
             </LinearLayout>
+
+            <com.nightonke.boommenu.BoomMenuButton
+                android:id="@+id/bmb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bmb_buttonEnum="ham"
+                app:bmb_piecePlaceEnum="piecePlace_ham_2"
+                app:bmb_buttonPlaceEnum="buttonPlace_ham_2"
+                />
 
         </com.mapbox.mapboxsdk.maps.MapView>
 
@@ -89,6 +97,9 @@
         </androidx.core.widget.NestedScrollView>
 
 
+
     </LinearLayout>
+
+
 
 </RelativeLayout>

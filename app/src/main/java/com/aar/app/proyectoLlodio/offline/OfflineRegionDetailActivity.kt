@@ -7,10 +7,13 @@ import android.app.Activity
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
+import android.graphics.Rect
+import android.graphics.Typeface
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -19,9 +22,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.aar.app.proyectoLlodio.*
 import com.aar.app.proyectoLlodio.bbdd.Actividad
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
+import com.aar.app.proyectoLlodio.traduccion.LocaleHelper
 import com.mapbox.android.core.location.*
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
@@ -53,6 +58,12 @@ import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import com.nightonke.boommenu.BoomButtons.HamButton
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener
+import com.nightonke.boommenu.BoomMenuButton
+import com.nightonke.boommenu.OnBoomListener
+
+import com.nightonke.boommenu.Util
 import kotlinx.android.synthetic.main.activity_offline_region_detail.*
 import timber.log.Timber
 import java.io.InputStream
@@ -75,12 +86,9 @@ import kotlin.collections.HashMap
  */
 class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeListener, OnMapReadyCallback, PermissionsListener, FragmentoLobo.OnFragmentInteractionListener {
 
+
+
     override fun onFragmentPulsado(imagen: ImageView?) {
-
-//        imagen?.setImageResource(R.drawable.animation_list)
-//        val loboParpadeo = imagen?.getDrawable() as AnimationDrawable
-//        loboParpadeo.start()
-
 
         when (actividadLanzar) {
             "actividad1" -> {
@@ -153,6 +161,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     //Fragmento
     private var linearLayout:LinearLayout? = null
 
+    private var init = false
+
+
     /**
      * Callback invoked when the states of an offline region changes.
      */
@@ -191,20 +202,42 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Pantalla full
+        //Pantalla completa
         window.requestFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         setContentView(R.layout.activity_offline_region_detail)
+
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        activiades = ActividadesSQLiteHelper(this, "DBactividades", null, 1)
+        db = activiades!!.getWritableDatabase()
+
+        val boomMenuButton:BoomMenuButton? = findViewById(R.id.bmb);
+
+        // Añaño los botones al builder con sus respectivos listeners
+        var bmbSpanish = HamButton.Builder().normalImageRes(R.drawable.spanish).normalText("Español").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( Rect(35, 35, 35, 35))
+                .listener(object : OnBMClickListener{
+                    override fun onBoomButtonClick(index: Int) {
+                        cambiarIdioma("es")
+                    }
+                })
+
+        var bmbEuskera = HamButton.Builder().normalImageRes(R.drawable.euskera).normalText("Euskera").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( Rect(35, 35, 35, 35))
+                .listener(object : OnBMClickListener{
+                    override fun onBoomButtonClick(index: Int) {
+                        cambiarIdioma("eu")
+                    }
+                })
+        boomMenuButton?.addBuilder(bmbSpanish)
+        boomMenuButton?.addBuilder(bmbEuskera)
 
         instanciarActividades()
 
         //Vinculo el linearLayout del fragmento
         linearLayout = findViewById(R.id.linearFragmento)
 
-        //Abrimos la base de datos "DBactividades" en modo de escritura
-        activiades = ActividadesSQLiteHelper(this, "DBactividades", null, 1)
-        db = activiades!!.getWritableDatabase()
+
 
         mapView?.onCreate(savedInstanceState)
         offlinePlugin = OfflinePlugin.getInstance(this)
@@ -214,6 +247,19 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             loadOfflineDownload(bundle)
         }
         fabDelete.setOnClickListener { onFabClick(it) }
+    }
+
+
+    private fun cambiarIdioma(idioma: String){
+        if (idioma.equals("es")) {
+            db?.execSQL("UPDATE idiomas SET idioma='es'")
+            LocaleHelper.setLocale(this,"es")
+        }
+        else {
+            db?.execSQL("UPDATE idiomas SET idioma='eu'")
+            LocaleHelper.setLocale(this,"eu")
+        }
+
     }
 
     private fun instanciarActividades() {

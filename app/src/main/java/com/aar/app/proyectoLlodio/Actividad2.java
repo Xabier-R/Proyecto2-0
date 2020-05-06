@@ -91,8 +91,6 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
         if (btnNext.getText().equals("BUKATUTA"))
         {
-
-
             //Marco como realizada la actividad 2
             db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad2'");
             db.close();
@@ -111,13 +109,13 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
             if (btnNext.getText().equals("egiaztatu") || numPregunta ==3) {
                 linearAciertos.setVisibility(View.VISIBLE);
                 txtAcierto.setText("Asmatu duzu   " + aciertos + "/4");
-                btnNext.setText("BUKATUTA");
+                btnNext.setText(R.string.btnAcabar);
 
             }
             else {
                 numPregunta++;
                 if (numPregunta == preguntas.size()-1)
-                    btnNext.setText("egiaztatu");
+                    btnNext.setText(R.string.btncomprobar);
                 siguientePregunta();
 
             }

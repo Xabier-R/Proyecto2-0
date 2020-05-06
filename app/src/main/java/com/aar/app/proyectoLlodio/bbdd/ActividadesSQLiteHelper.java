@@ -14,6 +14,7 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
 
     //Sentencia SQL para crear la tabla de Contactos
     String sqlCreate = "CREATE TABLE actividades (actividad TEXT PRIMARY KEY, realizada TEXT)";
+    String sqlCreateIdioma = "CREATE TABLE idiomas (idioma TEXT PRIMARY KEY)";
 
     public ActividadesSQLiteHelper(Context contexto, String nombre, SQLiteDatabase.CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
@@ -22,7 +23,9 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(sqlCreate);
+        db.execSQL(sqlCreateIdioma);
         insertarActividades(db);
+        insertarIdioma(db);
     }
 
     @Override
@@ -33,13 +36,18 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreate);
     }
 
-    public void insertarActividades(SQLiteDatabase db) {
+    private void insertarActividades(SQLiteDatabase db) {
         for (int i=1; i<=7; i++) {
             ContentValues nuevoRegistro = new ContentValues();
             nuevoRegistro.put("actividad", "actividad" + i);
             nuevoRegistro.put("realizada",  "no");
             db.insert("actividades", null, nuevoRegistro);
         }
+    }
 
+    private void insertarIdioma(SQLiteDatabase db) {
+        ContentValues nuevoRegistro = new ContentValues();
+        nuevoRegistro.put("idioma", "eu");
+        db.insert("idiomas", null, nuevoRegistro);
     }
 }
