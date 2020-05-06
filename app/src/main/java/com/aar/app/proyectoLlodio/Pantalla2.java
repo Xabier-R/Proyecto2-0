@@ -36,11 +36,6 @@ public class Pantalla2 extends AppCompatActivity{
     private FeatureCoverFlow coverFlow;
     private CoverFlowAdapter adapter;
 
-
-    //BBDD
-    private ActividadesSQLiteHelper actividadesSQLiteHelper;
-    private SQLiteDatabase db;
-
     private ArrayList<Game> games;
 
     @Override
@@ -49,14 +44,6 @@ public class Pantalla2 extends AppCompatActivity{
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla2);
-
-        //Abrimos la base de datos "DBactividades" en modo de escritura
-        actividadesSQLiteHelper = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
-        db = actividadesSQLiteHelper.getWritableDatabase();
-
-        recuperarIdioma();
-
-
 
         coverFlow = (FeatureCoverFlow) findViewById(R.id.coverflow);
         coverFlow.setBackground(getResources().getDrawable(R.drawable.fondomenu));
@@ -109,20 +96,20 @@ public class Pantalla2 extends AppCompatActivity{
 
     private void settingDummyData() {
         games = new ArrayList<>();
-        games.add(new Game(R.drawable.p2_img4, "Egileak"));
-        games.add(new Game(R.drawable.p2_img3, "Galeria"));
-        games.add(new Game(R.drawable.p2_img1_2, "Mapa"));
-        games.add(new Game(R.drawable.p2_img2, "Ondareak"));
+
+        String item1 = getResources().getString(R.string.texto1_p2);
+        String item2 = getResources().getString(R.string.texto2_p2);
+        String item3 = getResources().getString(R.string.texto3_p2);
+        String item4 = getResources().getString(R.string.texto4_p2);
+
+        games.add(new Game(R.drawable.p2_img4, item1));
+        games.add(new Game(R.drawable.p2_img3, item2));
+        games.add(new Game(R.drawable.p2_img1_2, item3));
+        games.add(new Game(R.drawable.p2_img2, item4));
     }
 
 
-    private void recuperarIdioma() {
-        Cursor c = db.rawQuery("SELECT idioma FROM idiomas", null);
-        c.moveToFirst();
-        String idioma = c.getString(0);
-        System.out.println("El idioma actual es : " + idioma);
-        LocaleHelper.setLocale(this,idioma);
-    }
+
 
 
 

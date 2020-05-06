@@ -36,7 +36,6 @@
     <string name="texto4_p5">Lezeagako Sorginaren istorioa duela asko entzuten da Laudioko toki guztietan. Aspaldi, herriko neskatxa bat, Sorginzulo ondotik igaro behar zen egunero ur bila. Beti buelta berdina egiteaz nekaturik esan zuen «Ez ahal dago sorginik zubi bat eraikiko dutenik ni eurei batzearen truke?». Hurrengo goizean herriko auzokideak esnatu eta zubi berri bat eta neskatila hau sorgin bihurturik topatu zuten. Egun honetatik aurrera Lezeagako kobazuloan bizi izan zen. Betiko geratu zen bertan sarturik herrikideez baztertuta. Batzuetan, bere ahots politarekin artzainak bertara erakartzen zituen zuen ile horia urrezko eskuilarekin orrazten zuen bitartean.</string>
     <string name="texto5_p5">Etxebarri baserria XVI. mendeko baserria da eta bi solairu ditu: beheko solairuan animalientzako kortak zeuden, eta, goiko solairua, etxebizitzarako prestatuta zegoen. 2009ko irailean sute bat sufritu zuen, eta teilatua suntsituta gelditu zen. Hala ere, suari esker, XVI. mendeko margolanak azaleratu ziren. Juan de Armonaren irudi errenazentistak dira, eta hau oso bitxia da, izan ere, normalean eraikin erlijiosoetan agertzen direlako (elizak, ermitak, basilikak...). Baina, tamalez, apurturik eta babesik gabe zegoenez, aurkitutako margolanak zikintzen eta galtzen hasi ziren. Horregatik, ondare hau babesteko, Etxebarriko baserria konpondu zuten eta, gaur egun, Laudioko altxorretariko bat bihurtu da.</string>
     <string name="texto6_p5">Hasieran, Urquijoko markesaren parke pribatua zen. Bertan, XVIII. mendeko eraikin bat dago,1876an sortua Estanislao de Urquijo y Landaluceren eskutik, Urquijoko lehen markesa. Hau haren jauregia zen. Estilo barrokoko oinarriak jarraitzen ditu eta XIX. mendean hedatua izan zen. Hasiera batean, etxebizitza familiabakarrarena zen eta lursail batez inguratuta zegoen, aisialdi toki bat zen baina haren jabearen familiarentzat soilik. Markesa bertan zegoelarik, tenis zelai bi, kroket zelai bat eta igerileku bat zeuden, baita zuhaitz mota ugari, adibidez, magnolio eta izeiak. Gaur egun, 1975etik aurrera, parkea jabetza publikokoa da eta bertako eraikinak kultur etxeari dagozkie. Gainera, oraindik kirola egiteko zelaiak daude nahiz eta garai hartan zeudenak ez izan.</string>
-    <string name="texto7_p5"></string>
 
     <string name="btncomprobar">Egiaztatu </string>
     <string name="btnresetear">Berregin </string>
@@ -85,7 +84,6 @@
     <string name="texto9_4_a4"> zera </string>
     <string name="texto9_5_a4"> esan </string>
     <string name="texto9_6_a4"> zuen:</string>
-    <string name="texto10_1_a4">• Ez </string>
     <string name="texto10_2_a4"> ahal </string>
     <string name="texto10_3_a4"> dago</string>
     <string name="texto11_1_a4">   bat</string>
@@ -199,6 +197,10 @@ Tradizioaren arabera, ahoa urez bete eta hiru aldiz zapaldu behar duzu aztarna e
     <string name="grayscale" translatable="false">Grayscale</string>
     <string name="game_data_desc" translatable="false">:gridSize Grid, :wordCount Words</string>
     <string name="btnAcabar">Bukatuta</string>
+    <string name="texto1_p2">Egileak</string>
+    <string name="texto2_p2">Galeria</string>
+    <string name="texto3_p2">Mapa</string>
+    <string name="texto4_p2">Ondareak</string>
 
 
 </resources>

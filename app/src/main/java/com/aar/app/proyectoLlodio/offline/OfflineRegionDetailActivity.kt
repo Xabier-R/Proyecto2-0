@@ -219,7 +219,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         var bmbSpanish = HamButton.Builder().normalImageRes(R.drawable.spanish).normalText("Español").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( Rect(35, 35, 35, 35))
                 .listener(object : OnBMClickListener{
                     override fun onBoomButtonClick(index: Int) {
-                        System.out.println( "Has pulsado español | " + index)
                         cambiarIdioma("es")
                     }
                 })
@@ -254,12 +253,10 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private fun cambiarIdioma(idioma: String){
         if (idioma.equals("es")) {
             db?.execSQL("UPDATE idiomas SET idioma='es'")
-            db?.close()
             LocaleHelper.setLocale(this,"es")
         }
         else {
             db?.execSQL("UPDATE idiomas SET idioma='eu'")
-            db?.close()
             LocaleHelper.setLocale(this,"eu")
         }
 

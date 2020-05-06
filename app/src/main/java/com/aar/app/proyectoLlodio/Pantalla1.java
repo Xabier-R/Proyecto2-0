@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,6 +23,9 @@ import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
+import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
+
 public class Pantalla1 extends AppCompatActivity {
     private ImageView lobo,destello;
     private ObjectAnimator girar,encogerX,encogerY,destello1,destello2,destello3;
@@ -35,12 +40,23 @@ public class Pantalla1 extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private MediaPlayer mediaPlayer2;
 
+    //BBDD
+    private ActividadesSQLiteHelper actividadesSQLiteHelper;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla_lobo);
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        actividadesSQLiteHelper = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db = actividadesSQLiteHelper.getWritableDatabase();
+
+        recuperarIdioma();
+
 
         lobo = findViewById(R.id.lobo);
         destello = findViewById(R.id.destello);
@@ -115,8 +131,12 @@ public class Pantalla1 extends AppCompatActivity {
 
     }
 
-
-
+    private void recuperarIdioma() {
+        Cursor c = db.rawQuery("SELECT idioma FROM idiomas", null);
+        c.moveToFirst();
+        String idioma = c.getString(0);
+        LocaleHelper.setLocale(this,idioma);
+    }
 
     public void  sicronizarTexto1()
     {
@@ -182,13 +202,10 @@ public class Pantalla1 extends AppCompatActivity {
                             // lanzarActividad();
                             animatorSet5.start();
                         }
-
                     }
                 });
 
     }
-
-
 
 
     public void lanzarActividad()
@@ -228,14 +245,11 @@ public class Pantalla1 extends AppCompatActivity {
         animatorSet2.playTogether(destello1,destello2,destello3);
 
 
-
         animatorSet5.playTogether(girar,encogerX,encogerY,animatorSet2);
         animatorSet5.start();
     }
     public void hablar() {
-
         lobo.setImageResource(R.drawable.animation_list);
-
         AnimationDrawable loboParpadeo = (AnimationDrawable) lobo.getDrawable();
         loboParpadeo.start();
     }

@@ -7,6 +7,12 @@
     <string name="min_zoom_textview" translatable="false">Min zoom: %1$d</string>
     <string name="max_zoom_textview" translatable="false">Max zoom: %1$d</string>
 
+
+    <string name="texto1_p2">Egileak</string>
+    <string name="texto2_p2">Galeria</string>
+    <string name="texto3_p2">Mapa</string>
+    <string name="texto4_p2">Ondareak</string>
+
     <string name="texto0_a2">Andra Mari de Ermu inguruko iraganeko hainbat sekretu agerian uzten hasi dira arkeologiaren bitartez. Arkeologoak bi tokitan aritu dira lanean, batak 12 m^2ditu eta besteak 20m^2, Andra Mari de Ermuko elizaren koro azpian eta kanpandorrearen alboan. Indusketek nekropoli bat utzi dute agerian, XI. eta XII. mendeetako ehorzketekin, baita XVI. mendeko elizaren beste lursail bat. Honetatik ondoriozta genezake, aurretik egondako XII. mendeko eraikina bota egin zutela gaur egun dagoena eraikitzeko. Gainera, XII. mendeko txanponak aurkitu dituzte, ehorzketekin lotuta dauden aberastasunak. Honek, oligarkiari lotuta zegoela pentsatzera bideratzen gaitu. </string>
 
     <!-- Actividad 2/-->
@@ -36,104 +42,103 @@
     <string name="texto4_p5">Lezeagako Sorginaren istorioa duela asko entzuten da Laudioko toki guztietan. Aspaldi, herriko neskatxa bat, Sorginzulo ondotik igaro behar zen egunero ur bila. Beti buelta berdina egiteaz nekaturik esan zuen «Ez ahal dago sorginik zubi bat eraikiko dutenik ni eurei batzearen truke?». Hurrengo goizean herriko auzokideak esnatu eta zubi berri bat eta neskatila hau sorgin bihurturik topatu zuten. Egun honetatik aurrera Lezeagako kobazuloan bizi izan zen. Betiko geratu zen bertan sarturik herrikideez baztertuta. Batzuetan, bere ahots politarekin artzainak bertara erakartzen zituen zuen ile horia urrezko eskuilarekin orrazten zuen bitartean.</string>
     <string name="texto5_p5">Etxebarri baserria XVI. mendeko baserria da eta bi solairu ditu: beheko solairuan animalientzako kortak zeuden, eta, goiko solairua, etxebizitzarako prestatuta zegoen. 2009ko irailean sute bat sufritu zuen, eta teilatua suntsituta gelditu zen. Hala ere, suari esker, XVI. mendeko margolanak azaleratu ziren. Juan de Armonaren irudi errenazentistak dira, eta hau oso bitxia da, izan ere, normalean eraikin erlijiosoetan agertzen direlako (elizak, ermitak, basilikak...). Baina, tamalez, apurturik eta babesik gabe zegoenez, aurkitutako margolanak zikintzen eta galtzen hasi ziren. Horregatik, ondare hau babesteko, Etxebarriko baserria konpondu zuten eta, gaur egun, Laudioko altxorretariko bat bihurtu da.</string>
     <string name="texto6_p5">Hasieran, Urquijoko markesaren parke pribatua zen. Bertan, XVIII. mendeko eraikin bat dago,1876an sortua Estanislao de Urquijo y Landaluceren eskutik, Urquijoko lehen markesa. Hau haren jauregia zen. Estilo barrokoko oinarriak jarraitzen ditu eta XIX. mendean hedatua izan zen. Hasiera batean, etxebizitza familiabakarrarena zen eta lursail batez inguratuta zegoen, aisialdi toki bat zen baina haren jabearen familiarentzat soilik. Markesa bertan zegoelarik, tenis zelai bi, kroket zelai bat eta igerileku bat zeuden, baita zuhaitz mota ugari, adibidez, magnolio eta izeiak. Gaur egun, 1975etik aurrera, parkea jabetza publikokoa da eta bertako eraikinak kultur etxeari dagozkie. Gainera, oraindik kirola egiteko zelaiak daude nahiz eta garai hartan zeudenak ez izan.</string>
-    <string name="texto7_p5"></string>
 
     <string name="btncomprobar">Egiaztatu </string>
     <string name="btnresetear">Berregin </string>
     <string name="btnAcabar">Bukatuta </string>
-    <string name="texto1_a4"> Bazen </string>
-    <string name="texto1_1_a4"> behin, </string>
-    <string name="texto1_2_a4">Laudioko </string>
-    <string name="texto1_3_a4">neskatxa </string>
-    <string name="texto1_4_a4">bat.</string>
-    <string name="texto2_a4">Neskatxa </string>
-    <string name="texto2_1_a4">hau </string>
-    <string name="texto2_2_a4">egunero </string>
-    <string name="texto2_3_a4">joaten </string>
-    <string name="texto2_4_a4">zen </string>
-    <string name="texto3_1_a4">ur </string>
-    <string name="texto3_2_a4">bila.</string>
-    <string name="texto3_3_a4">Errekarako </string>
-    <string name="texto3_4_a4">bidea</string>
-    <string name="texto4_1_a4">ondotik </string>
-    <string name="texto4_2_a4"> pasatzen </string>
-    <string name="texto4_3_a4">zen </string>
-    <string name="texto4_4_a4"> eta </string>
-    <string name="texto4_5_a4"> ez </string>
-    <string name="texto4_6_a4">zegoen</string>
-    <string name="texto5_1_a4">beste </string>
-    <string name="texto5_2_a4"> biderik </string>
-    <string name="texto5_3_a4"> bertara </string>
-    <string name="texto5_4_a4">heltzeko,</string>
-    <string name="texto5_5_a4"> beraz,</string>
-    <string name="texto6_1_a4">etxera</string>
-    <string name="texto6_2_a4"> bueltan </string>
-    <string name="texto6_3_a4">ere </string>
-    <string name="texto6_4_a4">bertatik</string>
-    <string name="texto7_1_a4">igaro</string>
-    <string name="texto7_2_a4">behar</string>
-    <string name="texto7_3_a4"> zuen. </string>
-    <string name="texto7_4_a4">Egunero</string>
-    <string name="texto8_1_a4">bera </string>
-    <string name="texto8_2_a4"> egiten </string>
-    <string name="texto8_3_a4"> zuen </string>
-    <string name="texto8_4_a4"> eta, </string>
-    <string name="texto8_5_a4"> hortaz,</string>
-    <string name="texto8_6_a4"> nekaturik</string>
-    <string name="texto9_1_a4">zegoela </string>
-    <string name="texto9_2_a4"> sorginzulo </string>
-    <string name="texto9_3_a4">parean </string>
-    <string name="texto9_4_a4"> zera </string>
-    <string name="texto9_5_a4"> esan </string>
-    <string name="texto9_6_a4"> zuen:</string>
-    <string name="texto10_1_a4">• Ez </string>
-    <string name="texto10_2_a4"> ahal </string>
-    <string name="texto10_3_a4"> dago</string>
-    <string name="texto11_1_a4">   bat</string>
-    <string name="texto11_2_a4">  zubi bat</string>
-    <string name="texto12_1_a4">eraikiko  </string>
-    <string name="texto12_2_a4"> dutenik  </string>
-    <string name="texto12_3_a4"> ni </string>
-    <string name="texto13_1_a4">eurekin batzearen truke?</string>
-    <string name="texto13_2_a4"> batzearen </string>
-    <string name="texto13_3_a4">truke?</string>
-    <string name="texto14_1_a4">Hurrengo </string>
-    <string name="texto14_2_a4"> goizean, </string>
-    <string name="texto15_1_a4">herriko </string>
-    <string name="texto15_2_a4"> biztanleak </string>
-    <string name="texto15_3_a4"> esnatu </string>
-    <string name="texto15_4_a4">eta</string>
-    <string name="texto16_1_a4">berri</string>
-    <string name="texto16_2_a4"> bat </string>
-    <string name="texto16_3_a4"> aurkitu </string>
-    <string name="texto16_4_a4"> zuten,</string>
-    <string name="texto16_5_a4">baita</string>
-    <string name="texto17_1_a4">neskatila </string>
-    <string name="texto17_2_a4"> hau </string>
-    <string name="texto17_3_a4"> sorgin </string>
-    <string name="texto17_4_a4"> bihurturik</string>
-    <string name="texto18_1_a4">ere. Hau sorginen</string>
-    <string name="texto18_2_a4"> Hau </string>
-    <string name="texto18_3_a4">u sorginen</string>
-    <string name="texto19_1_a4">eragin </string>
-    <string name="texto19_2_a4"> zuen,</string>
-    <string name="texto19_3_a4"> Hemendik ,</string>
-    <string name="texto19_4_a4">aurrera,</string>
-    <string name="texto20_1_a4">sorgin </string>
-    <string name="texto20_2_a4"> bihurtutako </string>
-    <string name="texto20_3_a4"> neskatila</string>
-    <string name="texto21_1_a4">kobazuloan </string>
-    <string name="texto21_2_a4"> bizi </string>
-    <string name="texto21_3_a4"> izan </string>
-    <string name="texto21_4_a4"> da.</string>
+    <string name="texto1_a4" translatable="false"> Bazen </string>
+    <string name="texto1_1_a4" translatable="false"> behin, </string>
+    <string name="texto1_2_a4" translatable="false">Laudioko </string>
+    <string name="texto1_3_a4" translatable="false">neskatxa </string>
+    <string name="texto1_4_a4" translatable="false">bat.</string>
+    <string name="texto2_a4" translatable="false">Neskatxa </string>
+    <string name="texto2_1_a4" translatable="false">hau </string>
+    <string name="texto2_2_a4" translatable="false">egunero </string>
+    <string name="texto2_3_a4" translatable="false">joaten </string>
+    <string name="texto2_4_a4" translatable="false">zen </string>
+    <string name="texto3_1_a4" translatable="false">ur </string>
+    <string name="texto3_2_a4" translatable="false">bila.</string>
+    <string name="texto3_3_a4" translatable="false">Errekarako </string>
+    <string name="texto3_4_a4" translatable="false">bidea</string>
+    <string name="texto4_1_a4" translatable="false">ondotik </string>
+    <string name="texto4_2_a4" translatable="false"> pasatzen </string>
+    <string name="texto4_3_a4" translatable="false">zen </string>
+    <string name="texto4_4_a4" translatable="false"> eta </string>
+    <string name="texto4_5_a4" translatable="false"> ez </string>
+    <string name="texto4_6_a4" translatable="false">zegoen</string>
+    <string name="texto5_1_a4" translatable="false">beste </string>
+    <string name="texto5_2_a4" translatable="false"> biderik </string>
+    <string name="texto5_3_a4" translatable="false"> bertara </string>
+    <string name="texto5_4_a4" translatable="false">heltzeko,</string>
+    <string name="texto5_5_a4" translatable="false"> beraz,</string>
+    <string name="texto6_1_a4" translatable="false">etxera</string>
+    <string name="texto6_2_a4" translatable="false"> bueltan </string>
+    <string name="texto6_3_a4" translatable="false">ere </string>
+    <string name="texto6_4_a4" translatable="false">bertatik</string>
+    <string name="texto7_1_a4" translatable="false">igaro</string>
+    <string name="texto7_2_a4" translatable="false">behar</string>
+    <string name="texto7_3_a4" translatable="false"> zuen. </string>
+    <string name="texto7_4_a4" translatable="false">Egunero</string>
+    <string name="texto8_1_a4" translatable="false">bera </string>
+    <string name="texto8_2_a4" translatable="false"> egiten </string>
+    <string name="texto8_3_a4" translatable="false"> zuen </string>
+    <string name="texto8_4_a4" translatable="false"> eta, </string>
+    <string name="texto8_5_a4" translatable="false"> hortaz,</string>
+    <string name="texto8_6_a4" translatable="false"> nekaturik</string>
+    <string name="texto9_1_a4" translatable="false">zegoela </string>
+    <string name="texto9_2_a4" translatable="false"> sorginzulo </string>
+    <string name="texto9_3_a4" translatable="false">parean </string>
+    <string name="texto9_4_a4" translatable="false"> zera </string>
+    <string name="texto9_5_a4" translatable="false"> esan </string>
+    <string name="texto9_6_a4" translatable="false"> zuen:</string>
+    <string name="texto10_1_a4" translatable="false">• Ez </string>
+    <string name="texto10_2_a4" translatable="false"> ahal </string>
+    <string name="texto10_3_a4" translatable="false"> dago</string>
+    <string name="texto11_1_a4" translatable="false">   bat</string>
+    <string name="texto11_2_a4" translatable="false">  zubi bat</string>
+    <string name="texto12_1_a4" translatable="false">eraikiko  </string>
+    <string name="texto12_2_a4" translatable="false"> dutenik  </string>
+    <string name="texto12_3_a4" translatable="false"> ni </string>
+    <string name="texto13_1_a4" translatable="false">eurekin batzearen truke?</string>
+    <string name="texto13_2_a4" translatable="false"> batzearen </string>
+    <string name="texto13_3_a4" translatable="false">truke?</string>
+    <string name="texto14_1_a4" translatable="false">Hurrengo </string>
+    <string name="texto14_2_a4" translatable="false"> goizean, </string>
+    <string name="texto15_1_a4" translatable="false">herriko </string>
+    <string name="texto15_2_a4" translatable="false"> biztanleak </string>
+    <string name="texto15_3_a4" translatable="false"> esnatu </string>
+    <string name="texto15_4_a4" translatable="false">eta</string>
+    <string name="texto16_1_a4" translatable="false">berri</string>
+    <string name="texto16_2_a4" translatable="false"> bat </string>
+    <string name="texto16_3_a4" translatable="false"> aurkitu </string>
+    <string name="texto16_4_a4" translatable="false"> zuten,</string>
+    <string name="texto16_5_a4" translatable="false">baita</string>
+    <string name="texto17_1_a4" translatable="false">neskatila </string>
+    <string name="texto17_2_a4" translatable="false"> hau </string>
+    <string name="texto17_3_a4" translatable="false"> sorgin </string>
+    <string name="texto17_4_a4" translatable="false"> bihurturik</string>
+    <string name="texto18_1_a4" translatable="false">ere. Hau sorginen</string>
+    <string name="texto18_2_a4" translatable="false"> Hau </string>
+    <string name="texto18_3_a4" translatable="false">u sorginen</string>
+    <string name="texto19_1_a4" translatable="false">eragin </string>
+    <string name="texto19_2_a4" translatable="false"> zuen,</string>
+    <string name="texto19_3_a4" translatable="false"> Hemendik ,</string>
+    <string name="texto19_4_a4" translatable="false">aurrera,</string>
+    <string name="texto20_1_a4" translatable="false">sorgin </string>
+    <string name="texto20_2_a4" translatable="false"> bihurtutako </string>
+    <string name="texto20_3_a4" translatable="false"> neskatila</string>
+    <string name="texto21_1_a4" translatable="false">kobazuloan </string>
+    <string name="texto21_2_a4" translatable="false"> bizi </string>
+    <string name="texto21_3_a4" translatable="false"> izan </string>
+    <string name="texto21_4_a4" translatable="false"> da.</string>
 
-    <string name="texto22_a4">errekara</string>
-    <string name="texto23_a4">sorginzulo</string>
-    <string name="texto24_a4">ibilbide</string>
-    <string name="texto25_a4">sorginik</string>
-    <string name="texto26_a4">zubi</string>
-    <string name="texto27_a4">madarikazioak</string>
-    <string name="texto28_a4">Lezeagako</string>
+    <string name="texto22_a4" translatable="false">errekara</string>
+    <string name="texto23_a4" translatable="false">sorginzulo</string>
+    <string name="texto24_a4" translatable="false">ibilbide</string>
+    <string name="texto25_a4" translatable="false">sorginik</string>
+    <string name="texto26_a4" translatable="false">zubi</string>
+    <string name="texto27_a4" translatable="false">madarikazioak</string>
+    <string name="texto28_a4" translatable="false">Lezeagako</string>
 
     <string name="texto1_a5">Etxebarri baserria XVI. mendeko baserria da eta bi solairu ditu: beheko solairuan animalientzako kortak zeuden, eta, goiko solairua, etxebizitzarako prestatuta zegoen. 2009ko irailean sute bat sufritu zuen, eta teilatua suntsituta gelditu zen. Hala ere, suari esker, XVI. mendeko margolanak azaleratu ziren. Juan de Armonaren irudi errenazentistak dira, eta hau oso bitxia da, izan ere, normalean eraikin erlijiosoetan agertzen direlako (elizak, ermitak, basilikak...). Baina, tamalez, apurturik eta babesik gabe zegoenez, aurkitutako margolanak zikintzen eta galtzen hasi ziren. Horregatik, ondare hau babesteko, Etxebarriko baserria konpondu zuten eta, gaur egun, Laudioko altxorretariko bat bihurtu da.</string>
 
