@@ -30,7 +30,7 @@ public class Pantalla5 extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // setup reclycerview with adapter
+        // Cargo la lista con los Patrimonios
         RecyclerView recyclerView = findViewById(R.id.rv_lista);
         final List<Patrimonio> lista = new ArrayList<>();
         lista.add(new Patrimonio(R.drawable.p5_img1, "ERMUKO ANDRA MARI ELIZA"));
@@ -42,8 +42,8 @@ public class Pantalla5 extends AppCompatActivity {
         lista.add(new Patrimonio(R.drawable.p5_img7, "DOLUMIN BARIKUA"));
 
 
+        //Creo el adaptador para la lista
         final Adaptador adaptador = new Adaptador(this, lista);
-
         recyclerView.setAdapter(adaptador);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -52,7 +52,7 @@ public class Pantalla5 extends AppCompatActivity {
             public void onItemClick(int position) {
 
             }
-
+            //Metodo para ver los detalles del Patrimonio pulsado
             @Override
             public void onDeleteClick(int position, ImageView img) {
                 imgen = img;
@@ -63,6 +63,7 @@ public class Pantalla5 extends AppCompatActivity {
 
     }
 
+    //Metodo que lanza un actividad nueva con los detalles del Patrimonio pulsado
     private void empezar(String nombre)
     {
         Intent intent = new Intent(this, Pantalla5_patrimonio_detalle.class);

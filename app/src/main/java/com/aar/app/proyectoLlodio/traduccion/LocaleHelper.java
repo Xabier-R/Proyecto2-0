@@ -33,6 +33,7 @@ public class LocaleHelper {
         return getPersistedData(context, Locale.getDefault().getLanguage());
     }
 
+    //Metodo que cambia los recursos que va a utilizar con el "lenguaje" pasado como parametro
     public static void setLocale(Context context, String language) {
         persist(context, language);
         updateResources(context, language);

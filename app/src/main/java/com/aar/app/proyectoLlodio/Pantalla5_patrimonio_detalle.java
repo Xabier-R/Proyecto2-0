@@ -29,6 +29,7 @@ public class Pantalla5_patrimonio_detalle extends AppCompatActivity {
         cambiar(nombre);
     }
 
+    //Metodo que cambia los detalles de la actividad con los datos del Patrimonio pulsado
     private void cambiar(String nombre)
     {
         switch (nombre)

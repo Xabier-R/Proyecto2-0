@@ -17,10 +17,11 @@ public class AdaptadorCarpetas extends RecyclerView.Adapter<AdaptadorCarpetas.my
     List<Carpeta> mdata;
     OnItemClickListener mListener;
 
-
+    //Interfaz
     public interface OnItemClickListener {
         void onCarpetaPulsada(int position);
     }
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
@@ -44,6 +45,7 @@ public class AdaptadorCarpetas extends RecyclerView.Adapter<AdaptadorCarpetas.my
         holder.txtTitulo.setText(mdata.get(position).getLugar());
     }
 
+    //Metodo que devuelve el tamaño de la lista
     @Override
     public int getItemCount() {
         return mdata.size();
@@ -56,6 +58,7 @@ public class AdaptadorCarpetas extends RecyclerView.Adapter<AdaptadorCarpetas.my
             super(itemView);
             txtTitulo = itemView.findViewById(R.id.txtTitulo);
 
+            //Metodo que agrega el listener onCarpeta pulsado a la Carpeta
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

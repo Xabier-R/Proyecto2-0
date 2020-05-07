@@ -61,12 +61,11 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
         setContentView(R.layout.actividad2);
 
 
-        //Abrimos la base de datos "DBUsuarios" en modo de escritura
+        //Abrimos la base de datos "DBactividades" en modo de escritura
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db = activiades.getWritableDatabase();
 
-
-
+        //Instancio el fragmento de ayuda
         Fragment fragment = new Fragmento_ayuda(getString(R.string.ayuda2));
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.linearFragmento, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
@@ -85,6 +84,8 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
     }
 
+    //Metodo que comprueba en que pregunta nos encontramos para cargar la siguiente pregunta
+    // con sus respectivas respuesta o ver la puntuacion y acabar la actividad
     public void siguiente(View view) {
 
         verRespuestaElegida();
@@ -122,6 +123,7 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
         }
     }
 
+    //Metodo que carga los mapas: preguntas, mapaPreguntas y mapaRespuestas
     private void cargarPreguntas()
     {
         preguntas = new HashMap<String, ArrayList>();
@@ -144,6 +146,7 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
     }
 
+    //Metodo que carga la siguiente pregunta con sus respectivas respuestas
     private void siguientePregunta()
     {
         String pregunta="";
@@ -164,6 +167,7 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
         btnResp2.setText(respuestaActual.get(1));
     }
 
+    //Metodo que compruba si la respuesta ha sido correcta o incorrecta
     private void verRespuestaElegida()
     {
         if (btnResp1.isChecked())

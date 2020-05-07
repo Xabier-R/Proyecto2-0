@@ -94,7 +94,6 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         ayuda = findViewById(R.id.linearFragmento);
 
         //Abrimos la base de datos "DBactividades" en modo de escritura
-
         activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
         db1 = activiades.getWritableDatabase();
 
@@ -103,7 +102,6 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         //Abrimos la base de datos "DBCuentos" en modo de escritura
         cuentoSqlite = new CuentoSqlite(this, "DBCuentos", null, 1);
         db = cuentoSqlite.getWritableDatabase();
-
 
 
         res = getResources();
@@ -140,9 +138,9 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
 
         checkCameraPermission();
-
     }
 
+    //Metodo que obtiene todos los cuentos que hay en la base de datos y los carga en la lista
     public void leerCuentos() {
         final ArrayList<Cuento> cuentos = new ArrayList<Cuento>();
         Cursor c = db.rawQuery("SELECT titulo, descripcion, foto FROM Cuento", null);
@@ -216,6 +214,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         }
     };
 
+    //Metodo que borra un cuento de la BBDD y de la lista
     private void actualizarBase(int pos)
     {
         Cuento cuento = adaptadorCuento.mdata.get(pos);
@@ -226,9 +225,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         //adaptadorCuento.notifyItemRangeChanged(pos,adaptadorCuento.mdata.size());
     }
 
-
-
-
+    //Metodo que guarda un cuento en la BBDD
     public void guardarCuento(View view) {
         boolean puede = comprobar();
 
@@ -284,6 +281,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
     }
 
+    //Metodo que marca la actividad como realizada en la BBDD y vuelva al mapa
     public void cancelar() {
         //Marco como realizada la actividad 2
         db1.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad5'");
@@ -297,7 +295,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
 
 
-
+    //Metodo para comprobar que no guardamos un cuento sin titulo, descripcion o foto
     private boolean comprobar()
     {
         if ( (titulo.getText().toString().equals("")== false) && (descripcion.getText().toString().equals("")==false) && (fotoSacada==true)) {
@@ -307,7 +305,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
     }
 
 
-
+    //Metodo que limpia todos lo campos despues de guardar un cuento
     private void limpiar()
     {
         titulo.setText("");
@@ -350,6 +348,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
@@ -362,6 +361,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         }
     }
 
+    //Metodo para ver detalladamente un cuento escrito
     private void verCuentoSeleccionado(int position)
     {
         String tituloCuento = adaptadorCuento.mdata.get(position).getTitulo();
@@ -377,7 +377,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         startActivity(intent);
     }
 
-
+    //Metodo que codifica la foto saca en Base64 para guardarla en la BBDD
     public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality)
     {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
@@ -385,6 +385,7 @@ public class Actividad5 extends AppCompatActivity implements Fragmento_ayuda.OnF
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
     }
 
+    //Metodo que descodifica la foto en Base64 a un Bitmap
     public static Bitmap decodeBase64(String input)
     {
         byte[] decodedBytes = Base64.decode(input,0);

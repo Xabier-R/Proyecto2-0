@@ -29,6 +29,12 @@
       <module fileurl="file://$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/dm2-AndroidStudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/home-dm2-AndroidStudioProjects-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/konfetti/konfetti.iml" filepath="$PROJECT_DIR$/konfetti/konfetti.iml" group="Proyecto2-0/konfetti" />
+      <module fileurl="file://$PROJECT_DIR$/piero-Downloads-Proyecto2-0.iml" filepath="$PROJECT_DIR$/piero-Downloads-Proyecto2-0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play.iml" filepath="$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java.iml" filepath="$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti.iml" filepath="$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/plugin-offline.iml" />
     </modules>
   </component>

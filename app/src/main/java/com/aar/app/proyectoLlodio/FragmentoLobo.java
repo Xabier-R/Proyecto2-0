@@ -38,9 +38,6 @@ public class FragmentoLobo extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             nombreActividad = getArguments().getString(ARG_PARAM1);
-
-
-
         }
     }
 
@@ -56,12 +53,11 @@ public class FragmentoLobo extends Fragment {
 
         pestanear();
 
-
+        //Metodo que agregar el listener al fragmento al pulsar el boton
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onFragmentPulsado(imagenLobo);
-
             }
         });
 
