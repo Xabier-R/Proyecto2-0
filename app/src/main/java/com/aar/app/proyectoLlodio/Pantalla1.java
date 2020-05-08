@@ -24,6 +24,7 @@ import android.widget.ScrollView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
+import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 
 /**
@@ -218,7 +219,7 @@ public class Pantalla1 extends AppCompatActivity {
     public void lanzarActividad()
     {
         lanzadas++;
-        Intent i=new Intent(Pantalla1.this,Pantalla2.class);
+        Intent i=new Intent(Pantalla1.this, OfflineRegionListActivity.class);
         startActivity(i);
         mediaPlayer.stop();
         mediaPlayer2.stop();

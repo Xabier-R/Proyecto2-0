@@ -40,7 +40,7 @@ public class Pantalla0 extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(Pantalla0.this, Pantalla1.class);
+                Intent intent = new Intent(Pantalla0.this, Pantalla2.class);
                 startActivity(intent);
                 finish();
             }
