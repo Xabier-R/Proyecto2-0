@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#F7F7F7</color>
+    <color name="blancoColor">#ffff</color>
     <color name="blanco">#ececec</color>
     <color name="llodio">#078930</color>
     <color name="cuento">#98BBCC</color>

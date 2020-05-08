@@ -31,6 +31,7 @@
         app:bmb_piecePlaceEnum="piecePlace_ham_2"
         app:bmb_buttonPlaceEnum="buttonPlace_ham_2"
         app:bmb_hamWidth="0dp"
+        app:bmb_normalColor="@color/blancoColor"
         app:bmb_hamHeight="0dp">
 
         <ImageView
@@ -38,13 +39,6 @@
             android:layout_height="40dp"
             android:src="@drawable/traductor"
             android:layout_gravity="center" />
-
-
     </com.nightonke.boommenu.BoomMenuButton>
-
-
-
-
-
 
 </RelativeLayout>

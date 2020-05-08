@@ -5,9 +5,12 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -61,7 +64,8 @@ public class Pantalla2 extends AppCompatActivity{
         bmb = findViewById(R.id.bmb);
 
         HamButton.Builder bmbSpanish = new HamButton.Builder()
-                .normalText("Español")
+                .normalImageRes(R.drawable.spanish)
+                .normalText("Español").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( new Rect(35, 35, 35, 35))
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
@@ -70,7 +74,8 @@ public class Pantalla2 extends AppCompatActivity{
                 });
 
         HamButton.Builder bmbEuskera = new HamButton.Builder()
-                .normalText("Euskera")
+                .normalImageRes(R.drawable.euskera)
+                .normalText("Euskera").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( new Rect(35, 35, 35, 35))
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
