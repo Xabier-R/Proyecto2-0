@@ -30,7 +30,6 @@ public class Pantalla4 extends AppCompatActivity {
         Des = findViewById(R.id.Des);
 
         Des.setOnClickListener(v -> {
-
             cont++;
             contador();
         });

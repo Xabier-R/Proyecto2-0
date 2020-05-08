@@ -147,7 +147,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
     private var actividadLanzar: String? = null
 
 
-    //BBDD
+    //BBDD "Actividades"
     var activiades: ActividadesSQLiteHelper? = null
     var db: SQLiteDatabase? = null
 
@@ -545,6 +545,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         Toast.makeText(this, "No", Toast.LENGTH_LONG).show()
     }
 
+    //Metodo que verifica si tenemos permisos para activiar la localizacion
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
             if (mapaBox?.getStyle() != null) {
@@ -555,7 +556,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             finish()
         }
     }
-    //Ver posicion
+
 
 
     //Localizacion
@@ -687,8 +688,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
             }
         }
     }
-    //Ver posicion
-
 
 
     //metodo que lanza la actividad en la que nos encontremos
@@ -945,11 +944,9 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     //ACTIVIDADES AL PULSAR SOBRE LOS MARCADORES
     private fun empezarActividad1(mapboxMap: MapboxMap) {
-
         val intent = Intent(this, Actividad1_empezar::class.java)
         startActivityForResult(intent, 1)
         finish()
-
     }
 
     private fun empezarActividad2(mapboxMap: MapboxMap) {

@@ -22,7 +22,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     List<Cuento> mdata;
     OnItemClickListener mListener;
 
-
+    //Interface
     public interface OnItemClickListener {
         void onbtnPulsado(int position);
         void onCartaPulsada(int position);
@@ -31,6 +31,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
+
 
     public AdaptadorCuento(Context context, List<Cuento> mdata){
         this.context = context;
@@ -58,6 +59,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
         holder.imgSacada.setBackground(ob);
     }
 
+    //Metodo que devuelve el tamaño de la lista
     @Override
     public int getItemCount() {
         return mdata.size();
@@ -78,7 +80,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
             txtTitulo = itemView.findViewById(R.id.txtTitulo);
             txtDescripcion = itemView.findViewById(R.id.txtDescripcion);
 
-
+            //Agrego el listener onbtnPulsado a la imagenBorrar del Cuento
             imagenBorrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -91,6 +93,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
                 }
             });
 
+            //Agrego el listener onCartaPulsada al Cuento de la lista
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,6 +108,7 @@ public class AdaptadorCuento extends RecyclerView.Adapter<AdaptadorCuento.myView
         }
     }
 
+    //Metodo que decodifica de base64 a imagen
     public static Bitmap decodeBase64(String input)
     {
         byte[] decodedBytes = Base64.decode(input,0);

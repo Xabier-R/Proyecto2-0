@@ -23,7 +23,7 @@ public class Pantalla6 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla6);
 
-        // setup reclycerview with adapter
+        // Carga la lista con las con los nombres de las Carpetas
         RecyclerView recyclerView = findViewById(R.id.rv_lista_carpeta);
         final List<Carpeta> lista = new ArrayList<>();
         lista.add(new Carpeta("ERMUKO ANDRA MARI ELIZA"));
@@ -34,12 +34,13 @@ public class Pantalla6 extends AppCompatActivity {
         lista.add(new Carpeta("LAMUZA PARKEA"));
         lista.add(new Carpeta("DOLUMIN BARIKUA"));
 
-        adaptador = new AdaptadorCarpetas(this, lista);
 
+        //Creo el adaptador para la lista
+        adaptador = new AdaptadorCarpetas(this, lista);
         recyclerView.setAdapter(adaptador);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adaptador.setOnItemClickListener(new AdaptadorCarpetas.OnItemClickListener() {
-
+            //Metodo que obtiene que carpeta ha sido pulsada
             @Override
             public void onCarpetaPulsada(int position) {
                 controlCarpetaPulsada(position);
@@ -47,9 +48,9 @@ public class Pantalla6 extends AppCompatActivity {
         });
     }
 
+    //Lanza una nueva actividad con las fotos de la carpeta pulsada
     private void controlCarpetaPulsada(int position)
     {
-
         String nombreCarpeta = adaptador.mdata.get(position).getLugar();
         switch(nombreCarpeta) {
             case "ERMUKO ANDRA MARI ELIZA":

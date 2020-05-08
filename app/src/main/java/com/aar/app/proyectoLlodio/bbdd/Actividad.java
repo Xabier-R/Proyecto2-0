@@ -1,5 +1,6 @@
 package com.aar.app.proyectoLlodio.bbdd;
 
+
 public class Actividad {
 
     public String nombre;

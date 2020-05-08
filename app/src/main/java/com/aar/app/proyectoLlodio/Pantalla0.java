@@ -28,14 +28,18 @@ public class Pantalla0 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla0);
 
+        //Vinculo los LinearLayouts
         l1 = findViewById(R.id.l1);
         l2 = findViewById(R.id.l2);
+
+        //Animacion de los LinearLayouts
         uptodown = AnimationUtils.loadAnimation(this,R.anim.uptodown);
         downtoup = AnimationUtils.loadAnimation(this,R.anim.downtoup);
 
         l1.setAnimation(uptodown);
         l2.setAnimation(downtoup);
 
+        //Despues de 4 segundos lanza la Pantalla1
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override

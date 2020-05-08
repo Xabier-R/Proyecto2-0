@@ -30,7 +30,7 @@ public class Pantalla6_fotos extends AppCompatActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla6_fotos);
 
-        // PREPARAR CAROUSEL
+        // Vinculo el gridView para las fdtoso
         gridView = findViewById(R.id.grid);
 
         Bundle datos = this.getIntent().getExtras();
@@ -43,6 +43,7 @@ public class Pantalla6_fotos extends AppCompatActivity{
         customFotos = new CustomAdapter();
         gridView.setAdapter(customFotos);
 
+        //Listener que obtiene la foto del gridView pulsada para verla en tamaño completo
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

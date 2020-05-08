@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CuentoSqlite extends SQLiteOpenHelper {
 
-    //Sentencia SQL para crear la tabla de Contactos
+    //Sentencia SQL para crear la tabla de Cuento
     String sqlCreate = "CREATE TABLE Cuento (titulo TEXT PRIMARY KEY, descripcion TEXT, foto TEXT)";
     public CuentoSqlite(Context contexto, String nombre, CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
     }
-
+    //Metodo que ejecuta la sentencia para la creacion de la tabla Cuento
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(sqlCreate);

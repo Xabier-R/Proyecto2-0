@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
 
 
-    //Sentencia SQL para crear la tabla de Contactos
+    //Sentencia SQL para crear las tabla de actividades y idiomas
     String sqlCreate = "CREATE TABLE actividades (actividad TEXT PRIMARY KEY, realizada TEXT)";
     String sqlCreateIdioma = "CREATE TABLE idiomas (idioma TEXT PRIMARY KEY)";
 
@@ -20,6 +20,7 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
         super(contexto, nombre, factory, version);
     }
 
+    //Se ejecutan las sentencias para crear las tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(sqlCreate);
@@ -36,6 +37,7 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreate);
     }
 
+    // Metodo que inicializa la tabla actividades con no realizadas todos estas
     private void insertarActividades(SQLiteDatabase db) {
         for (int i=1; i<=7; i++) {
             ContentValues nuevoRegistro = new ContentValues();
@@ -44,7 +46,7 @@ public class ActividadesSQLiteHelper extends SQLiteOpenHelper {
             db.insert("actividades", null, nuevoRegistro);
         }
     }
-
+    // Metodo que inicializa la tabla idiomas con el idiaoma euskera
     private void insertarIdioma(SQLiteDatabase db) {
         ContentValues nuevoRegistro = new ContentValues();
         nuevoRegistro.put("idioma", "eu");

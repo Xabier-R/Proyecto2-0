@@ -47,6 +47,7 @@ public class Actividad5_cuento extends AppCompatActivity {
 
     }
 
+    //Metodo que descodifica la foto en Base64 a un Bitmap
     public static Bitmap decodeBase64(String input)
     {
         byte[] decodedBytes = Base64.decode(input,0);
