@@ -73,7 +73,7 @@ public class Pantalla1 extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);
         mediaPlayer2 = MediaPlayer.create(this, R.raw.audioa_laudio_ezagutu);
 
-        //inicia el audio, texto y animacion de hablar
+        //inicia el audio, texto y la animacion de hablar
         sicronizarTexto1();
         hablar();
 
