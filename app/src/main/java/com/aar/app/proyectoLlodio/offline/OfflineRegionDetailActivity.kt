@@ -206,24 +206,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         activiades = ActividadesSQLiteHelper(this, "DBactividades", null, 1)
         db = activiades!!.getWritableDatabase()
 
-        val boomMenuButton:BoomMenuButton? = findViewById(R.id.bmb);
-
-        // Añaño los botones al builder con sus respectivos listeners
-        var bmbSpanish = HamButton.Builder().normalImageRes(R.drawable.spanish).normalText("Español").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( Rect(35, 35, 35, 35))
-                .listener(object : OnBMClickListener{
-                    override fun onBoomButtonClick(index: Int) {
-                        cambiarIdioma("es")
-                    }
-                })
-
-        var bmbEuskera = HamButton.Builder().normalImageRes(R.drawable.euskera).normalText("Euskera").textGravity(Gravity.CENTER).typeface(Typeface.DEFAULT_BOLD).textSize(16).imagePadding( Rect(35, 35, 35, 35))
-                .listener(object : OnBMClickListener{
-                    override fun onBoomButtonClick(index: Int) {
-                        cambiarIdioma("eu")
-                    }
-                })
-        boomMenuButton?.addBuilder(bmbSpanish)
-        boomMenuButton?.addBuilder(bmbEuskera)
 
         instanciarActividades()
 
@@ -242,18 +224,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         fabDelete.setOnClickListener { onFabClick(it) }
     }
 
-    // metodo para cambiar el idioma de la aplicacion
-    private fun cambiarIdioma(idioma: String){
-        if (idioma.equals("es")) {
-            db?.execSQL("UPDATE idiomas SET idioma='es'")
-            LocaleHelper.setLocale(this,"es")
-        }
-        else {
-            db?.execSQL("UPDATE idiomas SET idioma='eu'")
-            LocaleHelper.setLocale(this,"eu")
-        }
-
-    }
 
     //metodo que instancia todas las actividades
     private fun instanciarActividades() {

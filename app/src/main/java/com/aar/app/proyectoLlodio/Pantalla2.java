@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,9 @@ import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
 import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomMenuButton;
 
 import java.util.ArrayList;
 
@@ -41,12 +45,43 @@ public class Pantalla2 extends AppCompatActivity{
 
     private ArrayList<Game> games;
 
+
+    //BBDD
+    private ActividadesSQLiteHelper activiades;
+    private SQLiteDatabase db1;
+    private BoomMenuButton bmb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.pantalla2);
+
+        bmb = findViewById(R.id.bmb);
+
+        HamButton.Builder bmbSpanish = new HamButton.Builder()
+                .normalText("Español")
+                .listener(new OnBMClickListener() {
+                    @Override
+                    public void onBoomButtonClick(int index) {
+                        cambiarIdioma("es");
+                    }
+                });
+
+        HamButton.Builder bmbEuskera = new HamButton.Builder()
+                .normalText("Euskera")
+                .listener(new OnBMClickListener() {
+                    @Override
+                    public void onBoomButtonClick(int index) {
+                        cambiarIdioma("eu");
+                    }
+                });
+
+
+        bmb.addBuilder(bmbSpanish);
+        bmb.addBuilder(bmbEuskera);
+
 
         coverFlow = (FeatureCoverFlow) findViewById(R.id.coverflow);
         coverFlow.setBackground(getResources().getDrawable(R.drawable.fondomenu));
@@ -55,6 +90,13 @@ public class Pantalla2 extends AppCompatActivity{
         adapter = new CoverFlowAdapter(this, games);
         coverFlow.setAdapter(adapter);
         coverFlow.setOnScrollPositionListener(onScrollListener());
+
+        //Abrimos la base de datos "DBactividades" en modo de escritura
+        activiades = new ActividadesSQLiteHelper(this, "DBactividades", null, 1);
+        db1 = activiades.getWritableDatabase();
+
+
+
 
 
 
@@ -112,6 +154,20 @@ public class Pantalla2 extends AppCompatActivity{
         games.add(new Game(R.drawable.p2_img2, item4));
     }
 
+    // metodo para cambiar el idioma de la aplicacion
+    private void cambiarIdioma(String idioma) {
+        if (idioma.equals("es")) {
+            db1.execSQL("UPDATE idiomas SET idioma='es'");
+            LocaleHelper.setLocale(this,"es");
+        }
+        else {
+            db1.execSQL("UPDATE idiomas SET idioma='eu'");
+            LocaleHelper.setLocale(this,"eu");
+        }
+        finish();
+        Intent i = new Intent(this, Pantalla2.class);
+        startActivity(i);
+    }
 
 
 

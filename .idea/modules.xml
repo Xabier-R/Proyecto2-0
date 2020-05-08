@@ -19,6 +19,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/StudioProjects-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/StudioProjects-Proyecto2-0-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/StudioProjects-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/StudioProjects-Proyecto2-0-plugin-offline.iml" />
       <module fileurl="file://$PROJECT_DIR$/Users-Xabier-StudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/Users-Xabier-StudioProjects-Proyecto2-0.iml" group="Proyecto2-0" />
+      <module fileurl="file://$PROJECT_DIR$/Users-piero-Downloads-Proyecto2-0.iml" filepath="$PROJECT_DIR$/Users-piero-Downloads-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Xabier-StudioProjects-Proyecto2-0.iml" filepath="$PROJECT_DIR$/Xabier-StudioProjects-Proyecto2-0.iml" group="Proyecto2-0" />
       <module fileurl="file://$PROJECT_DIR$/app/Xabier-StudioProjects-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/Xabier-StudioProjects-Proyecto2-0-app.iml" group="Proyecto2-0/app" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/Xabier-StudioProjects-Proyecto2-0-plugin-offline.iml" group="Proyecto2-0/plugin-offline" />
@@ -31,10 +32,15 @@
       <module fileurl="file://$PROJECT_DIR$/konfetti/konfetti.iml" filepath="$PROJECT_DIR$/konfetti/konfetti.iml" group="Proyecto2-0/konfetti" />
       <module fileurl="file://$PROJECT_DIR$/piero-Downloads-Proyecto2-0.iml" filepath="$PROJECT_DIR$/piero-Downloads-Proyecto2-0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app.iml" filepath="$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app~1.iml" filepath="$PROJECT_DIR$/app/piero-Downloads-Proyecto2-0-app~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play.iml" filepath="$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play~1.iml" filepath="$PROJECT_DIR$/demo-google-play/piero-Downloads-Proyecto2-0-demo-google-play~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java.iml" filepath="$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java~1.iml" filepath="$PROJECT_DIR$/demo-simple-java/piero-Downloads-Proyecto2-0-demo-simple-java~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti.iml" filepath="$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti~1.iml" filepath="$PROJECT_DIR$/konfetti/piero-Downloads-Proyecto2-0-konfetti~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline~1.iml" filepath="$PROJECT_DIR$/plugin-offline/piero-Downloads-Proyecto2-0-plugin-offline~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin-offline/plugin-offline.iml" filepath="$PROJECT_DIR$/plugin-offline/plugin-offline.iml" />
     </modules>
   </component>
