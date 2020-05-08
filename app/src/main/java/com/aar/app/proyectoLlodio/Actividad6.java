@@ -56,14 +56,14 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
         db = activiades.getWritableDatabase();
 
     }
-
+    //Metodo para resetear el texto
     public void reset(View view) {
         a6_et1.setText("");
         a6_et2.setText("");
         a6_et3.setText("");
         a6_et4.setText("");
     }
-
+    //Metodo para comprobar si los nombres que se han escrito son correctos
     public void comprobar(View view) {
 
         int cor=0;
@@ -82,7 +82,6 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
         if(cor==4)
         {
 
-
             //Marco como realizada la actividad 2
             db.execSQL("UPDATE actividades SET realizada='si' WHERE actividad='actividad6'");
             db.close();
@@ -96,7 +95,7 @@ public class Actividad6 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
 
     }
-
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad6.this, OfflineRegionListActivity.class);

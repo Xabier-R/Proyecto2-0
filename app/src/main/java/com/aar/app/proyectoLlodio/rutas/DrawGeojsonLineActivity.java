@@ -27,7 +27,7 @@ import java.util.Scanner;
 import timber.log.Timber;
 
 /**
- * Draw a polyline by parsing a GeoJSON file with the Mapbox Android SDK.
+ * Clase para dibujar las rutas en el mapa
  */
 public class DrawGeojsonLineActivity extends AppCompatActivity implements OnMapReadyCallback {
 

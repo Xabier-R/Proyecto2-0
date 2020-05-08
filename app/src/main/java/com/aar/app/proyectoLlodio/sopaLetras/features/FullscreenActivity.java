@@ -38,7 +38,7 @@ public class FullscreenActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
     }
-
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     @Override
     public void onBackPressed() {
         super.onBackPressed();

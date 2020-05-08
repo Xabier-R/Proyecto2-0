@@ -251,7 +251,7 @@ public class Actividad5_empezar extends AppCompatActivity {
         loboParpadeo.start();
     }
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         mediaPlayer.stop();

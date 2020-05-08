@@ -305,7 +305,7 @@ public class Puzzle extends AppCompatActivity implements Fragmento_ayuda.OnFragm
 
     }
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Puzzle.this, OfflineRegionListActivity.class);

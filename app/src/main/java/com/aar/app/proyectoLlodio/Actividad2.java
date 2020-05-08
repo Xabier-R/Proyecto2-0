@@ -216,7 +216,7 @@ public class Actividad2 extends AppCompatActivity implements Fragmento_ayuda.OnF
 
     }
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad2.this, OfflineRegionListActivity.class);

@@ -15,6 +15,9 @@ import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Pantalla inicial de la aplicacion
+ */
 public class Pantalla0 extends AppCompatActivity {
 
     Timer timer;
@@ -39,7 +42,7 @@ public class Pantalla0 extends AppCompatActivity {
         l1.setAnimation(uptodown);
         l2.setAnimation(downtoup);
 
-        //Despues de 4 segundos lanza la Pantalla1
+        //Despues de 4 segundos lanza la Pantalla2
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override

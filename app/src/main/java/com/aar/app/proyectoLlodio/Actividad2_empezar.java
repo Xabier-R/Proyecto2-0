@@ -225,7 +225,7 @@ public class Actividad2_empezar extends AppCompatActivity {
 
     }
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad2_empezar.this, OfflineRegionListActivity.class);

@@ -67,7 +67,6 @@ public class Pantalla1 extends AppCompatActivity {
         tw = (TypeWriter) findViewById(R.id.tv);
         scrollView = findViewById(R.id.scrollView);
         dialogoLobo = findViewById(R.id.dialogoLobo);
-        DisplayMetrics metrics = new DisplayMetrics();
 
 
         mediaPlayer = MediaPlayer.create(this, R.raw.audio_sarrera);

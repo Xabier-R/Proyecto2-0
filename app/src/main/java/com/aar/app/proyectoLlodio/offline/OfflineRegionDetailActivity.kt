@@ -22,7 +22,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.aar.app.proyectoLlodio.*
 import com.aar.app.proyectoLlodio.bbdd.Actividad
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper
@@ -58,12 +57,6 @@ import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import com.nightonke.boommenu.BoomButtons.HamButton
-import com.nightonke.boommenu.BoomButtons.OnBMClickListener
-import com.nightonke.boommenu.BoomMenuButton
-import com.nightonke.boommenu.OnBoomListener
-
-import com.nightonke.boommenu.Util
 import kotlinx.android.synthetic.main.activity_offline_region_detail.*
 import timber.log.Timber
 import java.io.InputStream
@@ -117,12 +110,6 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
 
     }
 
-    private val ORIGIN_ICON_ID = "origin-icon-id"
-    private val DESTINATION_ICON_ID = "destination-icon-id"
-    private val ROUTE_LAYER_ID = "route-layer-id"
-    private val ROUTE_LINE_SOURCE_ID = "route-source-id"
-    private val ICON_LAYER_ID = "icon-layer-id"
-    private val ICON_SOURCE_ID = "icon-source-id"
     private var offlinePlugin: OfflinePlugin? = null
     private var offlineRegion: OfflineRegion? = null
     private var isDownloading: Boolean = false
@@ -864,7 +851,7 @@ class OfflineRegionDetailActivity : AppCompatActivity(), OfflineDownloadChangeLi
         val KEY_REGION_ID_BUNDLE = "com.mapbox.mapboxsdk.plugins.offline.bundle.id"
     }
 
-
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     override fun onBackPressed() {
 
         val intent = Intent(this, Pantalla2::class.java)

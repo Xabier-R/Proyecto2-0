@@ -36,6 +36,9 @@ import java.util.TimerTask;
 
 import butterknife.BindArray;
 
+/**
+ * Actividad 7 inicio de la sopa de letras
+ */
 public class Actividad7 extends AppCompatActivity {
     private ImageView lobo, destello;
     private ImageSwitcher imageViewImg;
@@ -128,6 +131,8 @@ public class Actividad7 extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation, boolean isReverse) {
+
+                //Lanzamos la sopa de letras con el numero de filas y columanas
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
                 intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
                 intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
@@ -147,6 +152,7 @@ public class Actividad7 extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
 
+                //Lanzamos la sopa de letras con el numero de filas y columanas
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
                 intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
                 intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
@@ -178,8 +184,7 @@ public class Actividad7 extends AppCompatActivity {
                 buttonEmpezar.setVisibility(View.INVISIBLE);
 
 
-                //int dim = mGameRoundDimVals[ spinner.getSelectedItemPosition() ];
-
+                //Lanzamos la sopa de letras con el numero de filas y columanas
                 Intent intent = new Intent(Actividad7.this, GamePlayActivity.class);
                 intent.putExtra(GamePlayActivity.EXTRA_ROW_COUNT, 10);
                 intent.putExtra(GamePlayActivity.EXTRA_COL_COUNT, 10);
@@ -216,7 +221,7 @@ public class Actividad7 extends AppCompatActivity {
                     imageViewImg.setVisibility(View.INVISIBLE);
 
 
-                    //VIDEO
+                    //Inicio del video
                     video.setVisibility(View.VISIBLE);
                     String path = "android.resource://" + getPackageName() + "/" + R.raw.bideoa_dolumin_barikua;
                     video.setVideoURI(Uri.parse(path));

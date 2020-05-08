@@ -243,7 +243,7 @@ public class Actividad3 extends AppCompatActivity {
         loboParpadeo.start();
     }
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         Intent i = new Intent(Actividad3.this, OfflineRegionListActivity.class);

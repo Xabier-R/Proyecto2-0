@@ -1,13 +1,10 @@
 package com.aar.app.proyectoLlodio;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,18 +13,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.aar.app.proyectoLlodio.bbdd.ActividadesSQLiteHelper;
-import com.aar.app.proyectoLlodio.offline.OfflineRegionDetailActivity;
-import com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity;
 import com.aar.app.proyectoLlodio.traduccion.LocaleHelper;
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -40,9 +31,6 @@ import java.util.ArrayList;
  */
 public class Pantalla2 extends AppCompatActivity{
 
-    ConstraintLayout padrelistener;
-    TextView tvmenu;
-    ImageView imgmenu;
     private FeatureCoverFlow coverFlow;
     private CoverFlowAdapter adapter;
 

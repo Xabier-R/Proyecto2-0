@@ -246,7 +246,7 @@ public class Actividad4_empezar extends AppCompatActivity {
     }
 
 
-    //metodo que lanza el menu al pulsar el boton atras
+    //metodo que lanza la pantalla anterior pulsar el boton atras
     public void onBackPressed() {
 
         mediaPlayer.stop();

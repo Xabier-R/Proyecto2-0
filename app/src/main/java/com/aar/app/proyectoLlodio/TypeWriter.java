@@ -11,6 +11,9 @@ import android.widget.ScrollView;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Clase para realizar el efecto maquina de escribir en los textos
+ */
 
 public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
 
@@ -131,11 +134,6 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
             mTextToAdd = textToAdd;
         }
 
-
-
-//        public void stop() {
-//            this.finalize();
-//        }
 
         @Override
         public void run() {
