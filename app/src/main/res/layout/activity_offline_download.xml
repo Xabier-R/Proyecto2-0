@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aar.app.proyectoLlodio.offline.OfflineDownloadActivity">
+    tools:context="com.aar.app.proyectoLaudio.offline.OfflineDownloadActivity">
 
 <androidx.core.widget.NestedScrollView
   android:layout_width="match_parent"

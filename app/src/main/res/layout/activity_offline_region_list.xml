@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context="com.aar.app.proyectoLlodio.offline.OfflineRegionListActivity">
+    tools:context="com.aar.app.proyectoLaudio.offline.OfflineRegionListActivity">
 
     <ListView
         android:id="@+id/listView"

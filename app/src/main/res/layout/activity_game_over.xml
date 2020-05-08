@@ -56,12 +56,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.aar.app.proyectoLlodio.sopaLetras.features.gameover.KonfettiView
+    <com.aar.app.proyectoLaudio.sopaLetras.features.gameover.KonfettiView
         android:id="@+id/konfettiView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    </com.aar.app.proyectoLlodio.sopaLetras.features.gameover.KonfettiView>
+    </com.aar.app.proyectoLaudio.sopaLetras.features.gameover.KonfettiView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

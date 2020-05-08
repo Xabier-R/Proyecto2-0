@@ -73,7 +73,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.aar.app.proyectoLlodio.TypeWriter
+                <com.aar.app.proyectoLaudio.TypeWriter
                     android:id="@+id/tv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
