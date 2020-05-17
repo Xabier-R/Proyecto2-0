@@ -37,7 +37,7 @@ public class Pantalla1 extends AppCompatActivity {
     private  TypeWriter tw;
     private AnimatorSet animatorSet,animatorSet2,animatorSet5;
     public static ScrollView scrollView;
-    private static int lanzadas=1;
+    private int lanzadas=1;
 
 
     //AUDIOS
@@ -217,11 +217,11 @@ public class Pantalla1 extends AppCompatActivity {
     //Metodo para lanzar la actividad una vez termine el audio
     public void lanzarActividad()
     {
+        mediaPlayer.stop();
+        mediaPlayer2.stop();
         lanzadas++;
         Intent i=new Intent(Pantalla1.this, OfflineRegionListActivity.class);
         startActivity(i);
-        mediaPlayer.stop();
-        mediaPlayer2.stop();
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
         finish();
     }
